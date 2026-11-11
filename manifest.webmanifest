@@ -1,0 +1,15 @@
+{
+ "name": "DJSG Kota Main",
+ "short_name": "DJSG",
+ "description": "Member app of Digambar Jain Social Group, Kota Main (demo)",
+ "start_url": "app.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#FFF4E8",
+ "theme_color": "#A3123A",
+ "icons": [
+  {"src": "icon-192.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+  {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+ ]
+}

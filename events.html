@@ -1,5 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Events Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -175,6 +174,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 .demo .dl{font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--demo-hi);font-size:10px}
 .demo button{padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--demo-ink);font-weight:700}
 .demo button[aria-pressed="true"]{background:var(--demo-hi);color:var(--demo)}
+/* narrow-phone header fix (Kota Main no longer touches Member Login) */
+@media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
+@media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -223,6 +225,7 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
   <label><span data-i="f_name">Programme name *</span><input type="text" id="f_name" maxlength="80"></label>
   <div class="two"><label><span data-i="f_year">Year *</span><select id="f_year"></select></label><label><span data-i="f_mon">Month</span><select id="f_mon"></select></label></div>
   <div class="two"><label><span data-i="f_place">Place</span><input type="text" id="f_place" maxlength="60"></label><label><span data-i="f_pd">Project Director</span><input type="text" id="f_pd" maxlength="60"></label></div>
+  <label><span data-i="f_cg">Chief guest or special guests</span><input type="text" id="f_cg" maxlength="100"></label>
   <label><span data-i="f_det">A few words about it</span><textarea id="f_det" maxlength="400"></textarea></label>
   <label><span data-i="f_ph">Photos (up to 15, JPG or PNG)</span><input type="file" id="f_ph" accept="image/jpeg,image/png" multiple></label>
   <label class="ck"><input type="checkbox" id="f_ok"><span data-i="f_ok">The people in the photos agree to show them on the group website. *</span></label>
@@ -269,12 +272,12 @@ var $=function(s){return document.querySelector(s)},$$=function(s){return [].sli
 var HI={dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
 m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_blood:'रक्तदान',m_join:'सदस्य बनें',
 b_join:'सदस्य बनें',b_home:'होम पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
-d_lbl:'अध्यक्ष स्विच: "साझा किया" नाम दिखाएँ',by:'साझा किया:',byn:'श्री [सदस्य का नाम]',on:'चालू',off:'बंद',d_who:'पेज ऐसे देखें:',w_v:'आगंतुक',w_p:'सदस्य, पूर्व अध्यक्ष (लॉगिन)',add:'＋ पिछला कार्यक्रम जोड़ें',add_n:'यह बटन केवल लॉगिन किए हुए पूर्व अध्यक्षों को दिखता है। लिंक की ज़रूरत नहीं।',wait:'मंज़ूरी की प्रतीक्षा',mine:'कार्यालय की मंज़ूरी तक यह केवल आपको दिखता है।',you:'आप',f_h:'पिछला कार्यक्रम जोड़ें',f_s:'यह मंज़ूरी के लिए कार्यालय को जाता है, फिर पिछले कार्यक्रमों और गैलरी में दिखता है।',f_by:'आपका नाम',f_name:'कार्यक्रम का नाम *',f_year:'वर्ष *',f_mon:'माह',f_place:'स्थान',f_pd:'प्रोजेक्ट डायरेक्टर',f_det:'इसके बारे में कुछ शब्द',f_ph:'फ़ोटो (अधिकतम 15, JPG या PNG)',f_ok:'फ़ोटो में दिख रहे लोग इन्हें ग्रुप की वेबसाइट पर दिखाने से सहमत हैं। *',f_send:'कार्यालय को भेजें',close:'बंद करें',e_name:'कार्यक्रम का नाम लिखें।',e_year:'वर्ष चुनें।',e_ph:'अधिकतम 15 फ़ोटो चुनें।',e_ok:'कृपया सहमति पर टिक करें।',t_sent:'कार्यालय को भेज दिया। मंज़ूरी की प्रतीक्षा।',ns:'याद नहीं',pick:'चुनें',pho_n:'{n} फ़ोटो',d_ap:'अध्यक्ष स्विच: पूर्व अध्यक्षों के लिए मंज़ूरी ज़रूरी',d_st:'अध्यक्ष और सचिव को यह डेस्क में दिखता है',d_stb:'स्टोरेज टाइल खोलें',f_s2:'भेजते ही यह पिछले कार्यक्रमों और गैलरी में दिखता है।',t_live:'जोड़ दिया गया। अब यह सबको दिखता है।',lim:'सीमा: एक कार्यक्रम में 15 फ़ोटो · महीने में 10 कार्यक्रम। इस महीने आपने {n} / 10 जोड़े।',e_lim:'इस महीने की सीमा (10 कार्यक्रम) पूरी हो गई।',pp:'श्री [पूर्व अध्यक्ष]',s_h:'स्टोरेज स्पेस',s_s:'अध्यक्ष डेस्क · होम। नमूना आँकड़े।',s_ok:'ठीक है',s_of:'उपयोग, 15 GB में से (14%)',s_m70:'70% चेतावनी',s_m90:'90% अलर्ट',s_room:'लगभग 50,000 और फ़ोटो की जगह है।',s_where:'जगह कहाँ उपयोग हुई',s_r1:'ग्रुप गैलरी की फ़ोटो',s_r2:'DJSG इंस्टा की फ़ोटो',s_r3:'DJSG इंस्टा के वीडियो',s_r4:'सदस्य और निर्देशिका की फ़ोटो',s_r5:'शुल्क स्क्रीनशॉट, सूचनाएँ, मेल',s_lim:'अपलोड सीमाएँ (अध्यक्ष बदल सकते हैं)',s_l1:'एक कार्यक्रम में फ़ोटो',s_l2:'एक पूर्व अध्यक्ष के कार्यक्रम, प्रति माह',s_l3:'एक सदस्य के इंस्टा पोस्ट, प्रति दिन',s_l4:'एक वीडियो (डिफ़ॉल्ट बंद)',s_l5:'एक सूचना PDF',s_l6:'हर फ़ोटो छोटी की जाती है',s_l6v:'लगभग 0.25 MB',s_al:'जगह भरने पर क्या होता है',s_a1:'70% पर: टाइल नारंगी हो जाती है।',s_a2:'90% पर: टाइल लाल हो जाती है और अध्यक्ष व सचिव को मेल जाता है।',s_a3:'95% पर: नई फ़ोटो और वीडियो अपलोड रुक जाते हैं। टेक्स्ट चलता रहता है।',s_a4:'कुछ भी अपने आप कभी नहीं हटता।',lockd:'स्थान, समय और पूरा विवरण सदस्य लॉगिन के बाद।',t_det2:'असली साइट पर यहाँ पूरा विवरण खुलता है।',eyebrow:'कार्यक्रम',h1:'आगामी और पिछले कार्यक्रम',t_up:'आगामी',t_past:'पिछले',
+d_lbl:'अध्यक्ष स्विच: "साझा किया" नाम दिखाएँ',by:'साझा किया:',byn:'श्री [सदस्य का नाम]',on:'चालू',off:'बंद',d_who:'पेज ऐसे देखें:',w_v:'आगंतुक',w_p:'सदस्य, पूर्व अध्यक्ष (लॉगिन)',add:'＋ पिछला कार्यक्रम जोड़ें',add_n:'यह बटन केवल लॉगिन किए हुए पूर्व अध्यक्षों को दिखता है। लिंक की ज़रूरत नहीं।',wait:'मंज़ूरी की प्रतीक्षा',mine:'कार्यालय की मंज़ूरी तक यह केवल आपको दिखता है।',you:'आप',f_h:'पिछला कार्यक्रम जोड़ें',f_s:'यह मंज़ूरी के लिए कार्यालय को जाता है, फिर पिछले कार्यक्रमों और गैलरी में दिखता है।',f_by:'आपका नाम',f_name:'कार्यक्रम का नाम *',f_year:'वर्ष *',f_mon:'माह',f_place:'स्थान',f_pd:'प्रोजेक्ट डायरेक्टर',f_cg:'मुख्य अतिथि या विशेष अतिथि',f_det:'इसके बारे में कुछ शब्द',f_ph:'फ़ोटो (अधिकतम 15, JPG या PNG)',f_ok:'फ़ोटो में दिख रहे लोग इन्हें ग्रुप की वेबसाइट पर दिखाने से सहमत हैं। *',f_send:'कार्यालय को भेजें',close:'बंद करें',e_name:'कार्यक्रम का नाम लिखें।',e_year:'वर्ष चुनें।',e_ph:'अधिकतम 15 फ़ोटो चुनें।',e_ok:'कृपया सहमति पर टिक करें।',t_sent:'कार्यालय को भेज दिया। मंज़ूरी की प्रतीक्षा।',ns:'याद नहीं',pick:'चुनें',pho_n:'{n} फ़ोटो',d_ap:'अध्यक्ष स्विच: पूर्व अध्यक्षों के लिए मंज़ूरी ज़रूरी',d_st:'अध्यक्ष और सचिव को यह डेस्क में दिखता है',d_stb:'स्टोरेज टाइल खोलें',f_s2:'भेजते ही यह पिछले कार्यक्रमों और गैलरी में दिखता है।',t_live:'जोड़ दिया गया। अब यह सबको दिखता है।',lim:'सीमा: एक कार्यक्रम में 15 फ़ोटो · महीने में 10 कार्यक्रम। इस महीने आपने {n} / 10 जोड़े।',e_lim:'इस महीने की सीमा (10 कार्यक्रम) पूरी हो गई।',pp:'श्री [पूर्व अध्यक्ष]',s_h:'स्टोरेज स्पेस',s_s:'अध्यक्ष डेस्क · होम। नमूना आँकड़े।',s_ok:'ठीक है',s_of:'उपयोग, 15 GB में से (14%)',s_m70:'70% चेतावनी',s_m90:'90% अलर्ट',s_room:'लगभग 50,000 और फ़ोटो की जगह है।',s_where:'जगह कहाँ उपयोग हुई',s_r1:'ग्रुप गैलरी की फ़ोटो',s_r2:'DJSG इंस्टा की फ़ोटो',s_r3:'DJSG इंस्टा के वीडियो',s_r4:'सदस्य और निर्देशिका की फ़ोटो',s_r5:'शुल्क स्क्रीनशॉट, सूचनाएँ, मेल',s_lim:'अपलोड सीमाएँ (अध्यक्ष बदल सकते हैं)',s_l1:'एक कार्यक्रम में फ़ोटो',s_l2:'एक पूर्व अध्यक्ष के कार्यक्रम, प्रति माह',s_l3:'एक सदस्य के इंस्टा पोस्ट, प्रति दिन',s_l4:'एक वीडियो (डिफ़ॉल्ट बंद)',s_l5:'एक सूचना PDF',s_l6:'हर फ़ोटो छोटी की जाती है',s_l6v:'लगभग 0.25 MB',s_al:'जगह भरने पर क्या होता है',s_a1:'70% पर: टाइल नारंगी हो जाती है।',s_a2:'90% पर: टाइल लाल हो जाती है और अध्यक्ष व सचिव को मेल जाता है।',s_a3:'95% पर: नई फ़ोटो और वीडियो अपलोड रुक जाते हैं। टेक्स्ट चलता रहता है।',s_a4:'कुछ भी अपने आप कभी नहीं हटता।',lockd:'स्थान, समय और पूरा विवरण सदस्य लॉगिन के बाद।',t_det2:'असली साइट पर यहाँ पूरा विवरण खुलता है।',eyebrow:'कार्यक्रम',h1:'आगामी और पिछले कार्यक्रम',t_up:'आगामी',t_past:'पिछले',
 n_ev:'नमूना कार्यक्रम। असली कार्यक्रम, तारीख और स्थान कार्यालय डेस्क से जोड़ता है।',
 t_nav:'यह नमूना केवल कार्यक्रम पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',t_det:'पूरा विवरण सदस्य लॉगिन के बाद खुलता है। डेमो में लॉगिन बंद है।',t_pho:'फ़ोटो गैलरी पेज में खुलती हैं।',
 up:'आगामी',done:'संपन्न',pd:'प्रोजेक्ट डायरेक्टर',det:'विवरण देखें',pho:'फ़ोटो देखें',tba:'शीघ्र घोषित होगा',venue:'स्थान',
 tbd:'तारीख<br>शीघ्र',today:'आज',d1:'1 दिन शेष',dn:'{n} दिन शेष',kota:'कोटा'};
-var EN={t_nav:'This page is not in the new look yet.',t_login:'Login is switched off in the demo.',t_det:'Full details open after member login. Login is off in the demo.',t_pho:'Photos open in the Gallery page.',
+var EN={t_nav:'This sample shows only the Events page.',t_login:'Login is switched off in the demo.',t_det:'Full details open after member login. Login is off in the demo.',t_pho:'Photos open in the Gallery page.',
 f_s:'It goes to the office for approval, then shows in Past and in the Gallery.',t_live:'Added. Everyone can see it now.',lim:'Limit: 15 photos in one programme · 10 programmes a month. You have added {n} of 10 this month.',e_lim:'You have reached this month\'s limit of 10 programmes.',pp:'Mr [Past president]',lockd:'Venue, time and full details after member login.',t_det2:'On the real site the full details open here.',add:'＋ Add a past programme',add_n:'Only past presidents who are logged in see this button. No link is needed.',wait:'Approval awaited',mine:'Only you see this until the office approves it.',you:'you',e_name:'Please write the programme name.',e_year:'Please choose the year.',e_ph:'Please choose 15 photos or fewer.',e_ok:'Please tick the box to agree.',t_sent:'Sent to the office. Approval awaited.',ns:'Not sure',pick:'Choose',pho_n:'{n} photos',by:'Shared by',byn:'Mr [Member name]',on:'ON',off:'OFF',up:'Upcoming',done:'Completed',pd:'Project Director',det:'View details',pho:'View photos',tba:'To be announced',venue:'Venue',
 tbd:'Date<br>soon',today:'Today',d1:'1 day left',dn:'{n} days left',kota:'Kota'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -337,8 +340,19 @@ paint();
 </script>
 
 <script>
-document.addEventListener('click',function(e){var b=e.target.closest('.nav button,[data-t="t_nav"]');if(!b)return;var c=b.dataset.i?b:b.querySelector('[data-i]');var k=c?c.dataset.i:'';
-var L={m_home:'index.html',b_home:'index.html',m_about:'about.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html'};
-if(L[k]){e.stopImmediatePropagation();e.preventDefault();location.href=L[k]}},true);
+/* Demo links between the new-look pages. They work on the GitHub demo (github.io) and the real site; inside Claude each page keeps its own note. */
+(function(){
+var h=location.hostname;
+if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var here=location.pathname.split('/').pop()||'index.html';
+document.addEventListener('click',function(e){
+ var b=e.target.closest&&e.target.closest('button,a');if(!b)return;
+ var k=b.getAttribute('data-i');if(!M[k]){var c=b.querySelector('[data-i]');k=c&&c.getAttribute('data-i')}
+ var u=M[k];if(!u||u===here)return;
+ e.stopPropagation();e.preventDefault();location.href=u;
+},true);
+})();
 </script>
+
 </body></html>

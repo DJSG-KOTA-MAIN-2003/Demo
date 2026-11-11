@@ -1,5 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Gallery Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -188,6 +187,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 .lbn .close{margin-top:10px;padding:12px 4px;font-size:13.5px}
 .fx{position:fixed;inset:0;width:100%;height:100%;z-index:15;pointer-events:none}
 @media(min-width:760px){.mas{columns:3}.top6 .pic{width:150px;height:150px}.albs{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}.alb .cv{height:140px}.addc{flex-direction:row;text-align:left;align-items:center;justify-content:space-between}.addc .btn{padding-inline:26px}}
+/* narrow-phone header fix (Kota Main no longer touches Member Login) */
+@media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
+@media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -279,7 +281,7 @@ n_g:'नमूना चित्र और नमूना कार्यक�
 t_nav:'यह नमूना केवल गैलरी पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',
 all:'सभी',top:'⭐ सबसे ज़्यादा पसंद',nph:'{n} फ़ोटो',nal:'{n} एल्बम',appr:'स्वीकृत (नमूना फ़ोटो)',views:'👁 {n} बार देखा गया',of:'{a} / {b}',bl:'संपर्क देखने के लिए लॉगिन',smp:'नमूना',mem:'सदस्य का नाम यहाँ दिखेगा',
 back:'‹ सभी एल्बम',play:'▶ स्लाइड शो चलाएँ',lplay:'▶ चलाएँ',lpause:'⏸ रोकें',pd:'प्रोजेक्ट डायरेक्टर',tba:'शीघ्र घोषित होगा',by:'साझा किया: श्री [पूर्व अध्यक्ष]',on:'चालू',off:'बंद',like:'पसंद करें',kota:'कोटा'};
-var EN={t_nav:'This page is not in the new look yet.',t_login:'Login is switched off in the demo.',
+var EN={t_nav:'This sample shows only the Gallery page.',t_login:'Login is switched off in the demo.',
 more:'Log in to see all {n} photos',t_like:'Members log in to like a photo.',all:'All',top:'⭐ Most liked',nph:'{n} photos',nal:'{n} albums',appr:'Approved (sample photo)',views:'👁 Seen {n} times',of:'{a} of {b}',bl:'Log in to see contact',smp:'Sample',mem:'Member name shows here',
 back:'‹ All albums',play:'▶ Play slideshow',lplay:'▶ Play',lpause:'⏸ Pause',pd:'Project Director',tba:'To be announced',by:'Shared by Mr [Past president]',on:'ON',off:'OFF',like:'Like',kota:'Kota'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -405,8 +407,18 @@ size();paint();
 </script>
 
 <script>
-document.addEventListener('click',function(e){var b=e.target.closest('.nav button,[data-t="t_nav"]');if(!b)return;var c=b.dataset.i?b:b.querySelector('[data-i]');var k=c?c.dataset.i:'';
-var L={m_home:'index.html',b_home:'index.html',m_about:'about.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html'};
-if(L[k]){e.stopImmediatePropagation();e.preventDefault();location.href=L[k]}},true);
+/* Demo links between the new-look pages. They work on the GitHub demo (github.io) and the real site; inside Claude each page keeps its own note. */
+(function(){
+var h=location.hostname;
+if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var here=location.pathname.split('/').pop()||'index.html';
+document.addEventListener('click',function(e){
+ var b=e.target.closest&&e.target.closest('button,a');if(!b)return;
+ var k=b.getAttribute('data-i');if(!M[k]){var c=b.querySelector('[data-i]');k=c&&c.getAttribute('data-i')}
+ var u=M[k];if(!u||u===here)return;
+ e.stopPropagation();e.preventDefault();location.href=u;
+},true);
+})();
 </script>
 </body></html>

@@ -1,5 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG About Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -118,6 +117,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 }
 @media(max-width:380px){.login{padding:7px 9px}.lang button{padding:4px 6px}.logo{width:38px;height:38px}}
 @media (prefers-reduced-motion:reduce){.blob{animation:none}.btn{transition:none}}
+/* narrow-phone header fix (Kota Main no longer touches Member Login) */
+@media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
+@media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -196,7 +198,7 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 var HI={d_lbl:'अध्यक्ष स्विच: आगंतुकों को सदस्यों के नाम',dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
-m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_blood:'रक्तदान',m_join:'सदस्य बनें',
+m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_biz:'डीजेएसजी व्यवसाय',m_blood:'रक्तदान',m_join:'सदस्य बनें',
 eyebrow:'परिचय',h1:'हमारा समाज, हमारी पहचान',h_story:'हमारी कहानी',
 story1:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन की स्थापना 2003 में हुई। यह कोटा के दिगम्बर जैन परिवारों का समूह है, जो एक परिवार की तरह मिलते हैं, पर्व साथ मनाते हैं और सुख-दुख में एक-दूसरे के साथ खड़े रहते हैं।',
 story2:'हमारा उद्देश्य सरल है: समाज की सेवा, नई पीढ़ी को अच्छे संस्कार और परिवारों को आपस में जोड़ना। वर्ष भर हम धार्मिक, सांस्कृतिक और सामाजिक कार्यक्रम, पारिवारिक मिलन और सेवा कार्य करते हैं।',
@@ -207,7 +209,7 @@ om_k:'केवल नाम',om_t:'हमारे सदस्य',om_s:'60 �
 f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
 om_n:'केवल नाम। फ़ोटो, फ़ोन और परिवार का विवरण निर्देशिका में है, केवल सदस्यों के लिए।',om_login:'🔒 निर्देशिका खोलने के लिए सदस्य लॉगिन',close:'बंद करें',
 t_nav:'यह नमूना केवल परिचय पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',row:'श्री [सदस्य {n}] व श्रीमती [पत्नी]',on:'चालू',off:'बंद'};
-var EN={t_nav:'This page is not in the new look yet.',t_login:'Login is switched off in the demo.',row:'Mr [Member {n}] &amp; Mrs [Spouse]',on:'ON',off:'OFF'};
+var EN={t_nav:'This sample shows only the About page.',t_login:'Login is switched off in the demo.',row:'Mr [Member {n}] &amp; Mrs [Spouse]',on:'ON',off:'OFF'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
 var lang='en',omOn=false;
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
@@ -234,8 +236,19 @@ paint();
 </script>
 
 <script>
-document.addEventListener('click',function(e){var b=e.target.closest('.nav button,[data-t="t_nav"]');if(!b)return;var c=b.dataset.i?b:b.querySelector('[data-i]');var k=c?c.dataset.i:'';
-var L={m_home:'index.html',b_home:'index.html',m_about:'about.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html'};
-if(L[k]){e.stopImmediatePropagation();e.preventDefault();location.href=L[k]}},true);
+/* Demo links between the new-look pages. They work on the GitHub demo (github.io) and the real site; inside Claude each page keeps its own note. */
+(function(){
+var h=location.hostname;
+if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var here=location.pathname.split('/').pop()||'index.html';
+document.addEventListener('click',function(e){
+ var b=e.target.closest&&e.target.closest('button,a');if(!b)return;
+ var k=b.getAttribute('data-i');if(!M[k]){var c=b.querySelector('[data-i]');k=c&&c.getAttribute('data-i')}
+ var u=M[k];if(!u||u===here)return;
+ e.stopPropagation();e.preventDefault();location.href=u;
+},true);
+})();
 </script>
+
 </body></html>
