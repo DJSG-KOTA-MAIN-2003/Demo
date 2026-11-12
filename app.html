@@ -61,6 +61,7 @@ input.t{font:inherit;padding:12px 14px;border-radius:14px;border:1px solid #e3cf
 .code{font:800 34px Sora,sans-serif;letter-spacing:8px;text-align:center;color:var(--a1);padding:8px;border-radius:14px;background:#fff;border:1px dashed var(--a1)}
 .toast{position:absolute;left:12px;right:12px;bottom:14px;padding:11px 14px;border-radius:14px;background:#2A1530;color:#fff;font-size:13.5px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:30}.toast.on{opacity:1;transform:none}
 .demoskip{flex:none;margin:8px 12px;padding:10px;border-radius:999px;background:#1d1024;color:#ffcf66;font-weight:800;font-size:13px}
+.pg{position:absolute;inset:0;top:env(safe-area-inset-top,0px);bottom:env(safe-area-inset-bottom,0px);z-index:70;display:flex;flex-direction:column;background:#fff}.pg[hidden]{display:none}.pgt{flex:none;display:flex;align-items:center;gap:10px;padding:8px 10px;background:#A3123A;color:#fff}.pgb{padding:7px 12px;border-radius:999px;background:#fff;color:#A3123A;font-weight:800;font-size:13px}.pgt b{font-family:Sora,sans-serif;font-size:15px}#pgf{flex:1;width:100%;border:0}
 /* guide */
 .guide{width:340px;max-height:calc(100vh - 40px);overflow:auto;background:rgba(255,255,255,.78);border:1px solid #fff;border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(60,20,50,.15);font-size:13.5px}
 .guide h1{font-size:19px;margin:0 0 4px;font-family:Sora,sans-serif}.guide h2{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--a1);margin:14px 0 6px}
@@ -518,6 +519,8 @@ document.addEventListener(&#x27;click&#x27;,function(e){
 .visit [data-lv]{position:relative}.visit [data-lv]::after,.wait [data-lk]::after{content:&quot;🔒&quot;;position:absolute;top:5px;left:7px;right:auto;width:auto;height:auto;filter:none;background:none;border-radius:0;font-size:12px;z-index:4}
 .wait [data-open=newpost]{position:relative}.wait [data-open=newpost]::after{content:&quot;🔒&quot;;position:absolute;top:6px;left:8px;font-size:12px}
 .wait .nav [data-lk]::after{position:static;margin-left:4px;font-size:11px}
+@container (max-height:118px){.who b{font-size:13px!important}.who span{display:none}}
+@container (max-height:92px){.who{display:none}}
 .dbtn{margin-top:10px;width:100%;padding:12px;border-radius:999px;background:#fff;color:#2A1530;font-weight:700;box-shadow:0 4px 0 rgba(163,18,58,.2)}
 &lt;/style&gt;&lt;/head&gt;&lt;body&gt;
 &lt;title&gt;DJSG&lt;/title&gt;
@@ -1098,7 +1101,7 @@ var _items=smItems;smItems=function(){if(WAIT)return [{k:&#x27;waiting&#x27;,u:1
 
 window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,gallery:&#x27;gallery.html&#x27;,biz:&#x27;business.html&#x27;,celeb:&#x27;birthdays.html&#x27;,directory:&#x27;directory.html&#x27;,blood:&#x27;blood.html&#x27;,bearers:&#x27;bearers.html&#x27;,about:&#x27;about.html&#x27;};
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
-var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.location.href=PAGES[k];return}catch(e){}}_show2(k)};
+var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
 var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
@@ -1107,8 +1110,8 @@ var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:
 var _show3=show;show=function(k){
  if(k===&#x27;cmd&#x27;){try{parent.__go(&#x27;4&#x27;)}catch(e){}return}
  if(MODE===&#x27;visit&#x27;){
-  if(k===&#x27;newpost&#x27;){sh.innerHTML=head(&#x27;New family? Join DJSG&#x27;,&#x27;Joining form for the next session&#x27;)+&#x27;&lt;p&gt;Fill the joining form. The office will contact you about the fee and approval.&lt;/p&gt;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff&quot; onclick=&quot;parent.location.href=\&#x27;join.html\&#x27;&quot;&gt;Open the joining form&lt;/button&gt;&lt;button class=&quot;close&quot;&gt;Close&lt;/button&gt;&#x27;;logos();open=true;ov.classList.add(&#x27;show&#x27;);sh.querySelector(&#x27;.close&#x27;).onclick=hide;return}
-  if(k===&#x27;profile&#x27;||k===&#x27;bell&#x27;||k===&#x27;login&#x27;){sh.innerHTML=head(&#x27;Members&#x27;,&#x27;Log in or complete your details&#x27;)+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff&quot; onclick=&quot;__hide();parent.__go(\&#x27;4\&#x27;)&quot;&gt;📝 Complete my details (existing member)&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;4\&#x27;)&quot;&gt;🔑 Already approved? Log in&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;parent.location.href=\&#x27;join.html\&#x27;&quot;&gt;🤝 New family? Join DJSG&lt;/button&gt;&lt;button class=&quot;close&quot;&gt;Close&lt;/button&gt;&#x27;;logos();open=true;ov.classList.add(&#x27;show&#x27;);sh.querySelector(&#x27;.close&#x27;).onclick=hide;return}
+  if(k===&#x27;newpost&#x27;){sh.innerHTML=head(&#x27;New family? Join DJSG&#x27;,&#x27;Joining form for the next session&#x27;)+&#x27;&lt;p&gt;Fill the joining form. The office will contact you about the fee and approval.&lt;/p&gt;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff&quot; onclick=&quot;__hide();parent.__openPage(\&#x27;join.html\&#x27;)&quot;&gt;Open the joining form&lt;/button&gt;&lt;button class=&quot;close&quot;&gt;Close&lt;/button&gt;&#x27;;logos();open=true;ov.classList.add(&#x27;show&#x27;);sh.querySelector(&#x27;.close&#x27;).onclick=hide;return}
+  if(k===&#x27;profile&#x27;||k===&#x27;bell&#x27;||k===&#x27;login&#x27;){sh.innerHTML=head(&#x27;Members&#x27;,&#x27;Log in or complete your details&#x27;)+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff&quot; onclick=&quot;__hide();parent.__go(\&#x27;4\&#x27;)&quot;&gt;📝 Complete my details (existing member)&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;4\&#x27;)&quot;&gt;🔑 Already approved? Log in&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__openPage(\&#x27;join.html\&#x27;)&quot;&gt;🤝 New family? Join DJSG&lt;/button&gt;&lt;button class=&quot;close&quot;&gt;Close&lt;/button&gt;&#x27;;logos();open=true;ov.classList.add(&#x27;show&#x27;);sh.querySelector(&#x27;.close&#x27;).onclick=hide;return}
   if(VLOCK[k]){sh.innerHTML=head(&#x27;Members only&#x27;,&#x27;🔒 Log in to open&#x27;)+&#x27;&lt;p&gt;This part is for DJSG members. Complete your details or log in.&lt;/p&gt;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff&quot; onclick=&quot;__hide();parent.__go(\&#x27;4\&#x27;)&quot;&gt;📝 Complete my details&lt;/button&gt;&lt;button class=&quot;close&quot;&gt;Close&lt;/button&gt;&#x27;;logos();open=true;ov.classList.add(&#x27;show&#x27;);sh.querySelector(&#x27;.close&#x27;).onclick=hide;return}
  }
  _show3(k)};
@@ -1258,6 +1261,7 @@ logos();var av=document.getElementById(&quot;myav&quot;);if(av)av.style.backgrou
 </section>
 
 <div class="toast" id="toast"></div>
+<div class="pg" id="pg" hidden><div class="pgt"><button class="pgb" id="pgb">‹ Back to app</button><b id="pgn"></b></div><iframe id="pgf" title="Page"></iframe></div>
 </div></div>
 
 <aside class="guide" id="guide">
@@ -1309,8 +1313,13 @@ var standalone=matchMedia('(display-mode: standalone)').matches||navigator.stand
 function mode(m,n){var w=W();if(w&&w.__MODE){w.__MODE(m)}else if((n||0)<20){setTimeout(function(){mode(m,(n||0)+1)},300)}}
 var _go=go;go=function(k){if(k==='V'){_go('9');cur='V';mode('visit');return}_go(k);if(k==='7'){setS('wait');mode('wait')}if(k==='9'){setS('full');mode('full')}if(k==='6')watchForm()};
 window.__go=go;
+var PN={'events.html':'Events','gallery.html':'Gallery','business.html':'DJSG Business','birthdays.html':'Birthdays & Anniversaries','directory.html':'Directory','blood.html':'Blood Donation','bearers.html':'Office Bearers','about.html':'About','join.html':'Join DJSG'};
+window.__openPage=function(u){$('#pgn').textContent=PN[u]||'';$('#pg').hidden=false;try{$('#pgf').contentWindow.location.replace(u)}catch(e){$('#pgf').src=u}try{history.pushState({pg:1},'')}catch(e){}};
+function closePage(){$('#pg').hidden=true;try{$('#pgf').contentWindow.location.replace('about:blank')}catch(e){}}
+$('#pgb').onclick=function(){closePage()};
+addEventListener('popstate',function(){if(!$('#pg').hidden)closePage()});
 window.__approve=function(){setS('full');go._keep=true;toast('Office approved. Member ID sent.');go('8')};
-window.__reset=function(){setS('');try{localStorage.removeItem('djsg_join_draft')}catch(e){}go('V')};
+window.__reset=function(){setS('');try{localStorage.removeItem('djsg_join_draft')}catch(e){}go(standalone?'V':'2')};
 var wf;function watchForm(){clearInterval(wf);wf=setInterval(function(){if(cur!=='6'){clearInterval(wf);return}try{var d=$('#form').contentDocument;if(d&&d.querySelector('.done')){clearInterval(wf);setTimeout(function(){toast('Details sent. Waiting for approval.');go._keep=true;go('7')},1800)}}catch(e){}},1000)}
 var dp=null;addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e});
 document.addEventListener('click',function(e){var b=e.target.closest('[data-act=install]');if(!b)return;
