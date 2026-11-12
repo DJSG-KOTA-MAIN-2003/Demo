@@ -516,7 +516,8 @@ document.addEventListener(&#x27;click&#x27;,function(e){
 <section class="scr" data-s="7"><iframe class="fr" id="app" title="DJSG app" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=utf8&gt;&lt;meta name=viewport content=&quot;width=device-width,initial-scale=1,viewport-fit=cover&quot;&gt;&lt;style&gt;:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.vlogin{display:none;padding:8px 12px;border-radius:999px;background:var(--btn);color:#fff;font-weight:700;font-size:11px;box-shadow:0 3px 0 var(--btn-edge);white-space:nowrap}
 .visit .vlogin{display:inline-block}.visit .bell,.visit .av{display:none!important}
 .visit [data-lv]{position:relative}.visit [data-lv]::after,.wait [data-lk]::after{content:&quot;🔒&quot;;position:absolute;top:5px;left:7px;right:auto;width:auto;height:auto;filter:none;background:none;border-radius:0;font-size:12px;z-index:4}
-.wait [data-open=newpost]::after{content:&quot;🔒&quot;;position:absolute;top:6px;left:8px;font-size:12px}
+.wait [data-open=newpost]{position:relative}.wait [data-open=newpost]::after{content:&quot;🔒&quot;;position:absolute;top:6px;left:8px;font-size:12px}
+.wait .nav [data-lk]::after{position:static;margin-left:4px;font-size:11px}
 .dbtn{margin-top:10px;width:100%;padding:12px;border-radius:999px;background:#fff;color:#2A1530;font-weight:700;box-shadow:0 4px 0 rgba(163,18,58,.2)}
 &lt;/style&gt;&lt;/head&gt;&lt;body&gt;
 &lt;title&gt;DJSG&lt;/title&gt;
@@ -1098,7 +1099,7 @@ var _items=smItems;smItems=function(){if(WAIT)return [{k:&#x27;waiting&#x27;,u:1
 window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,gallery:&#x27;gallery.html&#x27;,biz:&#x27;business.html&#x27;,celeb:&#x27;birthdays.html&#x27;,directory:&#x27;directory.html&#x27;,blood:&#x27;blood.html&#x27;,bearers:&#x27;bearers.html&#x27;,about:&#x27;about.html&#x27;};
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.location.href=PAGES[k];return}catch(e){}}_show2(k)};
-var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&#x27;};
+var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
 var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
