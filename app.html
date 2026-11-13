@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 19:25</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 22:30</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 19:25&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 22:30&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1225,6 +1225,7 @@ window.__fxShow=function(){var d=DEF[CUR]||{};if((d.fx||[]).indexOf(&#x27;firewo
 window.__setFest=setFest;
 var h0=(location.hash||&#x27;&#x27;).replace(&#x27;#&#x27;,&#x27;&#x27;);setFest(DEF[h0]?h0:&#x27;normal&#x27;);
 
+window.__IGHOOK=function(f){var p=show;show=function(k){if(f(k,!!((WAIT&amp;&amp;(LOCK[k]||k===&#x27;myposts&#x27;))||(MODE===&#x27;visit&#x27;&amp;&amp;VLOCK[k]))))return;p(k)}};window.__igA=A;window.__igShow=function(k){show(k)};
 logos();var av=document.getElementById(&quot;myav&quot;);if(av)av.style.backgroundImage=&quot;url(&quot;+A.AS+&quot;)&quot;;
 })();
 &lt;/script&gt;
@@ -1239,6 +1240,461 @@ var was=false;
 new MutationObserver(function(){var on=ov.classList.contains(&#x27;show&#x27;);if(on){addBk();if(!was){was=true;try{parent.__backPush&amp;&amp;parent.__backPush()}catch(e){}}}else if(was){was=false;try{parent.__backDone&amp;&amp;parent.__backDone()}catch(e){}}}).observe(ov,{attributes:true,attributeFilter:[&#x27;class&#x27;]});
 new MutationObserver(addBk).observe(sh,{childList:true});
 window.__appBack=function(){if(ov.classList.contains(&#x27;show&#x27;)){shut();return true}return false};
+})();
+&lt;/script&gt;
+&lt;style&gt;/* ===== DJSG Insta: full screen in the Dawn look (13 Nov 2026) ===== */
+#ig{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;color:var(--ink);font-family:Inter,system-ui,sans-serif;background:radial-gradient(120% 60% at 0% 0%,var(--bg2),transparent 60%),radial-gradient(120% 70% at 100% 100%,var(--bg3),transparent 60%),var(--bg);overflow:hidden}
+#ig.on{display:flex}
+body.demo #ig{top:var(--dm,0px)}
+#ig button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#ig *{box-sizing:border-box}
+.igtop{flex:none;display:flex;align-items:center;gap:8px;padding:10px 12px 8px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 6px 18px var(--shadow)}
+.igtop .in{max-width:640px;width:100%;margin:0 auto;display:flex;align-items:center;gap:8px}
+#ig .igbk{flex:none;display:inline-flex;align-items:center;gap:4px;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--a1);font-weight:800;font-size:13.5px;box-shadow:0 3px 8px var(--shadow)}
+.igttl{flex:1;min-width:0;line-height:1.1}
+.igttl b{display:block;font-family:Sora,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.5px;background:linear-gradient(110deg,var(--a1),var(--a2) 55%,var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.igttl small{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#ig .ignew{flex:none;display:inline-flex;align-items:center;gap:5px;height:40px;padding:0 14px 0 11px;border-radius:999px;background:var(--btn);color:#fff;font-weight:800;font-size:13px;box-shadow:0 4px 0 var(--btn-edge),0 8px 18px var(--glow)}
+#ig .ignew i{font-style:normal;font-size:19px;line-height:1}
+#ig .ignew:active{transform:translateY(3px);box-shadow:0 1px 0 var(--btn-edge)}
+.igbody{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:10px 12px 18px}
+.igin{max-width:600px;margin:0 auto}
+/* stories / profile photo strip */
+.igst{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}.igst::-webkit-scrollbar{display:none}
+#ig .igs{flex:none;width:64px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--ink)}
+#ig .igs span.nm{width:100%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.igrg{position:relative;width:62px;height:62px;border-radius:50%;padding:3px;display:block}
+.igrg::before{content:&quot;&quot;;position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--a1),var(--a2),var(--a3),var(--a1));animation:igspin 6s linear infinite}
+.igrg.seen::before{background:#d9cbd6;animation:none}
+.igrg.me::before{background:var(--line);animation:none}
+.igrg .iga{position:relative;display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--bg);background:#f3e6ee center/cover no-repeat;font-family:Sora,sans-serif;font-weight:800;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center}
+.igplus{position:absolute;right:-1px;bottom:-1px;width:22px;height:22px;border-radius:50%;background:var(--btn);color:#fff;font-size:15px;line-height:20px;text-align:center;border:2px solid var(--bg);font-weight:800}
+@keyframes igspin{to{transform:rotate(360deg)}}
+/* tabs */
+.igtabs{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:4px;border-radius:18px;background:var(--glass);border:1px solid var(--line);box-shadow:0 6px 16px var(--shadow);margin-bottom:10px;position:relative}
+#ig .igtabs button{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0 5px;border-radius:14px;font-size:11px;font-weight:700;color:var(--muted);position:relative;z-index:1;white-space:nowrap}
+#ig .igtabs button span{font-size:16px;line-height:1.1}
+#ig .igtabs button[aria-pressed=true]{background:var(--btn);color:#fff;box-shadow:0 3px 0 var(--btn-edge)}
+.igrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px}
+.igchip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:11.5px;font-weight:700;color:var(--ink);box-shadow:0 2px 6px var(--shadow)}
+.igchip.hot{background:#FFF3D6;border-color:#F3C15A;color:#7a4b00}
+#ig button.igchip{color:var(--a1)}
+/* most liked */
+.igsec{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 6px;font-family:Sora,sans-serif;font-weight:800;font-size:14px;color:var(--a1)}
+.igsec small{font-family:Inter;font-weight:600;font-size:11px;color:var(--muted)}
+.igml{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:none}.igml::-webkit-scrollbar{display:none}
+#ig .igmc{flex:none;position:relative;width:106px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#eee center/cover;box-shadow:0 8px 18px var(--shadow);border:2px solid #fff}
+.igmc .rk{position:absolute;top:6px;left:6px;min-width:26px;height:26px;padding:0 6px;border-radius:999px;background:linear-gradient(135deg,#F4B400,#E8590C);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.igmc .lk{position:absolute;left:0;right:0;bottom:0;padding:18px 7px 6px;background:linear-gradient(transparent,rgba(30,8,24,.75));color:#fff;font-size:11px;font-weight:700;text-align:left;line-height:1.2}
+.igmc .lk b{display:block;font-size:12.5px}
+/* post card */
+.igp{background:var(--glass);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 26px var(--shadow);overflow:hidden;margin-bottom:14px;backdrop-filter:blur(6px)}
+.igp.rise{animation:igrise .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes igrise{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.igph{display:flex;align-items:center;gap:9px;padding:10px 10px 8px 12px}
+.igph .iga{width:38px;height:38px;border-radius:50%;flex:none;background:#eee center/cover;border:2px solid #fff;box-shadow:0 0 0 2px var(--a2);display:flex;align-items:center;justify-content:center;font-family:Sora,sans-serif;font-weight:800;color:#fff;font-size:15px}
+.igph .igwho{flex:1;min-width:0;line-height:1.2}
+.igph .igwho b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.igph .igwho small{font-size:11.5px;color:var(--muted)}
+#ig .igdots3{flex:none;width:34px;height:34px;border-radius:50%;font-size:18px;font-weight:800;color:var(--muted)}
+.igwait{margin:0 12px 8px;padding:6px 10px;border-radius:12px;background:#FFF3D6;border:1px solid #F3C15A;font-size:12px;font-weight:700;color:#7a4b00;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.igmem{margin:0 12px 8px;font-size:12px;font-weight:700;color:var(--a3)}
+.igmw{position:relative;user-select:none;-webkit-user-select:none}
+.igm{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:1/1;background:#f2e8ee}
+.igm::-webkit-scrollbar{display:none}
+.igm img{flex:none;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block;-webkit-user-drag:none;pointer-events:none}
+.igcnt{position:absolute;top:10px;right:10px;padding:3px 9px;border-radius:999px;background:rgba(30,8,24,.6);color:#fff;font-size:11.5px;font-weight:700}
+.igdts{display:flex;justify-content:center;gap:5px;padding:8px 0 0}
+.igdts i{width:6px;height:6px;border-radius:50%;background:#d8c6d3}.igdts i.on{background:var(--a1);width:16px;border-radius:999px;transition:width .2s}
+.igburst{position:absolute;left:50%;top:50%;width:110px;height:110px;margin:-55px 0 0 -55px;pointer-events:none;opacity:0}
+.igburst.go{animation:igheart .8s ease both}
+@keyframes igheart{0%{opacity:0;transform:scale(.2)}20%{opacity:1;transform:scale(1.15)}40%{transform:scale(.95)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.25) translateY(-20px)}}
+/* video */
+.igvid{position:relative;aspect-ratio:1/1;overflow:hidden;background:#1d1024}
+.igvid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s linear}
+.igvid.playing img{transform:scale(1.18)}
+.igplay{position:absolute;left:50%;top:50%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--a1);box-shadow:0 8px 24px rgba(0,0,0,.35);transition:opacity .2s}
+.igvid.playing .igplay{opacity:0}
+.igdur{position:absolute;right:10px;bottom:12px;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;font-size:11.5px;font-weight:700}
+.igbar{position:absolute;left:0;bottom:0;height:4px;width:0;background:linear-gradient(90deg,var(--a2),var(--a1))}
+.igvid.playing .igbar{animation:igbar var(--vd,4s) linear forwards}
+@keyframes igbar{to{width:100%}}
+.igvtag{position:absolute;left:10px;top:10px;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700}
+/* actions */
+.igact{display:flex;align-items:center;gap:2px;padding:6px 6px 0}
+#ig .igact button{width:42px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px}
+.igact svg{width:25px;height:25px;fill:none;stroke:var(--ink);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#ig .igact button.on.lk svg{fill:#E0245E;stroke:#E0245E;animation:igpop .35s ease}
+#ig .igact button.on.sv svg{fill:var(--ink)}
+@keyframes igpop{50%{transform:scale(1.3)}}
+.igact .sp{flex:1}
+.igtx{padding:2px 12px 12px;font-size:13.5px;line-height:1.45}
+.igtx .lks{font-weight:800;margin-bottom:2px}
+.igtx .cap b{margin-right:5px}
+#ig .igtx .vc{color:var(--muted);font-size:12.5px;padding:3px 0;display:block}
+.igtx .c1{font-size:12.5px;margin-top:2px}.igtx .c1 b{margin-right:5px}
+.igadd{display:flex;gap:8px;align-items:center;margin-top:8px}
+.igadd .iga{width:26px;height:26px;border-radius:50%;background:#eee center/cover;flex:none}
+.igadd input{flex:1;min-width:0;border:1px solid var(--line);background:rgba(255,255,255,.75);border-radius:999px;padding:8px 12px;font:inherit;font-size:13px;color:var(--ink);outline:none}
+.igadd input:focus{border-color:var(--a2)}
+#ig .igadd button{font-weight:800;color:var(--a1);font-size:13px;padding:6px 4px}
+/* grid */
+.iggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:18px;overflow:hidden;box-shadow:0 8px 20px var(--shadow)}
+#ig .iggrid button{position:relative;aspect-ratio:1/1;background:#eee center/cover;display:block}
+.iggrid .gi{position:absolute;top:6px;right:6px;font-size:13px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.iggrid .gw{position:absolute;inset:auto 0 0 0;padding:3px;background:rgba(255,243,214,.92);color:#7a4b00;font-size:10.5px;font-weight:800;text-align:center}
+/* notes, cards */
+.ignote{margin:6px 2px 12px;padding:10px 12px;border-radius:16px;background:var(--glass);border:1px solid var(--line);font-size:12.5px;line-height:1.45;color:var(--muted)}
+.ignote b{color:var(--ink)}
+.igcard{padding:12px;border-radius:20px;background:var(--glass);border:1px solid var(--line);box-shadow:0 8px 20px var(--shadow);margin-bottom:12px}
+.igme{display:flex;align-items:center;gap:12px}
+.igme .iga{width:62px;height:62px;border-radius:50%;background:#eee center/cover;border:3px solid #fff;box-shadow:0 0 0 2px var(--a1);flex:none}
+.igme b{display:block;font-family:Sora,sans-serif;font-size:16px}
+.igme small{display:block;font-size:12px;color:var(--muted)}
+.igmy{display:flex;gap:10px;align-items:center;padding:10px;border-radius:18px;background:var(--glass);border:1px solid var(--line);margin-bottom:8px;box-shadow:0 4px 12px var(--shadow)}
+#ig .igmy .th{width:64px;height:64px;border-radius:14px;background:#eee center/cover;flex:none;position:relative}
+.igmy .igtx2{flex:1;min-width:0}
+.igmy .igtx2 b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.igmy .igtx2 small{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+.igmy .bt{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+#ig .igsb{padding:6px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--a1);box-shadow:0 2px 5px var(--shadow)}
+#ig .igsb.dm{background:#1d1024;color:#ffcf66;border-color:#1d1024}
+.igempty{text-align:center;padding:30px 16px;color:var(--muted);font-size:13.5px}
+.igempty span{display:block;font-size:40px;margin-bottom:6px}
+.igend{text-align:center;font-size:12px;color:var(--muted);padding:6px 10px 2px}
+/* bottom tabs (same as app tabs) */
+.igtb{flex:none;padding:6px 10px 8px;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.igtb nav{max-width:600px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);padding:4px 2px;border-radius:18px;background:var(--glass);border:1px solid var(--line);box-shadow:0 6px 16px var(--shadow)}
+#ig .igtb button{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:10.5px;font-weight:700;color:var(--muted);padding:3px 0}
+#ig .igtb button span{font-size:17px;line-height:1.15}
+#ig .igtb button.on{color:var(--a1)}
+/* layers inside Insta */
+.iglay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;background:radial-gradient(120% 60% at 0% 0%,var(--bg2),transparent 60%),var(--bg);animation:igin .25s ease both}
+@keyframes igin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.igov{position:absolute;inset:0;z-index:8;background:rgba(20,8,30,.45);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;animation:igfade .2s ease both}
+@keyframes igfade{from{opacity:0}to{opacity:1}}
+.igsheet{width:min(620px,100%);max-height:84%;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:16px 16px 18px;box-shadow:0 -14px 40px rgba(0,0,0,.28);animation:igup .25s ease both}
+@keyframes igup{from{transform:translateY(30px)}to{transform:none}}
+@media(min-width:900px){.igov{align-items:center}.igsheet{border-radius:24px}}
+.igsheet h3{margin:0 0 4px;font-family:Sora,sans-serif;font-size:18px}
+.igsheet p{margin:4px 0 10px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+#ig .igbtn{display:block;width:100%;margin-top:10px;padding:12px;border-radius:999px;background:var(--btn);color:#fff;font-weight:800;font-size:14px;box-shadow:0 4px 0 var(--btn-edge)}
+#ig .igbtn.gh{background:#fff;color:var(--a1);border:1px solid var(--line);box-shadow:0 3px 0 rgba(163,18,58,.18)}
+#ig .igbtn:disabled{opacity:.5}
+.igopt{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:14px;font-weight:600;width:100%;text-align:left}
+.igcm{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.4}
+.igcm .iga{width:32px;height:32px;border-radius:50%;flex:none;background:#eee center/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px}
+.igcm small{display:block;color:var(--muted);font-size:11.5px}
+/* new post */
+.igstep{padding:12px;border-radius:20px;background:var(--glass);border:1px solid var(--line);box-shadow:0 6px 16px var(--shadow);margin-bottom:12px}
+.igstep h4{margin:0 0 8px;display:flex;align-items:center;gap:8px;font-family:Sora,sans-serif;font-size:14.5px}
+.igstep h4 i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--btn);color:#fff;font-size:12.5px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 var(--btn-edge)}
+.igpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px}
+#ig .igpick button{padding:12px 6px;border-radius:16px;background:#fff;border:1px solid var(--line);font-weight:800;font-size:12.5px;color:var(--a1);box-shadow:0 3px 0 rgba(163,18,58,.15);display:flex;flex-direction:column;align-items:center;gap:3px}
+#ig .igpick button span{font-size:22px}
+.igthumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 2px}
+.igthumbs .igt2{position:relative;flex:none;width:76px;height:76px;border-radius:14px;background:#eee center/cover;border:2px solid #fff;box-shadow:0 3px 8px var(--shadow)}
+#ig .igthumbs .igt2 button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:#1d1024;color:#fff;font-size:12px;line-height:22px;text-align:center}
+.igthumbs .igt2 .vv{position:absolute;inset:auto 0 0 0;text-align:center;font-size:11px;font-weight:800;color:#fff;background:rgba(0,0,0,.5);border-radius:0 0 12px 12px}
+.igsmall{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+#ig textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font:inherit;font-size:14px;color:var(--ink);background:rgba(255,255,255,.8);resize:vertical;outline:none}
+#ig textarea:focus{border-color:var(--a2)}
+.igcc{text-align:right;font-size:11.5px;color:var(--muted);margin-top:3px}
+.igok{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.35;margin-top:4px}
+.igok input{width:22px;height:22px;flex:none;accent-color:var(--a1);margin:0}
+.igerr{color:#B3261E;font-size:12.5px;font-weight:700;margin-top:6px;min-height:1px}
+/* story viewer */
+.igstory{position:absolute;inset:0;z-index:9;background:#120712;display:flex;flex-direction:column;color:#fff;animation:igfade .2s ease both}
+.igsp{display:flex;gap:4px;padding:10px 10px 6px}
+.igsp i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;position:relative}
+.igsp i b{position:absolute;inset:0;width:0;background:#fff}
+.igsp i.done b{width:100%}
+.igsp i.run b{animation:igbar 4s linear forwards}
+.igsh2{display:flex;align-items:center;gap:9px;padding:4px 12px 8px}
+.igsh2 .iga{width:34px;height:34px;border-radius:50%;background:#555 center/cover;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.igsh2 b{font-size:13.5px}.igsh2 small{font-size:11.5px;opacity:.75;margin-left:6px}
+#ig .igsx{margin-left:auto;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:18px}
+.igsimg{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center}
+.igsimg img{max-width:100%;max-height:100%;object-fit:contain;border-radius:14px}
+.igsimg .tz{position:absolute;top:0;bottom:0;width:35%}
+.igsimg .tz.tzl{left:0}.igsimg .tz.tzr{right:0}
+.igscap{padding:10px 14px 16px;font-size:14px;text-align:center;line-height:1.4}
+/* switches */
+.igsw{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.igsw span{flex:1}.igsw small{display:block;font-size:11.5px;color:var(--muted)}
+.igsw input[type=checkbox]{width:44px;height:26px;appearance:none;-webkit-appearance:none;border-radius:999px;background:#d9cbd6;position:relative;flex:none;cursor:pointer;transition:background .2s}
+.igsw input[type=checkbox]::after{content:&quot;&quot;;position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.igsw input[type=checkbox]:checked{background:var(--btn)}.igsw input[type=checkbox]:checked::after{left:21px}
+.igsw select{flex:none;padding:7px 8px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit;font-size:13px;color:var(--ink)}
+.igtoast{position:absolute;left:50%;top:70px;transform:translateX(-50%) translateY(20px);z-index:12;max-width:min(92%,440px);padding:10px 16px;border-radius:999px;background:#1d1024;color:#fff;font-size:13px;font-weight:700;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.igtoast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:370px){.igttl b{font-size:18px}#ig .ignew{padding:0 11px 0 9px;font-size:12px}#ig .igtabs button{font-size:10.5px}#ig .igbk{padding:7px 10px}}
+@media (prefers-reduced-motion:reduce){.igrg::before,.igp.rise,.iglay,.igov,.igsheet,.igstory{animation:none!important}.igvid img{transition:none}}
+&lt;/style&gt;
+&lt;script&gt;/* ===== DJSG Insta: full screen in the Dawn look (13 Nov 2026, user asked in the &quot;DJSG Insta&quot; chat). Adds only; App Home is not changed. ===== */
+(function(){
+if(!window.__IGHOOK)return;
+var A=window.__igA||{},RM=matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
+function $(s,r){return (r||document).querySelector(s)}
+function esc(t){return String(t).replace(/[&amp;&lt;&gt;&quot;]/g,function(c){return {&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;}[c]})}
+
+/* ---- sample pictures (drawn, no real photos until the President gives them) ---- */
+function svg(b){return &#x27;data:image/svg+xml;charset=utf-8,&#x27;+encodeURIComponent(&#x27;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 600 600&quot;&gt;&#x27;+b+&#x27;&lt;/svg&gt;&#x27;).replace(/\(/g,&#x27;%28&#x27;).replace(/\)/g,&#x27;%29&#x27;).replace(/&#x27;/g,&#x27;%27&#x27;)}
+function lg(id,a,b,v){return &#x27;&lt;linearGradient id=&quot;&#x27;+id+&#x27;&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;&#x27;+(v?0:1)+&#x27;&quot; y2=&quot;1&quot;&gt;&lt;stop offset=&quot;0&quot; stop-color=&quot;&#x27;+a+&#x27;&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;&#x27;+b+&#x27;&quot;/&gt;&lt;/linearGradient&gt;&#x27;}
+var ART={
+ diya:function(){var s=&#x27;&#x27;;for(var i=0;i&lt;26;i++)s+=&#x27;&lt;circle cx=&quot;&#x27;+(23*i*7%600)+&#x27;&quot; cy=&quot;&#x27;+(37*i*3%300)+&#x27;&quot; r=&quot;&#x27;+(1+i%3)+&#x27;&quot; fill=&quot;#ffe7a8&quot; opacity=&quot;.8&quot;/&gt;&#x27;;return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;g&#x27;,&#x27;#3b0a1c&#x27;,&#x27;#c2410c&#x27;,1)+&#x27;&lt;radialGradient id=&quot;f&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.5&quot;&gt;&lt;stop offset=&quot;0&quot; stop-color=&quot;#fff6c2&quot;/&gt;&lt;stop offset=&quot;.4&quot; stop-color=&quot;#ffb000&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;#ff6a00&quot; stop-opacity=&quot;0&quot;/&gt;&lt;/radialGradient&gt;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#g)&quot;/&gt;&#x27;+s+&#x27;&lt;circle cx=&quot;300&quot; cy=&quot;300&quot; r=&quot;170&quot; fill=&quot;url(#f)&quot; opacity=&quot;.55&quot;/&gt;&lt;path d=&quot;M300 190c26 48 40 80 0 128c-40-48-26-80 0-128z&quot; fill=&quot;#ffd34d&quot;/&gt;&lt;path d=&quot;M300 240c12 26 16 42 0 66c-16-24-12-40 0-66z&quot; fill=&quot;#fff4c4&quot;/&gt;&lt;path d=&quot;M150 340h300c-14 80-80 120-150 120s-136-40-150-120z&quot; fill=&quot;#b45309&quot;/&gt;&lt;path d=&quot;M150 340h300c-4 18-10 30-18 40H168c-8-10-14-22-18-40z&quot; fill=&quot;#f59e0b&quot;/&gt;&lt;ellipse cx=&quot;300&quot; cy=&quot;470&quot; rx=&quot;170&quot; ry=&quot;16&quot; fill=&quot;#000&quot; opacity=&quot;.25&quot;/&gt;&#x27;)},
+ rangoli:function(c){c=c||[&#x27;#A3123A&#x27;,&#x27;#FF9F1C&#x27;,&#x27;#8E6CEF&#x27;,&#x27;#2BB673&#x27;,&#x27;#F4B400&#x27;];var p=&#x27;&#x27;;for(var r=0;r&lt;3;r++){var n=8+r*4,R=60+r*70;for(var i=0;i&lt;n;i++){var a=i/n*6.283,x=300+Math.cos(a)*R,y=300+Math.sin(a)*R;p+=&#x27;&lt;ellipse cx=&quot;&#x27;+x.toFixed(1)+&#x27;&quot; cy=&quot;&#x27;+y.toFixed(1)+&#x27;&quot; rx=&quot;&#x27;+(26+r*6)+&#x27;&quot; ry=&quot;&#x27;+(12+r*3)+&#x27;&quot; transform=&quot;rotate(&#x27;+(a*57.3).toFixed(1)+&#x27; &#x27;+x.toFixed(1)+&#x27; &#x27;+y.toFixed(1)+&#x27;)&quot; fill=&quot;&#x27;+c[(i+r)%c.length]+&#x27;&quot;/&gt;&#x27;}}return svg(&#x27;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;#fff4e8&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;300&quot; r=&quot;280&quot; fill=&quot;#fde6ef&quot;/&gt;&#x27;+p+&#x27;&lt;circle cx=&quot;300&quot; cy=&quot;300&quot; r=&quot;46&quot; fill=&quot;&#x27;+c[1]+&#x27;&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;300&quot; r=&quot;24&quot; fill=&quot;#fff&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;300&quot; r=&quot;10&quot; fill=&quot;&#x27;+c[0]+&#x27;&quot;/&gt;&#x27;)},
+ temple:function(){return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;s&#x27;,&#x27;#ffd9c2&#x27;,&#x27;#efe6ff&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#s)&quot;/&gt;&lt;circle cx=&quot;430&quot; cy=&quot;190&quot; r=&quot;70&quot; fill=&quot;#ffb37a&quot; opacity=&quot;.9&quot;/&gt;&lt;path d=&quot;M0 470h600v130H0z&quot; fill=&quot;#f3c6a8&quot;/&gt;&lt;path d=&quot;M300 110l12 30h-24z&quot; fill=&quot;#A3123A&quot;/&gt;&lt;path d=&quot;M312 70v40l50 12-50 10&quot; fill=&quot;#FF9F1C&quot;/&gt;&lt;path d=&quot;M300 140c40 60 70 110 80 170H220c10-60 40-110 80-170z&quot; fill=&quot;#A3123A&quot;/&gt;&lt;path d=&quot;M190 310h220v40H190z&quot; fill=&quot;#7a0d2b&quot;/&gt;&lt;path d=&quot;M170 350h260v130H170z&quot; fill=&quot;#A3123A&quot;/&gt;&lt;path d=&quot;M270 400a30 30 0 0 1 60 0v80h-60z&quot; fill=&quot;#3a0a1a&quot;/&gt;&lt;path d=&quot;M200 380h40v50h-40zM360 380h40v50h-40z&quot; fill=&quot;#ffd34d&quot; opacity=&quot;.85&quot;/&gt;&lt;path d=&quot;M110 380c20-30 40-30 60 0v100h-60zM430 380c20-30 40-30 60 0v100h-60z&quot; fill=&quot;#c2185b&quot; opacity=&quot;.75&quot;/&gt;&#x27;)},
+ sunrise:function(){return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;k&#x27;,&#x27;#8E6CEF&#x27;,&#x27;#ffb37a&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#k)&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;360&quot; r=&quot;110&quot; fill=&quot;#ffd34d&quot;/&gt;&lt;path d=&quot;M0 380c120-70 220-70 320-10s200 40 280 0v230H0z&quot; fill=&quot;#A3123A&quot;/&gt;&lt;path d=&quot;M0 450c140-50 260-40 360 0s180 20 240-10v160H0z&quot; fill=&quot;#6E0B27&quot;/&gt;&lt;path d=&quot;M80 140q20-14 40 0q20-14 40 0M420 110q16-12 32 0q16-12 32 0&quot; stroke=&quot;#2A1530&quot; stroke-width=&quot;5&quot; fill=&quot;none&quot; stroke-linecap=&quot;round&quot;/&gt;&#x27;)},
+ flowers:function(){var s=&#x27;&#x27;;var c=[&#x27;#FF9F1C&#x27;,&#x27;#F4B400&#x27;,&#x27;#E8590C&#x27;,&#x27;#ffb000&#x27;];for(var r=0;r&lt;3;r++)for(var i=0;i&lt;9;i++){var x=40+i*65,y=140+r*150+Math.sin(i)*30;s+=&#x27;&lt;g transform=&quot;translate(&#x27;+x+&#x27; &#x27;+y+&#x27;)&quot;&gt;&#x27;;for(var k=0;k&lt;10;k++)s+=&#x27;&lt;ellipse cx=&quot;0&quot; cy=&quot;-18&quot; rx=&quot;9&quot; ry=&quot;20&quot; fill=&quot;&#x27;+c[(i+k+r)%4]+&#x27;&quot; transform=&quot;rotate(&#x27;+k*36+&#x27;)&quot;/&gt;&#x27;;s+=&#x27;&lt;circle r=&quot;11&quot; fill=&quot;#A3123A&quot;/&gt;&lt;/g&gt;&#x27;}return svg(&#x27;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;#fde6ef&quot;/&gt;&lt;path d=&quot;M0 60q300 140 600 0&quot; stroke=&quot;#2BB673&quot; stroke-width=&quot;8&quot; fill=&quot;none&quot;/&gt;&#x27;+s)},
+ cake:function(){var s=&#x27;&#x27;;for(var i=0;i&lt;5;i++){var x=210+i*45;s+=&#x27;&lt;rect x=&quot;&#x27;+(x-5)+&#x27;&quot; y=&quot;190&quot; width=&quot;10&quot; height=&quot;50&quot; rx=&quot;3&quot; fill=&quot;#8E6CEF&quot;/&gt;&lt;path d=&quot;M&#x27;+x+&#x27; 160c10 14 10 22 0 30c-10-8-10-16 0-30z&quot; fill=&quot;#FF9F1C&quot;/&gt;&#x27;}return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;b&#x27;,&#x27;#fde6ef&#x27;,&#x27;#efe6ff&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#b)&quot;/&gt;&lt;circle cx=&quot;110&quot; cy=&quot;110&quot; r=&quot;40&quot; fill=&quot;#FF5E8A&quot; opacity=&quot;.5&quot;/&gt;&lt;circle cx=&quot;500&quot; cy=&quot;140&quot; r=&quot;28&quot; fill=&quot;#F4B400&quot; opacity=&quot;.6&quot;/&gt;&#x27;+s+&#x27;&lt;rect x=&quot;170&quot; y=&quot;240&quot; width=&quot;260&quot; height=&quot;90&quot; rx=&quot;18&quot; fill=&quot;#fff&quot;/&gt;&lt;path d=&quot;M170 270q32 30 65 0t65 0t65 0t65 0&quot; stroke=&quot;#FF5E8A&quot; stroke-width=&quot;12&quot; fill=&quot;none&quot;/&gt;&lt;rect x=&quot;130&quot; y=&quot;330&quot; width=&quot;340&quot; height=&quot;120&quot; rx=&quot;22&quot; fill=&quot;#A3123A&quot;/&gt;&lt;path d=&quot;M130 370q42 34 85 0t85 0t85 0t85 0&quot; stroke=&quot;#fff&quot; stroke-width=&quot;12&quot; fill=&quot;none&quot; opacity=&quot;.85&quot;/&gt;&lt;ellipse cx=&quot;300&quot; cy=&quot;470&quot; rx=&quot;210&quot; ry=&quot;18&quot; fill=&quot;#2A1530&quot; opacity=&quot;.15&quot;/&gt;&#x27;)},
+ blood:function(){return svg(&#x27;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;#fff4f4&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;320&quot; r=&quot;230&quot; fill=&quot;#fde2e2&quot;/&gt;&lt;path d=&quot;M300 110c70 100 140 170 140 250a140 140 0 0 1-280 0c0-80 70-150 140-250z&quot; fill=&quot;#C62828&quot;/&gt;&lt;path d=&quot;M300 300c-30-40-90-10-60 40l60 60l60-60c30-50-30-80-60-40z&quot; fill=&quot;#fff&quot;/&gt;&lt;path d=&quot;M220 360a80 80 0 0 0 40 60&quot; stroke=&quot;#ff8a8a&quot; stroke-width=&quot;12&quot; fill=&quot;none&quot; stroke-linecap=&quot;round&quot;/&gt;&#x27;)},
+ group:function(){var s=&#x27;&#x27;,c=[&#x27;#A3123A&#x27;,&#x27;#FF9F1C&#x27;,&#x27;#8E6CEF&#x27;,&#x27;#C2185B&#x27;,&#x27;#F4B400&#x27;,&#x27;#2BB673&#x27;];for(var i=0;i&lt;6;i++){var x=75+i*90,h=i%2?0:20;s+=&#x27;&lt;circle cx=&quot;&#x27;+x+&#x27;&quot; cy=&quot;&#x27;+(270+h)+&#x27;&quot; r=&quot;34&quot; fill=&quot;&#x27;+c[i]+&#x27;&quot;/&gt;&lt;path d=&quot;M&#x27;+(x-46)+&#x27; &#x27;+(420+h)+&#x27;q46-110 92 0z&quot; fill=&quot;&#x27;+c[i]+&#x27;&quot;/&gt;&#x27;}return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;g&#x27;,&#x27;#fff4e8&#x27;,&#x27;#fde6ef&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#g)&quot;/&gt;&lt;path d=&quot;M60 170h480&quot; stroke=&quot;#F3C15A&quot; stroke-width=&quot;4&quot; stroke-dasharray=&quot;2 18&quot; stroke-linecap=&quot;round&quot;/&gt;&#x27;+s+&#x27;&lt;rect x=&quot;0&quot; y=&quot;430&quot; width=&quot;600&quot; height=&quot;170&quot; fill=&quot;#efe6ff&quot;/&gt;&#x27;)},
+ lotus:function(){var p=&#x27;&#x27;;for(var i=-3;i&lt;=3;i++)p+=&#x27;&lt;ellipse cx=&quot;300&quot; cy=&quot;300&quot; rx=&quot;34&quot; ry=&quot;110&quot; fill=&quot;&#x27;+(Math.abs(i)%2?&#x27;#FF5E8A&#x27;:&#x27;#ff9fbd&#x27;)+&#x27;&quot; transform=&quot;rotate(&#x27;+i*22+&#x27; 300 400)&quot;/&gt;&#x27;;return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;w&#x27;,&#x27;#efe6ff&#x27;,&#x27;#8E6CEF&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#w)&quot;/&gt;&lt;circle cx=&quot;300&quot; cy=&quot;150&quot; r=&quot;60&quot; fill=&quot;#fff4e8&quot; opacity=&quot;.7&quot;/&gt;&#x27;+p+&#x27;&lt;ellipse cx=&quot;300&quot; cy=&quot;430&quot; rx=&quot;230&quot; ry=&quot;30&quot; fill=&quot;#2BB673&quot; opacity=&quot;.8&quot;/&gt;&lt;path d=&quot;M60 500q60-14 120 0t120 0t120 0t120 0&quot; stroke=&quot;#fff&quot; stroke-width=&quot;5&quot; fill=&quot;none&quot; opacity=&quot;.6&quot;/&gt;&#x27;)},
+ lights:function(){var s=&#x27;&#x27;,c=[&#x27;#ff4d4d&#x27;,&#x27;#ffd23f&#x27;,&#x27;#3ddc84&#x27;,&#x27;#4da3ff&#x27;,&#x27;#ff6ec7&#x27;];for(var r=0;r&lt;3;r++){s+=&#x27;&lt;path d=&quot;M0 &#x27;+(120+r*160)+&#x27; Q150 &#x27;+(190+r*160)+&#x27; 300 &#x27;+(120+r*160)+&#x27; T600 &#x27;+(120+r*160)+&#x27;&quot; stroke=&quot;#6b4a2b&quot; stroke-width=&quot;3&quot; fill=&quot;none&quot;/&gt;&#x27;;for(var i=0;i&lt;12;i++){var x=25+i*50,y=120+r*160+Math.sin((x/600)*6.283)*-35+35;s+=&#x27;&lt;circle cx=&quot;&#x27;+x+&#x27;&quot; cy=&quot;&#x27;+y.toFixed(1)+&#x27;&quot; r=&quot;16&quot; fill=&quot;&#x27;+c[(i+r)%5]+&#x27;&quot; opacity=&quot;.35&quot;/&gt;&lt;circle cx=&quot;&#x27;+x+&#x27;&quot; cy=&quot;&#x27;+y.toFixed(1)+&#x27;&quot; r=&quot;8&quot; fill=&quot;&#x27;+c[(i+r)%5]+&#x27;&quot;/&gt;&#x27;}}return svg(&#x27;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;#2A1530&quot;/&gt;&#x27;+s)}
+};
+var IMG={};function art(k){if(!IMG[k]){var b=k.split(&#x27;:&#x27;);IMG[k]=b[0]===&#x27;rangoli2&#x27;?ART.rangoli([&#x27;#8E6CEF&#x27;,&#x27;#FF5E8A&#x27;,&#x27;#F4B400&#x27;,&#x27;#A3123A&#x27;,&#x27;#2BB673&#x27;]):ART[b[0]]()}return IMG[k]}
+
+/* ---- people (names only those given by the user; others are placeholders) ---- */
+var P={
+ SC:{n:&#x27;Mr Suresh Chandwad&#x27;,r:&#x27;President&#x27;,p:A.SC},
+ AS:{n:&#x27;Mr Anurag Sethi&#x27;,r:&#x27;Secretary&#x27;,p:A.AS,me:1},
+ RP:{n:&#x27;Mr Rakesh Patodi&#x27;,r:&#x27;Treasurer&#x27;,p:A.RP},
+ MA:{n:&#x27;[Member A]&#x27;,g:&#x27;var(--f1)&#x27;},MB:{n:&#x27;[Member B]&#x27;,g:&#x27;var(--f2)&#x27;},MC:{n:&#x27;[Member C]&#x27;,g:&#x27;var(--f3)&#x27;},MD:{n:&#x27;[Member D]&#x27;,g:&#x27;var(--f4)&#x27;},ME:{n:&#x27;[Member E]&#x27;,g:&#x27;var(--ftop)&#x27;}
+};
+var MYPIC=P.AS.p||&#x27;&#x27;;
+function pic(u){return u===&#x27;AS&#x27;?MYPIC:P[u].p}
+function avs(u){var x=P[u],p=pic(u);return p?&#x27;background-image:url(&#x27;+p+&#x27;)&#x27;:&#x27;background:&#x27;+(x.g||&#x27;var(--f1)&#x27;)}
+function avt(u){return pic(u)?&#x27;&#x27;:esc((P[u].n.replace(/^\[|\]$/g,&#x27;&#x27;).replace(/^Mr /,&#x27;&#x27;).split(&#x27; &#x27;).pop()||&#x27;?&#x27;).charAt(0))}
+
+/* ---- posts (sample) ---- */
+var POSTS=[
+ {id:1,u:&#x27;SC&#x27;,d:0,im:[&#x27;lights&#x27;,&#x27;diya&#x27;],cap:&#x27;Deepawali Milan preparations have started. All families are welcome on 15 Nov.&#x27;,lk:24,cm:[[&#x27;RP&#x27;,&#x27;Jai Jinendra 🙏&#x27;],[&#x27;MA&#x27;,&#x27;We will be there!&#x27;],[&#x27;MB&#x27;,&#x27;Wonderful&#x27;]]},
+ {id:2,u:&#x27;AS&#x27;,d:0,im:[&#x27;group&#x27;],cap:&#x27;Our family photo&#x27;,lk:0,st:&#x27;wait&#x27;,cm:[]},
+ {id:3,u:&#x27;MA&#x27;,d:0,im:[&#x27;rangoli&#x27;],cap:&#x27;Rangoli made by the children of our group&#x27;,lk:31,cm:[[&#x27;SC&#x27;,&#x27;Beautiful work, children!&#x27;],[&#x27;MC&#x27;,&#x27;So colourful&#x27;]]},
+ {id:4,u:&#x27;RP&#x27;,d:1,im:[&#x27;temple&#x27;,&#x27;sunrise&#x27;],cap:&#x27;Morning darshan at the temple&#x27;,lk:18,cm:[[&#x27;AS&#x27;,&#x27;Jai Jinendra&#x27;]]},
+ {id:5,u:&#x27;AS&#x27;,d:3,im:[&#x27;rangoli2&#x27;],cap:&#x27;Diwali rangoli&#x27;,lk:2,cm:[[&#x27;MB&#x27;,&#x27;Very nice&#x27;]]},
+ {id:6,u:&#x27;MB&#x27;,d:5,im:[&#x27;cake&#x27;],cap:&#x27;Happy anniversary to all couples of November 💐&#x27;,lk:40,cm:[[&#x27;MD&#x27;,&#x27;Thank you!&#x27;],[&#x27;RP&#x27;,&#x27;Many happy returns&#x27;]]},
+ {id:7,u:&#x27;MC&#x27;,d:9,im:[&#x27;lights&#x27;],vid:24,cap:&#x27;Deepawali lights at home&#x27;,lk:15,cm:[]},
+ {id:8,u:&#x27;MD&#x27;,d:14,im:[&#x27;blood&#x27;],cap:&#x27;Blood donation camp · thank you to every donor&#x27;,lk:52,cm:[[&#x27;SC&#x27;,&#x27;Proud of our members&#x27;],[&#x27;MA&#x27;,&#x27;🙏&#x27;]]},
+ {id:9,u:&#x27;MA&#x27;,d:20,im:[&#x27;lotus&#x27;],vid:18,cap:&#x27;Bhajan sandhya, a short clip&#x27;,lk:12,cm:[]},
+ {id:10,u:&#x27;ME&#x27;,d:40,im:[&#x27;lotus&#x27;,&#x27;flowers&#x27;],cap:&#x27;Paryushan Mahaparv · Uttam Kshama&#x27;,lk:37,cm:[[&#x27;MB&#x27;,&#x27;Micchami Dukkadam&#x27;]]},
+ {id:11,u:&#x27;AS&#x27;,d:120,im:[&#x27;temple&#x27;],cap:&#x27;Old memories: morning at the temple&#x27;,lk:9,cm:[]},
+ {id:12,u:&#x27;AS&#x27;,d:200,im:[&#x27;flowers&#x27;],cap:&#x27;Mahavir Jayanti procession&#x27;,lk:21,cm:[[&#x27;RP&#x27;,&#x27;Great day&#x27;]]},
+ {id:13,u:&#x27;MB&#x27;,d:400,im:[&#x27;sunrise&#x27;],cap:&#x27;Picnic with the group&#x27;,lk:28,cm:[]}
+];
+var NID=100;
+/* President settings (real app: President Desk &gt; Insta DJSG control) */
+var CFG={np:true,ml:true,pf:true,mem:true,vid:false,fd:90,tw:30,lim:3};
+var ST={tab:&#x27;feed&#x27;,seen:{}};
+
+/* ---- helpers ---- */
+function byId(id){for(var i=0;i&lt;POSTS.length;i++)if(POSTS[i].id==id)return POSTS[i]}
+function vis(p){return p.st!==&#x27;wait&#x27;||P[p.u].me}
+function inFeed(p){return p.d&lt;=CFG.fd&amp;&amp;vis(p)}
+function today(){return POSTS.filter(function(p){return P[p.u].me&amp;&amp;p.d===0}).length}
+var MON=[&#x27;Jan&#x27;,&#x27;Feb&#x27;,&#x27;Mar&#x27;,&#x27;Apr&#x27;,&#x27;May&#x27;,&#x27;Jun&#x27;,&#x27;Jul&#x27;,&#x27;Aug&#x27;,&#x27;Sep&#x27;,&#x27;Oct&#x27;,&#x27;Nov&#x27;,&#x27;Dec&#x27;];
+function when(d){if(d===0)return &#x27;Today&#x27;;if(d===1)return &#x27;Yesterday&#x27;;if(d&lt;7)return d+&#x27; days ago&#x27;;if(d&lt;30){var w=Math.round(d/7);return w+(w&gt;1?&#x27; weeks ago&#x27;:&#x27; week ago&#x27;)}var t=new Date(Date.now()-d*864e5);return MON[t.getMonth()]+&#x27; &#x27;+t.getFullYear()}
+function monthOf(d){var t=new Date(Date.now()-d*864e5);return MON[t.getMonth()]+&#x27; &#x27;+t.getFullYear()}
+var ICO={
+ heart:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.3 1.1 5 3c1.7-1.9 3-3 5-3c3.4 0 5.6 3.4 4.3 6.8c-1.8 4.6-9.3 9.2-9.3 9.2z&quot;/&gt;&lt;/svg&gt;&#x27;,
+ cm:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M20 11.5a8 8 0 0 1-11.8 7L4 20l1.4-3.9A8 8 0 1 1 20 11.5z&quot;/&gt;&lt;/svg&gt;&#x27;,
+ save:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M6 3.5h12v17l-6-4.2l-6 4.2z&quot;/&gt;&lt;/svg&gt;&#x27;
+};
+var BURST=&#x27;&lt;svg class=&quot;igburst&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;igbg&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;&gt;&lt;stop offset=&quot;0&quot; stop-color=&quot;#FF5E8A&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;#A3123A&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;path fill=&quot;url(#igbg)&quot; stroke=&quot;#fff&quot; stroke-width=&quot;1&quot; d=&quot;M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.3 1.1 5 3c1.7-1.9 3-3 5-3c3.4 0 5.6 3.4 4.3 6.8c-1.8 4.6-9.3 9.2-9.3 9.2z&quot;/&gt;&lt;/svg&gt;&#x27;;
+
+/* ---- build the screen ---- */
+var ig=document.createElement(&#x27;div&#x27;);ig.id=&#x27;ig&#x27;;ig.setAttribute(&#x27;role&#x27;,&#x27;dialog&#x27;);ig.setAttribute(&#x27;aria-label&#x27;,&#x27;DJSG Insta&#x27;);
+ig.innerHTML=&#x27;&lt;div class=&quot;igtop&quot;&gt;&lt;div class=&quot;in&quot;&gt;&lt;button class=&quot;igbk&quot; data-ig=&quot;back&quot;&gt;‹ Back&lt;/button&gt;&lt;div class=&quot;igttl&quot;&gt;&lt;b&gt;DJSG Insta&lt;/b&gt;&lt;small&gt;Stories and posts from members&lt;/small&gt;&lt;/div&gt;&lt;button class=&quot;ignew&quot; data-ig=&quot;new&quot; aria-label=&quot;New post&quot;&gt;&lt;i&gt;＋&lt;/i&gt;New post&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igbody&quot; id=&quot;igb&quot;&gt;&lt;div class=&quot;igin&quot; id=&quot;igin&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtb&quot;&gt;&lt;nav&gt;&lt;button data-ig=&quot;home&quot;&gt;&lt;span&gt;🏠&lt;/span&gt;Home&lt;/button&gt;&lt;button class=&quot;on&quot; data-ig=&quot;top&quot;&gt;&lt;span&gt;📷&lt;/span&gt;Insta&lt;/button&gt;&lt;button data-ig=&quot;go&quot; data-k=&quot;events&quot;&gt;&lt;span&gt;📅&lt;/span&gt;Events&lt;/button&gt;&lt;button data-ig=&quot;go&quot; data-k=&quot;directory&quot;&gt;&lt;span&gt;📒&lt;/span&gt;Directory&lt;/button&gt;&lt;button data-ig=&quot;go&quot; data-k=&quot;profile&quot;&gt;&lt;span&gt;👤&lt;/span&gt;My Profile&lt;/button&gt;&lt;/nav&gt;&lt;/div&gt;&lt;div class=&quot;igtoast&quot; id=&quot;igt&quot;&gt;&lt;/div&gt;&#x27;;
+document.body.appendChild(ig);
+var body=$(&#x27;#igb&#x27;,ig),inn=$(&#x27;#igin&#x27;,ig);
+
+function storyRow(){var seen={},L=[];POSTS.forEach(function(p){if(p.st===&#x27;wait&#x27;||P[p.u].me||p.d&gt;7||seen[p.u])return;seen[p.u]=1;L.push(p.u)});
+ var me=&#x27;&lt;button class=&quot;igs&quot; data-ig=&quot;mypic&quot;&gt;&lt;span class=&quot;igrg me&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(&#x27;AS&#x27;)+&#x27;&quot;&gt;&lt;/span&gt;&#x27;+(CFG.pf?&#x27;&lt;span class=&quot;igplus&quot;&gt;+&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;Your photo&lt;/span&gt;&lt;/button&gt;&#x27;;
+ return &#x27;&lt;div class=&quot;igst&quot;&gt;&#x27;+me+L.map(function(u){return &#x27;&lt;button class=&quot;igs&quot; data-ig=&quot;story&quot; data-u=&quot;&#x27;+u+&#x27;&quot;&gt;&lt;span class=&quot;igrg&#x27;+(ST.seen[u]?&#x27; seen&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(u)+&#x27;&quot;&gt;&#x27;+avt(u)+&#x27;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;&#x27;+esc(P[u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
+function tabs(){var T=[[&#x27;feed&#x27;,&#x27;🏠&#x27;,&#x27;Feed&#x27;],[&#x27;grid&#x27;,&#x27;▦&#x27;,&#x27;Grid&#x27;],[&#x27;videos&#x27;,&#x27;🎬&#x27;,&#x27;Videos&#x27;],[&#x27;mine&#x27;,&#x27;🖼️&#x27;,&#x27;My posts&#x27;],[&#x27;saved&#x27;,&#x27;🔖&#x27;,&#x27;Saved&#x27;]];
+ return &#x27;&lt;div class=&quot;igtabs&quot; role=&quot;tablist&quot;&gt;&#x27;+T.map(function(t){return &#x27;&lt;button role=&quot;tab&quot; data-ig=&quot;tab&quot; data-t=&quot;&#x27;+t[0]+&#x27;&quot; aria-pressed=&quot;&#x27;+(ST.tab===t[0])+&#x27;&quot;&gt;&lt;span&gt;&#x27;+t[1]+&#x27;&lt;/span&gt;&#x27;+t[2]+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
+function infoRow(){var n=today();return &#x27;&lt;div class=&quot;igrow&quot;&gt;&lt;span class=&quot;igchip&#x27;+(n&gt;=CFG.lim?&#x27; hot&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;📮 Posts today: &#x27;+n+&#x27; of &#x27;+CFG.lim+&#x27;&lt;/span&gt;&lt;span class=&quot;igchip&quot;&gt;🕑 &#x27;+(CFG.fd&gt;9999?&#x27;All posts&#x27;:&#x27;Last &#x27;+CFG.fd+&#x27; days&#x27;)+&#x27;&lt;/span&gt;&lt;button class=&quot;igchip&quot; data-ig=&quot;cfg&quot;&gt;⚙️ President switches (demo)&lt;/button&gt;&lt;/div&gt;&#x27;}
+function mostLiked(){if(!CFG.ml)return &#x27;&#x27;;var L=POSTS.filter(function(p){return p.st!==&#x27;wait&#x27;&amp;&amp;p.d&lt;=CFG.tw}).sort(function(a,b){return b.lk-a.lk}).slice(0,5);if(!L.length)return &#x27;&#x27;;
+ return &#x27;&lt;div class=&quot;igsec&quot;&gt;⭐ Most liked&lt;small&gt;&#x27;+(CFG.tw&gt;9999?&#x27;All time&#x27;:&#x27;Last &#x27;+CFG.tw+&#x27; days&#x27;)+&#x27;&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;igml&quot;&gt;&#x27;+L.map(function(p,i){return &#x27;&lt;button class=&quot;igmc&quot; data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot;&gt;&lt;span class=&quot;rk&quot;&gt;#&#x27;+(i+1)+&#x27;&lt;/span&gt;&lt;span class=&quot;lk&quot;&gt;&lt;b&gt;♥ &#x27;+p.lk+&#x27;&lt;/b&gt;&#x27;+esc(P[p.u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
+function media(p){
+ if(p.vid)return &#x27;&lt;div class=&quot;igvid&quot; data-ig=&quot;play&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;--vd:&#x27;+Math.min(p.vid,6)+&#x27;s&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;&#x27;+art(p.im[0])+&#x27;&quot;&gt;&lt;span class=&quot;igvtag&quot;&gt;🎥 Video&lt;/span&gt;&lt;span class=&quot;igplay&quot;&gt;▶&lt;/span&gt;&lt;span class=&quot;igdur&quot;&gt;0:&#x27;+(p.vid&lt;10?&#x27;0&#x27;:&#x27;&#x27;)+p.vid+&#x27;&lt;/span&gt;&lt;span class=&quot;igbar&quot;&gt;&lt;/span&gt;&#x27;+BURST+&#x27;&lt;/div&gt;&#x27;;
+ var n=p.im.length;return &#x27;&lt;div class=&quot;igmw&quot; data-dbl=&quot;&#x27;+p.id+&#x27;&quot;&gt;&lt;div class=&quot;igm&quot;&gt;&#x27;+p.im.map(function(k){return &#x27;&lt;img alt=&quot;&quot; src=&quot;&#x27;+art(k)+&#x27;&quot;&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+(n&gt;1?&#x27;&lt;span class=&quot;igcnt&quot;&gt;1/&#x27;+n+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;)+BURST+&#x27;&lt;/div&gt;&#x27;+(n&gt;1?&#x27;&lt;div class=&quot;igdts&quot;&gt;&#x27;+p.im.map(function(_,i){return &#x27;&lt;i class=&quot;&#x27;+(i?&#x27;&#x27;:&#x27;on&#x27;)+&#x27;&quot;&gt;&lt;/i&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)}
+function card(p,anim){var w=p.st===&#x27;wait&#x27;,me=P[p.u].me,last=p.cm[p.cm.length-1];
+ return &#x27;&lt;article class=&quot;igp&#x27;+(anim&amp;&amp;!RM?&#x27; rise&#x27;:&#x27;&#x27;)+&#x27;&quot; data-pid=&quot;&#x27;+p.id+&#x27;&quot;&gt;&lt;div class=&quot;igph&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(p.u)+&#x27;&quot;&gt;&#x27;+avt(p.u)+&#x27;&lt;/span&gt;&lt;span class=&quot;igwho&quot;&gt;&lt;b&gt;&#x27;+esc(P[p.u].n)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+(P[p.u].r?P[p.u].r+&#x27; · &#x27;:&#x27;&#x27;)+when(p.d)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;button class=&quot;igdots3&quot; data-ig=&quot;more&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;More&quot;&gt;⋯&lt;/button&gt;&lt;/div&gt;&#x27;+
+ (w?&#x27;&lt;div class=&quot;igwait&quot;&gt;⏳ Approval awaited · only you see it&lt;button class=&quot;igsb dm&quot; data-ig=&quot;approve&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Demo: office approves&lt;/button&gt;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+ (p.memory?&#x27;&lt;div class=&quot;igmem&quot;&gt;🕰️ Memory · a post from &#x27;+p.memory+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+media(p)+
+ &#x27;&lt;div class=&quot;igact&quot;&gt;&lt;button class=&quot;lk&#x27;+(p.liked?&#x27; on&#x27;:&#x27;&#x27;)+&#x27;&quot; data-ig=&quot;like&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Like&quot;&gt;&#x27;+ICO.heart+&#x27;&lt;/button&gt;&lt;button data-ig=&quot;cm&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Comments&quot;&gt;&#x27;+ICO.cm+&#x27;&lt;/button&gt;&lt;span class=&quot;sp&quot;&gt;&lt;/span&gt;&lt;button class=&quot;sv&#x27;+(p.saved?&#x27; on&#x27;:&#x27;&#x27;)+&#x27;&quot; data-ig=&quot;save&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Save&quot;&gt;&#x27;+ICO.save+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtx&quot;&gt;&lt;div class=&quot;lks&quot;&gt;&#x27;+(p.lk?p.lk+(p.lk&gt;1?&#x27; likes&#x27;:&#x27; like&#x27;):(w?&#x27;Likes open after approval&#x27;:&#x27;Be the first to like&#x27;))+&#x27;&lt;/div&gt;&lt;div class=&quot;cap&quot;&gt;&lt;b&gt;&#x27;+esc(P[p.u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/b&gt;&#x27;+esc(p.cap)+&#x27;&lt;/div&gt;&#x27;+
+ (p.cm.length&gt;1?&#x27;&lt;button class=&quot;vc&quot; data-ig=&quot;cm&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;View all &#x27;+p.cm.length+&#x27; comments&lt;/button&gt;&#x27;:&#x27;&#x27;)+
+ (last?&#x27;&lt;div class=&quot;c1&quot;&gt;&lt;b&gt;&#x27;+esc(P[last[0]].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/b&gt;&#x27;+esc(last[1])+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+ (w?&#x27;&#x27;:&#x27;&lt;div class=&quot;igadd&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(&#x27;AS&#x27;)+&#x27;&quot;&gt;&lt;/span&gt;&lt;input maxlength=&quot;200&quot; placeholder=&quot;Add a comment…&quot; data-cin=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Add a comment&quot;&gt;&lt;button data-ig=&quot;post&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Post&lt;/button&gt;&lt;/div&gt;&#x27;)+
+ (me&amp;&amp;!w&amp;&amp;p.d&gt;CFG.fd&amp;&amp;CFG.mem?&#x27;&lt;div style=&quot;margin-top:8px&quot;&gt;&lt;button class=&quot;igsb&quot; data-ig=&quot;mem&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;🕰️ Share memory&lt;/button&gt;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+ &#x27;&lt;/div&gt;&lt;/article&gt;&#x27;}
+function feedEnd(){return &#x27;&lt;div class=&quot;ignote&quot;&gt;🕑 The Feed shows posts from &lt;b&gt;&#x27;+(CFG.fd&gt;9999?&#x27;all time&#x27;:&#x27;the last &#x27;+CFG.fd+&#x27; days&#x27;)+&#x27;&lt;/b&gt;. Older posts are hidden, never deleted: they stay in My posts, Saved and the member timeline.&lt;/div&gt;&#x27;}
+function render(anim){var t=ST.tab,h=storyRow()+tabs()+infoRow();
+ $(&#x27;.ignew&#x27;,ig).style.display=CFG.np?&#x27;&#x27;:&#x27;none&#x27;;
+ if(t===&#x27;feed&#x27;){var L=POSTS.filter(inFeed).sort(function(a,b){return a.d-b.d||b.id-a.id});
+  h+=mostLiked()+(L.length?L.map(function(p){return card(p,anim)}).join(&#x27;&#x27;):&#x27;&lt;div class=&quot;igempty&quot;&gt;&lt;span&gt;📷&lt;/span&gt;No posts yet.&lt;/div&gt;&#x27;)+feedEnd()}
+ else if(t===&#x27;grid&#x27;){var G=POSTS.filter(inFeed).sort(function(a,b){return a.d-b.d||b.id-a.id});
+  h+=&#x27;&lt;div class=&quot;iggrid&quot;&gt;&#x27;+G.map(function(p){return &#x27;&lt;button data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot; aria-label=&quot;&#x27;+esc(p.cap)+&#x27;&quot;&gt;&#x27;+(p.vid?&#x27;&lt;span class=&quot;gi&quot;&gt;▶&lt;/span&gt;&#x27;:p.im.length&gt;1?&#x27;&lt;span class=&quot;gi&quot;&gt;❐&lt;/span&gt;&#x27;:&#x27;&#x27;)+(p.st===&#x27;wait&#x27;?&#x27;&lt;span class=&quot;gw&quot;&gt;⏳ Awaited&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+feedEnd()}
+ else if(t===&#x27;videos&#x27;){var V=POSTS.filter(function(p){return p.vid&amp;&amp;inFeed(p)});
+  h+=&#x27;&lt;div class=&quot;ignote&quot;&gt;&#x27;+(CFG.vid?&#x27;🎥 &lt;b&gt;Videos are ON.&lt;/b&gt; Up to 30 seconds and 20 MB each. Every video waits for approval.&#x27;:&#x27;🎥 &lt;b&gt;New videos are switched off&lt;/b&gt; by the President (OFF by default). When on: up to 30 seconds, 20 MB, approval needed. Videos already posted stay visible.&#x27;)+&#x27;&lt;/div&gt;&#x27;+V.map(function(p){return card(p,anim)}).join(&#x27;&#x27;)}
+ else if(t===&#x27;mine&#x27;){var M=POSTS.filter(function(p){return P[p.u].me}).sort(function(a,b){return a.d-b.d||b.id-a.id}),lks=M.reduce(function(s,p){return s+p.lk},0);
+  h+=&#x27;&lt;div class=&quot;igcard igme&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(&#x27;AS&#x27;)+&#x27;&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;Mr Anurag Sethi&lt;/b&gt;&lt;small&gt;&#x27;+M.length+&#x27; posts · &#x27;+lks+&#x27; likes · Member since 2003 ⭐&lt;/small&gt;&lt;small&gt;Only approved posts show to members.&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
+  M.map(function(p){var st=p.st===&#x27;wait&#x27;?&#x27;⏳ Approval awaited · only you see it&#x27;:p.d&gt;CFG.fd?&#x27;🕰️ Older than &#x27;+CFG.fd+&#x27; days · hidden from the Feed, kept here&#x27;:&#x27;✅ Approved · &#x27;+p.lk+(p.lk===1?&#x27; like&#x27;:&#x27; likes&#x27;);
+   return &#x27;&lt;div class=&quot;igmy&quot;&gt;&lt;button class=&quot;th&quot; data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot; aria-label=&quot;Open&quot;&gt;&lt;/button&gt;&lt;div class=&quot;igtx2&quot;&gt;&lt;b&gt;&#x27;+esc(p.cap)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+st+&#x27;&lt;/small&gt;&lt;small&gt;&#x27;+when(p.d)+(p.memory?&#x27; · Memory share&#x27;:&#x27;&#x27;)+&#x27;&lt;/small&gt;&lt;div class=&quot;bt&quot;&gt;&#x27;+(p.st===&#x27;wait&#x27;?&#x27;&lt;button class=&quot;igsb dm&quot; data-ig=&quot;approve&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Demo: office approves&lt;/button&gt;&#x27;:&#x27;&#x27;)+(p.st!==&#x27;wait&#x27;&amp;&amp;p.d&gt;CFG.fd&amp;&amp;CFG.mem?&#x27;&lt;button class=&quot;igsb&quot; data-ig=&quot;mem&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;🕰️ Share memory&lt;/button&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}).join(&#x27;&#x27;)+
+  &#x27;&lt;div class=&quot;ignote&quot;&gt;🕰️ &lt;b&gt;Share memory:&lt;/b&gt; a post of yours older than the Feed days can be shared again. It counts in today\&#x27;s limit and the office approves it first.&lt;/div&gt;&#x27;}
+ else if(t===&#x27;saved&#x27;){var S=POSTS.filter(function(p){return p.saved&amp;&amp;vis(p)});
+  h+=S.length?&#x27;&lt;div class=&quot;iggrid&quot;&gt;&#x27;+S.map(function(p){return &#x27;&lt;button data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot;&gt;&#x27;+(p.vid?&#x27;&lt;span class=&quot;gi&quot;&gt;▶&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;igend&quot;&gt;Saved posts stay here even when they are older than the Feed days.&lt;/div&gt;&#x27;:&#x27;&lt;div class=&quot;igempty&quot;&gt;&lt;span&gt;🔖&lt;/span&gt;Nothing saved yet.&lt;br&gt;Tap the 🔖 on a post to keep it here.&lt;/div&gt;&#x27;}
+ inn.innerHTML=h;wireSwipe(inn)}
+
+function wireSwipe(root){Array.prototype.forEach.call(root.querySelectorAll(&#x27;.igm&#x27;),function(m){m.addEventListener(&#x27;scroll&#x27;,function(){var i=Math.round(m.scrollLeft/m.clientWidth),w=m.parentNode,n=m.children.length,c=w.querySelector(&#x27;.igcnt&#x27;);if(c)c.textContent=(i+1)+&#x27;/&#x27;+n;var d=w.nextElementSibling;if(d&amp;&amp;d.classList.contains(&#x27;igdts&#x27;))Array.prototype.forEach.call(d.children,function(x,j){x.classList.toggle(&#x27;on&#x27;,j===i)})},{passive:true})})}
+function rerender(){var y=body.scrollTop;render(false);body.scrollTop=y;refreshLayers()}
+function refreshLayers(){var v=$(&#x27;.iglay[data-l=pv] .igin&#x27;,ig);if(v){var p=byId(v.dataset.id);if(p){v.innerHTML=card(p,false);wireSwipe(v)}}}
+
+/* ---- toast ---- */
+var tt=0;function toast(m){var t=$(&#x27;#igt&#x27;,ig);t.textContent=m;t.classList.add(&#x27;on&#x27;);clearTimeout(tt);tt=setTimeout(function(){t.classList.remove(&#x27;on&#x27;)},2600)}
+
+/* ---- going back: every Insta layer = one step of the phone Back button ---- */
+var STK=[];
+function bpush(){try{parent.__backPush&amp;&amp;parent.__backPush()}catch(e){}}
+function bdone(){try{parent.__backDone&amp;&amp;parent.__backDone()}catch(e){}}
+function pushL(n,el){STK.push({n:n,el:el});bpush()}
+function closeTop(){var t=STK.pop();if(!t)return;if(t.n===&#x27;ig&#x27;){ig.classList.remove(&#x27;on&#x27;)}else{if(t.n===&#x27;st&#x27;){stopStory();setTimeout(rerender,0)}if(t.el&amp;&amp;t.el.parentNode)t.el.parentNode.removeChild(t.el)}bdone()}
+function closeAll(then){if(!STK.length){then&amp;&amp;then();return}closeTop();setTimeout(function(){closeAll(then)},70)}
+var oldBack=window.__appBack;window.__appBack=function(){if(STK.length){closeTop();return true}return oldBack?oldBack():false};
+
+function layer(n,html){var d=document.createElement(&#x27;div&#x27;);d.className=n===&#x27;st&#x27;?&#x27;igstory&#x27;:n===&#x27;sh&#x27;?&#x27;igov&#x27;:&#x27;iglay&#x27;;d.dataset.l=n;d.innerHTML=html;ig.appendChild(d);pushL(n,d);return d}
+function sheet(html){var o=layer(&#x27;sh&#x27;,&#x27;&lt;div class=&quot;igsheet&quot;&gt;&#x27;+html+&#x27;&lt;/div&gt;&#x27;);o.addEventListener(&#x27;click&#x27;,function(e){if(e.target===o)closeTop()});return o}
+function topbar(t,s){return &#x27;&lt;div class=&quot;igtop&quot;&gt;&lt;div class=&quot;in&quot;&gt;&lt;button class=&quot;igbk&quot; data-ig=&quot;x&quot;&gt;‹ Back&lt;/button&gt;&lt;div class=&quot;igttl&quot;&gt;&lt;b&gt;&#x27;+t+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+s+&#x27;&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}
+
+/* ---- open ---- */
+function openIG(k){if(!ig.classList.contains(&#x27;on&#x27;)){ig.classList.add(&#x27;on&#x27;);pushL(&#x27;ig&#x27;,ig)}
+ if(k===&#x27;myposts&#x27;)ST.tab=&#x27;mine&#x27;;else if(k===&#x27;insta&#x27;)ST.tab=&#x27;feed&#x27;;
+ render(true);body.scrollTop=0;if(k===&#x27;newpost&#x27;)newPost()}
+window.__IGHOOK(function(k,locked){if(locked)return false;if(k===&#x27;insta&#x27;||k===&#x27;myposts&#x27;||k===&#x27;newpost&#x27;){openIG(k);return true}return false});
+window.__igOpen=openIG;
+
+/* ---- post viewer ---- */
+function viewPost(id){var p=byId(id);if(!p)return;var l=layer(&#x27;pv&#x27;,topbar(&#x27;Post&#x27;,esc(P[p.u].n)+&#x27; · &#x27;+when(p.d))+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot; data-id=&quot;&#x27;+id+&#x27;&quot;&gt;&#x27;+card(p,true)+&#x27;&lt;/div&gt;&lt;/div&gt;&#x27;);wireSwipe(l)}
+
+/* ---- comments ---- */
+function comments(id){var p=byId(id);sheet(&#x27;&lt;h3&gt;Comments&lt;/h3&gt;&lt;p&gt;&#x27;+esc(p.cap)+&#x27;&lt;/p&gt;&lt;div id=&quot;igcl&quot;&gt;&#x27;+cmList(p)+&#x27;&lt;/div&gt;&lt;div class=&quot;igadd&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(&#x27;AS&#x27;)+&#x27;&quot;&gt;&lt;/span&gt;&lt;input maxlength=&quot;200&quot; placeholder=&quot;Add a comment…&quot; data-cin=&quot;&#x27;+id+&#x27;&quot; aria-label=&quot;Add a comment&quot;&gt;&lt;button data-ig=&quot;post&quot; data-id=&quot;&#x27;+id+&#x27;&quot;&gt;Post&lt;/button&gt;&lt;/div&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Close&lt;/button&gt;&#x27;)}
+function cmList(p){return p.cm.length?p.cm.map(function(c){return &#x27;&lt;div class=&quot;igcm&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(c[0])+&#x27;&quot;&gt;&#x27;+avt(c[0])+&#x27;&lt;/span&gt;&lt;div&gt;&lt;b&gt;&#x27;+esc(P[c[0]].n)+&#x27;&lt;/b&gt;&lt;br&gt;&#x27;+esc(c[1])+&#x27;&lt;small&gt;&#x27;+(c[2]||&#x27;&#x27;)+&#x27;&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}).join(&#x27;&#x27;):&#x27;&lt;div class=&quot;igempty&quot; style=&quot;padding:14px&quot;&gt;&lt;span&gt;💬&lt;/span&gt;No comments yet.&lt;/div&gt;&#x27;}
+function addComment(id,inp){var v=(inp.value||&#x27;&#x27;).trim();if(!v){inp.focus();return}var p=byId(id);p.cm.push([&#x27;AS&#x27;,v,&#x27;Just now&#x27;]);inp.value=&#x27;&#x27;;var cl=$(&#x27;#igcl&#x27;,ig);if(cl)cl.innerHTML=cmList(p);rerender();toast(&#x27;Comment added&#x27;)}
+
+/* ---- like / save ---- */
+function like(id,on){var p=byId(id);if(p.st===&#x27;wait&#x27;){toast(&#x27;Likes open after approval&#x27;);return}if(on===true&amp;&amp;p.liked)return;p.liked=on===true?true:!p.liked;p.lk+=p.liked?1:-1;rerender()}
+function burst(el){if(RM)return;var b=el.querySelector(&#x27;.igburst&#x27;);if(!b)return;b.classList.remove(&#x27;go&#x27;);void b.offsetWidth;b.classList.add(&#x27;go&#x27;)}
+
+/* ---- more menu ---- */
+function more(id){var p=byId(id),me=P[p.u].me,canMem=me&amp;&amp;p.st!==&#x27;wait&#x27;&amp;&amp;p.d&gt;CFG.fd&amp;&amp;CFG.mem;
+ sheet(&#x27;&lt;h3&gt;Post&lt;/h3&gt;&lt;p&gt;&#x27;+esc(P[p.u].n)+&#x27; · &#x27;+when(p.d)+&#x27;&lt;/p&gt;&lt;button class=&quot;igopt&quot; data-ig=&quot;save&quot; data-id=&quot;&#x27;+id+&#x27;&quot; data-close=&quot;1&quot;&gt;🔖 &#x27;+(p.saved?&#x27;Remove from Saved&#x27;:&#x27;Save&#x27;)+&#x27;&lt;/button&gt;&#x27;+(canMem?&#x27;&lt;button class=&quot;igopt&quot; data-ig=&quot;mem&quot; data-id=&quot;&#x27;+id+&#x27;&quot;&gt;🕰️ Share memory&lt;/button&gt;&#x27;:&#x27;&#x27;)+(me?&#x27;&lt;button class=&quot;igopt&quot; data-ig=&quot;tabx&quot; data-t=&quot;mine&quot;&gt;🖼️ Go to My posts&lt;/button&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Close&lt;/button&gt;&#x27;)}
+
+/* ---- share memory ---- */
+function shareMem(id){var p=byId(id),n=today();
+ sheet(&#x27;&lt;h3&gt;🕰️ Share this memory&lt;/h3&gt;&lt;div style=&quot;display:flex;gap:10px;align-items:center;margin:6px 0 10px&quot;&gt;&lt;span style=&quot;width:84px;height:84px;border-radius:14px;flex:none;background:url(&#x27;+art(p.im[0])+&#x27;) center/cover&quot;&gt;&lt;/span&gt;&lt;div style=&quot;font-size:13.5px&quot;&gt;&lt;b&gt;&#x27;+esc(p.cap)+&#x27;&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color:var(--muted)&quot;&gt;A post from &#x27;+monthOf(p.d)+&#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;textarea id=&quot;igmc&quot; maxlength=&quot;120&quot; placeholder=&quot;A few words (optional)&quot;&gt;&lt;/textarea&gt;&lt;div class=&quot;igcc&quot;&gt;&lt;span id=&quot;igmcn&quot;&gt;0&lt;/span&gt; / 120&lt;/div&gt;&lt;p&gt;It goes to the Feed as a new post marked “Memory · a post from &#x27;+monthOf(p.d)+&#x27;”, after approval by the office. It counts in today\&#x27;s limit: &lt;b&gt;&#x27;+n+&#x27; of &#x27;+CFG.lim+&#x27;&lt;/b&gt; used.&lt;/p&gt;&lt;div class=&quot;igerr&quot; id=&quot;igme&quot;&gt;&lt;/div&gt;&lt;button class=&quot;igbtn&quot; data-ig=&quot;memgo&quot; data-id=&quot;&#x27;+id+&#x27;&quot;&gt;Share memory&lt;/button&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Cancel&lt;/button&gt;&#x27;);
+ var ta=$(&#x27;#igmc&#x27;,ig);ta.addEventListener(&#x27;input&#x27;,function(){$(&#x27;#igmcn&#x27;,ig).textContent=ta.value.length})}
+function memGo(id){var p=byId(id);if(today()&gt;=CFG.lim){$(&#x27;#igme&#x27;,ig).textContent=&#x27;You have used all &#x27;+CFG.lim+&#x27; posts for today. Please try again tomorrow.&#x27;;return}
+ var note=($(&#x27;#igmc&#x27;,ig).value||&#x27;&#x27;).trim();POSTS.unshift({id:NID++,u:&#x27;AS&#x27;,d:0,im:p.im.slice(),cap:note||p.cap,lk:0,st:&#x27;wait&#x27;,cm:[],memory:monthOf(p.d)});
+ closeAll(function(){openIG(&#x27;insta&#x27;);toast(&#x27;Memory sent · approval awaited&#x27;)})}
+
+/* ---- profile photo (goes live at once, no approval) ---- */
+function myPic(){sheet(&#x27;&lt;h3&gt;Your profile photo&lt;/h3&gt;&lt;p&gt;Shows on your posts and comments. It changes at once, no approval needed.&lt;/p&gt;&lt;div style=&quot;text-align:center;margin:8px 0&quot;&gt;&lt;span style=&quot;display:inline-block;width:110px;height:110px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 3px var(--a1);&#x27;+avs(&#x27;AS&#x27;)+&#x27;;background-size:cover;background-position:center&quot; id=&quot;igpv&quot;&gt;&lt;/span&gt;&lt;/div&gt;&#x27;+(CFG.pf?&#x27;&lt;button class=&quot;igbtn&quot; data-ig=&quot;pickpic&quot;&gt;📷 Choose a new photo&lt;/button&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;rmpic&quot;&gt;Remove photo&lt;/button&gt;&#x27;:&#x27;&lt;p style=&quot;text-align:center&quot;&gt;The President has switched off photo changes.&lt;/p&gt;&#x27;)+&#x27;&lt;input type=&quot;file&quot; accept=&quot;image/jpeg,image/png&quot; id=&quot;igpf&quot; hidden&gt;&lt;div class=&quot;igerr&quot; id=&quot;igpe&quot;&gt;&lt;/div&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Close&lt;/button&gt;&#x27;);
+ $(&#x27;#igpf&#x27;,ig).addEventListener(&#x27;change&#x27;,function(){var f=this.files&amp;&amp;this.files[0];if(!f)return;if(f.size&gt;5*1048576){$(&#x27;#igpe&#x27;,ig).textContent=&#x27;Photo is bigger than 5 MB.&#x27;;return}MYPIC=URL.createObjectURL(f);$(&#x27;#igpv&#x27;,ig).style.backgroundImage=&#x27;url(&#x27;+MYPIC+&#x27;)&#x27;;rerender();toast(&#x27;Profile photo changed&#x27;)})}
+
+/* ---- story viewer ---- */
+var SV=null;
+function story(u){var L=POSTS.filter(function(p){return p.u===u&amp;&amp;p.st!==&#x27;wait&#x27;&amp;&amp;p.d&lt;=7}).sort(function(a,b){return b.d-a.d});if(!L.length)return;
+ var l=layer(&#x27;st&#x27;,&#x27;&lt;div class=&quot;igsp&quot;&gt;&#x27;+L.map(function(){return &#x27;&lt;i&gt;&lt;b&gt;&lt;/b&gt;&lt;/i&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;igsh2&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(u)+&#x27;&quot;&gt;&#x27;+avt(u)+&#x27;&lt;/span&gt;&lt;b&gt;&#x27;+esc(P[u].n)+&#x27;&lt;/b&gt;&lt;small id=&quot;igsw&quot;&gt;&lt;/small&gt;&lt;button class=&quot;igsx&quot; data-ig=&quot;x&quot; aria-label=&quot;Close&quot;&gt;✕&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;igsimg&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;igsi&quot;&gt;&lt;button class=&quot;tz tzl&quot; data-ig=&quot;sprev&quot; aria-label=&quot;Previous&quot;&gt;&lt;/button&gt;&lt;button class=&quot;tz tzr&quot; data-ig=&quot;snext&quot; aria-label=&quot;Next&quot;&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;igscap&quot; id=&quot;igsc&quot;&gt;&lt;/div&gt;&#x27;);
+ SV={u:u,L:L,i:0,el:l,t:0};ST.seen[u]=1;showStory()}
+function showStory(){var s=SV,p=s.L[s.i],bars=s.el.querySelectorAll(&#x27;.igsp i&#x27;);Array.prototype.forEach.call(bars,function(b,j){b.className=j&lt;s.i?&#x27;done&#x27;:j===s.i?(RM?&#x27;done&#x27;:&#x27;run&#x27;):&#x27;&#x27;});
+ $(&#x27;#igsi&#x27;,ig).src=art(p.im[0]);$(&#x27;#igsc&#x27;,ig).textContent=p.cap;$(&#x27;#igsw&#x27;,ig).textContent=when(p.d);clearTimeout(s.t);if(!RM)s.t=setTimeout(function(){stNext()},4000)}
+function stNext(){if(!SV)return;if(SV.i&lt;SV.L.length-1){SV.i++;showStory()}else{closeTop();rerender()}}
+function stPrev(){if(!SV)return;if(SV.i&gt;0){SV.i--;showStory()}}
+function stopStory(){if(SV){clearTimeout(SV.t);SV=null}}
+
+/* ---- New post ---- */
+var NP={files:[]};
+function newPost(){if(!CFG.np){toast(&#x27;New post is switched off by the President&#x27;);return}
+ var n=today();NP={files:[],vid:null};
+ var l=layer(&#x27;np&#x27;,topbar(&#x27;New post&#x27;,&#x27;DJSG Insta · needs approval&#x27;)+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot;&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igrow&quot;&gt;&lt;span class=&quot;igchip&#x27;+(n&gt;=CFG.lim?&#x27; hot&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;📮 Posts today: &#x27;+n+&#x27; of &#x27;+CFG.lim+&#x27;&lt;/span&gt;&#x27;+(CFG.vid?&#x27;&lt;span class=&quot;igchip&quot;&gt;🎥 Videos ON&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+
+ (n&gt;=CFG.lim?&#x27;&lt;div class=&quot;igwait&quot; style=&quot;margin:0 0 12px&quot;&gt;You have sent &#x27;+CFG.lim+&#x27; posts today (Share memory counts too). Please try again tomorrow.&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+ &#x27;&lt;div class=&quot;igstep&quot;&gt;&lt;h4&gt;&lt;i&gt;1&lt;/i&gt;Choose photos&lt;/h4&gt;&lt;div class=&quot;igpick&quot;&gt;&lt;button data-ig=&quot;cam&quot;&gt;&lt;span&gt;📷&lt;/span&gt;Camera&lt;/button&gt;&lt;button data-ig=&quot;gal&quot;&gt;&lt;span&gt;🖼️&lt;/span&gt;From gallery&lt;/button&gt;&#x27;+(CFG.vid?&#x27;&lt;button data-ig=&quot;vidp&quot;&gt;&lt;span&gt;🎥&lt;/span&gt;Video&lt;/button&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;button data-ig=&quot;sample&quot;&gt;&lt;span&gt;✨&lt;/span&gt;Sample photo&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;input type=&quot;file&quot; accept=&quot;image/jpeg,image/png&quot; capture=&quot;environment&quot; id=&quot;igc&quot; hidden&gt;&lt;input type=&quot;file&quot; accept=&quot;image/jpeg,image/png&quot; multiple id=&quot;igg&quot; hidden&gt;&lt;input type=&quot;file&quot; accept=&quot;video/*&quot; id=&quot;igv&quot; hidden&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igthumbs&quot; id=&quot;igth&quot;&gt;&lt;/div&gt;&lt;div class=&quot;igsmall&quot;&gt;Up to 5 photos · JPG or PNG · 5 MB each · made smaller by the app.&#x27;+(CFG.vid?&#x27; Video: up to 30 seconds, 20 MB.&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igstep&quot;&gt;&lt;h4&gt;&lt;i&gt;2&lt;/i&gt;Write a caption&lt;/h4&gt;&lt;textarea id=&quot;igcap&quot; maxlength=&quot;300&quot; placeholder=&quot;For example: Deepawali Milan with family&quot;&gt;&lt;/textarea&gt;&lt;div class=&quot;igcc&quot;&gt;&lt;span id=&quot;igcn&quot;&gt;0&lt;/span&gt; / 300&lt;/div&gt;&lt;label class=&quot;igok&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;igok&quot;&gt;&lt;span&gt;The people shown have agreed.&lt;/span&gt;&lt;/label&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igstep&quot;&gt;&lt;h4&gt;&lt;i&gt;3&lt;/i&gt;Send for approval&lt;/h4&gt;&lt;div class=&quot;igsmall&quot; style=&quot;margin:0 0 4px&quot;&gt;The President or Secretary checks it first. Until then only you see it, marked “Approval awaited”.&lt;/div&gt;&lt;div class=&quot;igerr&quot; id=&quot;ige&quot;&gt;&lt;/div&gt;&lt;button class=&quot;igbtn&quot; data-ig=&quot;send&quot;&#x27;+(n&gt;=CFG.lim?&#x27; disabled&#x27;:&#x27;&#x27;)+&#x27;&gt;Send for approval&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;/div&gt;&lt;/div&gt;&#x27;);
+ var ta=$(&#x27;#igcap&#x27;,l);ta.addEventListener(&#x27;input&#x27;,function(){$(&#x27;#igcn&#x27;,l).textContent=ta.value.length});
+ function addFiles(fl){var e=&#x27;&#x27;;Array.prototype.forEach.call(fl,function(f){if(NP.vid){e=&#x27;Remove the video first to add photos.&#x27;;return}if(NP.files.length&gt;=5){e=&#x27;Up to 5 photos in one post.&#x27;;return}if(!/image\/(jpeg|png)/.test(f.type)){e=&#x27;Please choose JPG or PNG photos.&#x27;;return}if(f.size&gt;5*1048576){e=&#x27;&quot;&#x27;+f.name+&#x27;&quot; is bigger than 5 MB.&#x27;;return}NP.files.push(URL.createObjectURL(f))});$(&#x27;#ige&#x27;,l).textContent=e;thumbs()}
+ $(&#x27;#igc&#x27;,l).addEventListener(&#x27;change&#x27;,function(){addFiles(this.files);this.value=&#x27;&#x27;});
+ $(&#x27;#igg&#x27;,l).addEventListener(&#x27;change&#x27;,function(){addFiles(this.files);this.value=&#x27;&#x27;});
+ $(&#x27;#igv&#x27;,l).addEventListener(&#x27;change&#x27;,function(){var f=this.files&amp;&amp;this.files[0];this.value=&#x27;&#x27;;if(!f)return;if(NP.files.length){$(&#x27;#ige&#x27;,l).textContent=&#x27;A post has photos or one video, not both.&#x27;;return}if(f.size&gt;20*1048576){$(&#x27;#ige&#x27;,l).textContent=&#x27;Video is bigger than 20 MB.&#x27;;return}var u=URL.createObjectURL(f),v=document.createElement(&#x27;video&#x27;);v.preload=&#x27;metadata&#x27;;v.onloadedmetadata=function(){if(v.duration&gt;30.5){$(&#x27;#ige&#x27;,l).textContent=&#x27;Video is longer than 30 seconds.&#x27;;return}NP.vid={u:u,s:Math.round(v.duration)||10};$(&#x27;#ige&#x27;,l).textContent=&#x27;&#x27;;thumbs()};v.onerror=function(){NP.vid={u:u,s:15};thumbs()};v.src=u});
+}
+function thumbs(){var t=$(&#x27;#igth&#x27;,ig);if(!t)return;
+ if(NP.vid){t.innerHTML=&#x27;&lt;span class=&quot;igt2&quot; style=&quot;background:#1d1024&quot;&gt;&lt;span class=&quot;vv&quot;&gt;🎥 0:&#x27;+(NP.vid.s&lt;10?&#x27;0&#x27;:&#x27;&#x27;)+NP.vid.s+&#x27;&lt;/span&gt;&lt;button data-ig=&quot;rmv&quot; aria-label=&quot;Remove&quot;&gt;✕&lt;/button&gt;&lt;/span&gt;&#x27;;return}
+ t.innerHTML=NP.files.map(function(u,i){return &#x27;&lt;span class=&quot;igt2&quot; style=&quot;background-image:url(&#x27;+u+&#x27;)&quot;&gt;&lt;button data-ig=&quot;rmf&quot; data-i=&quot;&#x27;+i+&#x27;&quot; aria-label=&quot;Remove&quot;&gt;✕&lt;/button&gt;&lt;/span&gt;&#x27;}).join(&#x27;&#x27;)+(NP.files.length?&#x27;&lt;span style=&quot;align-self:center;font-size:12px;font-weight:700;color:var(--muted)&quot;&gt;&#x27;+NP.files.length+&#x27; / 5&lt;/span&gt;&#x27;:&#x27;&#x27;)}
+function send(){var e=$(&#x27;#ige&#x27;,ig);if(today()&gt;=CFG.lim){e.textContent=&#x27;You have used all &#x27;+CFG.lim+&#x27; posts for today.&#x27;;return}
+ if(!NP.files.length&amp;&amp;!NP.vid){e.textContent=&#x27;Please choose at least one photo.&#x27;;return}
+ if(!$(&#x27;#igok&#x27;,ig).checked){e.textContent=&#x27;Please tick: the people shown have agreed.&#x27;;return}
+ var cap=($(&#x27;#igcap&#x27;,ig).value||&#x27;&#x27;).trim()||&#x27;(no caption)&#x27;,p={id:NID++,u:&#x27;AS&#x27;,d:0,cap:cap,lk:0,st:&#x27;wait&#x27;,cm:[]};
+ if(NP.vid){p.vid=NP.vid.s;p.im=[&#x27;lights&#x27;]}else{p.im=NP.files.map(function(u){var k=&#x27;f&#x27;+(NID++);IMG[k]=u;return k})}
+ POSTS.unshift(p);ST.tab=&#x27;feed&#x27;;
+ closeAll(function(){openIG(&#x27;insta&#x27;);toast(&#x27;Sent · approval awaited · only you see it&#x27;)})}
+
+/* ---- President switches (demo). Real app: President Desk &gt; Insta DJSG control &gt; Posting rules / Show-hide ---- */
+function cfg(){function sw(k,t,s){return &#x27;&lt;label class=&quot;igsw&quot;&gt;&lt;span&gt;&#x27;+t+&#x27;&lt;small&gt;&#x27;+s+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;input type=&quot;checkbox&quot; data-cfg=&quot;&#x27;+k+&#x27;&quot;&#x27;+(CFG[k]?&#x27; checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&lt;/label&gt;&#x27;}
+ function sel(k,t,o){return &#x27;&lt;label class=&quot;igsw&quot;&gt;&lt;span&gt;&#x27;+t+&#x27;&lt;/span&gt;&lt;select data-cfg=&quot;&#x27;+k+&#x27;&quot;&gt;&#x27;+o.map(function(v){return &#x27;&lt;option value=&quot;&#x27;+v+&#x27;&quot;&#x27;+(CFG[k]==v?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+(v&gt;9999?&#x27;All&#x27;:v+&#x27; days&#x27;)+&#x27;&lt;/option&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&#x27;}
+ sheet(&#x27;&lt;h3&gt;⚙️ President switches (demo)&lt;/h3&gt;&lt;p&gt;Real app: President Desk › Insta DJSG control. Hiding never deletes anything.&lt;/p&gt;&#x27;+
+ sw(&#x27;np&#x27;,&#x27;New post button&#x27;,&#x27;Members can send new posts&#x27;)+sw(&#x27;ml&#x27;,&#x27;Most-liked strip&#x27;,&#x27;⭐ strip at the top of the Feed&#x27;)+sw(&#x27;pf&#x27;,&#x27;Profile photo button&#x27;,&#x27;Members can change their own photo&#x27;)+sw(&#x27;mem&#x27;,&#x27;Share memory&#x27;,&#x27;Share an old post again&#x27;)+sw(&#x27;vid&#x27;,&#x27;Allow videos&#x27;,&#x27;OFF by default. Off stops new videos; old ones stay&#x27;)+
+ sel(&#x27;fd&#x27;,&#x27;Feed shows posts from the last&#x27;,[30,90,180,365,99999])+sel(&#x27;tw&#x27;,&#x27;Most-liked looks at the last&#x27;,[7,30,90,99999])+
+ &#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;);
+ Array.prototype.forEach.call(ig.querySelectorAll(&#x27;[data-cfg]&#x27;),function(x){x.addEventListener(&#x27;change&#x27;,function(){var k=x.dataset.cfg;CFG[k]=x.type===&#x27;checkbox&#x27;?x.checked:+x.value;rerender()})})}
+
+/* ---- taps ---- */
+var lastTap={id:0,t:0};
+ig.addEventListener(&#x27;click&#x27;,function(e){
+ var dbl=e.target.closest(&#x27;[data-dbl]&#x27;);
+ if(dbl&amp;&amp;!e.target.closest(&#x27;[data-ig]&#x27;)){var id=+dbl.dataset.dbl,now=Date.now();if(lastTap.id===id&amp;&amp;now-lastTap.t&lt;320){lastTap.t=0;burst(dbl);like(id,true)}else lastTap={id:id,t:now};return}
+ var b=e.target.closest(&#x27;[data-ig]&#x27;);if(!b)return;var a=b.dataset.ig,id=+b.dataset.id;
+ if(a===&#x27;back&#x27;||a===&#x27;x&#x27;){closeTop();return}
+ if(a===&#x27;home&#x27;){closeAll();return}
+ if(a===&#x27;top&#x27;){if(STK.length&gt;1){closeAll(function(){openIG(&#x27;insta&#x27;)});return}ST.tab=&#x27;feed&#x27;;render(false);body.scrollTo?body.scrollTo({top:0,behavior:RM?&#x27;auto&#x27;:&#x27;smooth&#x27;}):body.scrollTop=0;return}
+ if(a===&#x27;go&#x27;){var k=b.dataset.k;closeAll(function(){window.__igShow&amp;&amp;window.__igShow(k)});return}
+ if(a===&#x27;new&#x27;){newPost();return}
+ if(a===&#x27;tab&#x27;){ST.tab=b.dataset.t;render(true);return}
+ if(a===&#x27;tabx&#x27;){closeAll(function(){openIG(&#x27;insta&#x27;);ST.tab=b.dataset.t;render(true)});return}
+ if(a===&#x27;cfg&#x27;){cfg();return}
+ if(a===&#x27;open&#x27;){viewPost(id);return}
+ if(a===&#x27;like&#x27;){like(id);return}
+ if(a===&#x27;save&#x27;){var p=byId(id);p.saved=!p.saved;toast(p.saved?&#x27;Saved · find it in Saved&#x27;:&#x27;Removed from Saved&#x27;);if(b.dataset.close)closeTop();rerender();return}
+ if(a===&#x27;cm&#x27;){comments(id);return}
+ if(a===&#x27;post&#x27;){var inp=b.parentNode.querySelector(&#x27;input&#x27;);addComment(id,inp);return}
+ if(a===&#x27;more&#x27;){more(id);return}
+ if(a===&#x27;mem&#x27;){shareMem(id);return}
+ if(a===&#x27;memgo&#x27;){memGo(id);return}
+ if(a===&#x27;approve&#x27;){var q=byId(id);q.st=&#x27;ok&#x27;;toast(&#x27;Approved by the office (demo)&#x27;);rerender();return}
+ if(a===&#x27;play&#x27;){var v=b;if(v.classList.contains(&#x27;playing&#x27;)){v.classList.remove(&#x27;playing&#x27;);return}v.classList.add(&#x27;playing&#x27;);toast(&#x27;Sample video playing&#x27;);var vt=parseFloat(getComputedStyle(v).getPropertyValue(&#x27;--vd&#x27;))||4;setTimeout(function(){v.classList.remove(&#x27;playing&#x27;)},vt*1000+300);return}
+ if(a===&#x27;mypic&#x27;){myPic();return}
+ if(a===&#x27;pickpic&#x27;){$(&#x27;#igpf&#x27;,ig).click();return}
+ if(a===&#x27;rmpic&#x27;){MYPIC=&#x27;&#x27;;$(&#x27;#igpv&#x27;,ig).style.cssText+=&#x27;;background-image:none;background:var(--f1)&#x27;;rerender();toast(&#x27;Photo removed&#x27;);return}
+ if(a===&#x27;story&#x27;){story(b.dataset.u);return}
+ if(a===&#x27;snext&#x27;){stNext();return}
+ if(a===&#x27;sprev&#x27;){stPrev();return}
+ if(a===&#x27;cam&#x27;){$(&#x27;#igc&#x27;,ig).click();return}
+ if(a===&#x27;gal&#x27;){$(&#x27;#igg&#x27;,ig).click();return}
+ if(a===&#x27;vidp&#x27;){$(&#x27;#igv&#x27;,ig).click();return}
+ if(a===&#x27;sample&#x27;){if(NP.vid){$(&#x27;#ige&#x27;,ig).textContent=&#x27;Remove the video first to add photos.&#x27;;return}if(NP.files.length&gt;=5){$(&#x27;#ige&#x27;,ig).textContent=&#x27;Up to 5 photos in one post.&#x27;;return}var ks=[&#x27;diya&#x27;,&#x27;flowers&#x27;,&#x27;lotus&#x27;,&#x27;sunrise&#x27;,&#x27;cake&#x27;],k2=ks[NP.files.length%5];NP.files.push(art(k2));thumbs();return}
+ if(a===&#x27;rmf&#x27;){NP.files.splice(+b.dataset.i,1);thumbs();return}
+ if(a===&#x27;rmv&#x27;){NP.vid=null;thumbs();return}
+ if(a===&#x27;send&#x27;){send();return}
+});
+ig.addEventListener(&#x27;keydown&#x27;,function(e){if(e.key===&#x27;Enter&#x27;&amp;&amp;e.target.dataset&amp;&amp;e.target.dataset.cin){e.preventDefault();addComment(+e.target.dataset.cin,e.target)}if(e.key===&#x27;Escape&#x27;&amp;&amp;STK.length)closeTop()});
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
