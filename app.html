@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 14 Nov 2026, 01:10</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 14 Nov 2026, 01:20</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 14 Nov 2026, 01:10&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 14 Nov 2026, 01:20&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1977,8 +1977,13 @@ ig.addEventListener(&#x27;keydown&#x27;,function(e){if(e.key===&#x27;Enter&#x27;
 &lt;/script&gt;
 &lt;style&gt;#ig .igrf{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 3px 8px var(--shadow);font-size:17px;display:flex;align-items:center;justify-content:center}
 @media (max-width:370px){#ig .igrf{width:36px;height:36px;font-size:15px}}
+.nvbar{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,180%);z-index:80;display:flex;align-items:center;gap:8px;max-width:calc(100% - 20px);padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,#2A1530,#A3123A);color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.3);font:600 13.5px Inter,sans-serif;border:0;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.nvbar.on{transform:translate(-50%,0)}
+.nvbar span{font-size:17px}.nvbar b{white-space:nowrap}.nvbar i{font-style:normal;color:#FFD58A;font-weight:800;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.nvbar{transition:none}}
+.nvbar .nx{margin-left:4px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 &lt;/style&gt;
-&lt;script&gt;window.__RF={profile:1,insta:1,home:1};/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;14 Nov 2026, 01:20&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
 (function(){var RF=window.__RF||{profile:1,insta:1,home:1};
 function doRefresh(where){try{var s={w:where||&#x27;home&#x27;};if(where===&#x27;insta&#x27;&amp;&amp;window.__igState)s.ig=window.__igState();sessionStorage.setItem(&#x27;djsg_reopen&#x27;,JSON.stringify(s))}catch(e){}try{parent.location.reload()}catch(e){location.reload()}}
 /* after a refresh, open the same place again (Insta with its tab, or My Profile) */
@@ -1990,6 +1995,17 @@ window.__igRefresh=doRefresh;
 if(RF.profile&amp;&amp;window.__igS){var _p=window.__igS.profile;window.__igS.profile=function(){return _p().replace(&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;&#x27;,&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff;box-shadow:0 4px 0 var(--btn-edge)&quot; onclick=&quot;__igRefresh(\&#x27;profile\&#x27;)&quot;&gt;🔄 Refresh app · get the newest version&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;&#x27;)}}
 if(RF.insta){var ig=document.getElementById(&#x27;ig&#x27;);if(ig){var nb=ig.querySelector(&#x27;.ignew&#x27;);var b=document.createElement(&#x27;button&#x27;);b.className=&#x27;igrf&#x27;;b.setAttribute(&#x27;aria-label&#x27;,&#x27;Refresh&#x27;);b.textContent=&#x27;🔄&#x27;;b.onclick=function(){doRefresh(&#x27;insta&#x27;)};nb.parentNode.insertBefore(b,nb)}}
 if(RF.home){var r=document.querySelector(&#x27;.head .r.me&#x27;),bell=r&amp;&amp;r.querySelector(&#x27;.bell&#x27;);if(bell){var h=document.createElement(&#x27;button&#x27;);h.className=&#x27;bell hrf&#x27;;h.setAttribute(&#x27;aria-label&#x27;,&#x27;Refresh&#x27;);h.textContent=&#x27;🔄&#x27;;h.onclick=function(e){e.stopPropagation();doRefresh(&#x27;home&#x27;)};r.insertBefore(h,bell)}}
+})();
+/* New version notice (owner 14 Nov 00:32): checks GitHub for a newer app.html when the app comes back to the screen and every 3 minutes */
+(function(){var CUR=window.__APPVER||&#x27;&#x27;,shown=false,busy=false,later=0;
+function where(){var g=document.getElementById(&#x27;ig&#x27;);return g&amp;&amp;g.classList.contains(&#x27;on&#x27;)?&#x27;insta&#x27;:&#x27;home&#x27;}
+function show(nv){if(shown)return;shown=true;var b=document.createElement(&#x27;button&#x27;);b.className=&#x27;nvbar&#x27;;b.innerHTML=&#x27;&lt;span&gt;🆕&lt;/span&gt;&lt;b&gt;New version ready&lt;/b&gt;&lt;i&gt;Tap to update&lt;/i&gt;&lt;em class=&quot;nx&quot; title=&quot;Later&quot;&gt;✕&lt;/em&gt;&#x27;;b.onclick=function(e){if(e.target.classList.contains(&#x27;nx&#x27;)){b.classList.remove(&#x27;on&#x27;);setTimeout(function(){b.remove();shown=false},400);later=Date.now();return}window.__igRefresh&amp;&amp;window.__igRefresh(where())};document.body.appendChild(b);setTimeout(function(){b.classList.add(&#x27;on&#x27;)},30)}
+function check(){if(busy||shown||!CUR||Date.now()-later&lt;600000)return;busy=true;var u;try{u=new URL(&#x27;app.html&#x27;,parent.location.href).href}catch(e){u=&#x27;app.html&#x27;}
+ fetch(u+(u.indexOf(&#x27;?&#x27;)&lt;0?&#x27;?&#x27;:&#x27;&amp;&#x27;)+&#x27;v=&#x27;+Date.now(),{cache:&#x27;no-store&#x27;}).then(function(r){return r.ok?r.text():&#x27;&#x27;}).then(function(t){busy=false;var m=t&amp;&amp;t.match(/App version: ([^&lt;&amp;&quot;]{5,40})/);if(m&amp;&amp;m[1].trim()!==CUR.trim())show(m[1])}).catch(function(){busy=false})}
+window.__checkVer=check;
+document.addEventListener(&#x27;visibilitychange&#x27;,function(){if(!document.hidden)check()});
+try{parent.document.addEventListener(&#x27;visibilitychange&#x27;,function(){if(!parent.document.hidden)check()})}catch(e){}
+setInterval(check,180000);setTimeout(check,15000);
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
