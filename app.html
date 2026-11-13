@@ -97,7 +97,7 @@ input.t{font:inherit;padding:12px 14px;border-radius:14px;border:1px solid #e3cf
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 18:58</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 19:20</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -514,7 +514,7 @@ document.addEventListener(&#x27;click&#x27;,function(e){
 </section>
 
 <!-- 7 / 9 App -->
-<section class="scr" data-s="7"><iframe class="fr" id="app" title="DJSG app" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=utf8&gt;&lt;meta name=viewport content=&quot;width=device-width,initial-scale=1,viewport-fit=cover&quot;&gt;&lt;style&gt;:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.vlogin{display:none;padding:8px 12px;border-radius:999px;background:var(--btn);color:#fff;font-weight:700;font-size:11px;box-shadow:0 3px 0 var(--btn-edge);white-space:nowrap}
+<section class="scr" data-s="7"><iframe class="fr" id="app" title="DJSG app" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=utf8&gt;&lt;meta name=viewport content=&quot;width=device-width,initial-scale=1,viewport-fit=cover&quot;&gt;&lt;style&gt;html{-webkit-text-size-adjust:100%;text-size-adjust:100%}:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.vlogin{display:none;padding:8px 12px;border-radius:999px;background:var(--btn);color:#fff;font-weight:700;font-size:11px;box-shadow:0 3px 0 var(--btn-edge);white-space:nowrap}
 .visit .vlogin{display:inline-block}.visit .bell,.visit .av{display:none!important}
 .visit [data-lv]{position:relative}.visit [data-lv]::after,.wait [data-lk]::after{content:&quot;🔒&quot;;position:absolute;top:5px;left:7px;right:auto;width:auto;height:auto;filter:none;background:none;border-radius:0;font-size:12px;z-index:4}
 .wait [data-open=newpost]{position:relative}.wait [data-open=newpost]::after{content:&quot;🔒&quot;;position:absolute;top:6px;left:8px;font-size:12px}
@@ -1100,13 +1100,18 @@ S.waiting=function(){return head(&#x27;Waiting for approval&#x27;,&#x27;Ref DJSG
 var _items=smItems;smItems=function(){if(WAIT)return [{k:&#x27;waiting&#x27;,u:1,h:&#x27;&lt;span class=&quot;bi&quot;&gt;⏳&lt;/span&gt;&lt;b&gt;Waiting for approval&lt;/b&gt;&lt;small&gt;Details sent ✓&lt;/small&gt;&#x27;}];return _items()};
 
 
-function fitLock(){var d=document.documentElement;var over=d.scrollHeight-innerHeight;if(over&lt;=70){d.style.overflow=&#x27;hidden&#x27;;document.body.style.overflow=&#x27;hidden&#x27;;scrollTo(0,0)}else{d.style.overflow=&#x27;&#x27;;document.body.style.overflow=&#x27;&#x27;}}
+/* 13 Nov 19:20 (user: &quot;screen size is still not fit&quot;): when the phone makes text bigger (Android font size / text scaling), shrink App Home by the same amount so it fits one screen exactly; never cut the bottom */
+function txtScale(){if(window.__forceTS)return window.__forceTS;var p=document.createElement(&#x27;span&#x27;);p.style.cssText=&#x27;position:absolute;left:-9999px;top:0;visibility:hidden;font:100px/1 Inter,sans-serif;white-space:nowrap&#x27;;p.textContent=&#x27;M&#x27;;document.body.appendChild(p);var h=p.getBoundingClientRect().height/100;p.remove();return h||1}
+function fitLock(){var d=document.documentElement,a=document.querySelector(&#x27;.app&#x27;);if(!a)return;var H=innerHeight,W=innerWidth,s=txtScale();
+ a.style.zoom=&#x27;&#x27;;a.style.height=&#x27;&#x27;;a.style.width=&#x27;&#x27;;a.style.maxWidth=&#x27;&#x27;;
+ if(s&gt;1.03&amp;&amp;W&lt;900){var z=1/s;a.style.zoom=z;a.style.height=(H/z)+&#x27;px&#x27;;a.style.width=(W/z)+&#x27;px&#x27;;a.style.maxWidth=&#x27;none&#x27;}
+ if(d.scrollHeight&lt;=H+1){d.style.overflow=&#x27;hidden&#x27;;document.body.style.overflow=&#x27;hidden&#x27;;scrollTo(0,0)}else{d.style.overflow=&#x27;&#x27;;document.body.style.overflow=&#x27;&#x27;}}
 addEventListener(&#x27;load&#x27;,function(){setTimeout(fitLock,300)});addEventListener(&#x27;resize&#x27;,function(){setTimeout(fitLock,200)});setTimeout(fitLock,1200);
 window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,gallery:&#x27;gallery.html&#x27;,biz:&#x27;business.html&#x27;,celeb:&#x27;birthdays.html&#x27;,directory:&#x27;directory.html&#x27;,blood:&#x27;blood.html&#x27;,bearers:&#x27;bearers.html&#x27;,about:&#x27;about.html&#x27;};
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 18:58&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 19:20&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
