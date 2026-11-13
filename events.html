@@ -14,10 +14,11 @@
 --disp:Sora,"Noto Sans Devanagari",system-ui,sans-serif;--body:Inter,"Noto Sans Devanagari",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:var(--bg);overflow-x:hidden}
+html{background:linear-gradient(165deg,#FFF4E8 0%,#FDE6EF 45%,#EFE6FF 100%);min-height:100%}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:transparent;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
 :focus-visible{outline:3px solid var(--a2);outline-offset:2px}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(165deg,var(--bg) 0%,var(--bg2) 55%,var(--bg3) 100%)}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;animation:drift 20s ease-in-out infinite alternate}
 .b1{width:60vmax;height:60vmax;left:-25vmax;top:-25vmax;background:var(--a1)}
 .b2{width:50vmax;height:50vmax;right:-22vmax;top:30vh;background:var(--a3);animation-delay:-7s}
@@ -155,6 +156,10 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 .frm .ck{flex-direction:row;align-items:flex-start;gap:8px;font-weight:500}
 .frm .ck input{width:20px;height:20px;flex:none;margin-top:1px}
 .frm input[type=file]{font-size:13px;max-width:100%}
+.cnt{align-self:flex-end;font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.phs{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:10px 8px;padding-top:6px}
+.ph{position:relative;aspect-ratio:1;border-radius:12px;background:#eee center/cover;border:2px solid #fff;box-shadow:0 3px 8px var(--shadow)}
+.ph button{position:absolute;top:-7px;right:-7px;width:24px;height:24px;border-radius:50%;background:var(--btn);color:#fff;font-weight:800;font-size:14px;line-height:24px;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.3)}
 .err{color:#B3261E;font-size:13px;font-weight:700;min-height:18px;margin:0}
 .st{display:flex;flex-direction:column;gap:12px}
 .st .big{font-family:var(--disp);font-size:26px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -177,9 +182,54 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 /* narrow-phone header fix (Kota Main no longer touches Member Login) */
 @media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
 @media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
+/* 13 Nov: same as About (demo bar, switches, add a box, computer menu on one line) */
+.demobar{position:relative;z-index:2;background:var(--demo);color:var(--demo-ink)}
+.demobar .in{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-block:7px;font-size:12px}
+.demobar .dl{font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--demo-hi);font-size:10px}
+.demobar button{padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--demo-ink);font-weight:600}
+.xbox h2{margin-bottom:6px}.xbox p{margin:0}
+.xbox .xbtn{display:inline-block;margin-top:10px;padding:9px 16px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:13px;box-shadow:0 3px 0 var(--btn-edge)}
+.xbox .xdemo{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--demo);color:#fff}
+.addbox{width:100%;padding:14px;border-radius:22px;border:2px dashed rgba(163,18,58,.45);background:rgba(255,255,255,.35);color:var(--a1);font-weight:700;font-size:14px;text-align:center}
+.addbox small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);margin-top:2px}
+.sw{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--line);margin-bottom:6px;font-size:14px;width:100%;text-align:left}
+.sw span{flex:1}
+.sw i{flex:none;width:44px;height:26px;border-radius:13px;background:#cdbfc8;position:relative;transition:background .2s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.sw[aria-pressed="true"] i{background:#1E9E50}.sw[aria-pressed="true"] i::after{left:21px}
+.swh{margin:12px 0 6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--a1)}
+.seg{display:flex;gap:6px;margin-bottom:6px}.seg button{flex:1;padding:10px 8px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:transparent;box-shadow:0 3px 0 var(--btn-edge)}
+.fl{display:grid;gap:8px;margin-bottom:6px}
+.fl label{font-size:12.5px;font-weight:700;color:var(--muted)}
+.fl input,.fl textarea,.fl select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border-radius:12px;border:1px solid #e3d3dc;background:#fff;color:var(--ink)}
+.fl textarea{min-height:80px;resize:vertical}
+/* new boxes: next programme highlight, WhatsApp, calendar */
+.nx{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:16px;background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,236,214,.75))}
+.nx .k{font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--a1)}
+.nx h2{color:var(--ink);font-size:clamp(20px,5.4vw,26px);margin:2px 0 4px}
+.nx .meta{font-size:13.5px}
+.nx .dt{width:84px}.nx .dt b{font-size:30px}
+.nx .act{grid-column:1/-1}
+.act .btn{min-height:46px;width:100%;border-radius:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.sbtn{text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:6px 8px;border-radius:14px;background:rgba(255,255,255,.85);border:1px solid var(--line);color:var(--ink);font-weight:700;font-size:13px;box-shadow:0 3px 0 rgba(163,18,58,.2)}
+.sbtn:active{transform:translateY(2px);box-shadow:none}
+.sbtn.wa{color:#0E7A3A}
+.nooff{padding:14px;text-align:center;font-size:14px;color:var(--muted)}
+@media(min-width:760px){
+ .nav{flex-wrap:wrap;justify-content:center;border-radius:26px}.nav button{padding:8px 9px;font-size:12.5px}
+ .nx{grid-template-columns:auto 1fr auto;padding:20px 24px}.nx .act{grid-column:auto;min-width:250px}
+ .ev .act{min-width:250px}.act .btn{width:100%}
+}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<div class="demobar"><div class="wrap in"><span class="dl">Demo only</span><button type="button" id="dsw" data-i="d_btn">⚙️ President switches</button></div></div>
 
 <div class="wrap page">
  <div class="flag"></div>
@@ -197,18 +247,18 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
  <div class="title"><div class="eyebrow" data-i="eyebrow">Events</div><h1 data-i="h1">Upcoming and past programmes</h1></div>
 
- <div class="tabs" role="tablist" aria-label="Events">
+ <section class="card nx" id="bx_next" aria-labelledby="nxh"></section>
+ <div class="tabs" role="tablist" aria-label="Events" id="bx_tabs">
   <button type="button" role="tab" id="tu" aria-selected="true"><span data-i="t_up">Upcoming</span><i id="cu">0</i></button>
   <button type="button" role="tab" id="tp" aria-selected="false"><span data-i="t_past">Past</span><i id="cp">0</i></button>
  </div>
+ <div id="anc_list" hidden></div>
  <div class="evl" id="evl"></div>
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_lbl">President switch: show "Shared by" name</span><button type="button" id="bysw" aria-pressed="true">ON</button></div>
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_ap">President switch: past presidents need approval</span><button type="button" id="apsw" aria-pressed="false">OFF</button></div>
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_st">President and Secretary see this in the Desk</span><button type="button" id="stb" data-i="d_stb">Open storage tile</button></div>
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_who">See the page as</span><button type="button" id="w_v" aria-pressed="true" data-i="w_v">Visitor</button><button type="button" id="w_p" aria-pressed="false" data-i="w_p">Member, past president (logged in)</button></div>
+ <div id="anc_after" hidden></div>
  <p class="note" style="text-align:center" data-i="n_ev">Sample programmes. The office adds real programmes, dates and venues from the Desk.</p>
- <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
+ <div id="anc_cta" hidden></div>
+ <button class="addbox" type="button" id="addbox"><span data-i="ab_t">＋ Add a box</span><small data-i="ab_s">Demo only · in the real site the President adds boxes from the Desk</small></button>
+ <div class="cta" id="bx_cta">
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
 
@@ -226,8 +276,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
   <div class="two"><label><span data-i="f_year">Year *</span><select id="f_year"></select></label><label><span data-i="f_mon">Month</span><select id="f_mon"></select></label></div>
   <div class="two"><label><span data-i="f_place">Place</span><input type="text" id="f_place" maxlength="60"></label><label><span data-i="f_pd">Project Director</span><input type="text" id="f_pd" maxlength="60"></label></div>
   <label><span data-i="f_cg">Chief guest or special guests</span><input type="text" id="f_cg" maxlength="100"></label>
-  <label><span data-i="f_det">A few words about it</span><textarea id="f_det" maxlength="400"></textarea></label>
+  <label><span data-i="f_det">A few words about it</span><textarea id="f_det" maxlength="600"></textarea><span class="cnt" id="f_cnt">0 / 600</span></label>
   <label><span data-i="f_ph">Photos (up to 15, JPG or PNG)</span><input type="file" id="f_ph" accept="image/jpeg,image/png" multiple></label>
+  <div class="phs" id="f_phs" hidden></div><span class="cnt" id="f_phn">0 / 15</span>
   <label class="ck"><input type="checkbox" id="f_ok"><span data-i="f_ok">The people in the photos agree to show them on the group website. *</span></label>
   <p class="err" id="f_err" role="alert"></p>
   <button class="close" type="submit" data-i="f_send" style="margin-top:0">Send to office</button>
@@ -265,19 +316,20 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
   <button class="close" type="button" id="st_x" data-i="close" style="margin-top:0">Close</button>
  </div>
 </div>
+<div class="ov" id="ov3" role="dialog" aria-modal="true" hidden><div class="sheet" id="sh3"></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script>
+<script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 var HI={dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
-m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_blood:'रक्तदान',m_join:'सदस्य बनें',
+m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_biz:'डीजेएसजी व्यवसाय',m_blood:'रक्तदान',m_join:'सदस्य बनें',d_btn:'⚙️ अध्यक्ष स्विच',sw_h:'अध्यक्ष स्विच',sw_p:'बंद करने से केवल छिपता है, कुछ भी मिटता नहीं।',sw_boxes:'पेज के बॉक्स',sw_nx:'अगला कार्यक्रम (बड़ा कार्ड)',sw_up:'आगामी टैब',sw_past:'पिछले टैब',sw_dl:'"दिन शेष" बैज',sw_pd:'प्रोजेक्ट डायरेक्टर पंक्ति',sw_by:'"साझा किया" नाम',sw_wa:'व्हाट्सऐप पर भेजें बटन',sw_cal:'कैलेंडर में जोड़ें बटन',sw_add:'"पिछला कार्यक्रम जोड़ें" बटन (पूर्व अध्यक्ष)',sw_cta:'"होम पर वापस" बटन',sw_set:'सेटिंग',sw_ap:'पूर्व अध्यक्षों के कार्यक्रम को मंज़ूरी चाहिए',sw_x:'जोड़े गए बॉक्स',sw_view:'डेमो: पेज ऐसे देखें',sw_desk:'डेमो: डेस्क',ab_t:'＋ बॉक्स जोड़ें',ab_s:'केवल डेमो · असली साइट में अध्यक्ष डेस्क से बॉक्स जोड़ते हैं',ad_h:'नया बॉक्स जोड़ें',ad_p:'शीर्षक और लिखावट भरें। बटन वैकल्पिक है।',ad_tt:'शीर्षक',ad_tx:'लिखावट',ad_bt:'बटन का नाम (वैकल्पिक)',ad_pl:'कहाँ दिखे',pl1:'टैब के ऊपर',pl2:'सूची के ऊपर',pl3:'सूची के नीचे',pl4:'नीचे के बटनों से पहले',ad_ok:'बॉक्स जोड़ें',ad_need:'शीर्षक और लिखावट भरें।',ad_done:'बॉक्स जोड़ा गया (डेमो)।',x_demo:'नया',sm_tt:'सूचना',sm_tx:'कार्यक्रम में आने वाले परिवार कृपया 2 दिन पहले कार्यालय को बताएँ।',sm_bt:'कार्यालय से संपर्क',nx_k:'अगला कार्यक्रम',ph_rm:'फ़ोटो हटाएँ',wa:'व्हाट्सऐप',cal:'कैलेंडर',t_wa:'व्हाट्सऐप खुल रहा है…',t_cal:'कैलेंडर फ़ाइल सेव हुई। खोलकर अपने फ़ोन के कैलेंडर में जोड़ें।',t_caln:'तारीख तय होने पर कैलेंडर बटन काम करेगा।',w_link:'पूरा विवरण:',t_cald:'डेमो: असली साइट पर यह कार्यक्रम आपके फ़ोन के कैलेंडर में सेव करता है।',all_off:'कार्यक्रम सूची अध्यक्ष ने बंद की है।',
 b_join:'सदस्य बनें',b_home:'होम पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
 d_lbl:'अध्यक्ष स्विच: "साझा किया" नाम दिखाएँ',by:'साझा किया:',byn:'श्री [सदस्य का नाम]',on:'चालू',off:'बंद',d_who:'पेज ऐसे देखें:',w_v:'आगंतुक',w_p:'सदस्य, पूर्व अध्यक्ष (लॉगिन)',add:'＋ पिछला कार्यक्रम जोड़ें',add_n:'यह बटन केवल लॉगिन किए हुए पूर्व अध्यक्षों को दिखता है। लिंक की ज़रूरत नहीं।',wait:'मंज़ूरी की प्रतीक्षा',mine:'कार्यालय की मंज़ूरी तक यह केवल आपको दिखता है।',you:'आप',f_h:'पिछला कार्यक्रम जोड़ें',f_s:'यह मंज़ूरी के लिए कार्यालय को जाता है, फिर पिछले कार्यक्रमों और गैलरी में दिखता है।',f_by:'आपका नाम',f_name:'कार्यक्रम का नाम *',f_year:'वर्ष *',f_mon:'माह',f_place:'स्थान',f_pd:'प्रोजेक्ट डायरेक्टर',f_cg:'मुख्य अतिथि या विशेष अतिथि',f_det:'इसके बारे में कुछ शब्द',f_ph:'फ़ोटो (अधिकतम 15, JPG या PNG)',f_ok:'फ़ोटो में दिख रहे लोग इन्हें ग्रुप की वेबसाइट पर दिखाने से सहमत हैं। *',f_send:'कार्यालय को भेजें',close:'बंद करें',e_name:'कार्यक्रम का नाम लिखें।',e_year:'वर्ष चुनें।',e_ph:'अधिकतम 15 फ़ोटो चुनें।',e_ok:'कृपया सहमति पर टिक करें।',t_sent:'कार्यालय को भेज दिया। मंज़ूरी की प्रतीक्षा।',ns:'याद नहीं',pick:'चुनें',pho_n:'{n} फ़ोटो',d_ap:'अध्यक्ष स्विच: पूर्व अध्यक्षों के लिए मंज़ूरी ज़रूरी',d_st:'अध्यक्ष और सचिव को यह डेस्क में दिखता है',d_stb:'स्टोरेज टाइल खोलें',f_s2:'भेजते ही यह पिछले कार्यक्रमों और गैलरी में दिखता है।',t_live:'जोड़ दिया गया। अब यह सबको दिखता है।',lim:'सीमा: एक कार्यक्रम में 15 फ़ोटो · महीने में 10 कार्यक्रम। इस महीने आपने {n} / 10 जोड़े।',e_lim:'इस महीने की सीमा (10 कार्यक्रम) पूरी हो गई।',pp:'श्री [पूर्व अध्यक्ष]',s_h:'स्टोरेज स्पेस',s_s:'अध्यक्ष डेस्क · होम। नमूना आँकड़े।',s_ok:'ठीक है',s_of:'उपयोग, 15 GB में से (14%)',s_m70:'70% चेतावनी',s_m90:'90% अलर्ट',s_room:'लगभग 50,000 और फ़ोटो की जगह है।',s_where:'जगह कहाँ उपयोग हुई',s_r1:'ग्रुप गैलरी की फ़ोटो',s_r2:'DJSG इंस्टा की फ़ोटो',s_r3:'DJSG इंस्टा के वीडियो',s_r4:'सदस्य और निर्देशिका की फ़ोटो',s_r5:'शुल्क स्क्रीनशॉट, सूचनाएँ, मेल',s_lim:'अपलोड सीमाएँ (अध्यक्ष बदल सकते हैं)',s_l1:'एक कार्यक्रम में फ़ोटो',s_l2:'एक पूर्व अध्यक्ष के कार्यक्रम, प्रति माह',s_l3:'एक सदस्य के इंस्टा पोस्ट, प्रति दिन',s_l4:'एक वीडियो (डिफ़ॉल्ट बंद)',s_l5:'एक सूचना PDF',s_l6:'हर फ़ोटो छोटी की जाती है',s_l6v:'लगभग 0.25 MB',s_al:'जगह भरने पर क्या होता है',s_a1:'70% पर: टाइल नारंगी हो जाती है।',s_a2:'90% पर: टाइल लाल हो जाती है और अध्यक्ष व सचिव को मेल जाता है।',s_a3:'95% पर: नई फ़ोटो और वीडियो अपलोड रुक जाते हैं। टेक्स्ट चलता रहता है।',s_a4:'कुछ भी अपने आप कभी नहीं हटता।',lockd:'स्थान, समय और पूरा विवरण सदस्य लॉगिन के बाद।',t_det2:'असली साइट पर यहाँ पूरा विवरण खुलता है।',eyebrow:'कार्यक्रम',h1:'आगामी और पिछले कार्यक्रम',t_up:'आगामी',t_past:'पिछले',
 n_ev:'नमूना कार्यक्रम। असली कार्यक्रम, तारीख और स्थान कार्यालय डेस्क से जोड़ता है।',
 t_nav:'यह नमूना केवल कार्यक्रम पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',t_det:'पूरा विवरण सदस्य लॉगिन के बाद खुलता है। डेमो में लॉगिन बंद है।',t_pho:'फ़ोटो गैलरी पेज में खुलती हैं।',
 up:'आगामी',done:'संपन्न',pd:'प्रोजेक्ट डायरेक्टर',det:'विवरण देखें',pho:'फ़ोटो देखें',tba:'शीघ्र घोषित होगा',venue:'स्थान',
 tbd:'तारीख<br>शीघ्र',today:'आज',d1:'1 दिन शेष',dn:'{n} दिन शेष',kota:'कोटा'};
-var EN={t_nav:'This sample shows only the Events page.',t_login:'Login is switched off in the demo.',t_det:'Full details open after member login. Login is off in the demo.',t_pho:'Photos open in the Gallery page.',
+var EN={sw_h:'President switches',sw_p:'Switching off only hides. Nothing is deleted.',sw_boxes:'Boxes on this page',sw_nx:'Next programme (big card)',sw_up:'Upcoming tab',sw_past:'Past tab',sw_dl:'"Days left" badge',sw_pd:'Project Director line',sw_by:'"Shared by" name',sw_wa:'Share on WhatsApp button',sw_cal:'Add to calendar button',sw_add:'"Add a past programme" button (past presidents)',sw_cta:'"Back to Home" button',sw_set:'Setting',sw_ap:'Past presidents\' programmes need approval',sw_x:'Added boxes',sw_view:'Demo: see the page as',sw_desk:'Demo: Desk',ad_h:'Add a new box',ad_p:'Fill the title and text. The button is optional.',ad_tt:'Title',ad_tx:'Text',ad_bt:'Button name (optional)',ad_pl:'Where to show',pl1:'Above the tabs',pl2:'Above the list',pl3:'Below the list',pl4:'Before the bottom buttons',ad_ok:'Add the box',ad_need:'Please fill the title and text.',ad_done:'Box added (demo).',x_demo:'New',sm_tt:'Notice',sm_tx:'Families coming to a programme, please tell the office 2 days before.',sm_bt:'Contact the office',nx_k:'Next programme',ph_rm:'Remove photo',w_v:'Visitor',w_p:'Member, past president (logged in)',d_stb:'Open storage tile',wa:'WhatsApp',cal:'Calendar',t_wa:'Opening WhatsApp…',t_cal:'Calendar file saved. Open it to add the programme to your phone calendar.',t_caln:'The calendar button works once the date is fixed.',w_link:'Full details:',t_cald:'Demo: on the real site this saves the programme to your phone calendar.',all_off:'The programme list is switched off by the President.',t_nav:'This sample shows only the Events page.',t_login:'Login is switched off in the demo.',t_det:'Full details open after member login. Login is off in the demo.',t_pho:'Photos open in the Gallery page.',
 f_s:'It goes to the office for approval, then shows in Past and in the Gallery.',t_live:'Added. Everyone can see it now.',lim:'Limit: 15 photos in one programme · 10 programmes a month. You have added {n} of 10 this month.',e_lim:'You have reached this month\'s limit of 10 programmes.',pp:'Mr [Past president]',lockd:'Venue, time and full details after member login.',t_det2:'On the real site the full details open here.',add:'＋ Add a past programme',add_n:'Only past presidents who are logged in see this button. No link is needed.',wait:'Approval awaited',mine:'Only you see this until the office approves it.',you:'you',e_name:'Please write the programme name.',e_year:'Please choose the year.',e_ph:'Please choose 15 photos or fewer.',e_ok:'Please tick the box to agree.',t_sent:'Sent to the office. Approval awaited.',ns:'Not sure',pick:'Choose',pho_n:'{n} photos',by:'Shared by',byn:'Mr [Member name]',on:'ON',off:'OFF',up:'Upcoming',done:'Completed',pd:'Project Director',det:'View details',pho:'View photos',tba:'To be announced',venue:'Venue',
 tbd:'Date<br>soon',today:'Today',d1:'1 day left',dn:'{n} days left',kota:'Kota'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -290,51 +342,119 @@ var EV=[
 {u:0,by:1,ym:[2026,8],en:'Paryushan Parv',hi:'पर्युषण पर्व',sen:'Das Lakshan programmes and Kshamavani.',shi:'दस लक्षण कार्यक्रम और क्षमावाणी।'},
 {u:0,ym:[2026,2],en:'Mahavir Jayanti',hi:'महावीर जयंती',sen:'Procession and family programme.',shi:'शोभायात्रा और पारिवारिक कार्यक्रम।'},
 {u:0,by:1,ym:[2025,null],en:'Deepawali Milan 2025',hi:'दीपावली मिलन 2025',sen:'Family get-together with dinner.',shi:'भोजन के साथ पारिवारिक मिलन।'}];
-var lang='en',up=true,byOn=true,pp=false,apOn=false,tt;
+var lang='en',up=true,byOn=true,pp=true,apOn=false,tt,SW={nx:true,up:true,past:true,dl:true,pd:true,wa:true,cal:true,add:true,cta:true},XB=[],xid=0;
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function left(d){var a=new Date(d+'T00:00:00'),n=new Date();n.setHours(0,0,0,0);var x=Math.round((a-n)/864e5);return x<0?'':x===0?T('today'):x===1?T('d1'):T('dn').replace('{n}',x)}
 function dt(e){var M=MON[lang];
  if(e.d){var p=e.d.split('-');return '<div class="dt"><b>'+(+p[2])+'</b><span>'+M[+p[1]-1]+'</span><small>'+p[0]+'</small></div>'}
  if(e.ym)return '<div class="dt past">'+(e.ym[1]!=null?'<span>'+M[e.ym[1]]+'</span>':'')+'<b>'+(e.ym[0]||'?')+'</b></div>';
  return '<div class="dt tbd"><b>'+T('tbd')+'</b></div>'}
-function card(e){var l=e.d?left(e.d):'',lock=e.u&&!pp;
- return '<article class="card ev">'+dt(e)+'<div class="ei"><div class="chips">'+(e.wait?'<span class="chip wait">'+T('wait')+'</span>':'<span class="chip'+(e.u?'':' done')+'">'+T(e.u?'up':'done')+'</span>')+(l?'<span class="chip hot">'+l+'</span>':'')+'</div><h3>'+esc(e[lang])+'</h3>'+(lock?'<div class="meta"><span>🔒 '+T('lockd')+'</span></div>':'<div class="meta"><span>'+esc(lang==='hi'?e.shi:e.sen)+'</span><span>📍 '+(e.u?T('venue')+': '+T('tba'):esc(e.pl||T('kota')))+(e.np?' · 📷 '+T('pho_n').replace('{n}',e.np):'')+(e.tm?' · 🕕 '+e.tm:'')+'</span></div><div class="pd"><span>'+T('pd')+'</span><b>'+(e.pdn?esc(e.pdn):T('tba'))+'</b></div>')+(e.wait?'<div class="by">🔒 '+T('mine')+'</div>':e.by&&byOn?'<div class="by">📷 '+T('by')+' <b>'+T(e.mine?'pp':'byn')+'</b></div>':'')+'</div>'+(e.wait?'':'<div class="act"><button type="button" class="btn'+(e.u?'':' ghost')+'" data-t="'+(e.u?(pp?'t_det2':'t_det'):'t_pho')+'">'+T(e.u?'det':'pho')+'</button></div>')+'</article>'}
+function lines(e,lock){
+ if(lock)return '<div class="meta"><span>🔒 '+T('lockd')+'</span></div>';
+ var pdOn=SW.pd&&(e.u||e.pdn);
+ return '<div class="meta"><span>'+esc(lang==='hi'?e.shi:e.sen)+'</span><span>📍 '+(e.u?T('venue')+': '+T('tba'):esc(e.pl||T('kota')))+(e.np?' · 📷 '+T('pho_n').replace('{n}',e.np):'')+(e.tm?' · 🕕 '+e.tm:'')+'</span></div>'+(pdOn?'<div class="pd"><span>'+T('pd')+'</span><b>'+(e.pdn?esc(e.pdn):T('tba'))+'</b></div>':'')}
+function acts(e,i){
+ if(e.wait)return '';
+ var h='<div class="act"><button type="button" class="btn'+(e.u?'':' ghost')+'" data-t="'+(e.u?(pp?'t_det2':'t_det'):'t_pho')+'">'+T(e.u?'det':'pho')+'</button>';
+ var cOn=SW.cal&&!!e.d;if(e.u&&(SW.wa||cOn)){h+='<div class="row2"'+(SW.wa&&cOn?'':' style="grid-template-columns:1fr"')+'>'+(SW.wa?'<a class="sbtn wa" href="'+waUrl(i)+'" target="_blank" rel="noopener" data-wa="'+i+'">📲 '+T('wa')+'</a>':'')+(cOn?'<button type="button" class="sbtn" data-cal="'+i+'">📅 '+T('cal')+'</button>':'')+'</div>'}
+ return h+'</div>'}
+function card(e){var i=EV.indexOf(e),l=e.d&&SW.dl?left(e.d):'',lock=e.u&&!pp;
+ return '<article class="card ev">'+dt(e)+'<div class="ei"><div class="chips">'+(e.wait?'<span class="chip wait">'+T('wait')+'</span>':'<span class="chip'+(e.u?'':' done')+'">'+T(e.u?'up':'done')+'</span>')+(l?'<span class="chip hot">'+l+'</span>':'')+'</div><h3>'+esc(e[lang])+'</h3>'+lines(e,lock)+(e.wait?'<div class="by">🔒 '+T('mine')+'</div>':e.by&&byOn?'<div class="by">📷 '+T('by')+' <b>'+T(e.mine?'pp':'byn')+'</b></div>':'')+'</div>'+acts(e,i)+'</article>'}
+function nextEv(){var u=EV.filter(function(e){return e.u}),d=u.filter(function(e){return e.d&&left(e.d)!==''}).sort(function(a,b){return a.d<b.d?-1:1});return d[0]||u[0]}
+function drawNext(){var b=$('#bx_next'),e=nextEv();b.hidden=!(SW.nx&&e);if(b.hidden){b.innerHTML='';return}var i=EV.indexOf(e),l=e.d&&SW.dl?left(e.d):'',lock=!pp;
+ b.innerHTML=dt(e)+'<div class="ei"><span class="k">⭐ '+T('nx_k')+'</span><h2 id="nxh">'+esc(e[lang])+'</h2>'+(l?'<div class="chips"><span class="chip hot">'+l+'</span></div>':'')+(lock?'<div class="meta"><span>🔒 '+T('lockd')+'</span></div>':'<div class="meta"><span>'+esc(lang==='hi'?e.shi:e.sen)+'</span></div>')+'</div>'+acts(e,i)}
+function fmtD(e){if(!e.d)return T('tbd').replace('<br>',' ');var p=e.d.split('-');return (+p[2])+' '+MON[lang][+p[1]-1]+' '+p[0]}
+function waUrl(i){var e=EV[i],txt=e[lang]+' · '+fmtD(e)+(e.tm?' · '+e.tm:'')+'\n'+T('f_name')+'\n'+T('w_link')+' https://djsgkotamain.in/events.html';return 'https://wa.me/?text='+encodeURIComponent(txt)}
+function share(i){toast(T('t_wa'))}
+var REAL=location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+function addCal(i){var e=EV[i];if(!e.d){toast(T('t_caln'));return}
+ if(!REAL){toast(T('t_cald'));return}
+ var d=e.d.replace(/-/g,''),st,en2;
+ if(e.tm){var m=e.tm.match(/(\d+):(\d+)\s*(AM|PM)/i),h=+m[1]%12+(/pm/i.test(m[3])?12:0);st='DTSTART:'+d+'T'+('0'+h).slice(-2)+m[2]+'00';en2='DTEND:'+d+'T'+('0'+Math.min(h+3,23)).slice(-2)+m[2]+'00'}
+ else{var n=new Date(e.d+'T00:00:00');n.setDate(n.getDate()+1);st='DTSTART;VALUE=DATE:'+d;en2='DTEND;VALUE=DATE:'+n.toISOString().slice(0,10).replace(/-/g,'')}
+ var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//DJSG Kota Main//Events//EN','BEGIN:VEVENT','UID:djsg-'+d+'-'+i+'@djsgkotamain.in',st,en2,'SUMMARY:'+e.en+' · DJSG Kota Main','DESCRIPTION:'+e.sen.replace(/[,;]/g,' '),'LOCATION:Kota','END:VEVENT','END:VCALENDAR'].join('\r\n');
+ try{var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='DJSG-'+e.en.replace(/\W+/g,'-')+'.ics';document.body.appendChild(a);a.click();a.remove()}catch(x){}
+ toast(T('t_cal'))}
+function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function sel(){var y=$('#f_year'),m=$('#f_mon'),yv=y.value,mv=m.value,h='<option value="">'+T('pick')+'</option>';for(var i=2026;i>=1994;i--)h+='<option>'+i+'</option>';y.innerHTML=h+'<option value="ns">'+T('ns')+'</option>';y.value=yv;m.innerHTML='<option value="">'+T('ns')+'</option>'+MON[lang].map(function(n,i){return '<option value="'+i+'">'+n+'</option>'}).join('');m.value=mv}
 function paint(){
  document.documentElement.lang=lang;
  $('#f_sub').dataset.i=apOn?'f_s':'f_s2';
  $$('[data-i]').forEach(function(e){e.innerHTML=T(e.dataset.i)});
- var as=$('#apsw');as.textContent=T(apOn?'on':'off');as.setAttribute('aria-pressed',apOn);
  $('#f_lim').textContent=T('lim').replace('{n}',EV.filter(function(e){return e.mine}).length);
  $('#l_hi').setAttribute('aria-pressed',lang==='hi');$('#l_en').setAttribute('aria-pressed',lang==='en');
+ if(!SW.up&&up)up=false;if(!SW.past&&!up)up=true;
+ var any=SW.up||SW.past;
+ $('#tu').hidden=!SW.up;$('#tp').hidden=!SW.past;$('#bx_tabs').hidden=!any;
  $('#tu').setAttribute('aria-selected',up);$('#tp').setAttribute('aria-selected',!up);
- $('#cu').textContent=EV.filter(function(e){return e.u}).length;$('#cp').textContent=EV.filter(function(e){return !e.u}).length;
- var bs=$('#bysw');bs.textContent=T(byOn?'on':'off');bs.setAttribute('aria-pressed',byOn);
- $('#w_v').setAttribute('aria-pressed',!pp);$('#w_p').setAttribute('aria-pressed',pp);sel();
+ $('#cu').textContent=EV.filter(function(e){return e.u}).length;
  $('#cp').textContent=EV.filter(function(e){return !e.u&&(pp||!e.wait)}).length;
- $('#evl').innerHTML=(!up&&pp?'<div class="card addp"><button type="button" class="btn" id="addb">'+T('add')+'</button><p>'+T('add_n')+'</p></div>':'')+EV.filter(function(e){return !!e.u===up&&(pp||!e.wait)}).map(card).join('');
+ sel();drawNext();
+ $('#evl').innerHTML=!any?'<div class="card nooff">'+T('all_off')+'</div>':(!up&&pp&&SW.add?'<div class="card addp"><button type="button" class="btn" id="addb">'+T('add')+'</button><p>'+T('add_n')+'</p></div>':'')+EV.filter(function(e){return !!e.u===up&&(pp||!e.wait)}).map(card).join('');
+ $('#bx_cta').hidden=!SW.cta;
+ drawX();
+}
+var ANCH={pl1:'#bx_tabs',pl2:'#anc_list',pl3:'#anc_after',pl4:'#anc_cta'};
+function drawX(){
+ $$('.xbox').forEach(function(e){e.remove()});
+ XB.forEach(function(b){if(!b.on)return;var el=document.createElement('section');el.className='card xbox';
+  var tt2=b.k?T(b.k+'tt'):esc(b.t),tx=b.k?T(b.k+'tx'):esc(b.x),bt=b.k?T(b.k+'bt'):esc(b.b);
+  el.innerHTML='<span class="xdemo">'+T('x_demo')+'</span><h2>'+tt2+'</h2><p>'+tx+'</p>'+(bt?'<button type="button" class="xbtn" data-t="t_nav">'+bt+'</button>':'');
+  var a=$(ANCH[b.p]);a.parentNode.insertBefore(el,a);});
 }
 $('#l_hi').addEventListener('click',function(){lang='hi';paint()});
 $('#l_en').addEventListener('click',function(){lang='en';paint()});
-$('#bysw').addEventListener('click',function(){byOn=!byOn;up=false;paint()});
-$('#apsw').addEventListener('click',function(){apOn=!apOn;paint()});
-var ov2=$('#ov2');$('#stb').addEventListener('click',function(){ov2.hidden=false;$('#st_x').focus()});$('#st_x').addEventListener('click',function(){ov2.hidden=true});ov2.addEventListener('click',function(e){if(e.target===ov2)ov2.hidden=true});
-$('#w_v').addEventListener('click',function(){pp=false;paint()});
-$('#w_p').addEventListener('click',function(){pp=true;paint()});
+var ov2=$('#ov2');$('#st_x').addEventListener('click',function(){ov2.hidden=true});ov2.addEventListener('click',function(e){if(e.target===ov2)ov2.hidden=true});
+var ov3=$('#ov3'),sh3=$('#sh3');
+function open3(h){sh3.innerHTML=h;ov3.hidden=false}
+function hide3(){ov3.hidden=true}
+ov3.addEventListener('click',function(e){if(e.target===ov3)hide3()});
+function swRow(k,on,lab){return '<button type="button" class="sw" data-sw="'+k+'" aria-pressed="'+on+'"><span>'+T(lab)+'</span><i></i></button>'}
+function swSheet(){
+ var h='<div class="sh"><div><h2>'+T('sw_h')+'</h2><p>'+T('sw_p')+'</p></div></div><p class="swh">'+T('sw_boxes')+'</p>'+
+ swRow('nx',SW.nx,'sw_nx')+swRow('up',SW.up,'sw_up')+swRow('past',SW.past,'sw_past')+swRow('dl',SW.dl,'sw_dl')+swRow('pd',SW.pd,'sw_pd')+swRow('by',byOn,'sw_by')+swRow('wa',SW.wa,'sw_wa')+swRow('cal',SW.cal,'sw_cal')+swRow('add',SW.add,'sw_add')+swRow('cta',SW.cta,'sw_cta');
+ if(XB.length){h+='<p class="swh">'+T('sw_x')+'</p>';XB.forEach(function(b,i){h+='<button type="button" class="sw" data-sx="'+i+'" aria-pressed="'+b.on+'"><span>'+(b.k?T(b.k+'tt'):esc(b.t))+'</span><i></i></button>'})}
+ h+='<button class="close alt" type="button" id="sw_add" style="margin-top:6px">'+T('ab_t')+'</button>';
+ h+='<p class="swh">'+T('sw_set')+'</p>'+swRow('ap',apOn,'sw_ap');
+ h+='<p class="swh">'+T('sw_view')+'</p><div class="seg"><button type="button" data-pv="0" aria-pressed="'+!pp+'">'+T('w_v')+'</button><button type="button" data-pv="1" aria-pressed="'+pp+'">'+T('w_p')+'</button></div>';
+ h+='<p class="swh">'+T('sw_desk')+'</p><button class="close alt" type="button" id="sw_st" style="margin-top:0">'+T('d_stb')+'</button>';
+ h+='<button class="close" type="button" data-x>'+T('close')+'</button>';open3(h)}
+sh3.addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;
+ if(b.hasAttribute('data-x')){hide3();return}
+ if(b.dataset.sw){var k=b.dataset.sw;if(k==='by')byOn=!byOn;else if(k==='ap')apOn=!apOn;else SW[k]=!SW[k];paint();swSheet();return}
+ if(b.dataset.sx){var x=XB[+b.dataset.sx];x.on=!x.on;paint();swSheet();return}
+ if(b.dataset.pv){pp=b.dataset.pv==='1';paint();swSheet();return}
+ if(b.id==='sw_st'){hide3();ov2.hidden=false;$('#st_x').focus();return}
+ if(b.id==='sw_add'){addSheet();return}
+ if(b.id==='ad_ok'){var t=$('#ad_tt').value.trim(),x2=$('#ad_tx').value.trim();if(!t||!x2){$('#ad_err').textContent=T('ad_need');return}
+  XB.push({id:++xid,t:t,x:x2,b:$('#ad_bt').value.trim(),p:$('#ad_pl').value,on:true});hide3();paint();toast(T('ad_done'));return}
+});
+function addSheet(){var o='';['pl1','pl2','pl3','pl4'].forEach(function(p){o+='<option value="'+p+'">'+T(p)+'</option>'});
+ open3('<div class="sh"><div><h2>'+T('ad_h')+'</h2><p>'+T('ad_p')+'</p></div></div><div class="fl"><label for="ad_tt">'+T('ad_tt')+'</label><input id="ad_tt" maxlength="60" value="'+esc(T('sm_tt'))+'"><label for="ad_tx">'+T('ad_tx')+'</label><textarea id="ad_tx" maxlength="400">'+esc(T('sm_tx'))+'</textarea><label for="ad_bt">'+T('ad_bt')+'</label><input id="ad_bt" maxlength="30" value="'+esc(T('sm_bt'))+'"><label for="ad_pl">'+T('ad_pl')+'</label><select id="ad_pl">'+o+'</select></div><p class="note" id="ad_err" style="color:#C62828"></p><button class="close" type="button" id="ad_ok">'+T('ad_ok')+'</button><button class="close alt" type="button" data-x>'+T('close')+'</button>')}
+$('#dsw').addEventListener('click',swSheet);
+$('#addbox').addEventListener('click',addSheet);
 var ov=$('#ov');function hide(){ov.hidden=true}
-document.addEventListener('click',function(ev){if(ev.target.closest('#addb')){$('#f_err').textContent='';ov.hidden=false;$('#f_name').focus()}});
+var PH=[];
+function drawPh(){var g=$('#f_phs');g.hidden=!PH.length;g.innerHTML=PH.map(function(p,i){return '<span class="ph" style="background-image:url('+p.u+')"><button type="button" data-rm="'+i+'" aria-label="'+T('ph_rm')+'">×</button></span>'}).join('');$('#f_phn').textContent=PH.length+' / 15'}
+$('#f_ph').addEventListener('change',function(){var f=[].slice.call(this.files),er='';f.forEach(function(x){if(PH.length<15)PH.push({f:x,u:URL.createObjectURL(x)});else er='e_ph'});this.value='';$('#f_err').textContent=er?T(er):'';drawPh()});
+$('#f_phs').addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;var p=PH.splice(+b.dataset.rm,1)[0];try{URL.revokeObjectURL(p.u)}catch(x){}$('#f_err').textContent='';drawPh()});
+$('#f_det').addEventListener('input',function(){$('#f_cnt').textContent=this.value.length+' / 600'});
+document.addEventListener('click',function(ev){if(ev.target.closest('#addb')){$('#f_err').textContent='';ov.hidden=false;$('#f_name').focus()}
+ var w=ev.target.closest('[data-wa]');if(w){share(+w.dataset.wa);return}
+ var c=ev.target.closest('[data-cal]');if(c){addCal(+c.dataset.cal);return}});
 $('#f_x').addEventListener('click',hide);ov.addEventListener('click',function(e){if(e.target===ov)hide()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){hide();ov2.hidden=true}});
-$('#frm').addEventListener('submit',function(ev){ev.preventDefault();var n=$('#f_name').value.trim(),y=$('#f_year').value,m=$('#f_mon').value,np=$('#f_ph').files.length,er='';
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){hide();ov2.hidden=true;hide3()}});
+$('#frm').addEventListener('submit',function(ev){ev.preventDefault();var n=$('#f_name').value.trim(),y=$('#f_year').value,m=$('#f_mon').value,np=PH.length,er='';
  if(EV.filter(function(e){return e.mine}).length>=10)er='e_lim';else if(!n)er='e_name';else if(!y)er='e_year';else if(np>15)er='e_ph';else if(!$('#f_ok').checked)er='e_ok';
  if(er){$('#f_err').textContent=T(er);return}
  n=n.replace(/\s+/g,' ');var d=$('#f_det').value.trim();
  EV.splice(EV.filter(function(e){return e.u}).length,0,{u:0,mine:1,by:1,wait:apOn?1:0,ym:[y==='ns'?null:+y,m===''?null:+m],en:n,hi:n,sen:d,shi:d,pl:$('#f_place').value.trim(),pdn:$('#f_pd').value.trim(),np:np});
- this.reset();hide();up=false;paint();var t=$('#toast');t.textContent=T(apOn?'t_sent':'t_live');t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)});
+ this.reset();PH=[];drawPh();$('#f_cnt').textContent='0 / 600';hide();up=false;paint();toast(T(apOn?'t_sent':'t_live'))});
 $('#tu').addEventListener('click',function(){up=true;paint()});
 $('#tp').addEventListener('click',function(){up=false;paint()});
-document.addEventListener('click',function(ev){var b=ev.target.closest('[data-t]');if(!b)return;var t=$('#toast');t.textContent=T(b.dataset.t);t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)});
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-t]');if(!b)return;toast(T(b.dataset.t))});
 paint();
 })();
 </script>
@@ -344,7 +464,7 @@ paint();
 (function(){
 var h=location.hostname;
 if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
-var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
 var here=location.pathname.split('/').pop()||'index.html';
 document.addEventListener('click',function(e){
  var b=e.target.closest&&e.target.closest('button,a');if(!b)return;

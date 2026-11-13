@@ -270,6 +270,7 @@ h1{font-size:clamp(24px,6.6vw,38px);letter-spacing:-.8px;margin-top:2px}
  <div class="title"><div class="eyebrow" data-i="eyebrow">Members only · Session 2026</div><h1 data-i="h1">Member Directory</h1></div>
 
  <main id="main"></main>
+ <div class="cta" style="display:grid;width:100%;max-width:440px;margin:4px auto 0"><button class="btn ghost" type="button" data-t="t_nav" style="width:100%"><span aria-hidden="true">⌂</span> <span data-i="b_home">Back to Home</span></button></div>
 
  <footer class="foot"><b data-i="f_name">Digambar Jain Social Group, Kota Main</b><span data-i="f_line">Kota · djsgkotamain2003@gmail.com</span></footer>
  <div class="flag"></div>
@@ -295,7 +296,7 @@ eyebrow:'Members only · Session 2026',h1:'Member Directory',f_name:'Digambar Ja
 login:'Member Login',loggedin:'Logged in',
 v_book:'Book view',v_bookS:'One family a page',v_comp:'Compact book',v_compS:'Two a page',v_list:'List view',v_listS:'Quick look',
 search:'Search name or business',noRes:'No member found',bdays:'Birthdays & Anniversaries',export:'Export for print',allBiz:'All',
-lk_t:'Members only',lk_p:'The Directory opens after Member Login. Visitors cannot see names, photos or phone numbers.',lk_in:'Inside: family pages with photos, business and phone · Office Bearers page · contents A–Z',lk_join:'Become a member',
+b_home:'Back to Home',lk_t:'Members only',lk_p:'The Directory opens after Member Login. Visitors cannot see names, photos or phone numbers.',lk_in:'Inside: family pages with photos, business and phone · Office Bearers page · contents A–Z',lk_join:'Become a member',
 wt_t:'Opens after approval',wt_p:'Your membership is waiting for approval. The Directory opens as soon as the office approves.',wt_c:'Complete my details',wt_pc:'Your details: 60% done',wt_ap:'Office approves (demo)',
 cv_g:'Digambar Jain Social Group',cv_t:'Member Directory',cv_w:'For members only - not for public sharing',
 bp_t:'Office Bearers',President:'President',Secretary:'Secretary',Treasurer:'Treasurer',
@@ -317,7 +318,7 @@ eyebrow:'केवल सदस्यों के लिए · सत्र 202
 login:'सदस्य लॉगिन',loggedin:'लॉगिन है',
 v_book:'पुस्तक रूप',v_bookS:'हर पृष्ठ पर एक परिवार',v_comp:'छोटी पुस्तक',v_compS:'हर पृष्ठ पर दो',v_list:'सूची रूप',v_listS:'जल्दी देखें',
 search:'नाम या व्यवसाय खोजें',noRes:'कोई सदस्य नहीं मिला',bdays:'जन्मदिन व वर्षगांठ',export:'छपाई के लिए फ़ाइल',allBiz:'सभी',
-lk_t:'केवल सदस्यों के लिए',lk_p:'निर्देशिका सदस्य लॉगिन के बाद खुलती है। आगंतुक नाम, फ़ोटो या मोबाइल नंबर नहीं देख सकते।',lk_in:'अंदर: फ़ोटो, व्यवसाय और मोबाइल सहित परिवार पृष्ठ · पदाधिकारी पृष्ठ · अ–ज्ञ विषय-सूची',lk_join:'सदस्य बनें',
+b_home:'होम पर वापस',lk_t:'केवल सदस्यों के लिए',lk_p:'निर्देशिका सदस्य लॉगिन के बाद खुलती है। आगंतुक नाम, फ़ोटो या मोबाइल नंबर नहीं देख सकते।',lk_in:'अंदर: फ़ोटो, व्यवसाय और मोबाइल सहित परिवार पृष्ठ · पदाधिकारी पृष्ठ · अ–ज्ञ विषय-सूची',lk_join:'सदस्य बनें',
 wt_t:'स्वीकृति के बाद खुलेगी',wt_p:'आपकी सदस्यता स्वीकृति की प्रतीक्षा में है। कार्यालय की स्वीकृति मिलते ही निर्देशिका खुल जाएगी।',wt_c:'मेरा विवरण पूरा करें',wt_pc:'आपका विवरण: 60% पूरा',wt_ap:'कार्यालय स्वीकृति (डेमो)',
 cv_g:'दिगम्बर जैन सोशल ग्रुप',cv_t:'सदस्य निर्देशिका',cv_w:'केवल सदस्यों के लिए - सार्वजनिक रूप से साझा न करें',
 bp_t:'पदाधिकारी',President:'अध्यक्ष',Secretary:'सचिव',Treasurer:'कोषाध्यक्ष',
@@ -425,7 +426,7 @@ function tools(){var vs=[['book','v_book','v_bookS'],['comp','v_comp','v_compS']
  h+='<a class="chipb" href="https://claude.ai/artifact/EUejteAU8AMHwKBk3MCsKw">🎂 '+t('bdays')+'</a>';
  if(ROLE==='pres')h+='<button type="button" class="chipb pr" id="exb">🖨 '+t('export')+'</button>';
  return h+'</div>'+chips()+'</div>'}
-function lockV(){return '<section class="lock"><div class="big">🔒</div><h2>'+t('lk_t')+'</h2><p>'+t('lk_p')+'</p><p class="note">'+t('lk_in')+'</p><div class="row2" style="justify-content:center"><button type="button" class="btn" data-t="t_login">'+t('login')+'</button><button type="button" class="btn ghost" data-t="t_nav">🤝 '+t('lk_join')+'</button></div></section>'}
+function lockV(){return '<section class="lock"><div class="big">🔒</div><h2>'+t('lk_t')+'</h2><p>'+t('lk_p')+'</p><p class="note">'+t('lk_in')+'</p><div class="row2" style="justify-content:center"><button type="button" class="btn" data-t="t_login">'+t('login')+'</button></div></section>'}
 function waitV(){return '<section class="lock"><div class="big">⏳</div><h2>'+t('wt_t')+'</h2><p>'+t('wt_p')+'</p><div class="bar"><i></i></div><p class="note">'+t('wt_pc')+'</p><div class="row2" style="justify-content:center"><button type="button" class="btn" data-t="t_det">'+t('wt_c')+'</button><button type="button" class="btn ghost" id="approve">✔ '+t('wt_ap')+'</button></div></section>'}
 function draw(){
  document.documentElement.lang=LANG;
@@ -493,6 +494,21 @@ $('#d_hideall').onchange=function(){HIDEALL=this.checked;draw()};
 $('#d_hideone').onchange=function(){HIDEONE=this.checked;draw()};
 wide.addEventListener&&wide.addEventListener('change',function(){draw()});
 draw();
+})();
+</script>
+<script>
+/* Demo links between the new-look pages. They work on the GitHub demo (github.io) and the real site; inside Claude each page keeps its own note. */
+(function(){
+var h=location.hostname;
+if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var here=location.pathname.split('/').pop()||'index.html';
+document.addEventListener('click',function(e){
+ var b=e.target.closest&&e.target.closest('button,a');if(!b)return;
+ var k=b.getAttribute('data-i');if(!M[k]){var c=b.querySelector('[data-i]');k=c&&c.getAttribute('data-i')}
+ var u=M[k];if(!u||u===here)return;
+ e.stopPropagation();e.preventDefault();location.href=u;
+},true);
 })();
 </script>
 </body></html>

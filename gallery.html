@@ -14,10 +14,11 @@
 --disp:Sora,"Noto Sans Devanagari",system-ui,sans-serif;--body:Inter,"Noto Sans Devanagari",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:var(--bg);overflow-x:hidden}
+html{background:linear-gradient(165deg,var(--bg) 0%,var(--bg2) 45%,var(--bg3) 100%);min-height:100%}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:transparent;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
 :focus-visible{outline:3px solid var(--a2);outline-offset:2px}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(165deg,var(--bg) 0%,var(--bg2) 55%,var(--bg3) 100%)}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;animation:drift 20s ease-in-out infinite alternate}
 .b1{width:60vmax;height:60vmax;left:-25vmax;top:-25vmax;background:var(--a1)}
 .b2{width:50vmax;height:50vmax;right:-22vmax;top:30vh;background:var(--a3);animation-delay:-7s}
@@ -187,12 +188,44 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 .lbn .close{margin-top:10px;padding:12px 4px;font-size:13.5px}
 .fx{position:fixed;inset:0;width:100%;height:100%;z-index:15;pointer-events:none}
 @media(min-width:760px){.mas{columns:3}.top6 .pic{width:150px;height:150px}.albs{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}.alb .cv{height:140px}.addc{flex-direction:row;text-align:left;align-items:center;justify-content:space-between}.addc .btn{padding-inline:26px}}
+/* 13 Nov: same as About (demo bar, switches, add a box, computer menu on one line) */
+.demobar{position:relative;z-index:2;background:var(--demo);color:var(--demo-ink)}
+.demobar .in{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-block:7px;font-size:12px}
+.demobar .dl{font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--demo-hi);font-size:10px}
+.demobar button{padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--demo-ink);font-weight:600}
+.xbox h2{margin-bottom:6px}.xbox p{margin:0}
+.xbox .xbtn{display:inline-block;margin-top:10px;padding:9px 16px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:13px;box-shadow:0 3px 0 var(--btn-edge)}
+.xbox .xdemo{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--demo);color:#fff}
+.addbox{width:100%;padding:14px;border-radius:22px;border:2px dashed rgba(163,18,58,.45);background:rgba(255,255,255,.35);color:var(--a1);font-weight:700;font-size:14px;text-align:center}
+.addbox small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);margin-top:2px}
+.sw{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--line);margin-bottom:6px;font-size:14px;width:100%;text-align:left}
+.sw span{flex:1}
+.sw i{flex:none;width:44px;height:26px;border-radius:13px;background:#cdbfc8;position:relative;transition:background .2s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.sw[aria-pressed="true"] i{background:#1E9E50}.sw[aria-pressed="true"] i::after{left:21px}
+.swh{margin:12px 0 6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--a1)}
+.seg{display:flex;gap:6px;margin-bottom:6px}.seg button{flex:1;padding:10px 8px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:transparent;box-shadow:0 3px 0 var(--btn-edge)}
+.fl{display:grid;gap:8px;margin-bottom:6px}
+.fl label{font-size:12.5px;font-weight:700;color:var(--muted)}
+.fl input,.fl textarea,.fl select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border-radius:12px;border:1px solid #e3d3dc;background:#fff;color:var(--ink)}
+.fl textarea{min-height:80px;resize:vertical}
+.nooff{padding:14px;text-align:center;font-size:14px;color:var(--muted)}
+.lbn.two{grid-template-columns:1fr 1fr}
+@media(min-width:760px){
+ .nav{flex-wrap:wrap;justify-content:center;border-radius:26px}.nav button{padding:8px 9px;font-size:12.5px}
+}
 /* narrow-phone header fix (Kota Main no longer touches Member Login) */
 @media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
 @media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<div class="demobar"><div class="wrap in"><span class="dl">Demo only</span><button type="button" id="dsw" data-i="d_btn">⚙️ President switches</button></div></div>
 
 <div class="wrap page">
  <div class="flag"></div>
@@ -210,19 +243,20 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
  <div class="title"><div class="eyebrow" data-i="eyebrow">Gallery</div><h1 data-i="h1">Memories of our group</h1></div>
 
- <div class="tabs" role="tablist" aria-label="Gallery">
+ <div class="tabs" role="tablist" aria-label="Gallery" id="bx_tabs">
   <button type="button" role="tab" data-tab="ev" data-i="t_ev">Event photos</button>
   <button type="button" role="tab" data-tab="gen" data-i="t_gen">General photos</button>
   <button type="button" role="tab" data-tab="biz" data-i="t_biz">Business Showcase</button>
  </div>
 
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_who">See the page as</span><button type="button" id="w_v" aria-pressed="true" data-i="w_v">Visitor</button><button type="button" id="w_m" aria-pressed="false" data-i="w_m">Member (logged in)</button></div>
 
+ <div id="anc_list" hidden></div>
+ <div id="goff" class="card nooff" data-i="all_off" hidden>The Gallery is switched off by the President.</div>
  <div id="glock" class="card lockc" hidden><span class="lk" aria-hidden="true">🔒</span><h2 data-i="lk_h">General photos are for members</h2><p data-i="lk_p">Please log in to see these photos.</p><button type="button" class="btn" data-t="t_login" data-i="login2">Member Login</button></div>
 
  <div id="ghome" class="sec">
-  <div><span class="lbl" data-i="l_year">Our journey, year by year</span><div class="chips years" id="years"></div></div>
-  <div><span class="lbl" data-i="l_alb">Jump to an album</span><div class="chips" id="chips"></div></div>
+  <div id="bx_yrs"><span class="lbl" data-i="l_year">Our journey, year by year</span><div class="chips years" id="years"></div></div>
+  <div id="bx_jump"><span class="lbl" data-i="l_alb">Jump to an album</span><div class="chips" id="chips"></div></div>
   <div id="gtop" class="sec"></div>
   <div class="gh"><h2 data-i="h_albs">Albums</h2><span id="albn"></span></div>
   <div class="albs" id="albs"></div>
@@ -230,9 +264,8 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
  <div id="gview" class="sec" hidden>
   <div class="band" id="band"></div>
-  <div class="demo"><span class="dl">Demo only</span><span data-i="d_fx">Effects switch (President Desk)</span><button type="button" id="fxsw" aria-pressed="true">ON</button></div>
   <div class="mas" id="mas"></div>
-  <p class="note" style="text-align:center" data-i="n_like">Tap ♡ to like. Double-tap a photo also likes it. Tap once to open it big.</p>
+  <p class="note" style="text-align:center" id="n_like" data-i="n_like">Tap ♡ to like. Double-tap a photo also likes it. Tap once to open it big.</p>
  </div>
 
  <div id="gbiz" class="sec" hidden>
@@ -240,13 +273,15 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
   <div class="biz" id="bizl"></div>
  </div>
 
- <section class="card addc">
+ <div id="anc_after" hidden></div>
+ <section class="card addc" id="bx_add">
   <div><h2 data-i="add_h">Add your photo or business</h2><p data-i="add_p">Members log in and add photos from the app or the website. A photo shows to everyone after approval.</p></div>
   <button type="button" class="btn" data-t="t_login" data-i="login2">Member Login</button>
  </section>
  <p class="note" style="text-align:center" data-i="n_g">Sample pictures and sample programmes. Real photos come after go-live.</p>
- <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
+ <div id="anc_cta" hidden></div>
+ <button class="addbox" type="button" id="addbox"><span data-i="ab_t">＋ Add a box</span><small data-i="ab_s">Demo only · in the real site the President adds boxes from the Desk</small></button>
+ <div class="cta" id="bx_cta">
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
 
@@ -265,12 +300,13 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
   <button class="close" type="button" id="lbx" data-i="close">Close</button>
  </div>
 </div>
+<div class="ov" id="ov3" role="dialog" aria-modal="true" hidden><div class="sheet" id="sh3"></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script>
+<script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
-var HI={dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
-m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_blood:'रक्तदान',m_join:'सदस्य बनें',
+var HI={vb_p:'सदस्यों के व्यवसाय देखने के लिए कृपया लॉगिन करें।',vb_h:'व्यवसाय दर्शन केवल सदस्यों के लिए है',sw_vis:'आगंतुक (बिना लॉगिन)',sw_vall:'आगंतुकों को फ़ोटो दिखाएँ (मुख्य स्विच)',sw_vev:'आगंतुकों को कार्यक्रमों की फ़ोटो',sw_vgen:'आगंतुकों को सामान्य फ़ोटो',sw_vbiz:'आगंतुकों को व्यवसाय दर्शन',sw_vn:'हर एल्बम में आगंतुक कितनी फ़ोटो देखें',sw_vno:'बंद होने पर आगंतुक केवल एल्बम कवर देखते हैं और लॉगिन करना होता है।',sw_all:'सभी',d_btn:'⚙️ अध्यक्ष स्विच',sw_h:'अध्यक्ष स्विच',sw_p:'बंद करने से केवल छिपता है, कुछ भी मिटता नहीं।',sw_boxes:'पेज के बॉक्स',sw_tev:'कार्यक्रमों की फ़ोटो टैब',sw_tgen:'सामान्य फ़ोटो टैब',sw_tbiz:'व्यवसाय दर्शन टैब',sw_yrs:'"वर्ष दर वर्ष" बटन',sw_jump:'"सीधे एल्बम पर जाएँ" बटन',sw_top:'"सबसे ज़्यादा पसंद" पट्टी',sw_stats:'फ़ोटो पर पसंद और देखे जाने की गिनती',sw_heart:'पसंद बटन (♡) और दो बार टैप',sw_play:'स्लाइड शो बटन',sw_th:'त्योहार के रंग (एल्बम के अनुसार)',sw_fx:'चलते इफ़ेक्ट (चमक, पंखुड़ियाँ)',sw_pd:'प्रोजेक्ट डायरेक्टर पंक्ति',sw_by:'"साझा किया" नाम',sw_add:'"अपनी फ़ोटो या व्यवसाय जोड़ें" बॉक्स',sw_cta:'"होम पर वापस" बटन',sw_x:'जोड़े गए बॉक्स',sw_view:'डेमो: पेज ऐसे देखें',ab_t:'＋ बॉक्स जोड़ें',ab_s:'केवल डेमो · असली साइट में अध्यक्ष डेस्क से बॉक्स जोड़ते हैं',ad_h:'नया बॉक्स जोड़ें',ad_p:'शीर्षक और जानकारी भरें। बटन ज़रूरी नहीं।',ad_tt:'शीर्षक',ad_tx:'जानकारी',ad_bt:'बटन का नाम (ज़रूरी नहीं)',ad_pl:'कहाँ दिखाएँ',pl1:'टैब के ऊपर',pl2:'फ़ोटो के ऊपर',pl3:'फ़ोटो के नीचे',pl4:'नीचे के बटन से पहले',ad_ok:'बॉक्स जोड़ें',ad_need:'कृपया शीर्षक और जानकारी भरें।',ad_done:'बॉक्स जोड़ा गया (डेमो)।',x_demo:'नया',sm_tt:'सूचना',sm_tx:'कार्यक्रम की अपनी फ़ोटो अपलोड लिंक से या ऐप से भेजें।',sm_bt:'कार्यालय से संपर्क करें',all_off:'गैलरी अध्यक्ष ने बंद की है।',w_m:'सदस्य (लॉगिन)',dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
+m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_biz:'डीजेएसजी व्यवसाय',m_blood:'रक्तदान',m_join:'सदस्य बनें',
 b_join:'सदस्य बनें',b_home:'होम पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
 d_who:'पेज ऐसे देखें:',w_v:'आगंतुक',w_m:'सदस्य (लॉगिन)',lk_h:'सामान्य फ़ोटो केवल सदस्यों के लिए हैं',lk_p:'ये फ़ोटो देखने के लिए कृपया लॉगिन करें।',more:'सभी {n} फ़ोटो देखने के लिए लॉगिन करें',t_like:'पसंद करने के लिए सदस्य लॉगिन करें।',eyebrow:'गैलरी',h1:'हमारे ग्रुप की यादें',t_ev:'कार्यक्रमों की फ़ोटो',t_gen:'सामान्य फ़ोटो',t_biz:'व्यवसाय दर्शन',
 l_year:'हमारी यात्रा, वर्ष दर वर्ष',l_alb:'सीधे एल्बम पर जाएँ',h_albs:'एल्बम',d_fx:'इफ़ेक्ट स्विच (अध्यक्ष डेस्क)',
@@ -281,7 +317,7 @@ n_g:'नमूना चित्र और नमूना कार्यक�
 t_nav:'यह नमूना केवल गैलरी पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',
 all:'सभी',top:'⭐ सबसे ज़्यादा पसंद',nph:'{n} फ़ोटो',nal:'{n} एल्बम',appr:'स्वीकृत (नमूना फ़ोटो)',views:'👁 {n} बार देखा गया',of:'{a} / {b}',bl:'संपर्क देखने के लिए लॉगिन',smp:'नमूना',mem:'सदस्य का नाम यहाँ दिखेगा',
 back:'‹ सभी एल्बम',play:'▶ स्लाइड शो चलाएँ',lplay:'▶ चलाएँ',lpause:'⏸ रोकें',pd:'प्रोजेक्ट डायरेक्टर',tba:'शीघ्र घोषित होगा',by:'साझा किया: श्री [पूर्व अध्यक्ष]',on:'चालू',off:'बंद',like:'पसंद करें',kota:'कोटा'};
-var EN={t_nav:'This sample shows only the Gallery page.',t_login:'Login is switched off in the demo.',
+var EN={w_v:'Visitor',w_m:'Member (logged in)',vb_p:'Please log in to see the members\' businesses.',vb_h:'Business Showcase is for members',sw_vis:'Visitors (not logged in)',sw_vall:'Show photos to visitors (main switch)',sw_vev:'Event photos for visitors',sw_vgen:'General photos for visitors',sw_vbiz:'Business Showcase for visitors',sw_vn:'Photos a visitor sees in each album',sw_vno:'When off, visitors see album covers only and must log in.',sw_all:'All',sw_h:'President switches',sw_p:'Switching off only hides. Nothing is deleted.',sw_boxes:'Boxes on this page',sw_tev:'Event photos tab',sw_tgen:'General photos tab',sw_tbiz:'Business Showcase tab',sw_yrs:'"Year by year" buttons',sw_jump:'"Jump to an album" buttons',sw_top:'"Most liked" strip',sw_stats:'Likes and views count on photos',sw_heart:'Like button (♡) and double-tap',sw_play:'Slideshow button',sw_th:'Festival colours (by album)',sw_fx:'Moving effects (sparkles, petals)',sw_pd:'Project Director line',sw_by:'"Shared by" name',sw_add:'"Add your photo or business" box',sw_cta:'"Back to Home" button',sw_x:'Added boxes',sw_view:'Demo: see the page as',ad_h:'Add a new box',ad_p:'Fill the title and text. The button is optional.',ad_tt:'Title',ad_tx:'Text',ad_bt:'Button name (optional)',ad_pl:'Where to show',pl1:'Above the tabs',pl2:'Above the photos',pl3:'Below the photos',pl4:'Before the bottom buttons',ad_ok:'Add the box',ad_need:'Please fill the title and text.',ad_done:'Box added (demo).',x_demo:'New',sm_tt:'Notice',sm_tx:'Send your programme photos with the upload link or from the app.',sm_bt:'Contact the office',t_nav:'This sample shows only the Gallery page.',t_login:'Login is switched off in the demo.',
 more:'Log in to see all {n} photos',t_like:'Members log in to like a photo.',all:'All',top:'⭐ Most liked',nph:'{n} photos',nal:'{n} albums',appr:'Approved (sample photo)',views:'👁 Seen {n} times',of:'{a} of {b}',bl:'Log in to see contact',smp:'Sample',mem:'Member name shows here',
 back:'‹ All albums',play:'▶ Play slideshow',lplay:'▶ Play',lpause:'⏸ Pause',pd:'Project Director',tba:'To be announced',by:'Shared by Mr [Past president]',on:'ON',off:'OFF',like:'Like',kota:'Kota'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -316,13 +352,16 @@ function art(i){var c=C[i%6],k=i%4,s='<svg viewBox="0 0 400 400" preserveAspectR
  if(k===3)s+='<circle cx="200" cy="200" r="105" fill="none" stroke="#fff8" stroke-width="10"/><circle cx="200" cy="200" r="66" fill="#ffd27a88"/><circle cx="200" cy="200" r="24" fill="#fff"/>';
  return s+'</svg>'}
 function fmt(n){return n>=1000?(n/1000).toFixed(1)+'k':''+n}
-var lang='en',tab='ev',yr=0,mem=false,cur=-1,pid=null,list=[],tt,fxOn=true,playing=null,tapT=null,tapId=null;
+var VS={all:true,ev:true,gen:true,biz:true},VN=4;
+var SW={tev:true,tgen:true,tbiz:true,yrs:true,jump:true,top:true,stats:true,heart:true,play:true,th:true,pd:true,by:true,add:true,cta:true},XB=[],xid=0;
+var lang='en',tab='ev',yr=0,mem=true,cur=-1,pid=null,list=[],tt,fxOn=true,playing=null,tapT=null,tapId=null;
 var reduce=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function when(g){return (g.m!=null?MON[lang][g.m]+' ':'')+g.y}
-function vis(i){return mem||(i.id-ALB[i.g].first)<4}
+function vok(t){return mem||(VS.all&&VS[t])}
+function vis(i){var g=ALB[i.g];return mem||(vok(g.gen?'gen':'ev')&&(VN===0||(i.id-g.first)<VN))}
 function toast(k){var t=$('#toast');t.textContent=T(k);t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
-function tile(i){return '<div class="ti"><button type="button" class="pic" data-p="'+i.id+'" style="height:'+i.h+'px" aria-label="'+ALB[i.g][lang]+'">'+art(i.id)+'<span class="lab">♥ '+i.likes+' · 👁 '+fmt(i.views)+'</span></button><button type="button" class="hb" data-like="'+i.id+'" aria-pressed="'+i.liked+'" aria-label="'+T('like')+'">'+(i.liked?'♥':'♡')+'</button></div>'}
+function tile(i){return '<div class="ti"><button type="button" class="pic" data-p="'+i.id+'" style="height:'+i.h+'px" aria-label="'+ALB[i.g][lang]+'">'+art(i.id)+(SW.stats?'<span class="lab">'+(SW.heart?'♥ '+i.likes+' · ':'')+'👁 '+fmt(i.views)+'</span>':'')+'</button>'+(SW.heart?'<button type="button" class="hb" data-like="'+i.id+'" aria-pressed="'+i.liked+'" aria-label="'+T('like')+'">'+(i.liked?'♥':'♡')+'</button>':'')+'</div>'}
 
 /* theme + light effects */
 var cv=$('#fx'),cx=cv.getContext?cv.getContext('2d'):null,P=[],raf=null,th=null;
@@ -337,7 +376,7 @@ function frame(){if(!cx)return;var W=innerWidth,H=innerHeight;cx.clearRect(0,0,W
   else{p.y+=p.s;p.x+=Math.sin(p.w)*.5;if(p.y>H+12){p.y=-12;p.x=Math.random()*W}cx.globalAlpha=th.fx==='dots'?.38:.8;cx.translate(p.x,p.y);cx.rotate(p.w);cx.beginPath();if(th.fx==='dots')cx.arc(0,0,p.r,0,6.283);else cx.ellipse(0,0,p.r,p.r*.55,0,0,6.283);cx.fill()}
   cx.restore()});
  raf=requestAnimationFrame(frame)}
-function theme(k){th=TH[k]||null;var r=document.documentElement.style,d=['#FFF4E8','#FDE6EF','#EFE6FF'];
+function theme(k){th=SW.th?(TH[k]||null):null;var r=document.documentElement.style,d=['#FFF4E8','#FDE6EF','#EFE6FF'];
  var b=th?th.bg:d;r.setProperty('--bg',b[0]);r.setProperty('--bg2',b[1]);r.setProperty('--bg3',b[2]);
  r.setProperty('--band',th?th.band:'linear-gradient(135deg,#A3123A,#E8590C)');r.setProperty('--band-ink',th?th.ink:'#fff');r.setProperty('--frame',th?th.frame:'#fff');
  seed();if(P.length&&!raf)raf=requestAnimationFrame(frame);if(!P.length&&cx)cx.clearRect(0,0,innerWidth,innerHeight)}
@@ -347,24 +386,30 @@ function paint(){
  $$('[data-i]').forEach(function(e){e.innerHTML=T(e.dataset.i)});
  $('#l_hi').setAttribute('aria-pressed',lang==='hi');$('#l_en').setAttribute('aria-pressed',lang==='en');
  $$('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.dataset.tab===tab)});
- var fs=$('#fxsw');fs.textContent=T(fxOn?'on':'off');fs.setAttribute('aria-pressed',fxOn);
  $('#lbplay').textContent=T(playing?'lpause':'lplay');
- $('#w_v').setAttribute('aria-pressed',!mem);$('#w_m').setAttribute('aria-pressed',mem);
- var lk=tab==='gen'&&!mem;if(lk&&cur>=0){cur=-1;theme(null)}
- $$('[data-tab]').forEach(function(b){if(b.dataset.tab==='gen'&&!mem)b.innerHTML='🔒 '+T('t_gen')});
+ var TB={ev:'tev',gen:'tgen',biz:'tbiz'},vt=['ev','gen','biz'].filter(function(k){return SW[TB[k]]});
+ $$('[data-tab]').forEach(function(b){b.hidden=!SW[TB[b.dataset.tab]]});
+ if(vt.indexOf(tab)<0&&vt.length){tab=vt[0];if(cur>=0){cur=-1;theme(null)}$$('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.dataset.tab===tab)})}
+ $('#bx_tabs').hidden=vt.length<2;$('#goff').hidden=vt.length>0;
+ $('#bx_add').hidden=!SW.add;$('#bx_cta').hidden=!SW.cta;$('#bx_yrs').hidden=!SW.yrs;$('#bx_jump').hidden=!SW.jump;$('#gtop').hidden=!SW.top;$('#n_like').hidden=!SW.heart;
+ $('#lbl').hidden=!SW.heart;$('#lbplay').hidden=!SW.play;$('.lbn').classList.toggle('two',!SW.play);
+ drawX();
+ if(!vt.length){$('#glock').hidden=$('#ghome').hidden=$('#gview').hidden=$('#gbiz').hidden=true;return}
+ var lk=false;/* 13 Nov: General photos open to visitors, first 4 per album (user) */if(lk&&cur>=0){cur=-1;theme(null)}
  var biz=tab==='biz',view=!biz&&!lk&&cur>=0;
  $('#glock').hidden=!lk;$('#ghome').hidden=biz||view||lk;$('#gview').hidden=!view;$('#gbiz').hidden=!biz;if(lk)return;
- if(biz){var L=lang==='hi'?1:0;$('#bizl').innerHTML=BIZ.map(function(b,i){return '<article class="card bz"><span class="pic">'+art(i*5+3)+'<span class="lab">'+T('smp')+'</span></span><b>'+b.n[L]+'</b><span class="cat">'+b.c[L]+'</span><span class="m">'+b.d[L]+'</span><span class="m">'+T('mem')+'</span><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></article>'}).join('');return}
+ if(biz){var L=lang==='hi'?1:0;if(!vok('biz')){$('#bizl').innerHTML='<div class="card lockc" style="grid-column:1/-1"><span class="lk" aria-hidden="true">🔒</span><h2>'+T('vb_h')+'</h2><p>'+T('vb_p')+'</p><button type="button" class="btn" data-t="t_login">'+T('login2')+'</button></div>';return}$('#bizl').innerHTML=BIZ.map(function(b,i){return '<article class="card bz"><span class="pic">'+art(i*5+3)+'<span class="lab">'+T('smp')+'</span></span><b>'+b.n[L]+'</b><span class="cat">'+b.c[L]+'</span><span class="m">'+b.d[L]+'</span><span class="m">'+T('mem')+'</span><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></article>'}).join('');return}
  var gen=tab==='gen',GL=[];ALB.forEach(function(g,i){if(!!g.gen===gen)GL.push(i)});
  if(view){var g=ALB[cur],t=TH[g.th],all=items.filter(function(i){return i.g===cur}),its=all.filter(vis),L2=lang==='hi'?1:0;
-  $('#band').innerHTML='<div class="r1"><button type="button" class="bk" data-back="1">'+T('back')+'</button><span class="em" aria-hidden="true">'+(t?t.em:'📸')+'</span></div><h2>'+g[lang]+'</h2><div class="mt"><span>📅 '+when(g)+' · 📍 '+T('kota')+' · 📷 '+T('nph').replace('{n}',all.length)+'</span><span>'+T('pd')+': '+T('tba')+'</span>'+(g.by?'<span>'+T('by')+'</span>':'')+'</div><p>'+g.a[L2]+'</p><button type="button" class="play" data-play="1">'+T('play')+'</button>';
+  $('#band').innerHTML='<div class="r1"><button type="button" class="bk" data-back="1">'+T('back')+'</button><span class="em" aria-hidden="true">'+(t?t.em:'📸')+'</span></div><h2>'+g[lang]+'</h2><div class="mt"><span>📅 '+when(g)+' · 📍 '+T('kota')+' · 📷 '+T('nph').replace('{n}',all.length)+'</span>'+(SW.pd&&g.pd?'<span>'+T('pd')+': '+esc(g.pd)+'</span>':'')+(g.by&&SW.by?'<span>'+T('by')+'</span>':'')+'</div><p>'+g.a[L2]+'</p>'+(SW.play?'<button type="button" class="play" data-play="1">'+T('play')+'</button>':'');
   $('#mas').innerHTML=its.map(tile).join('')+(all.length>its.length?'<div class="ti"><button type="button" class="more" data-t="t_login"><i>🔒</i>'+T('more').replace('{n}',all.length)+'</button></div>':'');return}
  var ys=[];GL.forEach(function(i){if(ys.indexOf(ALB[i].y)<0)ys.push(ALB[i].y)});ys.sort(function(a,b){return b-a});if(ys.indexOf(yr)<0)yr=0;
  $('#years').innerHTML='<button type="button" data-yr="0" aria-pressed="'+(yr===0)+'">'+T('all')+'</button>'+ys.map(function(y){return '<button type="button" data-yr="'+y+'" aria-pressed="'+(yr===y)+'">'+y+'</button>'}).join('');
  var SH=GL.filter(function(i){return !yr||ALB[i].y===yr});
  $('#chips').innerHTML=SH.map(function(i){return '<button type="button" data-alb="'+i+'" aria-pressed="false">'+ALB[i][lang]+'</button>'}).join('');
  var tp=items.filter(function(i){return SH.indexOf(i.g)>=0&&vis(i)}).sort(function(a,b){return b.likes-a.likes}).slice(0,6);
- $('#gtop').innerHTML='<div class="gh"><h2>'+T('top')+'</h2></div><div class="top6">'+tp.map(function(i){return '<button type="button" class="pic" data-p="'+i.id+'" data-top="1" aria-label="'+ALB[i.g][lang]+'">'+art(i.id)+'<span class="lab">♥ '+i.likes+'</span></button>'}).join('')+'</div>';
+ $('#gtop').innerHTML='<div class="gh"><h2>'+T('top')+'</h2></div><div class="top6">'+tp.map(function(i){return '<button type="button" class="pic" data-p="'+i.id+'" data-top="1" aria-label="'+ALB[i.g][lang]+'">'+art(i.id)+(SW.stats&&SW.heart?'<span class="lab">♥ '+i.likes+'</span>':'')+'</button>'}).join('')+'</div>';
+ $('#gtop').hidden=!SW.top||!tp.length;
  $('#albn').textContent=T('nal').replace('{n}',SH.length);
  $('#albs').innerHTML=SH.map(function(i){var g=ALB[i],t=TH[g.th];return '<button type="button" class="alb" data-alb="'+i+'"><span class="cv">'+art(g.first)+(t?'<span class="em" aria-hidden="true">'+t.em+'</span>':'')+'<span class="yr">'+g.y+'</span></span><span class="bd"><b>'+g[lang]+'</b><small>'+when(g)+' · '+T('nph').replace('{n}',g.n)+'</small></span></button>'}).join('');
 }
@@ -379,28 +424,69 @@ function play(){stop();playing=setInterval(function(){step(1)},3000);$('#lbplay'
 function hide(){stop();ov.hidden=true;paint()}
 function like(id){var i=items[id];i.liked=!i.liked;i.likes+=i.liked?1:-1}
 $('#lbl').addEventListener('click',function(){if(!mem){toast('t_like');return}like(pid);lb()});
-$('#w_v').addEventListener('click',function(){mem=false;paint()});$('#w_m').addEventListener('click',function(){mem=true;paint()});
 $('#lbprev').addEventListener('click',function(){stop();step(-1)});$('#lbnext').addEventListener('click',function(){stop();step(1)});
 $('#lbplay').addEventListener('click',function(){if(playing)stop();else play()});
 $('#lbx').addEventListener('click',hide);ov.addEventListener('click',function(e){if(e.target===ov)hide()});
 document.addEventListener('keydown',function(e){if(ov.hidden)return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft'){stop();step(-1)}if(e.key==='ArrowRight'){stop();step(1)}});
 $('#l_hi').addEventListener('click',function(){lang='hi';paint();if(!ov.hidden)lb()});
 $('#l_en').addEventListener('click',function(){lang='en';paint();if(!ov.hidden)lb()});
-$('#fxsw').addEventListener('click',function(){fxOn=!fxOn;if(cur>=0)theme(ALB[cur].th);paint()});
 function ids(sel){return items.filter(sel).map(function(i){return i.id})}
 document.addEventListener('click',function(ev){var e=ev.target,b;
  if(b=e.closest('[data-tab]')){tab=b.dataset.tab;yr=0;if(cur>=0){cur=-1;theme(null)}paint();return}
  if(b=e.closest('[data-yr]')){yr=+b.dataset.yr;paint();return}
  if(b=e.closest('[data-alb]')){openAlb(+b.dataset.alb);return}
  if(b=e.closest('[data-back]')){closeAlb();return}
- if(b=e.closest('[data-play]')){list=ids(function(i){return i.g===cur&&vis(i)});show(list[0]);play();return}
+ if(b=e.closest('[data-play]')){list=ids(function(i){return i.g===cur&&vis(i)});if(!list.length){toast('t_login');return}show(list[0]);play();return}
  if(b=e.closest('[data-like]')){if(!mem){toast('t_like');return}like(+b.dataset.like);paint();return}
  if(b=e.closest('[data-p]')){var id=+b.dataset.p;
   if(b.dataset.top){list=[].slice.call(document.querySelectorAll('[data-top]')).map(function(x){return +x.dataset.p});if(!list.length)list=[id];show(id);return}
+  if(!SW.heart){list=ids(function(i){return i.g===items[id].g&&vis(i)});show(id);return}
   if(tapT&&tapId===id){clearTimeout(tapT);tapT=null;if(!mem){toast('t_like');return}if(!items[id].liked)like(id);paint();return}
   tapId=id;tapT=setTimeout(function(){tapT=null;list=ids(function(i){return i.g===items[id].g&&vis(i)});show(id)},260);return}
  if(b=e.closest('[data-t]')){var t=$('#toast');t.textContent=T(b.dataset.t);t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2600)}
 });
+
+var ANCH={pl1:'#bx_tabs',pl2:'#anc_list',pl3:'#anc_after',pl4:'#anc_cta'};
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function drawX(){
+ $$('.xbox').forEach(function(e){e.remove()});
+ XB.forEach(function(b){if(!b.on)return;var el=document.createElement('section');el.className='card xbox';
+  var t2=b.k?T(b.k+'tt'):esc(b.t),tx=b.k?T(b.k+'tx'):esc(b.x),bt=b.k?T(b.k+'bt'):esc(b.b);
+  el.innerHTML='<span class="xdemo">'+T('x_demo')+'</span><h2>'+t2+'</h2><p>'+tx+'</p>'+(bt?'<button type="button" class="xbtn" data-t="t_nav">'+bt+'</button>':'');
+  var a=$(ANCH[b.p]);a.parentNode.insertBefore(el,a);});
+}
+var ov3=$('#ov3'),sh3=$('#sh3');
+function open3(h){sh3.innerHTML=h;ov3.hidden=false}
+function hide3(){ov3.hidden=true}
+ov3.addEventListener('click',function(e){if(e.target===ov3)hide3()});
+function swRow(k,on,lab){return '<button type="button" class="sw" data-sw="'+k+'" aria-pressed="'+on+'"><span>'+T(lab)+'</span><i></i></button>'}
+function swSheet(){
+ var h='<div class="sh"><div><h2>'+T('sw_h')+'</h2><p>'+T('sw_p')+'</p></div></div><p class="swh">'+T('sw_boxes')+'</p>';
+ ['tev','tgen','tbiz','yrs','jump','top','stats','heart','play','th'].forEach(function(k){h+=swRow(k,SW[k],'sw_'+k)});
+ h+=swRow('fx',fxOn,'sw_fx');
+ ['pd','by','add','cta'].forEach(function(k){h+=swRow(k,SW[k],'sw_'+k)});
+ if(XB.length){h+='<p class="swh">'+T('sw_x')+'</p>';XB.forEach(function(b,i){h+='<button type="button" class="sw" data-sx="'+i+'" aria-pressed="'+b.on+'"><span>'+esc(b.t)+'</span><i></i></button>'})}
+ h+='<p class="swh">'+T('sw_vis')+'</p>'+swRow('v_all',VS.all,'sw_vall')+swRow('v_ev',VS.ev,'sw_vev')+swRow('v_gen',VS.gen,'sw_vgen')+swRow('v_biz',VS.biz,'sw_vbiz')+'<p class="note" style="margin:0 0 8px">'+T('sw_vno')+'</p>';
+ h+='<p class="note" style="margin:4px 0 6px;font-weight:700">'+T('sw_vn')+'</p><div class="seg">'+[2,4,6,8,0].map(function(n){return '<button type="button" data-vn="'+n+'" aria-pressed="'+(VN===n)+'">'+(n||T('sw_all'))+'</button>'}).join('')+'</div>';
+ h+='<button class="close alt" type="button" id="sw_add" style="margin-top:6px">'+T('ab_t')+'</button>';
+ h+='<p class="swh">'+T('sw_view')+'</p><div class="seg"><button type="button" data-pv="0" aria-pressed="'+!mem+'">'+T('w_v')+'</button><button type="button" data-pv="1" aria-pressed="'+mem+'">'+T('w_m')+'</button></div>';
+ h+='<button class="close" type="button" data-x>'+T('close')+'</button>';open3(h)}
+sh3.addEventListener('click',function(e){
+ e.stopPropagation();
+ var b=e.target.closest('button');if(!b)return;
+ if(b.hasAttribute('data-x')){hide3();return}
+ if(b.dataset.vn){VN=+b.dataset.vn;paint();swSheet();return}
+ if(b.dataset.sw){var k=b.dataset.sw;if(k.indexOf('v_')===0){VS[k.slice(2)]=!VS[k.slice(2)];paint();swSheet();return}if(k==='fx')fxOn=!fxOn;else SW[k]=!SW[k];if(cur>=0)theme(ALB[cur].th);paint();swSheet();return}
+ if(b.dataset.sx){var x=XB[+b.dataset.sx];x.on=!x.on;paint();swSheet();return}
+ if(b.dataset.pv){mem=b.dataset.pv==='1';paint();swSheet();return}
+ if(b.id==='sw_add'){addSheet();return}
+ if(b.id==='ad_ok'){var t=$('#ad_tt').value.trim(),x2=$('#ad_tx').value.trim();if(!t||!x2){$('#ad_err').textContent=T('ad_need');return}
+  XB.push({id:++xid,t:t,x:x2,b:$('#ad_bt').value.trim(),p:$('#ad_pl').value,on:true});hide3();paint();var tq=$('#toast');tq.textContent=T('ad_done');tq.hidden=false;clearTimeout(tt);tt=setTimeout(function(){tq.hidden=true},2600);return}
+});
+function addSheet(){var o='';['pl1','pl2','pl3','pl4'].forEach(function(p){o+='<option value="'+p+'">'+T(p)+'</option>'});
+ open3('<div class="sh"><div><h2>'+T('ad_h')+'</h2><p>'+T('ad_p')+'</p></div></div><div class="fl"><label for="ad_tt">'+T('ad_tt')+'</label><input id="ad_tt" maxlength="60" value="'+esc(T('sm_tt'))+'"><label for="ad_tx">'+T('ad_tx')+'</label><textarea id="ad_tx" maxlength="400">'+esc(T('sm_tx'))+'</textarea><label for="ad_bt">'+T('ad_bt')+'</label><input id="ad_bt" maxlength="30" value="'+esc(T('sm_bt'))+'"><label for="ad_pl">'+T('ad_pl')+'</label><select id="ad_pl">'+o+'</select></div><p class="note" id="ad_err" style="color:#C62828"></p><button class="close" type="button" id="ad_ok">'+T('ad_ok')+'</button><button class="close alt" type="button" data-x>'+T('close')+'</button>')}
+$('#dsw').addEventListener('click',swSheet);
+$('#addbox').addEventListener('click',addSheet);
 if(typeof addEventListener==='function')addEventListener('resize',function(){size();seed()});
 size();paint();
 })();
@@ -411,7 +497,7 @@ size();paint();
 (function(){
 var h=location.hostname;
 if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
-var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
 var here=location.pathname.split('/').pop()||'index.html';
 document.addEventListener('click',function(e){
  var b=e.target.closest&&e.target.closest('button,a');if(!b)return;

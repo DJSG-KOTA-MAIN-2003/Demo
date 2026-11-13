@@ -154,6 +154,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 /* narrow-phone header fix (Kota Main no longer touches Member Login) */
 @media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
 @media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -190,7 +193,6 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
  </section>
  <p class="note" style="text-align:center" data-i="n_b">Sample businesses. Real ones come from the members' own details.</p>
  <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
 
@@ -200,7 +202,7 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
 
 <div class="toast" id="toast" role="status" hidden></div>
-<script>
+<script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 var HI={dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
@@ -221,7 +223,7 @@ var BZ=[[0,'Jewellery shop','आभूषण की दुकान','Gold and s
 [3,'Medical store','मेडिकल स्टोर','Medicines and health products, home delivery.','दवाइयाँ और स्वास्थ्य उत्पाद, होम डिलीवरी।'],[3,'Family clinic','फ़ैमिली क्लिनिक','General check-up and family care.','सामान्य जाँच और परिवार की देखभाल।'],
 [4,'CA and tax consultant','सीए और टैक्स सलाहकार','Income tax, GST and accounts.','आयकर, जीएसटी और खाते।'],[5,'Coaching classes','कोचिंग क्लासेस','Tuition for school and entrance exams.','स्कूल और प्रवेश परीक्षा की तैयारी।'],
 [6,'Electronics showroom','इलेक्ट्रॉनिक्स शोरूम','TV, fridge, AC and home appliances.','टीवी, फ़्रिज, एसी और घरेलू उपकरण।'],[7,'Building materials','बिल्डिंग मटेरियल','Cement, tiles and sanitary ware.','सीमेंट, टाइल्स और सैनिटरी सामान।']];
-var lang='en',ty=-1,mem=false,tt;
+var lang='en',ty=-1,mem=true,tt;
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function list(){var L=lang==='hi'?1:0,q=$('#q').value.trim().toLowerCase();
@@ -253,7 +255,7 @@ paint();
 (function(){
 var h=location.hostname;
 if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
-var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
 var here=location.pathname.split('/').pop()||'index.html';
 document.addEventListener('click',function(e){
  var b=e.target.closest&&e.target.closest('button,a');if(!b)return;

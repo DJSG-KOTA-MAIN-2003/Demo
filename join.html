@@ -14,10 +14,12 @@
 --disp:Sora,"Noto Sans Devanagari",system-ui,sans-serif;--body:Inter,"Noto Sans Devanagari",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:var(--bg);overflow-x:hidden}
+html{background:linear-gradient(165deg,var(--bg) 0%,var(--bg2) 45%,var(--bg3) 100%);min-height:100%}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--ink);background:transparent;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
 :focus-visible{outline:3px solid var(--a2);outline-offset:2px}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(165deg,var(--bg) 0%,var(--bg2) 55%,var(--bg3) 100%)}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+body.nofx .blob{animation:none;display:none}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;animation:drift 20s ease-in-out infinite alternate}
 .b1{width:60vmax;height:60vmax;left:-25vmax;top:-25vmax;background:var(--a1)}
 .b2{width:50vmax;height:50vmax;right:-22vmax;top:30vh;background:var(--a3);animation-delay:-7s}
@@ -173,9 +175,36 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 .form>*,.ph3>*,.two>*,.rev,.rv,.cons{min-width:0}
 .pbox{width:100%}
 .fee{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:14px;background:rgba(163,18,58,.07);border:1px dashed rgba(163,18,58,.35)}.fee b{color:var(--a1)}.iq{display:flex;flex-direction:column;gap:8px;border:2px dashed rgba(255,159,28,.6)}.iq>div:first-child{display:flex;flex-direction:column;gap:2px}
+/* 13 Nov: same as About, Events, Gallery (one demo button, switches, add a box, computer menu on one line) */
+.xbox{position:relative}.xbox h2{margin-bottom:6px}.xbox p{margin:0}
+.xbox .xbtn{display:inline-block;margin-top:10px;padding:9px 16px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:13px;box-shadow:0 3px 0 var(--btn-edge)}
+.xbox .xdemo{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--demo);color:#fff}
+.addbox{width:100%;padding:14px;border-radius:22px;border:2px dashed rgba(163,18,58,.45);background:rgba(255,255,255,.35);color:var(--a1);font-weight:700;font-size:14px;text-align:center}
+.addbox small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);margin-top:2px}
+.sw{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--line);margin-bottom:6px;font-size:14px;width:100%;text-align:left}
+.sw span{flex:1}
+.sw i{flex:none;width:44px;height:26px;border-radius:13px;background:#cdbfc8;position:relative;transition:background .2s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.sw[aria-pressed="true"] i{background:#1E9E50}.sw[aria-pressed="true"] i::after{left:21px}
+.swh{margin:12px 0 6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--a1)}
+.seg{display:flex;gap:6px;margin-bottom:6px}.seg button{flex:1;padding:10px 8px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:transparent;box-shadow:0 3px 0 var(--btn-edge)}
+.fl{display:grid;gap:8px;margin-bottom:6px}
+.fl label{font-size:12.5px;font-weight:700;color:var(--muted)}
+.fl input,.fl textarea,.fl select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border-radius:12px;border:1px solid #e3d3dc;background:#fff;color:var(--ink)}
+.fl textarea{min-height:80px;resize:vertical}
+.shut{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+@media(min-width:760px){
+ .nav{flex-wrap:wrap;justify-content:center;border-radius:26px}.nav button{padding:8px 9px;font-size:12.5px}
+}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{display:grid;grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<div class="demobar"><div class="wrap in"><span class="dl">Demo only</span><button type="button" id="dsw" data-i="d_btn">⚙️ President switches</button></div></div>
 
 <div class="wrap page">
  <div class="flag"></div>
@@ -193,12 +222,11 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
  <div class="title"><div class="eyebrow" id="eyb"></div><h1 id="h1"></h1></div>
 
- <div class="demo"><span class="dl">Demo only</span><span data-i="d_mode">Which form</span><button type="button" id="mo_n" aria-pressed="true" data-i="mo_n">New member</button><button type="button" id="mo_e" aria-pressed="false" data-i="mo_e">Existing member</button></div>
-<div class="demo"><span class="dl">Demo only</span><span data-i="d_fee">Treasurer has set the fee</span><button type="button" id="fe_n" aria-pressed="true" data-i="d_no">Not yet</button><button type="button" id="fe_y" aria-pressed="false" data-i="d_yes">Yes (sample amount)</button></div>
-
+ <div id="anc1"></div>
  <div class="form" id="form"></div>
+ <div id="anc2"></div>
+ <button class="addbox" type="button" id="addbox"><span data-i="ab_t">＋ Add a box</span><small data-i="ab_s">Demo only · in the real site the President adds boxes from the Desk</small></button>
  <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
 
@@ -208,10 +236,11 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 
 
 <div class="toast" id="toast" role="status" hidden></div>
+<div class="ov" id="ov3" role="dialog" aria-modal="true" hidden><div class="sheet" id="sh3"></div></div>
 <script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
-var HI={dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
+var HI={d_btn:'⚙️ अध्यक्ष के स्विच',d_fee:'कोषाध्यक्ष ने शुल्क तय किया',d_no:'अभी नहीं',d_yes:'हाँ (नमूना राशि)',sw_h:'अध्यक्ष के स्विच',sw_p:'केवल डेमो। असली साइट में अध्यक्ष ये स्विच डेस्क में चलाते हैं। बंद करने से सिर्फ़ छिपता है, कुछ मिटता नहीं।',sw_open:'फ़ॉर्म खुले या बंद',sw_openN:'नए सदस्य का फ़ॉर्म खुला है',sw_openE:'वर्तमान सदस्य का फ़ॉर्म खुला है',sw_boxes:'इस पेज के बॉक्स',sw_how:'"चार आसान कदम" बॉक्स',sw_feel:'शुल्क की पंक्ति',sw_swap:'"पहले से सदस्य हैं?" / "नए सदस्य?" लिंक',sw_iq:'"सिर्फ़ रुचि है?" बॉक्स',sw_fx:'चलते प्रभाव (रंगीन बादल)',sw_x:'आपके जोड़े बॉक्स',sw_demo:'डेमो देखने के लिए',cl_n:'नई सदस्यता का पंजीकरण अभी बंद है',cl_ns:'कार्यालय इसे जल्द फिर खोलेगा। आप कार्यालय से djsgkotamain2003@gmail.com पर संपर्क कर सकते हैं।',cl_e:'यह फ़ॉर्म अभी बंद है',cl_es:'कार्यालय इसे फिर खोलकर लिंक व्हाट्सऐप ग्रुप में भेजेगा।',ab_t:'＋ बॉक्स जोड़ें',ab_s:'केवल डेमो · असली साइट में अध्यक्ष डेस्क से बॉक्स जोड़ते हैं',ad_h:'बॉक्स जोड़ें',ad_p:'शीर्षक और विवरण ज़रूरी हैं, बटन वैकल्पिक है। जोड़े गए बॉक्स फ़ॉर्म पेज की पहली स्क्रीन पर दिखते हैं।',ad_tt:'शीर्षक',ad_tx:'विवरण',ad_bt:'बटन का नाम (वैकल्पिक)',ad_pl:'जगह',pl1:'फ़ॉर्म के ऊपर',pl2:'फ़ॉर्म के नीचे',ad_ok:'बॉक्स जोड़ें',ad_need:'कृपया शीर्षक और विवरण लिखें।',ad_done:'बॉक्स जुड़ गया। इसे अध्यक्ष के स्विच में बंद कर सकते हैं।',sm_tt:'सदस्यता सहायता',sm_tx:'फ़ॉर्म भरने में मदद चाहिए? अगले कार्यक्रम के बाद कार्यालय टीम से मिलें।',sm_bt:'कार्यालय से संपर्क',x_demo:'जोड़ा गया बॉक्स',close:'बंद करें',dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
 m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_biz:'डीजेएसजी व्यवसाय',m_blood:'रक्तदान',m_join:'सदस्य बनें',
 b_join:'सदस्य बनें',b_home:'होम पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
 d_mode:'कौन-सा फ़ॉर्म',mo_n:'नए सदस्य',mo_e:'वर्तमान सदस्य',t_nav:'यह नमूना केवल फ़ॉर्म दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',
@@ -233,7 +262,7 @@ r_h:'भेजने से पहले जाँच लें',edit:'बदल
 back:'‹ पीछे',next:'आगे ›',send_n:'आवेदन भेजें',send_e:'मेरी जानकारी भेजें',saved:'आगे दबाने पर यह चरण इसी फ़ोन पर सुरक्षित हो जाता है। फ़ोटो अंत में भेजी जाती हैं।',
 e_req:'कृपया भरें: {f}',e_mob:'मोबाइल नंबर 10 अंकों का होना चाहिए।',e_em:'कृपया सही ईमेल लिखें।',e_kid:'बच्चा {n}: नाम और विवाहित / अविवाहित भरें।',e_ph:'पति की फ़ोटो ज़रूरी है।',e_ok:'कृपया सहमति पर टिक करें।',e_img:'केवल JPG या PNG फ़ोटो चुनें, 5 MB तक।',
 d_n:'आवेदन भेज दिया गया',d_ns:'धन्यवाद। कार्यालय आपकी जानकारी जाँचेगा। मंज़ूरी के बाद सदस्य आईडी और शुल्क की जानकारी आपके ईमेल पर आएगी।',d_e:'जानकारी भेज दी गई',d_es:'धन्यवाद। कार्यालय आपकी जानकारी जाँचेगा। जाँच के बाद यह निर्देशिका में दिखेगी।',st_n:'स्थिति: मंज़ूरी की प्रतीक्षा',st_e:'स्थिति: जाँच की प्रतीक्षा',ref:'संदर्भ',again:'एक और फ़ॉर्म भरें',demo_n:'यह डेमो है। कुछ भी भेजा या सुरक्षित नहीं किया गया।'};
-var EN={d_mode:'Which form',t_nav:'This sample shows only the form.',t_login:'Login is switched off in the demo.',
+var EN={d_btn:'⚙️ President switches',d_fee:'Treasurer has set the fee',d_no:'Not yet',d_yes:'Yes (sample amount)',sw_h:'President switches',sw_p:'Demo only. In the real site the President uses these in the Desk. Switching off only hides; nothing is deleted.',sw_open:'Forms open or closed',sw_openN:'New member form is open',sw_openE:'Existing member form is open',sw_boxes:'Boxes on this page',sw_how:'"Four easy steps" box',sw_feel:'Fee line',sw_swap:'"Already a member?" / "New to DJSG?" link',sw_iq:'"Only interested?" box',sw_fx:'Moving effects (colour clouds)',sw_x:'Boxes you added',sw_demo:'For the demo',cl_n:'New member registration is closed for now',cl_ns:'The office will open it again soon. You can contact the office at djsgkotamain2003@gmail.com.',cl_e:'This form is closed now',cl_es:'The office will open it again and share the link in the WhatsApp group.',ab_t:'＋ Add a box',ab_s:'Demo only · in the real site the President adds boxes from the Desk',ad_h:'Add a box',ad_p:'Title and text are needed; the button is optional. Added boxes show on the first screen of the form page.',ad_tt:'Title',ad_tx:'Text',ad_bt:'Button text (optional)',ad_pl:'Place',pl1:'Above the form',pl2:'Below the form',ad_ok:'Add the box',ad_need:'Please write a title and text.',ad_done:'Box added. You can switch it off in President switches.',sm_tt:'Membership help',sm_tx:'Need help with the form? Meet the office team after the next programme.',sm_bt:'Contact the office',x_demo:'Added box',close:'Close',d_mode:'Which form',t_nav:'This sample shows only the form.',t_login:'Login is switched off in the demo.',
 ey_n:'Membership',h_n:'Join our family',ey_e:'Existing member · Session 2026',h_e:'Complete your details',
 how:'Four easy steps',how1:'Fill the form',how1s:'6 short steps. Details of you and your family.',how2:'Add photos',how2s:'Clear photos. A big photo is made smaller by itself.',how3:'Approval',how3s:'The office checks your details.',how4:'Member ID by email',how4s:'Then install the app and log in.',
 fee:'The membership fee and how to pay will come in the email after approval.',start:'Start the form',already:'Already a member? Complete your details',newhere:'New to DJSG? Join here',
@@ -255,6 +284,7 @@ d_n:'Application sent',d_ns:'Thank you. The office will check your details. Afte
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
 var BT=[['Trade / shop','व्यापार / दुकान'],['Manufacturing / factory','निर्माण / फ़ैक्ट्री'],['Wholesale','थोक व्यापार'],['Jewellery','आभूषण'],['Cloth / garments','कपड़ा / गारमेंट'],['Grocery / FMCG','किराना / FMCG'],['Food / restaurant','भोजन / रेस्टोरेंट'],['Medical / pharma','चिकित्सा / फार्मा'],['Education / coaching','शिक्षा / कोचिंग'],['IT / software','IT / सॉफ़्टवेयर'],['Professional (CA / lawyer / architect)','प्रोफ़ेशनल (CA / वकील / आर्किटेक्ट)'],['Real estate / construction','रियल एस्टेट / निर्माण कार्य'],['Farming','कृषि'],['Government job','सरकारी नौकरी'],['Private job','निजी नौकरी'],['Homemaker','गृहिणी'],['Retired','सेवानिवृत्त'],['Student','विद्यार्थी'],['Other','अन्य']];
 var BG=['A+','A-','B+','B-','O+','O-','AB+','AB-'];
+var SW={openN:true,openE:true,how:true,fee:true,swap:true,iq:true},fxOn=true,XB=[],xid=0;
 var FEE='',lang='en',ex=false,step=0,err='',sent=null,PH=[null,null,null];
 function blank(){return {hn:'',wn:'',mob:'',wmob:'',em:'',hdob:'',wdob:'',ann:'',hbg:'',wbg:'',mid:'',jy:'',kids:[],addr:'',city:'Kota',hbt:'',hoth:'',hfirm:'',hline:'',wbt:'',woth:'',wfirm:'',wline:'',showdob:false,ok:false}}
 var d=blank(),draft=null;
@@ -301,15 +331,18 @@ function paint(){
  document.documentElement.lang=lang;
  $$('[data-i]').forEach(function(e){e.innerHTML=T(e.dataset.i)});
  $('#l_hi').setAttribute('aria-pressed',lang==='hi');$('#l_en').setAttribute('aria-pressed',lang==='en');
- $('#mo_n').setAttribute('aria-pressed',!ex);$('#fe_n').setAttribute('aria-pressed',!FEE);$('#fe_y').setAttribute('aria-pressed',!!FEE);$('#mo_e').setAttribute('aria-pressed',ex);
+ document.body.classList.toggle('nofx',!fxOn);
  $('#eyb').textContent=T(ex?'ey_e':'ey_n');$('#h1').textContent=T(ex?'h_e':'h_n');
  var f=$('#form'),h='';
  if(sent){h='<section class="card done"><span class="tick" aria-hidden="true">✓</span><h2>'+T(ex?'d_e':'d_n')+'</h2><span class="ref">'+T('ref')+': '+sent+'</span><p style="margin:0">'+T(ex?'d_es':'d_ns')+'</p><b style="color:var(--a1)">'+T(ex?'st_e':'st_n')+'</b><p class="note">'+T('demo_n')+'</p><button type="button" class="btn ghost" id="again" style="width:100%">'+T('again')+'</button></section>'}
- else if(step===0){h=(ex?'<div class="exn">'+T('exn')+'</div>':'<section class="card" style="display:flex;flex-direction:column;gap:12px"><h2>'+T('how')+'</h2><div class="how">'+[1,2,3,4].map(function(n){return '<div><i>'+n+'</i><span><b>'+T('how'+n)+'</b><span>'+T('how'+n+'s')+'</span></span></div>'}).join('')+'</div><div class="fee"><b>'+(FEE?T('fee_set').replace('{a}',FEE):T('fee_none'))+'</b><span class="note">'+T('fee_by')+'</span></div></section>')
-  +(draft?'<section class="card" style="display:flex;flex-direction:column;gap:10px;border:2px solid var(--a2)"><b>'+T('draft')+'</b><div class="nb"><button type="button" class="btn ghost" id="fresh">'+T('fresh')+'</button><button type="button" class="btn" id="cont">'+T('cont')+' ›</button></div></section>':'<button type="button" class="btn" id="start" style="min-height:58px;font-size:16px">'+T('start')+' ›</button>')
-  +'<button type="button" class="lnk" id="swap" style="align-self:center">'+T(ex?'newhere':'already')+'</button>'+(ex?'':'<section class="card iq"><div><b>'+T('iq_h')+'</b><span class="note">'+T('iq_s')+'</span></div><div class="two"><label class="fld"><span>'+T('iq_n')+'</span><input type="text" id="iq_n" maxlength="60"></label><label class="fld"><span>'+T('iq_m')+'</span><input type="tel" id="iq_m" inputmode="numeric" maxlength="10" placeholder="9829000000"></label></div><p class="err" id="iq_e" role="alert"></p><button type="button" class="btn ghost" id="iq_s" style="min-height:46px">'+T('iq_send')+'</button></section>')}
+ else if(step===0){var open=ex?SW.openE:SW.openN;
+  if(!open)h='<section class="card shut"><span aria-hidden="true" style="font-size:32px">🔒</span><h2>'+T(ex?'cl_e':'cl_n')+'</h2><p class="note" style="margin:0">'+T(ex?'cl_es':'cl_ns')+'</p></section>';
+  else h=(ex?'<div class="exn">'+T('exn')+'</div>':((SW.how||SW.fee)?'<section class="card" style="display:flex;flex-direction:column;gap:12px">'+(SW.how?'<h2>'+T('how')+'</h2><div class="how">'+[1,2,3,4].map(function(n){return '<div><i>'+n+'</i><span><b>'+T('how'+n)+'</b><span>'+T('how'+n+'s')+'</span></span></div>'}).join('')+'</div>':'')+(SW.fee?'<div class="fee"><b>'+(FEE?T('fee_set').replace('{a}',FEE):T('fee_none'))+'</b><span class="note">'+T('fee_by')+'</span></div>':'')+'</section>':''))
+  +(draft?'<section class="card" style="display:flex;flex-direction:column;gap:10px;border:2px solid var(--a2)"><b>'+T('draft')+'</b><div class="nb"><button type="button" class="btn ghost" id="fresh">'+T('fresh')+'</button><button type="button" class="btn" id="cont">'+T('cont')+' ›</button></div></section>':'<button type="button" class="btn" id="start" style="min-height:58px;font-size:16px">'+T('start')+' ›</button>');
+  h+=(SW.swap?'<button type="button" class="lnk" id="swap" style="align-self:center">'+T(ex?'newhere':'already')+'</button>':'')+((!ex&&SW.iq)?'<section class="card iq"><div><b>'+T('iq_h')+'</b><span class="note">'+T('iq_s')+'</span></div><div class="two"><label class="fld"><span>'+T('iq_n')+'</span><input type="text" id="iq_n" maxlength="60"></label><label class="fld"><span>'+T('iq_m')+'</span><input type="tel" id="iq_m" inputmode="numeric" maxlength="10" placeholder="9829000000"></label></div><p class="err" id="iq_e" role="alert"></p><button type="button" class="btn ghost" id="iq_s" style="min-height:46px">'+T('iq_send')+'</button></section>':'')}
  else{h='<div class="prog" aria-hidden="true">'+[1,2,3,4,5,6].map(function(n){return '<i class="'+(n<=step?'on':'')+'"></i>'}).join('')+'</div><section class="card" style="display:flex;flex-direction:column;gap:12px"><div class="sth"><h2>'+T('s'+step)+'</h2><span>'+T('step').replace('{a}',step)+'</span></div>'+body()+'<p class="err" id="err" role="alert">'+esc(err)+'</p><div class="nb"><button type="button" class="btn ghost" id="back">'+T('back')+'</button><button type="button" class="btn" id="next">'+(step===6?T(ex?'send_e':'send_n'):T('next'))+'</button></div><p class="saved">'+T('saved')+'</p></section>'}
  f.innerHTML=h;
+ drawX();
 }
 function top(){var t=$('.title');if(t&&t.scrollIntoView)t.scrollIntoView({block:'start'})}
 function go(n){step=n;err='';paint();top()}
@@ -317,11 +350,9 @@ function toast(k){var t=$('#toast');t.textContent=T(k);t.hidden=false;clearTimeo
 function mode(e){if(step>0&&!sent)read();ex=e;d=blank();PH=[null,null,null];step=0;err='';sent=null;load();paint()}
 $('#l_hi').addEventListener('click',function(){if(step>0&&!sent)read();lang='hi';paint()});
 $('#l_en').addEventListener('click',function(){if(step>0&&!sent)read();lang='en';paint()});
-$('#mo_n').addEventListener('click',function(){mode(false)});$('#mo_e').addEventListener('click',function(){mode(true)});
 document.addEventListener('click',function(ev){var e=ev.target,b;
+ if(e.closest('#ov3'))return;
  if(e.closest('#iq_s')){var n=tidy($('#iq_n').value),m=$('#iq_m').value.replace(/\D/g,'');if(!n||m.length!==10){$('#iq_e').textContent=T('iq_err');return}$('#iq_e').textContent='';$('#iq_n').value='';$('#iq_m').value='';toast('iq_ok');setTimeout(function(){toast('iq_demo')},2700);return}
- if(e.closest('#fe_n')){FEE='';paint();return}
- if(e.closest('#fe_y')){FEE='2,100';paint();return}
  if(e.closest('#start')){d=blank();go(1);return}
  if(e.closest('#cont')){d=draft.d;go(Math.min(6,draft.step));return}
  if(e.closest('#fresh')){clear();draft=null;d=blank();go(1);return}
@@ -340,6 +371,47 @@ document.addEventListener('change',function(ev){var e=ev.target;
  if(e.dataset&&e.dataset.ph!=null){var f=e.files&&e.files[0];if(!f)return;read();if(!/^image\/(jpeg|png)$/.test(f.type)||f.size>5*1048576){err=T('e_img');paint();return}PH[+e.dataset.ph]=URL.createObjectURL(f);err='';paint();return}
  if(e.id==='i_hbt'||e.id==='i_wbt'){$('#othw').hidden=e.value!=='Other';return}
  if(e.dataset&&e.dataset.f==='m'){read();paint()}});
+
+/* 13 Nov: President switches window + Add a box (demo; real site = President Desk) */
+var ANCH={pl1:'#anc1',pl2:'#anc2'};
+function drawX(){
+ $$('.xbox').forEach(function(e){e.remove()});
+ var first=step===0&&!sent;$('#addbox').hidden=!first;if(!first)return;
+ XB.forEach(function(b){if(!b.on)return;var el=document.createElement('section');el.className='card xbox';
+  el.innerHTML='<span class="xdemo">'+T('x_demo')+'</span><h2>'+esc(b.t)+'</h2><p>'+esc(b.x)+'</p>'+(b.b?'<button type="button" class="xbtn" data-t="t_nav">'+esc(b.b)+'</button>':'');
+  var a=$(ANCH[b.p]);a.parentNode.insertBefore(el,a);});
+}
+var ov3=$('#ov3'),sh3=$('#sh3');
+function open3(h){sh3.innerHTML=h;ov3.hidden=false}
+function hide3(){ov3.hidden=true}
+ov3.addEventListener('click',function(e){if(e.target===ov3)hide3()});
+function swRow(k,on,lab){return '<button type="button" class="sw" data-sw="'+k+'" aria-pressed="'+on+'"><span>'+T(lab)+'</span><i></i></button>'}
+function seg(a,b,on1,l1,l2){return '<div class="seg"><button type="button" id="'+a+'" aria-pressed="'+on1+'">'+T(l1)+'</button><button type="button" id="'+b+'" aria-pressed="'+!on1+'">'+T(l2)+'</button></div>'}
+function swSheet(){
+ var h='<div class="sh"><div><h2>'+T('sw_h')+'</h2><p>'+T('sw_p')+'</p></div></div>';
+ h+='<p class="swh">'+T('sw_open')+'</p>'+swRow('openN',SW.openN,'sw_openN')+swRow('openE',SW.openE,'sw_openE');
+ h+='<p class="swh">'+T('sw_boxes')+'</p>'+swRow('how',SW.how,'sw_how')+swRow('fee',SW.fee,'sw_feel')+swRow('swap',SW.swap,'sw_swap')+swRow('iq',SW.iq,'sw_iq')+swRow('fx',fxOn,'sw_fx');
+ if(XB.length){h+='<p class="swh">'+T('sw_x')+'</p>';XB.forEach(function(b,i){h+='<button type="button" class="sw" data-sx="'+i+'" aria-pressed="'+b.on+'"><span>'+esc(b.t)+'</span><i></i></button>'})}
+ h+='<button class="close alt" type="button" id="sw_add" style="margin-top:6px">'+T('ab_t')+'</button>';
+ h+='<p class="swh">'+T('sw_demo')+'</p><p class="note" style="margin:0 0 6px;font-weight:700">'+T('d_mode')+'</p>'+seg('mo_n','mo_e',!ex,'mo_n','mo_e');
+ h+='<p class="note" style="margin:4px 0 6px;font-weight:700">'+T('d_fee')+'</p>'+seg('fe_n','fe_y',!FEE,'d_no','d_yes');
+ h+='<button class="close" type="button" data-x>'+T('close')+'</button>';open3(h)}
+sh3.addEventListener('click',function(e){
+ e.stopPropagation();
+ var b=e.target.closest('button');if(!b)return;
+ if(b.hasAttribute('data-x')){hide3();return}
+ if(b.id==='mo_n'||b.id==='mo_e'){mode(b.id==='mo_e');swSheet();return}
+ if(b.id==='fe_n'||b.id==='fe_y'){FEE=b.id==='fe_y'?'2,100':'';paint();swSheet();return}
+ if(b.dataset.sw){var k=b.dataset.sw;if(step>0&&!sent)read();if(k==='fx')fxOn=!fxOn;else SW[k]=!SW[k];paint();swSheet();return}
+ if(b.dataset.sx){var x=XB[+b.dataset.sx];x.on=!x.on;paint();swSheet();return}
+ if(b.id==='sw_add'){addSheet();return}
+ if(b.id==='ad_ok'){var t=$('#ad_tt').value.trim(),x2=$('#ad_tx').value.trim();if(!t||!x2){$('#ad_err').textContent=T('ad_need');return}
+  XB.push({id:++xid,t:t,x:x2,b:$('#ad_bt').value.trim(),p:$('#ad_pl').value,on:true});hide3();if(step>0&&!sent)read();sent=null;step=0;paint();top();toast('ad_done');return}
+});
+function addSheet(){var o='';['pl1','pl2'].forEach(function(p){o+='<option value="'+p+'">'+T(p)+'</option>'});
+ open3('<div class="sh"><div><h2>'+T('ad_h')+'</h2><p>'+T('ad_p')+'</p></div></div><div class="fl"><label for="ad_tt">'+T('ad_tt')+'</label><input id="ad_tt" maxlength="60" value="'+esc(T('sm_tt'))+'"><label for="ad_tx">'+T('ad_tx')+'</label><textarea id="ad_tx" maxlength="400">'+esc(T('sm_tx'))+'</textarea><label for="ad_bt">'+T('ad_bt')+'</label><input id="ad_bt" maxlength="30" value="'+esc(T('sm_bt'))+'"><label for="ad_pl">'+T('ad_pl')+'</label><select id="ad_pl">'+o+'</select></div><p class="note" id="ad_err" style="color:#C62828"></p><button class="close" type="button" id="ad_ok">'+T('ad_ok')+'</button><button class="close alt" type="button" data-x>'+T('close')+'</button>')}
+$('#dsw').addEventListener('click',swSheet);
+$('#addbox').addEventListener('click',addSheet);
 if(/existing/.test(location.hash))ex=true;
 load();paint();
 })();
@@ -350,7 +422,7 @@ load();paint();
 (function(){
 var h=location.hostname;
 if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
-var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
 var here=location.pathname.split('/').pop()||'index.html';
 document.addEventListener('click',function(e){
  var b=e.target.closest&&e.target.closest('button,a');if(!b)return;

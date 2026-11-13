@@ -236,6 +236,9 @@ img{max-width:100%}
 }
 @media(max-width:380px){.bgg{gap:6px}.bg1 b{font-size:17px}.ok{grid-template-columns:1fr}.hb{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.drop{animation:none}}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -264,7 +267,6 @@ img{max-width:100%}
  <main id="main" class="page" style="padding:0"></main>
 
  <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
  <footer class="foot"><b data-i="f_name">Digambar Jain Social Group, Kota Main</b><span data-i="f_line">Kota · djsgkotamain2003@gmail.com</span></footer>
@@ -274,7 +276,7 @@ img{max-width:100%}
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Details" hidden><div class="sheet" id="sheet"></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
-<script>
+<script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 var DROP='<svg class="drop" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4C32 4 12 28 12 41a20 20 0 0 0 40 0C52 28 32 4 32 4z" fill="#fff"/><path d="M24 42a8 8 0 0 0 8 8" stroke="#C62828" stroke-width="4" fill="none" stroke-linecap="round"/></svg>';
@@ -328,7 +330,7 @@ f_ch:'Register for the camp',f_cs:'Names can be given only after the camp date i
 t_call:'Demo: calling is off. On the real site the phone app opens.',t_wa:'Demo: WhatsApp is off. On the real site WhatsApp opens.',t_gal:'On the real site the Blood Donation album in the Gallery opens.',
 lastd:'Last donated: {m}',can:'Can donate now',dn:'Mr [Donor {n}]',bgh:'{g} donors'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
-var lang='en',mem=false,on=true,dated=false,cnt=true;
+var lang='en',mem=true,on=true,dated=false,cnt=true;
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var MON={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],hi:['जन','फ़र','मार्च','अप्रैल','मई','जून','जुलाई','अग','सित','अक्टू','नव','दिस']};
@@ -418,7 +420,7 @@ render();
 (function(){
 var h=location.hostname;
 if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
-var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
 var here=location.pathname.split('/').pop()||'index.html';
 document.addEventListener('click',function(e){
  var b=e.target.closest&&e.target.closest('button,a');if(!b)return;

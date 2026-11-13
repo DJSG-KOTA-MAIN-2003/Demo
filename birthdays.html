@@ -167,6 +167,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 @media(max-width:480px){.head{gap:6px}.dj{font-size:clamp(19px,5.6vw,24px)}.km{font-size:clamp(15px,4.6vw,20px)}.logo{width:40px;height:40px}.brand{gap:6px}.login{padding:7px 9px;font-size:10.5px}.lang{font-size:10.5px}.lang button{padding:5px 6px}}
 @media(max-width:380px){.lang button{padding:4px 5px}.logo{width:36px;height:36px}.wb{padding:8px 10px;font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){.blob{animation:none}.burst{display:none}}
+
+/* 13 Nov (user): "Become a member" only on the front page; "Back to Home" stays on every page as one wide button */
+.cta{grid-template-columns:1fr;width:100%;max-width:440px;margin-inline:auto}
 </style>
 
 <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
@@ -217,7 +220,6 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
  </div>
 
  <div class="cta">
-  <button class="btn" type="button" data-t="t_nav"><span aria-hidden="true">🤝</span><span data-i="b_join">Become a member</span></button>
   <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
  </div>
  <footer class="foot"><b data-i="f_name">Digambar Jain Social Group, Kota Main</b><span data-i="f_line">Kota · djsgkotamain2003@gmail.com</span></footer>
@@ -227,7 +229,7 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Wishes" hidden><div class="sheet" id="sheet"></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
-<script>
+<script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
 var AV='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.2" r="4.2"/><path d="M3.5 21c.6-4.4 4.1-7 8.5-7s7.9 2.6 8.5 7z"/></svg>';
@@ -269,7 +271,7 @@ wl_t:'Who wished',you:'You',justnow:'just now',my_s:'{n} members wished you toda
 t_wa:'Demo: WhatsApp is off. On the real site WhatsApp opens to their number with the message.',t_wish:'Wishes sent. They get a notification in the app.',
 login:'Member Login',loggedin:'✓ Logged in',t_nav:'This sample shows only the Birthdays & Anniversaries page.',t_login:'Login is off in the demo. Tap "Member" at the top to see the member view.'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
-var lang='en',mem=false,my=false,tab=0,flt='all';
+var lang='en',mem=true,my=false,tab=0,flt='all';
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function F(k,o){var s=T(k);for(var x in o)s=s.split('{'+x+'}').join(o[x]);return s}
 function ord(n){if(lang==='hi')return n;var s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0])}
@@ -345,4 +347,19 @@ render();
 })();
 </script>
 
+<script>
+/* Demo links between the new-look pages. They work on the GitHub demo (github.io) and the real site; inside Claude each page keeps its own note. */
+(function(){
+var h=location.hostname;
+if(!(location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(h)))return;
+var M={m_home:'index.html',b_home:'index.html',m_cel:'birthdays.html',m_about:'about.html',m_bear:'bearers.html',m_ev:'events.html',m_gal:'gallery.html',m_dir:'directory.html',m_biz:'business.html',m_blood:'blood.html',m_join:'join.html',b_join:'join.html'};
+var here=location.pathname.split('/').pop()||'index.html';
+document.addEventListener('click',function(e){
+ var b=e.target.closest&&e.target.closest('button,a');if(!b)return;
+ var k=b.getAttribute('data-i');if(!M[k]){var c=b.querySelector('[data-i]');k=c&&c.getAttribute('data-i')}
+ var u=M[k];if(!u||u===here)return;
+ e.stopPropagation();e.preventDefault();location.href=u;
+},true);
+})();
+</script>
 </body></html>
