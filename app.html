@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 23:00</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 23:15</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 23:00&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 23:15&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1845,6 +1845,18 @@ ig.addEventListener(&#x27;click&#x27;,function(e){
  if(a===&#x27;send&#x27;){send();return}
 });
 ig.addEventListener(&#x27;keydown&#x27;,function(e){if(e.key===&#x27;Enter&#x27;&amp;&amp;e.target.dataset&amp;&amp;e.target.dataset.cin){e.preventDefault();addComment(+e.target.dataset.cin,e.target)}if(e.key===&#x27;Escape&#x27;&amp;&amp;STK.length)closeTop()});
+})();
+&lt;/script&gt;
+&lt;style&gt;#ig .igrf{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 3px 8px var(--shadow);font-size:17px;display:flex;align-items:center;justify-content:center}
+@media (max-width:370px){#ig .igrf{width:36px;height:36px;font-size:15px}}
+&lt;/style&gt;
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+(function(){var RF=window.__RF||{profile:1,insta:1,home:1};
+function doRefresh(){try{parent.location.reload()}catch(e){location.reload()}}
+window.__igRefresh=doRefresh;
+if(RF.profile&amp;&amp;window.__igS){var _p=window.__igS.profile;window.__igS.profile=function(){return _p().replace(&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;&#x27;,&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:var(--btn);color:#fff;box-shadow:0 4px 0 var(--btn-edge)&quot; onclick=&quot;__igRefresh()&quot;&gt;🔄 Refresh app · get the newest version&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;&#x27;)}}
+if(RF.insta){var ig=document.getElementById(&#x27;ig&#x27;);if(ig){var nb=ig.querySelector(&#x27;.ignew&#x27;);var b=document.createElement(&#x27;button&#x27;);b.className=&#x27;igrf&#x27;;b.setAttribute(&#x27;aria-label&#x27;,&#x27;Refresh&#x27;);b.textContent=&#x27;🔄&#x27;;b.onclick=doRefresh;nb.parentNode.insertBefore(b,nb)}}
+if(RF.home){var r=document.querySelector(&#x27;.head .r.me&#x27;),bell=r&amp;&amp;r.querySelector(&#x27;.bell&#x27;);if(bell){var h=document.createElement(&#x27;button&#x27;);h.className=&#x27;bell hrf&#x27;;h.setAttribute(&#x27;aria-label&#x27;,&#x27;Refresh&#x27;);h.textContent=&#x27;🔄&#x27;;h.onclick=function(e){e.stopPropagation();doRefresh()};r.insertBefore(h,bell)}}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
