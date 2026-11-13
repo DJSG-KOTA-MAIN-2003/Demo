@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 22:30</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 23:00</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 22:30&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 23:00&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1225,7 +1225,7 @@ window.__fxShow=function(){var d=DEF[CUR]||{};if((d.fx||[]).indexOf(&#x27;firewo
 window.__setFest=setFest;
 var h0=(location.hash||&#x27;&#x27;).replace(&#x27;#&#x27;,&#x27;&#x27;);setFest(DEF[h0]?h0:&#x27;normal&#x27;);
 
-window.__IGHOOK=function(f){var p=show;show=function(k){if(f(k,!!((WAIT&amp;&amp;(LOCK[k]||k===&#x27;myposts&#x27;))||(MODE===&#x27;visit&#x27;&amp;&amp;VLOCK[k]))))return;p(k)}};window.__igA=A;window.__igShow=function(k){show(k)};
+window.__IGHOOK=function(f){var p=show;show=function(k){if(f(k,!!((WAIT&amp;&amp;(LOCK[k]||k===&#x27;myposts&#x27;||k===&#x27;top5&#x27;))||(MODE===&#x27;visit&#x27;&amp;&amp;(VLOCK[k]||k===&#x27;top5&#x27;)))))return;p(k)}};window.__igA=A;window.__igShow=function(k){show(k)};window.__igS=S;window.__igPl=pl;
 logos();var av=document.getElementById(&quot;myav&quot;);if(av)av.style.backgroundImage=&quot;url(&quot;+A.AS+&quot;)&quot;;
 })();
 &lt;/script&gt;
@@ -1426,10 +1426,71 @@ body.demo #ig{top:var(--dm,0px)}
 .igsw input[type=checkbox]::after{content:&quot;&quot;;position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
 .igsw input[type=checkbox]:checked{background:var(--btn)}.igsw input[type=checkbox]:checked::after{left:21px}
 .igsw select{flex:none;padding:7px 8px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit;font-size:13px;color:var(--ink)}
-.igtoast{position:absolute;left:50%;top:70px;transform:translateX(-50%) translateY(20px);z-index:12;max-width:min(92%,440px);padding:10px 16px;border-radius:999px;background:#1d1024;color:#fff;font-size:13px;font-weight:700;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.igtoast{position:absolute;left:50%;top:70px;transform:translateX(-50%) translateY(20px);z-index:99;max-width:min(92%,440px);padding:10px 16px;border-radius:999px;background:#1d1024;color:#fff;font-size:13px;font-weight:700;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 10px 26px rgba(0,0,0,.3)}
 .igtoast.on{opacity:1;transform:translateX(-50%)}
 @media (max-width:370px){.igttl b{font-size:18px}#ig .ignew{padding:0 11px 0 9px;font-size:12px}#ig .igtabs button{font-size:10.5px}#ig .igbk{padding:7px 10px}}
 @media (prefers-reduced-motion:reduce){.igrg::before,.igp.rise,.iglay,.igov,.igsheet,.igstory{animation:none!important}.igvid img{transition:none}}
+/* awards */
+.igph .iga{position:relative}
+.igbdg{position:absolute;right:-5px;bottom:-4px;width:20px;height:20px;border-radius:50%;background:#fff;font-size:12px;line-height:20px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.3);font-style:normal}
+.igrg .igbdg{right:-2px;bottom:-2px;width:22px;height:22px;line-height:22px;font-size:13px}
+.igpin{padding:7px 12px 0;font-size:11.5px;font-weight:800;color:var(--a1)}
+#ig .igtop5{display:block;width:100%;text-align:left;margin:0 0 14px;padding:12px;border-radius:22px;background:linear-gradient(135deg,#2A1530,#6E0B27 55%,#A3123A);color:#fff;box-shadow:0 10px 24px var(--glow),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
+.igtop5::after{content:&quot;&quot;;position:absolute;right:-30px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,213,138,.35),transparent 70%)}
+.igtop5 .h b{display:block;font-family:Sora,sans-serif;font-size:15px}.igtop5 .h small{font-size:11.5px;opacity:.8}
+.igtop5 .fs{display:flex;gap:8px;margin:10px 0 8px}
+.igtop5 .f{position:relative}
+.igtop5 .f .iga{display:flex;width:44px;height:44px;border-radius:50%;border:2px solid #FFD58A;background-size:cover;background-position:center;align-items:center;justify-content:center;font-weight:800;font-family:Sora,sans-serif}
+.igtop5 .f i{position:absolute;right:-4px;bottom:-3px;width:18px;height:18px;border-radius:50%;background:#FFD58A;color:#2A1530;font-size:11px;font-weight:800;font-style:normal;text-align:center;line-height:18px}
+.igtop5 .ft{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;align-items:center}
+.igtop5 .ft .sa{font-weight:800;color:#FFD58A;white-space:nowrap}.igtop5 .ft b{color:#FFD58A}
+.igseg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:16px;background:var(--glass);border:1px solid var(--line);margin-bottom:10px}
+#ig .igseg button{padding:8px 4px;border-radius:12px;font-size:12px;font-weight:800;color:var(--muted);line-height:1.2}
+#ig .igseg button[aria-pressed=true]{background:var(--btn);color:#fff;box-shadow:0 3px 0 var(--btn-edge)}
+.igpod{display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:8px;margin:14px 0 10px}
+.igpod .pd{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.igpod .pd .iga{display:flex;width:58px;height:58px;border-radius:50%;border:3px solid #fff;background-size:cover;background-position:center;align-items:center;justify-content:center;color:#fff;font-weight:800;font-family:Sora,sans-serif;font-size:20px;box-shadow:0 6px 14px var(--shadow)}
+.igpod .p1 .iga{width:72px;height:72px;box-shadow:0 0 0 3px #F4B400,0 8px 20px var(--glow)}
+.igpod .pd b{font-size:12px;line-height:1.15;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.igpod .pd small{font-size:12px;font-weight:800;color:var(--a1)}
+.igpod .st{width:100%;border-radius:14px 14px 4px 4px;color:#fff;font-family:Sora,sans-serif;font-weight:800;font-size:20px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px}
+.igpod .p1 .st{height:74px;background:linear-gradient(180deg,#F4B400,#E8590C)}
+.igpod .p2 .st{height:54px;background:linear-gradient(180deg,#b9b9c9,#8a8aa0)}
+.igpod .p3 .st{height:42px;background:linear-gradient(180deg,#d39563,#a0613a)}
+.igpod .cr{font-size:22px;line-height:1;margin-bottom:-2px}
+.iglr{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:16px;background:var(--glass);border:1px solid var(--line);margin-bottom:6px}
+.iglr.me{background:#FFF3D6;border-color:#F3C15A}
+.iglr .rk{width:22px;text-align:center;font-weight:800;color:var(--muted)}
+.iglr .iga{display:flex;width:36px;height:36px;border-radius:50%;flex:none;background-size:cover;background-position:center;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.iglr .nm{flex:1;min-width:0}.iglr .nm b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iglr .nm small{font-size:11px;color:var(--muted)}
+.iglr .bar{display:block;height:5px;border-radius:5px;background:rgba(163,18,58,.1);margin:3px 0 2px;overflow:hidden}.iglr .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--a2),var(--a1))}
+.iglr .lk{font-weight:800;color:var(--a1);font-size:14px;white-space:nowrap}
+.igcert{position:relative;background:#fffdf7;border:3px double #b8860b;border-radius:10px;padding:18px 16px 22px;text-align:center;box-shadow:0 10px 26px var(--shadow);margin-bottom:12px;color:#2A1530}
+.igcert .lh{display:flex;gap:10px;align-items:center;justify-content:center;border-bottom:2px solid #A3123A;padding-bottom:10px;margin-bottom:12px;text-align:left}
+.igcert .lh img{width:46px;height:46px;border-radius:50%}
+.igcert .lh b{display:block;font-family:Sora,sans-serif;color:#A3123A;font-size:14px}.igcert .lh span{font-size:11px;color:#6C5470}
+.igcert .t{font-family:Sora,sans-serif;font-weight:800;font-size:20px;color:#A3123A;margin:4px 0}
+.igcert p{font-size:13px;margin:6px 0;line-height:1.45}
+.igcert .n{font-family:Sora,sans-serif;font-weight:800;font-size:22px;margin:4px 0;color:#2A1530}
+.igcert .sg{display:flex;justify-content:space-around;margin-top:22px;font-size:12.5px;font-weight:700}
+.igcert .sg span{border-top:1px solid #6C5470;padding-top:4px;min-width:110px}.igcert .sg small{font-weight:500;color:#6C5470}
+.igcert .seal{position:absolute;right:10px;top:-14px;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ffd34d,#E8590C);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.igtbl{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--glass);margin-top:8px}
+.igtbl .hd,.igtbl .rw{display:grid;grid-template-columns:30px 1fr 54px 54px 54px;align-items:center;gap:2px;padding:8px 6px;font-size:12.5px}
+.igtbl .hd{background:rgba(163,18,58,.08);font-weight:800}
+#ig .igtbl .hd button{font-size:11.5px;font-weight:800;color:var(--muted);text-align:center;padding:2px 0}
+#ig .igtbl .hd button.on{color:var(--a1)}
+.igtbl .rw{border-top:1px solid var(--line);cursor:pointer}.igtbl .rw&gt;span:nth-child(n+3){text-align:center;font-weight:700}
+.igtbl .rw input{width:18px;height:18px;accent-color:var(--a1)}
+.igtbl .m{display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.igtbl .m .iga{display:flex;width:26px;height:26px;border-radius:50%;flex:none;background-size:cover;background-position:center;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800}
+.igdates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.igdates label{font-size:12px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.igdates input,.igin2{width:100%;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit;font-size:13.5px;color:var(--ink)}
+.igprev{padding:10px 12px;border-radius:16px;background:var(--glass);border:1px solid var(--line);margin-bottom:8px;font-size:13px;line-height:1.45}
+.igprev small{display:block;font-weight:800;color:var(--a1);margin-bottom:3px}.igprev b{display:block}
+.igprev .igsb{margin-top:6px}
 &lt;/style&gt;
 &lt;script&gt;/* ===== DJSG Insta: full screen in the Dawn look (13 Nov 2026, user asked in the &quot;DJSG Insta&quot; chat). Adds only; App Home is not changed. ===== */
 (function(){
@@ -1511,19 +1572,19 @@ ig.innerHTML=&#x27;&lt;div class=&quot;igtop&quot;&gt;&lt;div class=&quot;in&quo
 document.body.appendChild(ig);
 var body=$(&#x27;#igb&#x27;,ig),inn=$(&#x27;#igin&#x27;,ig);
 
-function storyRow(){var seen={},L=[];POSTS.forEach(function(p){if(p.st===&#x27;wait&#x27;||P[p.u].me||p.d&gt;7||seen[p.u])return;seen[p.u]=1;L.push(p.u)});
+function storyRow(){var seen={},L=[];POSTS.forEach(function(p){if(p.st===&#x27;wait&#x27;||P[p.u].me||p.u===&#x27;OF&#x27;||p.d&gt;7||seen[p.u])return;seen[p.u]=1;L.push(p.u)});
  var me=&#x27;&lt;button class=&quot;igs&quot; data-ig=&quot;mypic&quot;&gt;&lt;span class=&quot;igrg me&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(&#x27;AS&#x27;)+&#x27;&quot;&gt;&lt;/span&gt;&#x27;+(CFG.pf?&#x27;&lt;span class=&quot;igplus&quot;&gt;+&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;Your photo&lt;/span&gt;&lt;/button&gt;&#x27;;
- return &#x27;&lt;div class=&quot;igst&quot;&gt;&#x27;+me+L.map(function(u){return &#x27;&lt;button class=&quot;igs&quot; data-ig=&quot;story&quot; data-u=&quot;&#x27;+u+&#x27;&quot;&gt;&lt;span class=&quot;igrg&#x27;+(ST.seen[u]?&#x27; seen&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(u)+&#x27;&quot;&gt;&#x27;+avt(u)+&#x27;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;&#x27;+esc(P[u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
+ return &#x27;&lt;div class=&quot;igst&quot;&gt;&#x27;+me+L.map(function(u){return &#x27;&lt;button class=&quot;igs&quot; data-ig=&quot;story&quot; data-u=&quot;&#x27;+u+&#x27;&quot;&gt;&lt;span class=&quot;igrg&#x27;+(ST.seen[u]?&#x27; seen&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(u)+&#x27;&quot;&gt;&#x27;+avt(u)+&#x27;&lt;/span&gt;&#x27;+badge(u)+&#x27;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;&#x27;+esc(P[u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
 function tabs(){var T=[[&#x27;feed&#x27;,&#x27;🏠&#x27;,&#x27;Feed&#x27;],[&#x27;grid&#x27;,&#x27;▦&#x27;,&#x27;Grid&#x27;],[&#x27;videos&#x27;,&#x27;🎬&#x27;,&#x27;Videos&#x27;],[&#x27;mine&#x27;,&#x27;🖼️&#x27;,&#x27;My posts&#x27;],[&#x27;saved&#x27;,&#x27;🔖&#x27;,&#x27;Saved&#x27;]];
  return &#x27;&lt;div class=&quot;igtabs&quot; role=&quot;tablist&quot;&gt;&#x27;+T.map(function(t){return &#x27;&lt;button role=&quot;tab&quot; data-ig=&quot;tab&quot; data-t=&quot;&#x27;+t[0]+&#x27;&quot; aria-pressed=&quot;&#x27;+(ST.tab===t[0])+&#x27;&quot;&gt;&lt;span&gt;&#x27;+t[1]+&#x27;&lt;/span&gt;&#x27;+t[2]+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
 function infoRow(){var n=today();return &#x27;&lt;div class=&quot;igrow&quot;&gt;&lt;span class=&quot;igchip&#x27;+(n&gt;=CFG.lim?&#x27; hot&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;📮 Posts today: &#x27;+n+&#x27; of &#x27;+CFG.lim+&#x27;&lt;/span&gt;&lt;span class=&quot;igchip&quot;&gt;🕑 &#x27;+(CFG.fd&gt;9999?&#x27;All posts&#x27;:&#x27;Last &#x27;+CFG.fd+&#x27; days&#x27;)+&#x27;&lt;/span&gt;&lt;button class=&quot;igchip&quot; data-ig=&quot;cfg&quot;&gt;⚙️ President switches (demo)&lt;/button&gt;&lt;/div&gt;&#x27;}
-function mostLiked(){if(!CFG.ml)return &#x27;&#x27;;var L=POSTS.filter(function(p){return p.st!==&#x27;wait&#x27;&amp;&amp;p.d&lt;=CFG.tw}).sort(function(a,b){return b.lk-a.lk}).slice(0,5);if(!L.length)return &#x27;&#x27;;
+function mostLiked(){if(!CFG.ml)return &#x27;&#x27;;var L=POSTS.filter(function(p){return p.st!==&#x27;wait&#x27;&amp;&amp;p.u!==&#x27;OF&#x27;&amp;&amp;p.d&lt;=CFG.tw}).sort(function(a,b){return b.lk-a.lk}).slice(0,5);if(!L.length)return &#x27;&#x27;;
  return &#x27;&lt;div class=&quot;igsec&quot;&gt;⭐ Most liked&lt;small&gt;&#x27;+(CFG.tw&gt;9999?&#x27;All time&#x27;:&#x27;Last &#x27;+CFG.tw+&#x27; days&#x27;)+&#x27;&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;igml&quot;&gt;&#x27;+L.map(function(p,i){return &#x27;&lt;button class=&quot;igmc&quot; data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot;&gt;&lt;span class=&quot;rk&quot;&gt;#&#x27;+(i+1)+&#x27;&lt;/span&gt;&lt;span class=&quot;lk&quot;&gt;&lt;b&gt;♥ &#x27;+p.lk+&#x27;&lt;/b&gt;&#x27;+esc(P[p.u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
 function media(p){
  if(p.vid)return &#x27;&lt;div class=&quot;igvid&quot; data-ig=&quot;play&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;--vd:&#x27;+Math.min(p.vid,6)+&#x27;s&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;&#x27;+art(p.im[0])+&#x27;&quot;&gt;&lt;span class=&quot;igvtag&quot;&gt;🎥 Video&lt;/span&gt;&lt;span class=&quot;igplay&quot;&gt;▶&lt;/span&gt;&lt;span class=&quot;igdur&quot;&gt;0:&#x27;+(p.vid&lt;10?&#x27;0&#x27;:&#x27;&#x27;)+p.vid+&#x27;&lt;/span&gt;&lt;span class=&quot;igbar&quot;&gt;&lt;/span&gt;&#x27;+BURST+&#x27;&lt;/div&gt;&#x27;;
  var n=p.im.length;return &#x27;&lt;div class=&quot;igmw&quot; data-dbl=&quot;&#x27;+p.id+&#x27;&quot;&gt;&lt;div class=&quot;igm&quot;&gt;&#x27;+p.im.map(function(k){return &#x27;&lt;img alt=&quot;&quot; src=&quot;&#x27;+art(k)+&#x27;&quot;&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+(n&gt;1?&#x27;&lt;span class=&quot;igcnt&quot;&gt;1/&#x27;+n+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;)+BURST+&#x27;&lt;/div&gt;&#x27;+(n&gt;1?&#x27;&lt;div class=&quot;igdts&quot;&gt;&#x27;+p.im.map(function(_,i){return &#x27;&lt;i class=&quot;&#x27;+(i?&#x27;&#x27;:&#x27;on&#x27;)+&#x27;&quot;&gt;&lt;/i&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)}
 function card(p,anim){var w=p.st===&#x27;wait&#x27;,me=P[p.u].me,last=p.cm[p.cm.length-1];
- return &#x27;&lt;article class=&quot;igp&#x27;+(anim&amp;&amp;!RM?&#x27; rise&#x27;:&#x27;&#x27;)+&#x27;&quot; data-pid=&quot;&#x27;+p.id+&#x27;&quot;&gt;&lt;div class=&quot;igph&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(p.u)+&#x27;&quot;&gt;&#x27;+avt(p.u)+&#x27;&lt;/span&gt;&lt;span class=&quot;igwho&quot;&gt;&lt;b&gt;&#x27;+esc(P[p.u].n)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+(P[p.u].r?P[p.u].r+&#x27; · &#x27;:&#x27;&#x27;)+when(p.d)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;button class=&quot;igdots3&quot; data-ig=&quot;more&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;More&quot;&gt;⋯&lt;/button&gt;&lt;/div&gt;&#x27;+
+ return &#x27;&lt;article class=&quot;igp&#x27;+(anim&amp;&amp;!RM?&#x27; rise&#x27;:&#x27;&#x27;)+&#x27;&quot; data-pid=&quot;&#x27;+p.id+&#x27;&quot;&gt;&#x27;+(p.pin?&#x27;&lt;div class=&quot;igpin&quot;&gt;📌 Pinned by the office&lt;/div&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;div class=&quot;igph&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(p.u)+&#x27;&quot;&gt;&#x27;+avt(p.u)+badge(p.u)+&#x27;&lt;/span&gt;&lt;span class=&quot;igwho&quot;&gt;&lt;b&gt;&#x27;+esc(P[p.u].n)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+starLine(p.u)+(P[p.u].r?P[p.u].r+&#x27; · &#x27;:&#x27;&#x27;)+when(p.d)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;button class=&quot;igdots3&quot; data-ig=&quot;more&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;More&quot;&gt;⋯&lt;/button&gt;&lt;/div&gt;&#x27;+
  (w?&#x27;&lt;div class=&quot;igwait&quot;&gt;⏳ Approval awaited · only you see it&lt;button class=&quot;igsb dm&quot; data-ig=&quot;approve&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Demo: office approves&lt;/button&gt;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
  (p.memory?&#x27;&lt;div class=&quot;igmem&quot;&gt;🕰️ Memory · a post from &#x27;+p.memory+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+media(p)+
  &#x27;&lt;div class=&quot;igact&quot;&gt;&lt;button class=&quot;lk&#x27;+(p.liked?&#x27; on&#x27;:&#x27;&#x27;)+&#x27;&quot; data-ig=&quot;like&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Like&quot;&gt;&#x27;+ICO.heart+&#x27;&lt;/button&gt;&lt;button data-ig=&quot;cm&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Comments&quot;&gt;&#x27;+ICO.cm+&#x27;&lt;/button&gt;&lt;span class=&quot;sp&quot;&gt;&lt;/span&gt;&lt;button class=&quot;sv&#x27;+(p.saved?&#x27; on&#x27;:&#x27;&#x27;)+&#x27;&quot; data-ig=&quot;save&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Save&quot;&gt;&#x27;+ICO.save+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+
@@ -1536,8 +1597,8 @@ function card(p,anim){var w=p.st===&#x27;wait&#x27;,me=P[p.u].me,last=p.cm[p.cm.
 function feedEnd(){return &#x27;&lt;div class=&quot;ignote&quot;&gt;🕑 The Feed shows posts from &lt;b&gt;&#x27;+(CFG.fd&gt;9999?&#x27;all time&#x27;:&#x27;the last &#x27;+CFG.fd+&#x27; days&#x27;)+&#x27;&lt;/b&gt;. Older posts are hidden, never deleted: they stay in My posts, Saved and the member timeline.&lt;/div&gt;&#x27;}
 function render(anim){var t=ST.tab,h=storyRow()+tabs()+infoRow();
  $(&#x27;.ignew&#x27;,ig).style.display=CFG.np?&#x27;&#x27;:&#x27;none&#x27;;
- if(t===&#x27;feed&#x27;){var L=POSTS.filter(inFeed).sort(function(a,b){return a.d-b.d||b.id-a.id});
-  h+=mostLiked()+(L.length?L.map(function(p){return card(p,anim)}).join(&#x27;&#x27;):&#x27;&lt;div class=&quot;igempty&quot;&gt;&lt;span&gt;📷&lt;/span&gt;No posts yet.&lt;/div&gt;&#x27;)+feedEnd()}
+ if(t===&#x27;feed&#x27;){var L=POSTS.filter(inFeed).sort(function(a,b){return (b.pin||0)-(a.pin||0)||a.d-b.d||b.id-a.id});
+  h+=mostLiked()+topStrip()+(L.length?L.map(function(p){return card(p,anim)}).join(&#x27;&#x27;):&#x27;&lt;div class=&quot;igempty&quot;&gt;&lt;span&gt;📷&lt;/span&gt;No posts yet.&lt;/div&gt;&#x27;)+feedEnd()}
  else if(t===&#x27;grid&#x27;){var G=POSTS.filter(inFeed).sort(function(a,b){return a.d-b.d||b.id-a.id});
   h+=&#x27;&lt;div class=&quot;iggrid&quot;&gt;&#x27;+G.map(function(p){return &#x27;&lt;button data-ig=&quot;open&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot; style=&quot;background-image:url(&#x27;+art(p.im[0])+&#x27;)&quot; aria-label=&quot;&#x27;+esc(p.cap)+&#x27;&quot;&gt;&#x27;+(p.vid?&#x27;&lt;span class=&quot;gi&quot;&gt;▶&lt;/span&gt;&#x27;:p.im.length&gt;1?&#x27;&lt;span class=&quot;gi&quot;&gt;❐&lt;/span&gt;&#x27;:&#x27;&#x27;)+(p.st===&#x27;wait&#x27;?&#x27;&lt;span class=&quot;gw&quot;&gt;⏳ Awaited&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+feedEnd()}
  else if(t===&#x27;videos&#x27;){var V=POSTS.filter(function(p){return p.vid&amp;&amp;inFeed(p)});
@@ -1567,7 +1628,7 @@ function closeTop(){var t=STK.pop();if(!t)return;if(t.n===&#x27;ig&#x27;){ig.cla
 function closeAll(then){if(!STK.length){then&amp;&amp;then();return}closeTop();setTimeout(function(){closeAll(then)},70)}
 var oldBack=window.__appBack;window.__appBack=function(){if(STK.length){closeTop();return true}return oldBack?oldBack():false};
 
-function layer(n,html){var d=document.createElement(&#x27;div&#x27;);d.className=n===&#x27;st&#x27;?&#x27;igstory&#x27;:n===&#x27;sh&#x27;?&#x27;igov&#x27;:&#x27;iglay&#x27;;d.dataset.l=n;d.innerHTML=html;ig.appendChild(d);pushL(n,d);return d}
+function layer(n,html){var d=document.createElement(&#x27;div&#x27;);d.className=n===&#x27;st&#x27;?&#x27;igstory&#x27;:n===&#x27;sh&#x27;?&#x27;igov&#x27;:&#x27;iglay&#x27;;d.dataset.l=n;d.style.zIndex=String(10+STK.length);d.innerHTML=html;ig.appendChild(d);pushL(n,d);return d}
 function sheet(html){var o=layer(&#x27;sh&#x27;,&#x27;&lt;div class=&quot;igsheet&quot;&gt;&#x27;+html+&#x27;&lt;/div&gt;&#x27;);o.addEventListener(&#x27;click&#x27;,function(e){if(e.target===o)closeTop()});return o}
 function topbar(t,s){return &#x27;&lt;div class=&quot;igtop&quot;&gt;&lt;div class=&quot;in&quot;&gt;&lt;button class=&quot;igbk&quot; data-ig=&quot;x&quot;&gt;‹ Back&lt;/button&gt;&lt;div class=&quot;igttl&quot;&gt;&lt;b&gt;&#x27;+t+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+s+&#x27;&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}
 
@@ -1575,7 +1636,7 @@ function topbar(t,s){return &#x27;&lt;div class=&quot;igtop&quot;&gt;&lt;div cla
 function openIG(k){if(!ig.classList.contains(&#x27;on&#x27;)){ig.classList.add(&#x27;on&#x27;);pushL(&#x27;ig&#x27;,ig)}
  if(k===&#x27;myposts&#x27;)ST.tab=&#x27;mine&#x27;;else if(k===&#x27;insta&#x27;)ST.tab=&#x27;feed&#x27;;
  render(true);body.scrollTop=0;if(k===&#x27;newpost&#x27;)newPost()}
-window.__IGHOOK(function(k,locked){if(locked)return false;if(k===&#x27;insta&#x27;||k===&#x27;myposts&#x27;||k===&#x27;newpost&#x27;){openIG(k);return true}return false});
+window.__IGHOOK(function(k,locked){if(locked)return false;if(k===&#x27;top5&#x27;){window.__igTop5();return true}if(k===&#x27;insta&#x27;||k===&#x27;myposts&#x27;||k===&#x27;newpost&#x27;){openIG(k);return true}return false});
 window.__igOpen=openIG;
 
 /* ---- post viewer ---- */
@@ -1653,9 +1714,98 @@ function cfg(){function sw(k,t,s){return &#x27;&lt;label class=&quot;igsw&quot;&
  sheet(&#x27;&lt;h3&gt;⚙️ President switches (demo)&lt;/h3&gt;&lt;p&gt;Real app: President Desk › Insta DJSG control. Hiding never deletes anything.&lt;/p&gt;&#x27;+
  sw(&#x27;np&#x27;,&#x27;New post button&#x27;,&#x27;Members can send new posts&#x27;)+sw(&#x27;ml&#x27;,&#x27;Most-liked strip&#x27;,&#x27;⭐ strip at the top of the Feed&#x27;)+sw(&#x27;pf&#x27;,&#x27;Profile photo button&#x27;,&#x27;Members can change their own photo&#x27;)+sw(&#x27;mem&#x27;,&#x27;Share memory&#x27;,&#x27;Share an old post again&#x27;)+sw(&#x27;vid&#x27;,&#x27;Allow videos&#x27;,&#x27;OFF by default. Off stops new videos; old ones stay&#x27;)+
  sel(&#x27;fd&#x27;,&#x27;Feed shows posts from the last&#x27;,[30,90,180,365,99999])+sel(&#x27;tw&#x27;,&#x27;Most-liked looks at the last&#x27;,[7,30,90,99999])+
- &#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;);
+ &#x27;&lt;button class=&quot;igbtn&quot; data-ig=&quot;awp&quot;&gt;🏆 Awards · President / Secretary view&lt;/button&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;);
  Array.prototype.forEach.call(ig.querySelectorAll(&#x27;[data-cfg]&#x27;),function(x){x.addEventListener(&#x27;change&#x27;,function(){var k=x.dataset.cfg;CFG[k]=x.type===&#x27;checkbox&#x27;?x.checked:+x.value;rerender()})})}
 
+/* ---- AWARDS demo (owner, 13 Nov 2026 22:42): likes visible to all, daily counts, monthly Top 5, special award periods, announce by President or Secretary ---- */
+P.OF={n:&#x27;DJSG Kota Main&#x27;,r:&#x27;Office&#x27;,p:A.LOGO};
+var NOW=new Date();
+function dAgo(d){return new Date(NOW.getTime()-d*864e5)}
+function dmy(t){return t.getDate()+&#x27; &#x27;+MON[t.getMonth()]}
+var MONTHN=[&#x27;January&#x27;,&#x27;February&#x27;,&#x27;March&#x27;,&#x27;April&#x27;,&#x27;May&#x27;,&#x27;June&#x27;,&#x27;July&#x27;,&#x27;August&#x27;,&#x27;September&#x27;,&#x27;October&#x27;,&#x27;November&#x27;,&#x27;December&#x27;];
+var thisMonth=MONTHN[NOW.getMonth()],lastMonth=MONTHN[(NOW.getMonth()+11)%12];
+var AW={
+ per:{month:{n:thisMonth,lab:&#x27;This month&#x27;,a:0,b:NOW.getDate()-1},
+      contest:{n:&#x27;Deepawali contest&#x27;,lab:&#x27;Deepawali contest&#x27;,a:-2,b:24}},
+ last:{n:lastMonth,by:&#x27;Mr Anurag Sethi (Secretary)&#x27;,on:&#x27;1 &#x27;+MON[NOW.getMonth()],rows:[[&#x27;MD&#x27;,52,1,3],[&#x27;ME&#x27;,37,1,2],[&#x27;MB&#x27;,33,2,5],[&#x27;MA&#x27;,29,2,4],[&#x27;RP&#x27;,21,1,6]]},
+ star:{MD:&#x27;⭐&#x27;,ME:&#x27;🏅&#x27;,MB:&#x27;🏅&#x27;,MA:&#x27;🏅&#x27;,RP:&#x27;🏅&#x27;},starName:lastMonth,
+ view:&#x27;month&#x27;
+};
+AW.per.contest.dates=dmy(dAgo(24))+&#x27; – &#x27;+dmy(dAgo(-2));
+function stats(a,b){var M={};function g(u){return M[u]||(M[u]={u:u,lk:0,po:0,cm:0})}
+ POSTS.forEach(function(p){if(p.st===&#x27;wait&#x27;||p.u===&#x27;OF&#x27;||p.d&lt;a||p.d&gt;b)return;var s=g(p.u);s.po++;s.lk+=p.lk-(P[p.u].me&amp;&amp;p.liked?1:0);p.cm.forEach(function(c){if(c[0]!==&#x27;OF&#x27;)g(c[0]).cm++})});
+ return Object.keys(M).map(function(k){return M[k]}).sort(function(x,y){return y.lk-x.lk||y.po-x.po||y.cm-x.cm})}
+function badge(u){var b=AW.star[u];return b?&#x27;&lt;span class=&quot;igbdg&quot; title=&quot;Insta Star of &#x27;+AW.starName+&#x27;&quot;&gt;&#x27;+b+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;}
+function starLine(u){var b=AW.star[u];return b===&#x27;⭐&#x27;?&#x27;⭐ Insta Star of &#x27;+AW.starName+&#x27; · &#x27;:b?&#x27;🏅 Top 5 of &#x27;+AW.starName+&#x27; · &#x27;:&#x27;&#x27;}
+/* top-5 card picture (for the Insta announcement post) */
+function top5Art(title,rows){var c=[&#x27;#F4B400&#x27;,&#x27;#C0C0C0&#x27;,&#x27;#CD7F32&#x27;,&#x27;#8E6CEF&#x27;,&#x27;#FF5E8A&#x27;],r=&#x27;&#x27;;
+ rows.forEach(function(x,i){var y=200+i*72;r+=&#x27;&lt;rect x=&quot;60&quot; y=&quot;&#x27;+(y-30)+&#x27;&quot; width=&quot;480&quot; height=&quot;60&quot; rx=&quot;30&quot; fill=&quot;#fff&quot; opacity=&quot;.92&quot;/&gt;&lt;circle cx=&quot;95&quot; cy=&quot;&#x27;+y+&#x27;&quot; r=&quot;22&quot; fill=&quot;&#x27;+c[i]+&#x27;&quot;/&gt;&lt;text x=&quot;95&quot; y=&quot;&#x27;+(y+8)+&#x27;&quot; font-size=&quot;22&quot; font-weight=&quot;800&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-family=&quot;Sora,Arial&quot;&gt;&#x27;+(i+1)+&#x27;&lt;/text&gt;&lt;text x=&quot;132&quot; y=&quot;&#x27;+(y+8)+&#x27;&quot; font-size=&quot;24&quot; font-weight=&quot;700&quot; fill=&quot;#2A1530&quot; font-family=&quot;Inter,Arial&quot;&gt;&#x27;+esc(P[x[0]].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/text&gt;&lt;text x=&quot;515&quot; y=&quot;&#x27;+(y+8)+&#x27;&quot; font-size=&quot;22&quot; font-weight=&quot;800&quot; text-anchor=&quot;end&quot; fill=&quot;#A3123A&quot; font-family=&quot;Inter,Arial&quot;&gt;♥ &#x27;+x[1]+&#x27;&lt;/text&gt;&#x27;});
+ return svg(&#x27;&lt;defs&gt;&#x27;+lg(&#x27;t&#x27;,&#x27;#A3123A&#x27;,&#x27;#FF9F1C&#x27;,1)+&#x27;&lt;/defs&gt;&lt;rect width=&quot;600&quot; height=&quot;600&quot; fill=&quot;url(#t)&quot;/&gt;&lt;circle cx=&quot;520&quot; cy=&quot;70&quot; r=&quot;90&quot; fill=&quot;#fff&quot; opacity=&quot;.12&quot;/&gt;&lt;circle cx=&quot;60&quot; cy=&quot;560&quot; r=&quot;120&quot; fill=&quot;#fff&quot; opacity=&quot;.1&quot;/&gt;&lt;text x=&quot;300&quot; y=&quot;80&quot; font-size=&quot;40&quot; text-anchor=&quot;middle&quot;&gt;🏆&lt;/text&gt;&lt;text x=&quot;300&quot; y=&quot;128&quot; font-size=&quot;30&quot; font-weight=&quot;800&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-family=&quot;Sora,Arial&quot;&gt;Insta Stars of &#x27;+esc(title)+&#x27;&lt;/text&gt;&#x27;+r+&#x27;&lt;text x=&quot;300&quot; y=&quot;570&quot; font-size=&quot;18&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot; font-family=&quot;Inter,Arial&quot;&gt;DJSG Kota Main · DJSG Insta&lt;/text&gt;&#x27;)}
+IMG.t5last=top5Art(AW.last.n,AW.last.rows);
+POSTS.push({id:60,u:&#x27;OF&#x27;,d:NOW.getDate()-1,im:[&#x27;t5last&#x27;],pin:1,cap:&#x27;🏆 Insta Stars of &#x27;+AW.last.n+&#x27;! Congratulations to our Top 5 members. Thank you all for sharing so many lovely moments. · Mr Anurag Sethi, Secretary&#x27;,lk:46,cm:[[&#x27;MD&#x27;,&#x27;Thank you all 🙏&#x27;],[&#x27;SC&#x27;,&#x27;Well done, everyone!&#x27;]]});
+
+/* strip on the Feed (everyone sees it) */
+function topStrip(){var L=stats(AW.per.month.a,AW.per.month.b),me=-1;L.forEach(function(s,i){if(P[s.u].me)me=i});
+ return &#x27;&lt;button class=&quot;igtop5&quot; data-ig=&quot;lb&quot;&gt;&lt;span class=&quot;h&quot;&gt;&lt;b&gt;🏆 Top members · &#x27;+thisMonth+&#x27;&lt;/b&gt;&lt;small&gt;Likes updated daily · result at month end&lt;/small&gt;&lt;/span&gt;&lt;span class=&quot;fs&quot;&gt;&#x27;+L.slice(0,5).map(function(s,i){return &#x27;&lt;span class=&quot;f&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(s.u)+&#x27;&quot;&gt;&#x27;+avt(s.u)+&#x27;&lt;/span&gt;&lt;i&gt;&#x27;+(i+1)+&#x27;&lt;/i&gt;&lt;/span&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/span&gt;&lt;span class=&quot;ft&quot;&gt;&lt;span class=&quot;l&quot;&gt;&#x27;+(me&gt;=0?&#x27;You are &lt;b&gt;#&#x27;+(me+1)+&#x27;&lt;/b&gt;&#x27;+(me&gt;=5?&#x27; · &#x27;+(L[4].lk-L[me].lk+1)+&#x27; likes to Top 5&#x27;:&#x27; · in the Top 5! 🎉&#x27;):&#x27;Post photos to join the list&#x27;)+&#x27;&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;See all ›&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&#x27;}
+
+/* leaderboard (members&#x27; view) */
+function rowsHtml(L,meHi){var mx=Math.max(1,L.length?L[0].lk:1);return L.map(function(s,i){return &#x27;&lt;div class=&quot;iglr&#x27;+(P[s.u].me&amp;&amp;meHi?&#x27; me&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;span class=&quot;rk&quot;&gt;&#x27;+(i+1)+&#x27;&lt;/span&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(s.u)+&#x27;&quot;&gt;&#x27;+avt(s.u)+&#x27;&lt;/span&gt;&lt;span class=&quot;nm&quot;&gt;&lt;b&gt;&#x27;+esc(P[s.u].n)+(P[s.u].me?&#x27; (you)&#x27;:&#x27;&#x27;)+&#x27;&lt;/b&gt;&lt;span class=&quot;bar&quot;&gt;&lt;i style=&quot;width:&#x27;+Math.round(s.lk/mx*100)+&#x27;%&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;small&gt;📷 &#x27;+s.po+(s.po===1?&#x27; post&#x27;:&#x27; posts&#x27;)+&#x27; · 💬 &#x27;+s.cm+(s.cm===1?&#x27; comment&#x27;:&#x27; comments&#x27;)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;span class=&quot;lk&quot;&gt;♥ &#x27;+s.lk+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;}).join(&#x27;&#x27;)}
+function podium(L){var o=[1,0,2],h=[&#x27;&#x27;,&#x27;&#x27;,&#x27;&#x27;];return &#x27;&lt;div class=&quot;igpod&quot;&gt;&#x27;+o.map(function(i){var s=L[i];if(!s)return &#x27;&lt;span&gt;&lt;/span&gt;&#x27;;return &#x27;&lt;div class=&quot;pd p&#x27;+(i+1)+&#x27;&quot;&gt;&#x27;+(i===0?&#x27;&lt;span class=&quot;cr&quot;&gt;👑&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(s.u)+&#x27;&quot;&gt;&#x27;+avt(s.u)+&#x27;&lt;/span&gt;&lt;b&gt;&#x27;+esc(P[s.u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/b&gt;&lt;small&gt;♥ &#x27;+s.lk+&#x27;&lt;/small&gt;&lt;span class=&quot;st&quot;&gt;&#x27;+(i+1)+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
+function lbBody(){var v=AW.view,h=&#x27;&lt;div class=&quot;igseg&quot;&gt;&#x27;+[[&#x27;month&#x27;,thisMonth],[&#x27;contest&#x27;,AW.per.contest.n],[&#x27;last&#x27;,lastMonth+&#x27; · result&#x27;]].map(function(x){return &#x27;&lt;button data-ig=&quot;lbv&quot; data-v=&quot;&#x27;+x[0]+&#x27;&quot; aria-pressed=&quot;&#x27;+(v===x[0])+&#x27;&quot;&gt;&#x27;+x[1]+&#x27;&lt;/button&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;;
+ if(v===&#x27;last&#x27;){var R=AW.last.rows.map(function(r){return {u:r[0],lk:r[1],po:r[2],cm:r[3]}});
+  h+=&#x27;&lt;div class=&quot;ignote&quot;&gt;🏆 &lt;b&gt;Result announced&lt;/b&gt; by &#x27;+AW.last.by+&#x27; on &#x27;+AW.last.on+&#x27;. Winners get a badge on their photo, an entry on their timeline and a certificate.&lt;/div&gt;&#x27;+podium(R)+rowsHtml(R,false)+&#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;cert&quot; data-u=&quot;&#x27;+R[0].u+&#x27;&quot;&gt;🎖️ See the certificate of &#x27;+esc(P[R[0].u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/button&gt;&#x27;;return h}
+ var p=AW.per[v],L=stats(p.a,p.b);
+ h+=&#x27;&lt;div class=&quot;igrow&quot;&gt;&lt;span class=&quot;igchip&quot;&gt;📅 &#x27;+(v===&#x27;month&#x27;?&#x27;1 &#x27;+MON[NOW.getMonth()]+&#x27; – today&#x27;:p.dates)+&#x27;&lt;/span&gt;&lt;span class=&quot;igchip&quot;&gt;🕖 Updated today, 7:00 am&lt;/span&gt;&lt;/div&gt;&#x27;+(v===&#x27;contest&#x27;?&#x27;&lt;div class=&quot;ignote&quot;&gt;✨ &lt;b&gt;Special award period&lt;/b&gt; set by the President. Same counting as the monthly list.&lt;/div&gt;&#x27;:&#x27;&#x27;)+podium(L)+rowsHtml(L,true)+
+ &#x27;&lt;div class=&quot;ignote&quot;&gt;&lt;b&gt;Fair rules:&lt;/b&gt; one like per member per post · liking your own post does not count · only approved posts count. The final result is announced by the President or the Secretary.&lt;/div&gt;&#x27;;return h}
+function leaderboard(){var l=layer(&#x27;lb&#x27;,topbar(&#x27;🏆 Top members&#x27;,&#x27;Likes, posts and comments · updated daily&#x27;)+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot; id=&quot;iglb&quot;&gt;&#x27;+lbBody()+&#x27;&lt;/div&gt;&lt;/div&gt;&#x27;)}
+
+/* certificate preview (real: made from the Desk on the letter head, PDF) */
+function cert(u,month){month=month||AW.starName;var l=layer(&#x27;ct&#x27;,topbar(&#x27;Certificate&#x27;,&#x27;Made from the Desk on the letter head · PDF&#x27;)+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot;&gt;&lt;div class=&quot;igcert&quot;&gt;&lt;div class=&quot;lh&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;&#x27;+A.LOGO+&#x27;&quot;&gt;&lt;div&gt;&lt;b&gt;Digambar Jain Social Group&lt;/b&gt;&lt;span&gt;Kota Main · Established in 2003 · Session 2026&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;t&quot;&gt;Certificate of Appreciation&lt;/div&gt;&lt;p&gt;This is presented to&lt;/p&gt;&lt;div class=&quot;n&quot;&gt;&#x27;+esc(P[u].n)+&#x27;&lt;/div&gt;&lt;p&gt;as the &lt;b&gt;Insta Star of &#x27;+esc(month)+&#x27;&lt;/b&gt; for sharing the most loved moments with our DJSG family on DJSG Insta.&lt;/p&gt;&lt;div class=&quot;sg&quot;&gt;&lt;span&gt;Mr Suresh Chandwad&lt;br&gt;&lt;small&gt;President&lt;/small&gt;&lt;/span&gt;&lt;span&gt;Mr Anurag Sethi&lt;br&gt;&lt;small&gt;Secretary&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;seal&quot;&gt;⭐&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;ignote&quot;&gt;Real build: President Desk › Insta DJSG control › Awards › “Certificate (PDF)”, printed on the letter head (theme chosen at download).&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;)}
+
+/* President / Secretary view (demo). Real app: President Desk &gt; Insta DJSG control &gt; Awards / Likes record */
+var AWP={per:&#x27;month&#x27;,sort:&#x27;lk&#x27;,from:&#x27;&#x27;,to:&#x27;&#x27;};
+function awRange(){if(AWP.per===&#x27;custom&#x27;&amp;&amp;AWP.from&amp;&amp;AWP.to){var f=Math.round((NOW-new Date(AWP.from))/864e5),t=Math.round((NOW-new Date(AWP.to))/864e5);return [Math.min(f,t),Math.max(f,t)]}var p=AW.per[AWP.per]||AW.per.month;return [p.a,p.b]}
+function awBody(){var r=awRange(),L=stats(r[0],r[1]).sort(function(x,y){return y[AWP.sort]-x[AWP.sort]||y.lk-x.lk});
+ function th(k,t){return &#x27;&lt;button data-ig=&quot;aws&quot; data-k=&quot;&#x27;+k+&#x27;&quot; class=&quot;&#x27;+(AWP.sort===k?&#x27;on&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&#x27;+t+(AWP.sort===k?&#x27; ▾&#x27;:&#x27;&#x27;)+&#x27;&lt;/button&gt;&#x27;}
+ return &#x27;&lt;label class=&quot;igsw&quot;&gt;&lt;span&gt;Period&lt;/span&gt;&lt;select id=&quot;igawp&quot;&gt;&lt;option value=&quot;month&quot;&#x27;+(AWP.per===&#x27;month&#x27;?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;This month (&#x27;+thisMonth+&#x27;)&lt;/option&gt;&lt;option value=&quot;contest&quot;&#x27;+(AWP.per===&#x27;contest&#x27;?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+AW.per.contest.n+&#x27;&lt;/option&gt;&lt;option value=&quot;custom&quot;&#x27;+(AWP.per===&#x27;custom&#x27;?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;Choose dates…&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&#x27;+
+ (AWP.per===&#x27;custom&#x27;?&#x27;&lt;div class=&quot;igdates&quot;&gt;&lt;label&gt;From&lt;input type=&quot;date&quot; id=&quot;igawf&quot; value=&quot;&#x27;+AWP.from+&#x27;&quot;&gt;&lt;/label&gt;&lt;label&gt;To&lt;input type=&quot;date&quot; id=&quot;igawt&quot; value=&quot;&#x27;+AWP.to+&#x27;&quot;&gt;&lt;/label&gt;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+ &#x27;&lt;div class=&quot;igtbl&quot;&gt;&lt;div class=&quot;hd&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;span&gt;Member&lt;/span&gt;&#x27;+th(&#x27;lk&#x27;,&#x27;♥ Likes&#x27;)+th(&#x27;po&#x27;,&#x27;📷 Posts&#x27;)+th(&#x27;cm&#x27;,&#x27;💬 Comm.&#x27;)+&#x27;&lt;/div&gt;&#x27;+L.map(function(s,i){return &#x27;&lt;label class=&quot;rw&quot;&gt;&lt;span&gt;&lt;input type=&quot;checkbox&quot; data-win=&quot;&#x27;+s.u+&#x27;&quot;&#x27;+(i&lt;5?&#x27; checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;&lt;span class=&quot;iga&quot; style=&quot;&#x27;+avs(s.u)+&#x27;&quot;&gt;&#x27;+avt(s.u)+&#x27;&lt;/span&gt;&#x27;+esc(P[s.u].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/span&gt;&lt;span&gt;&#x27;+s.lk+&#x27;&lt;/span&gt;&lt;span&gt;&#x27;+s.po+&#x27;&lt;/span&gt;&lt;span&gt;&#x27;+s.cm+&#x27;&lt;/span&gt;&lt;/label&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igsmall&quot;&gt;Ticked = winners (Top 5 by likes; you can change). Tap a column to sort.&lt;/div&gt;&#x27;+
+ &#x27;&lt;button class=&quot;igbtn&quot; data-ig=&quot;announce&quot;&gt;📣 Announce result&lt;/button&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igstep&quot; style=&quot;margin-top:14px&quot;&gt;&lt;h4&gt;&lt;i&gt;✨&lt;/i&gt;Set a special award period&lt;/h4&gt;&lt;input class=&quot;igin2&quot; id=&quot;igspn&quot; maxlength=&quot;40&quot; placeholder=&quot;Name, e.g. Paryushan photo contest&quot;&gt;&lt;div class=&quot;igdates&quot;&gt;&lt;label&gt;From&lt;input type=&quot;date&quot; id=&quot;igspf&quot;&gt;&lt;/label&gt;&lt;label&gt;To&lt;input type=&quot;date&quot; id=&quot;igspt&quot;&gt;&lt;/label&gt;&lt;/div&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;spsave&quot;&gt;Save special period&lt;/button&gt;&lt;/div&gt;&#x27;}
+function awPres(){var l=layer(&#x27;aw&#x27;,topbar(&#x27;Awards · Likes record&#x27;,&#x27;President / Secretary (demo) · real: Desk › Insta DJSG control&#x27;)+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot; id=&quot;igaw&quot;&gt;&#x27;+awBody()+&#x27;&lt;/div&gt;&lt;/div&gt;&#x27;);wireAw()}
+function wireAw(){var s=$(&#x27;#igawp&#x27;,ig);if(s)s.onchange=function(){AWP.per=s.value;if(s.value===&#x27;custom&#x27;&amp;&amp;!AWP.from){AWP.from=new Date(NOW.getFullYear(),NOW.getMonth(),1).toISOString().slice(0,10);AWP.to=NOW.toISOString().slice(0,10)}refreshAw()};
+ [&#x27;#igawf&#x27;,&#x27;#igawt&#x27;].forEach(function(q,i){var x=$(q,ig);if(x)x.onchange=function(){AWP[i?&#x27;to&#x27;:&#x27;from&#x27;]=x.value;refreshAw()}})}
+function refreshAw(){var b=$(&#x27;#igaw&#x27;,ig);if(b){b.innerHTML=awBody();wireAw()}}
+function announce(){var W=Array.prototype.filter.call(ig.querySelectorAll(&#x27;[data-win]&#x27;),function(c){return c.checked}).map(function(c){return c.dataset.win});if(!W.length){toast(&#x27;Tick at least one winner&#x27;);return}
+ var r=awRange(),S=stats(r[0],r[1]),by={};S.forEach(function(s){by[s.u]=s});W.sort(function(x,y){return ((by[y]||{}).lk||0)-((by[x]||{}).lk||0)});W=W.slice(0,5);
+ var name=AWP.per===&#x27;contest&#x27;?AW.per.contest.n:AWP.per===&#x27;custom&#x27;?&#x27;the special period&#x27;:thisMonth,rows=W.map(function(u){return [u,(by[u]||{lk:0}).lk]});
+ /* badges move to the new winners; Insta post added (pinned) */
+ AW.star={};W.forEach(function(u,i){AW.star[u]=i?&#x27;🏅&#x27;:&#x27;⭐&#x27;});AW.starName=name;
+ IMG.t5new=top5Art(name,rows);POSTS.forEach(function(p){p.pin=0});POSTS.unshift({id:NID++,u:&#x27;OF&#x27;,d:0,im:[&#x27;t5new&#x27;],pin:1,cap:&#x27;🏆 Insta Stars of &#x27;+name+&#x27;! Congratulations to our Top 5 members. · Mr Anurag Sethi, Secretary&#x27;,lk:0,cm:[]});
+ var list=rows.map(function(x,i){return (i+1)+&#x27;. &#x27;+P[x[0]].n+&#x27; (♥ &#x27;+x[1]+&#x27;)&#x27;}).join(&#x27;\n&#x27;);
+ rerender();
+ sheet(&#x27;&lt;h3&gt;📣 Result announced&lt;/h3&gt;&lt;p&gt;Sent four ways. Badges, timeline entries and certificates are ready.&lt;/p&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igprev&quot;&gt;&lt;small&gt;🔔 App bell (all members)&lt;/small&gt;&lt;b&gt;🏆 Insta Stars of &#x27;+esc(name)+&#x27; announced&lt;/b&gt;&lt;span&gt;Tap to see the Top 5&lt;/span&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igprev&quot;&gt;&lt;small&gt;✉️ Email (all members)&lt;/small&gt;&lt;b&gt;Subject: Insta Stars of &#x27;+esc(name)+&#x27; · DJSG Kota Main&lt;/b&gt;&lt;span style=&quot;white-space:pre-line&quot;&gt;Jai Jinendra 🙏\nOur Top 5 on DJSG Insta:\n&#x27;+esc(list)+&#x27;\n\nDJSG Kota Main\nMr Suresh Chandwad, President · Mr Anurag Sethi, Secretary · Mr Rakesh Patodi, Treasurer&lt;/span&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igprev&quot;&gt;&lt;small&gt;📷 Insta post (pinned at the top of the Feed)&lt;/small&gt;&lt;span style=&quot;display:block;width:120px;height:120px;border-radius:12px;margin-top:4px;background:url(&#x27;+IMG.t5new+&#x27;) center/cover&quot;&gt;&lt;/span&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igprev&quot;&gt;&lt;small&gt;💬 WhatsApp group (one tap, free)&lt;/small&gt;&lt;span style=&quot;white-space:pre-line&quot;&gt;🏆 Insta Stars of &#x27;+esc(name)+&#x27;\n&#x27;+esc(list)+&#x27;\nCongratulations! – DJSG Kota Main&lt;/span&gt;&lt;button class=&quot;igsb&quot; data-ig=&quot;wa&quot;&gt;Send to group&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igprev&quot;&gt;&lt;small&gt;⭐ Badge on photo · 🕑 Member timeline · 🎖️ Certificate (PDF)&lt;/small&gt;&lt;button class=&quot;igsb&quot; data-ig=&quot;cert&quot; data-u=&quot;&#x27;+W[0]+&#x27;&quot; data-m=&quot;&#x27;+esc(name)+&#x27;&quot;&gt;See certificate of &#x27;+esc(P[W[0]].n.replace(/^Mr /,&#x27;&#x27;))+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;)}
+ig.addEventListener(&#x27;click&#x27;,function(e){var b=e.target.closest(&#x27;[data-ig]&#x27;);if(!b)return;var a=b.dataset.ig;
+ if(a===&#x27;lb&#x27;){AW.view=&#x27;month&#x27;;leaderboard();return}
+ if(a===&#x27;lbv&#x27;){AW.view=b.dataset.v;$(&#x27;#iglb&#x27;,ig).innerHTML=lbBody();return}
+ if(a===&#x27;cert&#x27;){cert(b.dataset.u,b.dataset.m);return}
+ if(a===&#x27;awp&#x27;){awPres();return}
+ if(a===&#x27;aws&#x27;){AWP.sort=b.dataset.k;refreshAw();return}
+ if(a===&#x27;announce&#x27;){announce();return}
+ if(a===&#x27;wa&#x27;){toast(&#x27;Demo: WhatsApp opens with the message ready (real build)&#x27;);return}
+ if(a===&#x27;spsave&#x27;){var n=($(&#x27;#igspn&#x27;,ig).value||&#x27;&#x27;).trim(),f=$(&#x27;#igspf&#x27;,ig).value,t=$(&#x27;#igspt&#x27;,ig).value;if(!n||!f||!t){toast(&#x27;Give a name, From and To dates&#x27;);return}
+  var a1=Math.round((NOW-new Date(t))/864e5),b1=Math.round((NOW-new Date(f))/864e5);AW.per.contest={n:n,lab:n,a:Math.min(a1,b1),b:Math.max(a1,b1),dates:dmy(new Date(f))+&#x27; – &#x27;+dmy(new Date(t))};AWP.per=&#x27;contest&#x27;;refreshAw();toast(&#x27;Special period saved · members see it in Top members&#x27;);return}
+});
+window.__igTop5=function(){openIG(&#x27;insta&#x27;);AW.view=&#x27;last&#x27;;leaderboard()};
+
+if(window.__igS&amp;&amp;window.__igPl){var _bl=window.__igS.bell;window.__igS.bell=function(){return _bl()+window.__igPl(&#x27;🏆&#x27;,&#x27;Insta Stars of &#x27;+lastMonth+&#x27; announced&#x27;,&#x27;1 &#x27;+MON[NOW.getMonth()],&#x27;top5&#x27;)}}
 /* ---- taps ---- */
 var lastTap={id:0,t:0};
 ig.addEventListener(&#x27;click&#x27;,function(e){
