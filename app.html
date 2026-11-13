@@ -97,7 +97,7 @@ input.t{font:inherit;padding:12px 14px;border-radius:14px;border:1px solid #e3cf
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 12 Nov 2026, 10:55</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 13 Nov 2026, 17:40</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1099,11 +1099,14 @@ var _show=show;show=function(k){if(WAIT&amp;&amp;LOCK[k]){sh.innerHTML=head(&#x2
 S.waiting=function(){return head(&#x27;Waiting for approval&#x27;,&#x27;Ref DJSG-EX-4821&#x27;)+pl(&#x27;✅&#x27;,&#x27;Details sent&#x27;,&#x27;Today&#x27;)+pl(&#x27;⏳&#x27;,&#x27;Office check&#x27;,&#x27;President or Secretary&#x27;)+pl(&#x27;🪪&#x27;,&#x27;Member ID&#x27;,&#x27;Comes by email / WhatsApp after approval&#x27;)};
 var _items=smItems;smItems=function(){if(WAIT)return [{k:&#x27;waiting&#x27;,u:1,h:&#x27;&lt;span class=&quot;bi&quot;&gt;⏳&lt;/span&gt;&lt;b&gt;Waiting for approval&lt;/b&gt;&lt;small&gt;Details sent ✓&lt;/small&gt;&#x27;}];return _items()};
 
+
+function fitLock(){var d=document.documentElement;var over=d.scrollHeight-innerHeight;if(over&lt;=70){d.style.overflow=&#x27;hidden&#x27;;document.body.style.overflow=&#x27;hidden&#x27;;scrollTo(0,0)}else{d.style.overflow=&#x27;&#x27;;document.body.style.overflow=&#x27;&#x27;}}
+addEventListener(&#x27;load&#x27;,function(){setTimeout(fitLock,300)});addEventListener(&#x27;resize&#x27;,function(){setTimeout(fitLock,200)});setTimeout(fitLock,1200);
 window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,gallery:&#x27;gallery.html&#x27;,biz:&#x27;business.html&#x27;,celeb:&#x27;birthdays.html&#x27;,directory:&#x27;directory.html&#x27;,blood:&#x27;blood.html&#x27;,bearers:&#x27;bearers.html&#x27;,about:&#x27;about.html&#x27;};
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 12 Nov 2026, 10:55&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 13 Nov 2026, 17:40&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1215,6 +1218,19 @@ var h0=(location.hash||&#x27;&#x27;).replace(&#x27;#&#x27;,&#x27;&#x27;);setFest
 logos();var av=document.getElementById(&quot;myav&quot;);if(av)av.style.backgroundImage=&quot;url(&quot;+A.AS+&quot;)&quot;;
 })();
 &lt;/script&gt;
+&lt;style&gt;.sbk{position:sticky;top:0;z-index:3;display:inline-flex;align-items:center;gap:4px;margin:0 0 10px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--a1);font-weight:800;font-size:13.5px;box-shadow:0 3px 8px var(--shadow)}&lt;/style&gt;
+&lt;script&gt;
+/* 13 Nov 2026 (user): going back. &quot;‹ Back&quot; at the top of every window; the phone Back button closes the open window. */
+(function(){
+var ov=document.getElementById(&#x27;ov&#x27;),sh=document.getElementById(&#x27;sheet&#x27;);if(!ov||!sh)return;
+function shut(){if(window.__hide)window.__hide();else ov.classList.remove(&#x27;show&#x27;)}
+function addBk(){if(!ov.classList.contains(&#x27;show&#x27;)||sh.querySelector(&#x27;.sbk&#x27;))return;var b=document.createElement(&#x27;button&#x27;);b.type=&#x27;button&#x27;;b.className=&#x27;sbk&#x27;;b.textContent=&#x27;‹ Back&#x27;;b.onclick=shut;sh.insertBefore(b,sh.firstChild)}
+var was=false;
+new MutationObserver(function(){var on=ov.classList.contains(&#x27;show&#x27;);if(on){addBk();if(!was){was=true;try{parent.__backPush&amp;&amp;parent.__backPush()}catch(e){}}}else if(was){was=false;try{parent.__backDone&amp;&amp;parent.__backDone()}catch(e){}}}).observe(ov,{attributes:true,attributeFilter:[&#x27;class&#x27;]});
+new MutationObserver(addBk).observe(sh,{childList:true});
+window.__appBack=function(){if(ov.classList.contains(&#x27;show&#x27;)){shut();return true}return false};
+})();
+&lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
 
 <!-- 8 Approval message -->
@@ -1316,8 +1332,7 @@ window.__go=go;
 var PN={'events.html':'Events','gallery.html':'Gallery','business.html':'DJSG Business','birthdays.html':'Birthdays & Anniversaries','directory.html':'Directory','blood.html':'Blood Donation','bearers.html':'Office Bearers','about.html':'About','join.html':'Join DJSG'};
 window.__openPage=function(u){$('#pgn').textContent=PN[u]||'';$('#pg').hidden=false;try{$('#pgf').contentWindow.location.replace(u)}catch(e){$('#pgf').src=u}try{history.pushState({pg:1},'')}catch(e){}};
 function closePage(){$('#pg').hidden=true;try{$('#pgf').contentWindow.location.replace('about:blank')}catch(e){}}
-$('#pgb').onclick=function(){closePage()};
-addEventListener('popstate',function(){if(!$('#pg').hidden)closePage()});
+$('#pgb').onclick=function(){closePage();backQuiet()};
 window.__approve=function(){setS('full');go._keep=true;toast('Office approved. Member ID sent.');go('8')};
 window.__reset=function(){setS('');try{localStorage.removeItem('djsg_join_draft')}catch(e){}go(standalone?'V':'2')};
 var wf;function watchForm(){clearInterval(wf);wf=setInterval(function(){if(cur!=='6'){clearInterval(wf);return}try{var d=$('#form').contentDocument;if(d&&d.querySelector('.done')){clearInterval(wf);setTimeout(function(){toast('Details sent. Waiting for approval.');go._keep=true;go('7')},1800)}}catch(e){}},1000)}
@@ -1327,7 +1342,27 @@ document.addEventListener('click',function(e){if(e.target.closest('[data-act=con
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){navigator.serviceWorker.register('sw.js').catch(function(){})}
 function resume(){var st=getS();go(st==='full'?'9':st==='wait'?'7':'V')}
 window.__resume=resume;
+/* 13 Nov 2026 (user): phone Back button goes to the previous screen / closes the open window; on Home it asks to press Back again to close the app */
+var STK=[],BQ=0,FROMPOP=false,BKNAV=false,armT=0,ROOT={'2':1,'7':1,'9':1,'V':1};
+function rawPush(){try{history.pushState({bk:1},'')}catch(e){}}
+function hpush(){if(armT){clearTimeout(armT);armT=0;rawPush()}rawPush()}
+function backQuiet(){BQ++;try{history.back()}catch(e){BQ--}}
+window.__backPush=hpush;
+window.__backDone=function(){if(FROMPOP){FROMPOP=false;return}backQuiet()};
+var __op=window.__openPage;window.__openPage=function(u){if(armT){clearTimeout(armT);armT=0;rawPush()}__op(u)};
+var _go3=go;go=function(k){var prev=cur;_go3(k);if(BKNAV){BKNAV=false;return}if(k===prev)return;
+ if(ROOT[k]){if(STK.length){var n=STK.length;STK=[];BQ++;try{history.go(-n)}catch(e){BQ--}}return}
+ STK.push(prev);hpush()};
+window.__go=go;
+addEventListener('popstate',function(){
+ if(BQ>0){BQ--;return}
+ if(!$('#pg').hidden){closePage();return}
+ var w=W();if(w&&w.__appBack){FROMPOP=true;var c=false;try{c=w.__appBack()}catch(e){}if(c)return;FROMPOP=false}
+ if(STK.length){BKNAV=true;go(STK.pop());return}
+ toast('Press Back again to close the app');clearTimeout(armT);armT=setTimeout(function(){armT=0;rawPush()},2500);
+});
 if(/iPhone|iPad|iPod/.test(navigator.userAgent)){var ib=document.querySelector('[data-os=i]');if(ib)ib.click()}
 if(standalone)resume();else go('2');
+rawPush();
 })();
 </script></body></html>
