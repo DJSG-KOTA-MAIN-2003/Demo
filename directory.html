@@ -256,6 +256,14 @@ html.inapp .head{order:1;display:flex;justify-content:center;margin:12px 0 4px;m
 html.inapp .page>.foot{order:2}
 html.inapp .demobar{order:3;margin-top:14px;border-radius:16px}
 html.inapp .page>.flag:last-child{order:4}
+html.inapp #main>.tools .seg{position:fixed;left:0;right:0;bottom:0;z-index:30;margin:0;border-radius:18px 18px 0 0;background:#fff8f3;border:0;border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(60,10,30,.14);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+html.inapp body{padding-bottom:96px!important}
+.lfix{display:none}
+html.inapp .lfix{display:flex;align-items:center;gap:10px;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:31;padding:4px;border-radius:999px;background:#A3123A;box-shadow:0 6px 16px rgba(60,10,30,.3)}
+html.inapp .lfix b{color:#fff;font-size:13px;font-weight:700;white-space:nowrap}
+html.inapp .lfix button{width:38px;height:38px;border-radius:50%;background:#fff;color:#A3123A;font-size:22px;font-weight:800;line-height:1}
+html.inapp .lfix button[disabled]{opacity:.35}
+html.inapp body:has(.lfix){padding-bottom:150px!important}
 html.inapp:not(.ready) body>*{visibility:hidden}
 html.inapp:not(.ready) body::after{content:'Opening Directory…';position:fixed;left:50%;top:40%;transform:translateX(-50%);padding:12px 20px;border-radius:999px;background:#A3123A;color:#fff;font:700 15px system-ui,sans-serif;box-shadow:0 8px 20px rgba(0,0,0,.2)}
 </style>
@@ -430,8 +438,13 @@ function chips(){var cf=M.filter(function(m){return m.since===2003}).length,cp=M
  var h='<div class="chips" role="group" aria-label="'+t('biz')+'"><button type="button" data-bz="all" aria-pressed="'+(BIZ==='all')+'">'+t('allBiz')+' · '+M.length+'</button><button type="button" data-bz="fd" aria-pressed="'+(BIZ==='fd')+'">'+t('fd')+' · '+cf+'</button><button type="button" data-bz="pp" aria-pressed="'+(BIZ==='pp')+'">🏅 '+t('pps')+' · '+cp+'</button>'+BZ.map(function(b){var c=M.filter(function(m){return m.b===b}).length;return '<button type="button" data-bz="'+b+'" aria-pressed="'+(BIZ===b)+'">'+t('b_'+b)+' · '+c+'</button>'}).join('')+'</div>';
  if(VIEW!=='list'&&BIZ!=='all'){var a=pages(),f=M.filter(match);h+='<div class="res" style="position:static;margin-top:6px">'+(f.length?f.map(function(m){return '<button type="button" data-jp="'+pageOf(m.id,a)+'">'+nmH(m)+'<span>'+t('b_'+m.b)+' · '+t('page')+' '+pageOf(m.id,a)+'</span></button>'}).join(''):'<div class="none">'+t('noRes')+'</div>')+'</div>'}
  return h}
+var LPG=0;window.__lp=function(d){LPG+=d;draw();try{var l=document.querySelector('#main .list');if(l)window.scrollTo(0,Math.max(0,l.getBoundingClientRect().top+scrollY-10))}catch(e){}};
 function list(){var r=M.filter(match);
+ /* 14 Nov 19:45 (owner): inside the app, List view shows 5 families a page with Back / Next */
+ var IA=document.documentElement.classList.contains('inapp'),PS=5,np=Math.max(1,Math.ceil(r.length/PS));if(LPG>np-1)LPG=np-1;if(LPG<0)LPG=0;var all=r;if(IA)r=r.slice(LPG*PS,LPG*PS+PS);
  var h='<div class="list">'+(r.length?r.map(function(m){return '<button type="button" class="lc" data-det="'+m.id+'"><span><span class="nm" style="display:block">'+nmH(m)+'</span><span class="nm2" style="display:block">& '+nmW(m)+'</span>'+tags(m)+'<span class="dl" style="display:flex"><span>💼 '+esc(L(m.bn))+' · '+t('b_'+m.b)+'</span><span>💍 '+dt(m.an)+'</span><span class="note">'+t('tapmore')+' ›</span></span></span><span class="duo">'+ph(m,'h')+ph(m,'w')+'</span></button>'}).join(''):'<div class="empty">'+t('noRes')+'</div>')+'</div>';
+ if(IA&&np>1)h+='<div class="bnav"><button type="button" class="cb" onclick="__lp(-1)"'+(LPG?'':' disabled')+'>‹ '+t('back')+'</button><div class="pn">'+t('page')+' '+(LPG+1)+' / '+np+'</div><button type="button" class="cb" onclick="__lp(1)"'+(LPG<np-1?'':' disabled')+'>'+t('next')+' ›</button></div>';
+ if(IA&&np>1)h+='<div class="lfix"><button type="button" onclick="__lp(-1)"'+(LPG?'':' disabled')+' aria-label="'+t('back')+'">‹</button><b>'+t('page')+' '+(LPG+1)+' / '+np+'</b><button type="button" onclick="__lp(1)"'+(LPG<np-1?'':' disabled')+' aria-label="'+t('next')+'">›</button></div>';
  h+='<p class="membernote" style="margin-top:10px">'+t('foot_note')+'</p>';return h}
 
 /* ---------- main ---------- */
