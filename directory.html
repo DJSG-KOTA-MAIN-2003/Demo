@@ -147,6 +147,8 @@ h1{font-size:clamp(24px,6.6vw,38px);letter-spacing:-.8px;margin-top:2px}
 .btwo{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
 
 /* contents */
+.toc .lt button.on{background:var(--a1);color:#fff}
+.toc .tg{display:flex;flex-direction:column;gap:2px}.toc .tsel{font-size:11.5px;color:var(--muted);text-align:center;margin:4px 0 2px}
 .toc{display:flex;flex-direction:column;gap:2px}
 .toc h3{font-family:var(--disp);font-size:20px;color:var(--a1);text-align:center;margin-bottom:4px}
 .toc .lt{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:6px}
@@ -300,7 +302,7 @@ b_home:'Back to Home',lk_t:'Members only',lk_p:'The Directory opens after Member
 wt_t:'Opens after approval',wt_p:'Your membership is waiting for approval. The Directory opens as soon as the office approves.',wt_c:'Complete my details',wt_pc:'Your details: 60% done',wt_ap:'Office approves (demo)',
 cv_g:'Digambar Jain Social Group',cv_t:'Member Directory',cv_w:'For members only - not for public sharing',
 bp_t:'Office Bearers',President:'President',Secretary:'Secretary',Treasurer:'Treasurer',
-toc:'Contents',pps:'Past Presidents',ex_lay:'Print layout',ex_l1:'Book (one family a page)',ex_l2:'Compact (two a page)','Vice President':'Vice President',cvr:'Cover',toc_bp:'Office Bearers',page:'Page',of:'of',next:'Next',back:'Back',
+toc:'Contents',toc_tap:'Tap a letter to see names',pps:'Past Presidents',ex_lay:'Print layout',ex_l1:'Book (one family a page)',ex_l2:'Compact (two a page)','Vice President':'Vice President',cvr:'Cover',toc_bp:'Office Bearers',page:'Page',of:'of',next:'Next',back:'Back',
 mr:'Mr',mrs:'Mrs',biz:'Business',kids:'Children',son:'Son',dau:'Daughter',mar:'Married',unm:'Unmarried',ann:'Anniversary',bd:'Birthday',phone:'Mobile',call:'Call',wa:'WhatsApp',
 ver:'✔ Verified by member',off:'Added by office',since:'Member since',fd:'⭐ Founder member',pp:'Past President',
 husband:'Husband',wife:'Wife',family:'Family photo',ph_m:'Member',ph_s:'Spouse',ph_f:'Family',close:'Close',tapmore:'Tap for full details',
@@ -322,7 +324,7 @@ b_home:'होम पर वापस',lk_t:'केवल सदस्यों 
 wt_t:'स्वीकृति के बाद खुलेगी',wt_p:'आपकी सदस्यता स्वीकृति की प्रतीक्षा में है। कार्यालय की स्वीकृति मिलते ही निर्देशिका खुल जाएगी।',wt_c:'मेरा विवरण पूरा करें',wt_pc:'आपका विवरण: 60% पूरा',wt_ap:'कार्यालय स्वीकृति (डेमो)',
 cv_g:'दिगम्बर जैन सोशल ग्रुप',cv_t:'सदस्य निर्देशिका',cv_w:'केवल सदस्यों के लिए - सार्वजनिक रूप से साझा न करें',
 bp_t:'पदाधिकारी',President:'अध्यक्ष',Secretary:'सचिव',Treasurer:'कोषाध्यक्ष',
-toc:'विषय-सूची',pps:'पूर्व अध्यक्ष',ex_lay:'छपाई का रूप',ex_l1:'पुस्तक (हर पृष्ठ पर एक परिवार)',ex_l2:'छोटी (हर पृष्ठ पर दो)','Vice President':'उपाध्यक्ष',cvr:'मुखपृष्ठ',toc_bp:'पदाधिकारी',page:'पृष्ठ',of:'में से',next:'आगे',back:'पीछे',
+toc:'विषय-सूची',toc_tap:'नाम देखने के लिए अक्षर दबाएँ',pps:'पूर्व अध्यक्ष',ex_lay:'छपाई का रूप',ex_l1:'पुस्तक (हर पृष्ठ पर एक परिवार)',ex_l2:'छोटी (हर पृष्ठ पर दो)','Vice President':'उपाध्यक्ष',cvr:'मुखपृष्ठ',toc_bp:'पदाधिकारी',page:'पृष्ठ',of:'में से',next:'आगे',back:'पीछे',
 mr:'श्री',mrs:'श्रीमती',biz:'व्यवसाय',kids:'बच्चे',son:'पुत्र',dau:'पुत्री',mar:'विवाहित',unm:'अविवाहित',ann:'विवाह वर्षगांठ',bd:'जन्मदिन',phone:'मोबाइल',call:'कॉल',wa:'व्हाट्सऐप',
 ver:'✔ सदस्य द्वारा जाँचा गया',off:'कार्यालय द्वारा जोड़ा गया',since:'सदस्य वर्ष',fd:'⭐ संस्थापक सदस्य',pp:'पूर्व अध्यक्ष',
 husband:'पति',wife:'पत्नी',family:'परिवार की फ़ोटो',ph_m:'सदस्य',ph_s:'जीवनसाथी',ph_f:'परिवार',close:'बंद करें',tapmore:'पूरा विवरण देखने के लिए छुएँ',
@@ -387,11 +389,10 @@ function renderPage(p,i,a){
  if(p.t==='bear'){var pr=BEAR[0];return '<div class="pg bp">'+CN+'<img class="blogo" src="'+IMG.LOGO+'" alt=""><div class="bk">'+t('km')+'</div><div class="bs">'+t('bp_t')+' · '+t('ses')+'</div>'+
   '<div class="bper pres">'+ph(pr,'h')+'<b>'+nmH(pr)+'</b><span class="tg post">'+t('President')+'</span></div>'+
   '<div class="btwo">'+BEAR.slice(1).map(function(b){return '<div class="bper">'+ph(b,'h')+'<b>'+nmH(b)+'</b><span class="tg post">'+t(b.role)+'</span></div>'}).join('')+'</div>'+pgF(i)+'</div>'}
- if(p.t==='toc'){var letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),has={};M.forEach(function(m){has[m.l]=1});
-  var h='<div class="pg">'+CN+pgH()+'<div class="toc"><h3>'+t('toc')+'</h3><div class="lt">'+letters.map(function(c){return '<button type="button" data-jl="'+c+'"'+(has[c]?'':' disabled')+'>'+c+'</button>'}).join('')+'</div>';
-  h+='<button type="button" class="en" data-jp="1"><span>'+t('toc_bp')+'</span><i></i><b>1</b></button>';
-  var last='';M.forEach(function(m){if(m.l!==last){last=m.l;h+='<div class="gL">'+m.l+'</div>'}h+='<button type="button" class="en" data-jp="'+pageOf(m.id,a)+'"><span>'+nmH(m)+'</span><i></i><b>'+pageOf(m.id,a)+'</b></button>'});
-  return h+'</div>'+pgF(i)+'</div>'}
+ if(p.t==='toc'){var letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),has={},G={},order=[];M.forEach(function(m){has[m.l]=1;if(!G[m.l]){G[m.l]=[];order.push(m.l)}G[m.l].push(m)});function en(m){return '<button type="button" class="en" data-jp="'+pageOf(m.id,a)+'"><span>'+nmH(m)+'</span><i></i><b>'+pageOf(m.id,a)+'</b></button>'}
+ var h='<div class="pg">'+CN+pgH()+'<div class="toc"><h3>'+t('toc')+'</h3>';var bp='<button type="button" class="en" data-jp="1"><span>'+t('toc_bp')+'</span><i></i><b>1</b></button>';
+h+='<div class="lt">'+letters.map(function(c){return '<button type="button" '+(has[c]?'onclick="var r=this.closest(\'.toc\');r.querySelectorAll(\'.lt button\').forEach(function(b){b.classList.remove(\'on\')});this.classList.add(\'on\');r.querySelectorAll(\'.tg\').forEach(function(g){g.hidden=g.dataset.g!==\''+c+'\'})"'+(c===order[0]?' class="on"':''):'disabled')+'>'+c+'</button>'}).join('')+'</div>'+bp+'<div class="tsel">'+t('toc_tap')+'</div>';
+ order.forEach(function(L,k){h+='<div class="tg" data-g="'+L+'"'+(k?' hidden':'')+'><div class="gL">'+L+' · '+G[L].length+'</div>'+G[L].map(en).join('')+'</div>'});return h+'</div>'+pgF(i)+'</div>'}
  if(p.t==='fam'){var m=p.m[0];return '<div class="pg">'+CN+pgH()+
   '<div class="fam"><div><div class="nm">'+nmH(m)+'</div><div class="nm2">& '+nmW(m)+'</div>'+tags(m)+details(m,true)+'</div>'+
   '<div class="duo"><figure>'+ph(m,'h')+t('husband')+'</figure><figure>'+ph(m,'w')+t('wife')+'</figure></div></div>'+

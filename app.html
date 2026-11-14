@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 14 Nov 2026, 17:50</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 14 Nov 2026, 18:40</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 14 Nov 2026, 17:50&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 14 Nov 2026, 18:40&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1550,6 +1550,21 @@ body.demo #ig{top:var(--dm,0px)}
 .igopt input[type=radio]{width:18px;height:18px;accent-color:var(--a1)}
 .igvid.igreal video{width:100%;height:100%;object-fit:contain;background:#120712;display:block}
 .igvid.igreal.playing .igplay,.igvid.igreal.playing .igvtag{opacity:0}
+/* trim v2: drag the box */
+.igtrv{position:relative}
+#ig .igtpl{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--a1);font-size:20px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.igtrbox{position:relative;height:64px;margin:14px 0 6px;border-radius:12px;background:#2a1530;touch-action:none;user-select:none;-webkit-user-select:none}
+.igtfs{position:absolute;inset:0;display:flex;border-radius:12px;overflow:hidden}
+.igtfs i{flex:1;background:#3a2140 center/cover;border-right:1px solid rgba(0,0,0,.25)}
+.igtdim{position:absolute;top:0;bottom:0;background:rgba(20,8,30,.6);pointer-events:none}.igtdim.l{left:0;border-radius:12px 0 0 12px}.igtdim.r{right:0;border-radius:0 12px 12px 0}
+.igtwin{position:absolute;top:-4px;bottom:-4px;border:3px solid #FFC94D;border-radius:12px;box-shadow:0 0 0 1px rgba(0,0,0,.2),0 6px 16px rgba(0,0,0,.3);display:flex;cursor:grab;touch-action:none}
+.igtwin .mid{flex:1}
+.igtwin .h{flex:none;width:22px;background:#FFC94D;display:flex;align-items:center;justify-content:center;cursor:ew-resize}
+.igtwin .h.l{border-radius:8px 0 0 8px}.igtwin .h.r{border-radius:0 8px 8px 0}
+.igtwin .h i{width:4px;height:22px;border-radius:2px;background:#7a4b00}
+.igtph{position:absolute;top:-6px;bottom:-6px;width:3px;margin-left:-1px;background:#fff;border-radius:2px;box-shadow:0 0 6px rgba(0,0,0,.6);display:none;pointer-events:none}
+.igtrlab{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--muted);font-weight:700}
+.igtrlab b{font-size:13px;color:var(--ink);padding:5px 10px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
 &lt;/style&gt;
 &lt;script&gt;/* ===== DJSG Insta: full screen in the Dawn look (13 Nov 2026, user asked in the &quot;DJSG Insta&quot; chat). Adds only; App Home is not changed. ===== */
 (function(){
@@ -1795,21 +1810,44 @@ function shareStory(){if(!NS){$(&#x27;#igse&#x27;,ig).textContent=&#x27;Please c
 
 /* ---- video trim (owner 14 Nov 00:13): choose the part to keep while uploading ---- */
 function mmss(t){t=Math.max(0,Math.round(t));return Math.floor(t/60)+&#x27;:&#x27;+(t%60&lt;10?&#x27;0&#x27;:&#x27;&#x27;)+(t%60)}
-function trimVideo(u,dur,limit,cb){var len=Math.min(limit,dur),st=0;
- var l=layer(&#x27;tr&#x27;,topbar(&#x27;✂️ Trim your video&#x27;,&#x27;Keep up to &#x27;+limit+&#x27; seconds · video is &#x27;+mmss(dur))+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot;&gt;&#x27;+
- &#x27;&lt;div class=&quot;igtrv&quot;&gt;&lt;video id=&quot;igtv&quot; src=&quot;&#x27;+u+&#x27;&quot; playsinline muted preload=&quot;auto&quot;&gt;&lt;/video&gt;&lt;/div&gt;&#x27;+
- &#x27;&lt;div class=&quot;igtrbar&quot; id=&quot;igtb&quot;&gt;&lt;i id=&quot;igtw&quot;&gt;&lt;/i&gt;&lt;/div&gt;&#x27;+
- &#x27;&lt;div class=&quot;igtrl&quot;&gt;&lt;span&gt;Start&lt;/span&gt;&lt;input type=&quot;range&quot; id=&quot;igts&quot; min=&quot;0&quot; max=&quot;&#x27;+Math.max(0,dur-1).toFixed(1)+&#x27;&quot; step=&quot;0.5&quot; value=&quot;0&quot;&gt;&lt;b id=&quot;igtsl&quot;&gt;0:00&lt;/b&gt;&lt;/div&gt;&#x27;+
- &#x27;&lt;div class=&quot;igtrl&quot;&gt;&lt;span&gt;Length&lt;/span&gt;&lt;input type=&quot;range&quot; id=&quot;igtl&quot; min=&quot;3&quot; max=&quot;&#x27;+Math.floor(Math.min(limit,dur))+&#x27;&quot; step=&quot;1&quot; value=&quot;&#x27;+Math.floor(len)+&#x27;&quot;&gt;&lt;b id=&quot;igtll&quot;&gt;&#x27;+Math.floor(len)+&#x27; s&lt;/b&gt;&lt;/div&gt;&#x27;+
- &#x27;&lt;div class=&quot;igchip&quot; id=&quot;igtk&quot; style=&quot;margin:8px 0&quot;&gt;Keeps 0:00 to &#x27;+mmss(len)+&#x27;&lt;/div&gt;&#x27;+
- &#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;tplay&quot;&gt;▶ Play this part&lt;/button&gt;&lt;button class=&quot;igbtn&quot; data-ig=&quot;tuse&quot;&gt;✓ Use this part&lt;/button&gt;&#x27;+
+function trimVideo(u,dur,limit,cb){var len=Math.min(limit,dur),st=0,MINL=Math.min(3,dur);
+ var l=layer(&#x27;tr&#x27;,topbar(&#x27;✂️ Trim your video&#x27;,&#x27;Drag the box · keep up to &#x27;+limit+&#x27; s · video is &#x27;+mmss(dur))+&#x27;&lt;div class=&quot;igbody&quot;&gt;&lt;div class=&quot;igin&quot;&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtrv&quot;&gt;&lt;video id=&quot;igtv&quot; src=&quot;&#x27;+u+&#x27;&quot; playsinline preload=&quot;auto&quot;&gt;&lt;/video&gt;&lt;button class=&quot;igtpl&quot; id=&quot;igtpb&quot; data-ig=&quot;tplay&quot; aria-label=&quot;Play&quot;&gt;▶&lt;/button&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtrbox&quot; id=&quot;igtbx&quot;&gt;&lt;div class=&quot;igtfs&quot; id=&quot;igtfs&quot;&gt;&lt;/div&gt;&lt;div class=&quot;igtdim l&quot; id=&quot;igtdl&quot;&gt;&lt;/div&gt;&lt;div class=&quot;igtdim r&quot; id=&quot;igtdr&quot;&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtwin&quot; id=&quot;igtw&quot;&gt;&lt;span class=&quot;h l&quot; data-h=&quot;l&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=&quot;mid&quot; data-h=&quot;m&quot;&gt;&#x27;+&#x27;&lt;/span&gt;&lt;span class=&quot;h r&quot; data-h=&quot;r&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;igtph&quot; id=&quot;igtph&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igtrlab&quot;&gt;&lt;span&gt;0:00&lt;/span&gt;&lt;b id=&quot;igtk&quot;&gt;Keeps 0:00 to &#x27;+mmss(len)+&#x27; · &#x27;+Math.round(len)+&#x27; s&lt;/b&gt;&lt;span&gt;&#x27;+mmss(dur)+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;+
+ &#x27;&lt;div class=&quot;igsmall&quot; style=&quot;text-align:center;margin:2px 0 10px&quot;&gt;Drag the box to move it · drag its edges to make it shorter or longer&lt;/div&gt;&#x27;+
+ &#x27;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;tplay&quot; id=&quot;igtpl2&quot;&gt;▶ Play this part&lt;/button&gt;&lt;button class=&quot;igbtn&quot; data-ig=&quot;tuse&quot;&gt;✓ Use this part&lt;/button&gt;&#x27;+
  &#x27;&lt;div class=&quot;igsmall&quot;&gt;Only this part is kept and sent. The rest is not uploaded.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;);
- var v=$(&#x27;#igtv&#x27;,l),s=$(&#x27;#igts&#x27;,l),ln=$(&#x27;#igtl&#x27;,l);
- function paint(){len=+ln.value;st=Math.min(+s.value,Math.max(0,dur-len));s.value=st;$(&#x27;#igtsl&#x27;,l).textContent=mmss(st);$(&#x27;#igtll&#x27;,l).textContent=len+&#x27; s&#x27;;$(&#x27;#igtk&#x27;,l).textContent=&#x27;Keeps &#x27;+mmss(st)+&#x27; to &#x27;+mmss(st+len);var w=$(&#x27;#igtw&#x27;,l);w.style.left=(st/dur*100)+&#x27;%&#x27;;w.style.width=(len/dur*100)+&#x27;%&#x27;;try{v.currentTime=st}catch(e){}}
- s.oninput=paint;ln.oninput=paint;paint();
- v.addEventListener(&#x27;timeupdate&#x27;,function(){if(v.currentTime&gt;=st+len){v.pause()}});
- l._play=function(){try{v.currentTime=st}catch(e){}v.muted=false;var p=v.play();if(p&amp;&amp;p.catch)p.catch(function(){v.muted=true;v.play()})};
- l._use=function(){v.pause();cb({t0:st,t1:st+len,len:len})};}
+ var v=$(&#x27;#igtv&#x27;,l),bx=$(&#x27;#igtbx&#x27;,l),win=$(&#x27;#igtw&#x27;,l),ph=$(&#x27;#igtph&#x27;,l),raf=0,playing=false;
+ function paint(seek){$(&#x27;#igtk&#x27;,l).textContent=&#x27;Keeps &#x27;+mmss(st)+&#x27; to &#x27;+mmss(st+len)+&#x27; · &#x27;+Math.round(len)+&#x27; s&#x27;;win.style.left=(st/dur*100)+&#x27;%&#x27;;win.style.width=(len/dur*100)+&#x27;%&#x27;;$(&#x27;#igtdl&#x27;,l).style.width=(st/dur*100)+&#x27;%&#x27;;$(&#x27;#igtdr&#x27;,l).style.width=((dur-st-len)/dur*100)+&#x27;%&#x27;;if(seek&amp;&amp;!playing){try{v.currentTime=st+0.05}catch(e){}}}
+ paint(true);
+ /* drag the box (move) or its edges (shorter / longer) */
+ var drag=null;
+ function px2t(dx){return dx/bx.clientWidth*dur}
+ win.addEventListener(&#x27;pointerdown&#x27;,function(e){var h=e.target.closest(&#x27;[data-h]&#x27;);drag={h:h?h.dataset.h:&#x27;m&#x27;,x:e.clientX,st:st,len:len};try{win.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault();stop()});
+ win.addEventListener(&#x27;pointermove&#x27;,function(e){if(!drag)return;var d=px2t(e.clientX-drag.x);
+  if(drag.h===&#x27;m&#x27;){st=Math.max(0,Math.min(dur-len,drag.st+d))}
+  else if(drag.h===&#x27;l&#x27;){var ns=Math.max(0,Math.min(drag.st+drag.len-MINL,drag.st+d));var nl=drag.st+drag.len-ns;if(nl&gt;limit){nl=limit;ns=drag.st+drag.len-limit}st=ns;len=nl}
+  else{var nl2=Math.max(MINL,Math.min(limit,dur-drag.st,drag.len+d));len=nl2}
+  paint(true)});
+ function end(){drag=null}
+ win.addEventListener(&#x27;pointerup&#x27;,end);win.addEventListener(&#x27;pointercancel&#x27;,end);
+ /* tap on the strip outside the box: move the box there */
+ bx.addEventListener(&#x27;pointerdown&#x27;,function(e){if(e.target.closest(&#x27;#igtw&#x27;))return;var r=bx.getBoundingClientRect(),t=(e.clientX-r.left)/r.width*dur;st=Math.max(0,Math.min(dur-len,t-len/2));stop();paint(true)});
+ /* film strip: small pictures from the video */
+ (function(){var fs=$(&#x27;#igtfs&#x27;,l),n=8,c=document.createElement(&#x27;canvas&#x27;),x=c.getContext(&#x27;2d&#x27;),v2=document.createElement(&#x27;video&#x27;),i=0;fs.innerHTML=new Array(n+1).join(&#x27;&lt;i&gt;&lt;/i&gt;&#x27;);c.width=80;c.height=110;v2.muted=true;v2.playsInline=true;v2.preload=&#x27;auto&#x27;;v2.src=u;
+  function next(){if(i&gt;=n){v2.removeAttribute(&#x27;src&#x27;);return}try{v2.currentTime=Math.min(dur-0.1,(i+0.5)*dur/n)}catch(e){}}
+  v2.addEventListener(&#x27;seeked&#x27;,function(){try{var vw=v2.videoWidth||80,vh=v2.videoHeight||110,s=Math.max(80/vw,110/vh);x.drawImage(v2,(80-vw*s)/2,(110-vh*s)/2,vw*s,vh*s);fs.children[i].style.backgroundImage=&#x27;url(&#x27;+c.toDataURL(&#x27;image/jpeg&#x27;,.6)+&#x27;)&#x27;}catch(e){}i++;next()});
+  v2.addEventListener(&#x27;loadeddata&#x27;,next);})();
+ /* play only the chosen part */
+ function stop(){if(playing){playing=false;v.pause()}cancelAnimationFrame(raf);ph.style.display=&#x27;none&#x27;;l.querySelector(&#x27;#igtpb&#x27;).textContent=&#x27;▶&#x27;;$(&#x27;#igtpl2&#x27;,l).textContent=&#x27;▶ Play this part&#x27;}
+ function tick(){if(!playing)return;var t=v.currentTime;if(t&lt;st-0.3){try{v.currentTime=st}catch(e){}}if(t&gt;=st+len-0.05){stop();try{v.currentTime=st+0.05}catch(e){}return}ph.style.display=&#x27;block&#x27;;ph.style.left=(t/dur*100)+&#x27;%&#x27;;raf=requestAnimationFrame(tick)}
+ function go(){playing=true;l.querySelector(&#x27;#igtpb&#x27;).textContent=&#x27;❚❚&#x27;;$(&#x27;#igtpl2&#x27;,l).textContent=&#x27;❚❚ Stop&#x27;;var p=v.play();if(p&amp;&amp;p.catch)p.catch(function(){v.muted=true;v.play()});raf=requestAnimationFrame(tick)}
+ l._play=function(){if(playing){stop();return}v.pause();var done=false;function start(){if(done)return;done=true;v.removeEventListener(&#x27;seeked&#x27;,start);go()}
+  if(Math.abs(v.currentTime-st)&lt;0.15){start();return}v.addEventListener(&#x27;seeked&#x27;,start);try{v.currentTime=st}catch(e){start()}setTimeout(start,700)};
+ v.addEventListener(&#x27;ended&#x27;,stop);
+ l._use=function(){stop();cb({t0:st,t1:st+len,len:len})};}
 /* ---- New post ---- */
 var NP={files:[]};
 function newPost(){if(!CFG.np){toast(&#x27;New post is switched off by the President&#x27;);return}
@@ -2070,7 +2108,7 @@ var css=document.createElement(&#x27;style&#x27;);css.textContent=&#x27;.slhead{
 @media (prefers-reduced-motion:reduce){.nvbar{transition:none}}
 .nvbar .nx{margin-left:4px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 &lt;/style&gt;
-&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;14 Nov 2026, 17:50&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;14 Nov 2026, 18:40&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
 (function(){var RF=window.__RF||{profile:1,insta:1,home:1};
 function doRefresh(where){try{var s={w:where||&#x27;home&#x27;};if(where===&#x27;insta&#x27;&amp;&amp;window.__igState)s.ig=window.__igState();sessionStorage.setItem(&#x27;djsg_reopen&#x27;,JSON.stringify(s))}catch(e){}try{parent.location.reload()}catch(e){location.reload()}}
 /* after a refresh, open the same place again (Insta with its tab, or My Profile) */
@@ -2141,7 +2179,7 @@ setInterval(check,180000);setTimeout(check,15000);
 </section>
 
 <div class="toast" id="toast"></div>
-<div class="pg" id="pg" hidden><div class="pgt"><button class="pgb" id="pgb">‹ Back to app</button><b id="pgn"></b></div><iframe id="pgf" title="Page"></iframe></div>
+<div class="pg" id="pg" hidden><div class="pgt"><button class="pgb" id="pgb">‹ Back to Home</button><b id="pgn"></b></div><iframe id="pgf" title="Page"></iframe></div>
 </div></div>
 
 <aside class="guide" id="guide">
