@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="16 Nov 2026, 02:10"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="16 Nov 2026, 11:30"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>DJSG Kota Main</title>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#A3123A">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DJSG"><meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 16 Nov 2026, 02:10</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 16 Nov 2026, 11:30</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1116,7 +1116,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 16 Nov 2026, 02:10&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 16 Nov 2026, 11:30&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -1880,6 +1880,19 @@ function send(){var e=$(&#x27;#ige&#x27;,ig);if(today()&gt;=CFG.lim){e.textConte
  POSTS.unshift(p);ST.tab=&#x27;feed&#x27;;
  closeAll(function(){openIG(&#x27;insta&#x27;);toast((CFG.appr?&#x27;Sent · approval awaited · only you see it&#x27;:&#x27;Posted · all members can see it&#x27;)+(hasTags(cap).length?&#x27; · tagged members get a notice&#x27;:&#x27;&#x27;))})}
 
+/* ---- 16 Nov 2026 (owner&#x27;s yes): &quot;🔔 N new posts · tap to see&quot; button. New posts from other members wait above the Feed; one tap shows them at the top. Demo: they arrive once, 15 s after opening Insta, or from President switches. ---- */
+var NPEND=[],NPDEMO=[{u:&#x27;MB&#x27;,im:[&#x27;lights&#x27;,&#x27;diya&#x27;],cap:&#x27;Deepawali Milan photos from last night ✨&#x27;},{u:&#x27;RP&#x27;,im:[&#x27;flowers&#x27;],cap:&#x27;Kshamavani greetings from our family 🙏&#x27;},{u:&#x27;MC&#x27;,im:[&#x27;sunrise&#x27;],cap:&#x27;Morning walk with group members&#x27;}],NPI=0;
+var npb=document.createElement(&#x27;button&#x27;);npb.type=&#x27;button&#x27;;npb.id=&#x27;ignp&#x27;;npb.hidden=true;ig.appendChild(npb);
+function npPaint(){var n=NPEND.length;npb.hidden=!n;if(n)npb.textContent=&#x27;🔔 &#x27;+n+&#x27; new post&#x27;+(n&gt;1?&#x27;s&#x27;:&#x27;&#x27;)+&#x27; · tap to see&#x27;}
+function npArrive(k){for(var i=0;i&lt;k;i++){var s=NPDEMO[NPI++%NPDEMO.length];NPEND.push({id:NID++,u:s.u,d:0,im:s.im.slice(),cap:s.cap,lk:0,st:&#x27;ok&#x27;,cm:[],npn:1})}npPaint()}
+window.__igNewArrive=npArrive;
+npb.addEventListener(&#x27;click&#x27;,function(e){e.stopPropagation();if(!NPEND.length)return;var L=NPEND.splice(0);for(var i=L.length-1;i&gt;=0;i--)POSTS.unshift(L[i]);ST.tab=&#x27;feed&#x27;;npPaint();render(false);body.scrollTop=0;
+ setTimeout(function(){var f=ig.querySelector(&#x27;[data-pid=&quot;&#x27;+L[0].id+&#x27;&quot;]&#x27;);if(f){try{f.scrollIntoView({block:&#x27;start&#x27;,behavior:&#x27;smooth&#x27;})}catch(_){f.scrollIntoView()}}L.forEach(function(p){var c=ig.querySelector(&#x27;[data-pid=&quot;&#x27;+p.id+&#x27;&quot;]&#x27;);if(c){c.classList.add(&#x27;ignpfl&#x27;);setTimeout(function(){c.classList.remove(&#x27;ignpfl&#x27;)},2200)}})},60)});
+var npT=0,npDone=false;try{npDone=sessionStorage.getItem(&#x27;djsg_ignp&#x27;)===&#x27;1&#x27;}catch(_){}
+new MutationObserver(function(){if(ig.classList.contains(&#x27;on&#x27;)){if(!npDone&amp;&amp;!npT)npT=setTimeout(function(){npT=0;if(npDone||!ig.classList.contains(&#x27;on&#x27;))return;npDone=true;try{sessionStorage.setItem(&#x27;djsg_ignp&#x27;,&#x27;1&#x27;)}catch(_){}npArrive(2)},15000)}else{if(npT){clearTimeout(npT);npT=0}}}).observe(ig,{attributes:true,attributeFilter:[&#x27;class&#x27;]});
+ig.addEventListener(&#x27;click&#x27;,function(e){if(e.target.closest&amp;&amp;e.target.closest(&#x27;#ignpdemo&#x27;)){e.stopPropagation();npDone=true;npArrive(2);var d=ig.querySelector(&#x27;.igsheet [data-ig=&quot;x&quot;]&#x27;);if(d)d.click()}},true);
+(function(){var st=document.createElement(&#x27;style&#x27;);st.textContent=&#x27;#ig #ignp{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 74px);transform:translateX(-50%);z-index:40;padding:9px 16px;border-radius:999px;border:0;background:linear-gradient(135deg,#A3123A,#E8590C);color:#fff;font:700 13px Inter,system-ui,sans-serif;box-shadow:0 4px 0 #6E0B27,0 8px 20px rgba(163,18,58,.35);white-space:nowrap;max-width:92%;overflow:hidden;text-overflow:ellipsis;cursor:pointer;animation:ignpin .35s ease}#ig #ignp[hidden]{display:none}@keyframes ignpin{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translate(-50%,0)}}.ignpfl{box-shadow:0 0 0 3px #FF9F1C,0 8px 20px rgba(255,159,28,.35)!important;transition:box-shadow .4s}&#x27;;document.head.appendChild(st)})();
+
 /* ---- President switches (demo). Real app: President Desk &gt; Insta DJSG control &gt; Posting rules / Show-hide ---- */
 function cfg(){function sw(k,t,s){return &#x27;&lt;label class=&quot;igsw&quot;&gt;&lt;span&gt;&#x27;+t+&#x27;&lt;small&gt;&#x27;+s+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;input type=&quot;checkbox&quot; data-cfg=&quot;&#x27;+k+&#x27;&quot;&#x27;+(CFG[k]?&#x27; checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&lt;/label&gt;&#x27;}
  function sel2(k,t,o){return &#x27;&lt;label class=&quot;igsw&quot;&gt;&lt;span&gt;&#x27;+t+&#x27;&lt;/span&gt;&lt;select data-cfg=&quot;&#x27;+k+&#x27;&quot;&gt;&#x27;+o.map(function(v){return &#x27;&lt;option value=&quot;&#x27;+v+&#x27;&quot;&#x27;+(CFG[k]==v?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+v+&#x27; seconds&lt;/option&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&#x27;}
@@ -1887,7 +1900,7 @@ function cfg(){function sw(k,t,s){return &#x27;&lt;label class=&quot;igsw&quot;&
  sheet(&#x27;&lt;h3&gt;⚙️ President switches (demo)&lt;/h3&gt;&lt;p&gt;Real app: President Desk › Insta DJSG control. Hiding never deletes anything.&lt;/p&gt;&#x27;+
  sw(&#x27;vw&#x27;,&#x27;Show view counts&#x27;,&#x27;ON: everyone sees views. OFF: only the person who posted and the President&#x27;)+sw(&#x27;appr&#x27;,&#x27;Approval before posting&#x27;,&#x27;OFF by default: posts go live at once. ON: the President or Secretary approves each post first&#x27;)+sw(&#x27;np&#x27;,&#x27;New post button&#x27;,&#x27;Members can send new posts&#x27;)+sw(&#x27;ml&#x27;,&#x27;Most-liked strip&#x27;,&#x27;⭐ strip at the top of the Feed&#x27;)+sw(&#x27;pf&#x27;,&#x27;Profile photo button&#x27;,&#x27;Members can change their own photo&#x27;)+sw(&#x27;mem&#x27;,&#x27;Share memory&#x27;,&#x27;Share an old post again&#x27;)+sw(&#x27;vid&#x27;,&#x27;Allow videos&#x27;,&#x27;ON by default. Off stops new videos; old ones stay&#x27;)+
  sw(&#x27;svid&#x27;,&#x27;Videos in stories&#x27;,&#x27;Members can add a video to their story&#x27;)+sel2(&#x27;slen&#x27;,&#x27;Story video length&#x27;,[40,45,50])+sel(&#x27;fd&#x27;,&#x27;Feed shows posts from the last&#x27;,[30,90,180,365,99999])+sel(&#x27;tw&#x27;,&#x27;Most-liked looks at the last&#x27;,[7,30,90,99999])+
- &#x27;&lt;button class=&quot;igbtn&quot; data-ig=&quot;awp&quot;&gt;🏆 Awards · President / Secretary view&lt;/button&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;);
+ &#x27;&lt;button class=&quot;igbtn gh&quot; type=&quot;button&quot; id=&quot;ignpdemo&quot;&gt;🔔 Demo: 2 new posts arrive&lt;/button&gt;&#x27;+&#x27;&lt;button class=&quot;igbtn&quot; data-ig=&quot;awp&quot;&gt;🏆 Awards · President / Secretary view&lt;/button&gt;&lt;button class=&quot;igbtn gh&quot; data-ig=&quot;x&quot;&gt;Done&lt;/button&gt;&#x27;);
  Array.prototype.forEach.call(ig.querySelectorAll(&#x27;[data-cfg]&#x27;),function(x){x.addEventListener(&#x27;change&#x27;,function(){var k=x.dataset.cfg;CFG[k]=x.type===&#x27;checkbox&#x27;?x.checked:+x.value;rerender()})})}
 
 /* ---- AWARDS demo (owner, 13 Nov 2026 22:42): likes visible to all, daily counts, monthly Top 5, special award periods, announce by President or Secretary ---- */
@@ -2156,7 +2169,7 @@ document.addEventListener(&#x27;click&#x27;,function(e){var b=e.target.closest(&
 @media (prefers-reduced-motion:reduce){.nvbar{transition:none}}
 .nvbar .nx{margin-left:4px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 &lt;/style&gt;
-&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;16 Nov 2026, 02:10&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;16 Nov 2026, 11:30&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
 (function(){var RF=window.__RF||{profile:1,insta:1,home:1};
 function doRefresh(where){try{var s={w:where||&#x27;home&#x27;};if(where===&#x27;insta&#x27;&amp;&amp;window.__igState)s.ig=window.__igState();sessionStorage.setItem(&#x27;djsg_reopen&#x27;,JSON.stringify(s))}catch(e){}function rl(){try{parent.location.reload()}catch(e){location.reload()}}
  /* 14 Nov 19:40: get the newest app into the phone&#x27;s copy first, then reload */
@@ -3046,6 +3059,11 @@ var P=window.__hi1P;if(P)P.push(
 );}
 })();
 &lt;/script&gt;
+&lt;!-- 16 Nov 2026: Hindi words for the Insta &quot;new posts&quot; button --&gt;
+&lt;script&gt;(function(){var D=window.__hi1D;if(!D)return;
+D[&#x27;🔔 Demo: 2 new posts arrive&#x27;]=&#x27;🔔 डेमो: 2 नई पोस्ट आएँ&#x27;;D[&#x27;Deepawali Milan photos from last night ✨&#x27;]=&#x27;कल रात के दीपावली मिलन की फ़ोटो ✨&#x27;;D[&#x27;Kshamavani greetings from our family 🙏&#x27;]=&#x27;हमारे परिवार की ओर से क्षमावाणी की शुभकामनाएँ 🙏&#x27;;D[&#x27;Morning walk with group members&#x27;]=&#x27;ग्रुप के सदस्यों के साथ सुबह की सैर&#x27;;
+if(window.__hi1R)window.__hi1R.unshift([/🔔 (\d+) new posts? · tap to see/g,&#x27;🔔 $1 नई पोस्ट · देखने के लिए दबाएँ&#x27;]);
+try{if(window.__hi1tr)window.__hi1tr()}catch(_){}})();&lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
 
 <!-- 8 Approval message -->

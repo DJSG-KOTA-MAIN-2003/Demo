@@ -277,4 +277,67 @@ html{background:linear-gradient(165deg,#FFF4E8 0%,#FDE6EF 45%,#EFE6FF 100%);min-
 <script>(function(){var o=document.getElementById('bz2ov');if(!o)return;function sh(v){o.hidden=!v}
 document.getElementById('dsw').addEventListener('click',function(){sh(true)});document.getElementById('bz2cl').addEventListener('click',function(){sh(false)});
 o.addEventListener('click',function(e){if(e.target===o)sh(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')sh(false)});})();</script>
+<script>window.PG2CFG={key:'business',sheet:'#bz2ov .sheet',opener:'#dsw',
+boxes:[['[data-i="lead"]',['Top line','ऊपर की पंक्ति']],['.srch',['Search box','खोज बॉक्स']],['#types',['Business type buttons','व्यवसाय प्रकार के बटन']],['.gh',['List heading','सूची का शीर्षक']],['.addc',['"Add your business" box','"अपना व्यवसाय जोड़ें" बॉक्स']],['[data-i="n_b"]',['Sample note','नमूना सूचना']],['.cta',['Back to Home button','होम पर वापस बटन']]],
+places:[['.srch','before',['Above the search box','खोज बॉक्स के ऊपर']],['.addc','before',['Above "Add your business"','"अपना व्यवसाय जोड़ें" के ऊपर']],['.cta','before',['Above Back to Home','होम पर वापस के ऊपर']]]};</script>
+<style>/* 16 Nov 2026 (owner's yes): President switches for every box + "＋ Add a box" (demo; real = President Desk > Website content) */
+.pg2off{display:none!important}
+.pg2h{margin:14px 0 6px;font-size:13px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--a1)}
+.pg2row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;margin:6px 0;border-radius:14px;background:var(--glass);border:1px solid var(--line)}
+.pg2row b{font-size:14px}.pg2row small{display:block;font-size:11.5px;color:var(--muted)}
+.pg2sw{flex:none;width:46px;height:27px;border-radius:999px;background:#cfc3c9;position:relative;border:0;cursor:pointer;padding:0}
+.pg2sw::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.pg2sw[aria-checked="true"]{background:#1E9E50}.pg2sw[aria-checked="true"]::after{left:22px}
+.pg2note{font-size:12px;color:var(--muted);margin:6px 2px}
+.pg2f label{display:block;font-size:12.5px;font-weight:700;margin:8px 0 3px}
+.pg2f input,.pg2f select,.pg2f textarea{width:100%;box-sizing:border-box;padding:9px 11px;border-radius:12px;border:1px solid var(--line);font:inherit;font-size:14px;background:#fff;color:var(--ink)}
+.pg2f textarea{min-height:70px;resize:vertical}
+.pg2add{width:100%;margin-top:8px;padding:11px;border-radius:999px;border:1px dashed var(--a1);background:#fff;color:var(--a1);font-weight:800;cursor:pointer}
+.pg2go{width:100%;margin-top:10px;padding:11px;border-radius:999px;border:0;background:var(--btn);color:#fff;font-weight:800;box-shadow:0 4px 0 var(--btn-edge);cursor:pointer}
+.pg2rm{flex:none;border:0;background:none;color:#B71C1C;font-weight:800;font-size:12px;cursor:pointer;padding:4px}
+.pg2box{padding:16px 18px;border-radius:22px;background:var(--glass);border:1px solid var(--line);box-shadow:0 8px 20px var(--shadow);text-align:center}
+.pg2box h3{margin:0 0 6px;font-size:18px;color:var(--a1)}.pg2box p{margin:0;white-space:pre-line;color:var(--ink);font-size:14px}
+.pg2box a{display:inline-block;margin-top:10px;padding:9px 18px;border-radius:999px;background:var(--btn);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 3px 0 var(--btn-edge)}
+.pg2err{color:#B71C1C;font-size:12.5px;font-weight:700;min-height:14px;margin-top:4px}
+.pg2demo{border-radius:16px;margin:10px 0 0}.pg2demo .in{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:9px 12px;font-size:12px}
+</style>
+<script>(function(){
+var C=window.PG2CFG;if(!C)return;var KEY='djsg_pg2_'+C.key;
+var ST={off:{},boxes:[]};try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.off)ST=s}catch(_){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(_){}}
+function hi(){var b=document.getElementById('l_hi');return b&&b.getAttribute('aria-pressed')==='true'}
+function L(a){return hi()?a[1]:a[0]}
+var W={sw:['Boxes on this page','इस पेज के बॉक्स'],swn:['All boxes are ON by default. OFF only hides a box; nothing is deleted.','सभी बॉक्स शुरू में चालू हैं। बंद करने से बॉक्स केवल छिपता है; कुछ नहीं मिटता।'],
+ add:['＋ Add a box','＋ बॉक्स जोड़ें'],added:['Added boxes','जोड़े गए बॉक्स'],t:['Title *','शीर्षक *'],x:['Text','शब्द'],bt:['Button words (optional)','बटन के शब्द (वैकल्पिक)'],bl:['Button link (optional)','बटन का लिंक (वैकल्पिक)'],pl:['Place','जगह'],
+ save:['Add this box','यह बॉक्स जोड़ें'],rm:['Remove','हटाएँ'],need:['Please write a title.','कृपया शीर्षक लिखें।'],none:['No added boxes yet.','अभी कोई बॉक्स नहीं जोड़ा।'],real:['Real site: President Desk › Website content (helpers with the permission box).','असली साइट: अध्यक्ष डेस्क › वेबसाइट सामग्री (अनुमति वाले सहायक भी)।']};
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function apply(){
+ C.boxes.forEach(function(b){document.querySelectorAll(b[0]).forEach(function(e){e.classList.toggle('pg2off',!!ST.off[b[0]])})});
+ document.querySelectorAll('.pg2box').forEach(function(e){e.remove()});
+ ST.boxes.forEach(function(x){if(x.off)return;var p=C.places[x.pl]||C.places[0];var a=document.querySelector(p[0]);if(!a)return;
+  var d=document.createElement('section');d.className='pg2box';d.innerHTML='<h3>'+esc(x.t)+'</h3>'+(x.x?'<p>'+esc(x.x)+'</p>':'')+(x.bt?'<a href="'+esc(/^(https?:|mailto:|tel:)/.test(x.bl)?x.bl:'#')+'" target="_blank" rel="noopener">'+esc(x.bt)+'</a>':'');
+  a.parentNode.insertBefore(d,p[1]==='after'?a.nextSibling:a)});
+}
+function sec(){var h='<div class="pg2h">'+L(W.sw)+'</div><p class="pg2note">'+L(W.swn)+'</p>';
+ C.boxes.forEach(function(b,i){var on=!ST.off[b[0]];h+='<div class="pg2row"><span><b>'+L(b[1])+'</b>'+(b[2]?'<small>'+L(b[2])+'</small>':'')+'</span><button type="button" class="pg2sw" role="switch" aria-checked="'+on+'" data-pg2b="'+i+'" aria-label="'+esc(L(b[1]))+'"></button></div>'});
+ h+='<div class="pg2h">'+L(W.added)+'</div>';
+ if(!ST.boxes.length)h+='<p class="pg2note">'+L(W.none)+'</p>';
+ ST.boxes.forEach(function(x,i){h+='<div class="pg2row"><span><b>'+esc(x.t)+'</b><small>'+L(C.places[x.pl][2])+'</small></span><button type="button" class="pg2rm" data-pg2rm="'+i+'">'+L(W.rm)+'</button><button type="button" class="pg2sw" role="switch" aria-checked="'+!x.off+'" data-pg2x="'+i+'" aria-label="'+esc(x.t)+'"></button></div>'});
+ h+='<button type="button" class="pg2add" data-pg2open="1">'+L(W.add)+'</button><div class="pg2f" id="pg2form" hidden><label>'+L(W.t)+'</label><input id="pg2t" maxlength="60"><label>'+L(W.x)+'</label><textarea id="pg2x" maxlength="400"></textarea><label>'+L(W.bt)+'</label><input id="pg2bt" maxlength="30"><label>'+L(W.bl)+'</label><input id="pg2bl" maxlength="200" placeholder="https://"><label>'+L(W.pl)+'</label><select id="pg2pl">'+C.places.map(function(p,i){return '<option value="'+i+'">'+L(p[2])+'</option>'}).join('')+'</select><div class="pg2err" id="pg2e"></div><button type="button" class="pg2go" data-pg2save="1">'+L(W.save)+'</button></div><p class="pg2note">'+L(W.real)+'</p>';
+ return h}
+function paint(){var s=document.getElementById('pg2sec');if(s)s.innerHTML=sec()}
+function mount(){var sh=document.querySelector(C.sheet);if(!sh)return;var d=document.getElementById('pg2sec');if(!d){d=document.createElement('div');d.id='pg2sec';var cl=sh.querySelector('.close');sh.insertBefore(d,cl||null)}paint()}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-pg2b],[data-pg2x],[data-pg2rm],[data-pg2open],[data-pg2save]');if(b){e.stopPropagation();
+ if(b.dataset.pg2b!=null){var k=C.boxes[+b.dataset.pg2b][0];ST.off[k]=!ST.off[k];if(!ST.off[k])delete ST.off[k]}
+ else if(b.dataset.pg2x!=null){var x=ST.boxes[+b.dataset.pg2x];x.off=!x.off}
+ else if(b.dataset.pg2rm!=null){if(b.dataset.sure){ST.boxes.splice(+b.dataset.pg2rm,1)}else{b.dataset.sure=1;b.textContent=hi()?'फिर दबाएँ':'Tap again';return}}
+ else if(b.dataset.pg2open){var f=document.getElementById('pg2form');f.hidden=!f.hidden;return}
+ else if(b.dataset.pg2save){var t=document.getElementById('pg2t').value.trim();if(!t){document.getElementById('pg2e').textContent=L(W.need);return}
+  ST.boxes.push({t:t,x:document.getElementById('pg2x').value.trim(),bt:document.getElementById('pg2bt').value.trim(),bl:document.getElementById('pg2bl').value.trim(),pl:+document.getElementById('pg2pl').value,off:false})}
+ save();apply();paint();return}
+ if(e.target.closest(C.opener))setTimeout(mount,0);
+ if(e.target.closest('#l_hi,#l_en'))setTimeout(paint,0);
+},true);
+apply();setTimeout(apply,600);
+})();</script>
 </body></html>
