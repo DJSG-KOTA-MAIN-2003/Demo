@@ -288,6 +288,34 @@ var SW={openN:true,openE:true,how:true,fee:true,swap:true,iq:true},fxOn=true,XB=
 var FEE='',lang='en',ex=false,step=0,err='',sent=null,PH=[null,null,null];
 function blank(){return {hn:'',wn:'',mob:'',wmob:'',em:'',hdob:'',wdob:'',ann:'',hbg:'',wbg:'',mid:'',jy:'',kids:[],addr:'',city:'Kota',hbt:'',hoth:'',hfirm:'',hline:'',wbt:'',woth:'',wfirm:'',wline:'',showdob:false,ok:false}}
 var d=blank(),draft=null;
+/* 17 Nov 2026: forms really send to the group's Google Sheet / Drive (Part 1) */
+var API='https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec';
+EN.snd='Sending… please wait';HI.snd='भेजा जा रहा है… कृपया रुकें';
+EN.e_net='Could not send. Please check the internet and tap Send again. Your details are kept.';HI.e_net='भेजा नहीं जा सका। कृपया इंटरनेट देखें और फिर से भेजें। आपकी जानकारी सुरक्षित है।';
+EN.e_closed='The form is closed right now. Please contact the office.';HI.e_closed='फ़ॉर्म अभी बंद है। कृपया कार्यालय से संपर्क करें।';
+EN.demo_n='Saved in the office records. Please keep this reference number.';HI.demo_n='कार्यालय के रिकॉर्ड में सेव हो गया। कृपया यह संदर्भ संख्या रख लें।';
+EN.p_note='JPG, PNG or any phone photo, any size. The photo is made smaller by itself.';HI.p_note='JPG, PNG या फ़ोन की कोई भी फ़ोटो, किसी भी साइज़ की। फ़ोटो अपने-आप छोटी हो जाती है।';
+EN.e_img='Please choose a photo.';HI.e_img='कृपया एक फ़ोटो चुनें।';
+EN.mk='Made smaller: {a} → {b}';HI.mk='छोटी की गई: {a} → {b}';
+function apiOn(){return API.indexOf('__API')<0}
+function hostN(){try{return top.location.host}catch(_){return location.host}}
+function post(o,cb){o.host=hostN();var fin=false,t=setTimeout(function(){if(!fin){fin=true;cb(null)}},90000);
+ try{fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)}).then(function(r){return r.json()}).then(function(j){if(!fin){fin=true;clearTimeout(t);cb(j)}}).catch(function(){if(!fin){fin=true;clearTimeout(t);cb(null)}})}catch(_){fin=true;clearTimeout(t);cb(null)}}
+function sz(n){return n>=1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB'}
+function say(x){var t=$('#toast');if(!t)return;t.textContent=x;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},2600)}
+function shrinkPh(f,i){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,1280/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);var g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);var u=c.toDataURL('image/jpeg',0.8);PH[i]=u;err='';paint();say(T('mk').replace('{a}',sz(f.size)).replace('{b}',sz(Math.round((u.length-23)*0.75))))};im.onerror=function(){err=T('e_img');paint()};im.src=r.result};r.onerror=function(){err=T('e_img');paint()};r.readAsDataURL(f)}
+function sendForm(){
+ if(!apiOn()){clear();draft=null;sent=(ex?'DJSG-EX-':'DJSG-REQ-')+(1000+Math.floor(Math.random()*9000));paint();top();return}
+ if(sendForm.busy)return;sendForm.busy=1;var b=$('#next'),bk=$('#back');if(b){b.disabled=true;b.textContent=T('snd')}if(bk)bk.disabled=true;
+ post({a:'join',ex:ex,f:JSON.parse(JSON.stringify(d)),ph:PH.map(function(u){return u&&u.indexOf('data:')===0?u:''})},function(j){sendForm.busy=0;
+  if(j&&j.ok){clear();draft=null;sent=j.ref;paint();top();return}
+  err=T(j&&j.err==='closed'?'e_closed':'e_net');paint();var x=$('#err');if(x&&x.scrollIntoView)x.scrollIntoView({block:'center'})})}
+function sendIq(n,m){
+ var done=function(){$('#iq_n').value='';$('#iq_m').value='';toast('iq_ok')};
+ if(!apiOn()){done();return}
+ var b=$('#iq_s');if(b){b.disabled=true;b.textContent=T('snd')}
+ post({a:'interest',n:n,m:m},function(j){var b2=$('#iq_s');if(b2){b2.disabled=false;b2.textContent=T('iq_send')}if(j&&j.ok){done();return}var e=$('#iq_e');if(e)e.textContent=T(j&&j.err==='closed'?'e_closed':'e_net')})}
+
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function tidy(s){return String(s).trim().replace(/\s+/g,' ').replace(/[A-Za-z]+/g,function(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()})}
@@ -302,7 +330,7 @@ function bts(){return BT}
 function work(p){var o=d[p+'bt']==='Other';return sel(p+'bt',p==='h'?'f_hbt':'f_wbt',true,BT)+'<div id="othw"'+(o?'':' hidden')+'><label class="fld">'+L('f_oth',false,false)+'<input type="text" id="i_'+p+'oth" maxlength="60" value="'+esc(d[p+'oth'])+'"></label></div><label class="fld">'+L('f_firm',false,true)+'<input type="text" id="i_'+p+'firm" maxlength="80" value="'+esc(d[p+'firm'])+'"></label><label class="fld">'+L('f_wl',false,true)+'<input type="text" id="i_'+p+'line" maxlength="100" value="'+esc(d[p+'line'])+'"><em>'+T('linen')+'</em></label>'}
 function kidH(k,i){var o=function(v,t){return '<option value="'+v+'"'+(k.m===v?' selected':'')+'>'+T(t)+'</option>'},o2=function(v,t){return '<option value="'+v+'"'+(k.sd===v?' selected':'')+'>'+T(t)+'</option>'};
  return '<div class="kid" data-kid="'+i+'"><div class="kh"><b>'+T('kid').replace('{n}',i+1)+'</b><button type="button" class="lnk" data-rmk="'+i+'">'+T('rmv')+'</button></div><div class="two"><label class="fld">'+L('k_n',true)+'<input type="text" data-f="n" maxlength="60" value="'+esc(k.n)+'"></label><label class="fld">'+L('k_m',true)+'<select data-f="m"><option value="">'+T('pick')+'</option>'+o('n','un')+o('y','ma')+'</select></label></div><div class="two"><label class="fld">'+L('k_dob',false,true)+'<input type="date" data-f="dob" value="'+esc(k.dob)+'"></label><label class="fld">'+L('k_sd',false,true)+'<select data-f="sd"><option value="">'+T('pick')+'</option>'+o2('s','son')+o2('d','dau')+'</select></label></div><label class="fld">'+L('k_sw',false,true)+'<input type="text" data-f="sw" maxlength="60" value="'+esc(k.sw)+'"></label>'+(k.m==='y'?'<div class="two"><label class="fld">'+L('k_sp',false,true)+'<input type="text" data-f="sp" maxlength="60" value="'+esc(k.sp)+'"></label><label class="fld">'+L('k_wd',false,true)+'<input type="date" data-f="wd" value="'+esc(k.wd)+'"></label></div>':'')+'</div>'}
-function pbox(i){var u=PH[i];return '<label class="pbox" for="p_'+i+'">'+(u?'<img src="'+u+'" alt=""><span class="cap">'+T('p'+(i+1))+'</span><button type="button" class="rm" data-rmp="'+i+'" aria-label="'+T('rmv')+'">×</button>':'<i aria-hidden="true">📷</i><b>'+T('p'+(i+1))+(i===0?' <span class="rq">*</span>':'')+'</b><small>'+(i===0?T('p_tap'):T('opt')+' · '+T('p_tap'))+'</small>')+'</label><input type="file" class="vh" id="p_'+i+'" data-ph="'+i+'" accept="image/jpeg,image/png">'}
+function pbox(i){var u=PH[i];return '<label class="pbox" for="p_'+i+'">'+(u?'<img src="'+u+'" alt=""><span class="cap">'+T('p'+(i+1))+'</span><button type="button" class="rm" data-rmp="'+i+'" aria-label="'+T('rmv')+'">×</button>':'<i aria-hidden="true">📷</i><b>'+T('p'+(i+1))+(i===0?' <span class="rq">*</span>':'')+'</b><small>'+(i===0?T('p_tap'):T('opt')+' · '+T('p_tap'))+'</small>')+'</label><input type="file" class="vh" id="p_'+i+'" data-ph="'+i+'" accept="image/*">'}
 function bt(v,oth){if(!v)return '';if(v==='Other'&&oth)return oth;for(var i=0;i<BT.length;i++)if(BT[i][0]===v)return BT[i][lang==='hi'?1:0];return v}
 function fd(v){var m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(v||'');if(!m)return v;var M=lang==='hi'?['जन','फ़र','मार्च','अप्रैल','मई','जून','जुलाई','अग','सित','अक्टू','नव','दिस']:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+m[3])+' '+M[+m[2]-1]+' '+m[1]}
 function rv(title,st,rows){return '<div class="rv"><div class="rh"><b>'+T(title)+'</b><button type="button" class="lnk" data-go="'+st+'">'+T('edit')+'</button></div>'+rows.map(function(r){return '<div class="l"><span>'+r[0]+'</span><b>'+(r[1]?esc(r[1]):'<span style="font-weight:400">'+T('none')+'</span>')+'</b></div>'}).join('')+'</div>'}
@@ -352,7 +380,7 @@ $('#l_hi').addEventListener('click',function(){if(step>0&&!sent)read();lang='hi'
 $('#l_en').addEventListener('click',function(){if(step>0&&!sent)read();lang='en';paint()});
 document.addEventListener('click',function(ev){var e=ev.target,b;
  if(e.closest('#ov3'))return;
- if(e.closest('#iq_s')){var n=tidy($('#iq_n').value),m=$('#iq_m').value.replace(/\D/g,'');if(!n||m.length!==10){$('#iq_e').textContent=T('iq_err');return}$('#iq_e').textContent='';$('#iq_n').value='';$('#iq_m').value='';toast('iq_ok');setTimeout(function(){toast('iq_demo')},2700);return}
+ if(e.closest('#iq_s')){var n=tidy($('#iq_n').value),m=$('#iq_m').value.replace(/\D/g,'');if(!n||m.length!==10){$('#iq_e').textContent=T('iq_err');return}$('#iq_e').textContent='';sendIq(n,m);return}
  if(e.closest('#start')){d=blank();go(1);return}
  if(e.closest('#cont')){d=draft.d;go(Math.min(6,draft.step));return}
  if(e.closest('#fresh')){clear();draft=null;d=blank();go(1);return}
@@ -361,14 +389,14 @@ document.addEventListener('click',function(ev){var e=ev.target,b;
  if(e.closest('#back')){read();save();go(step-1);return}
  if(e.closest('#next')){read();err=check();if(err){paint();var x=$('#err');if(x&&x.scrollIntoView)x.scrollIntoView({block:'center'});return}
   if(step<6){step++;save();go(step);return}
-  clear();draft=null;sent=(ex?'DJSG-EX-':'DJSG-REQ-')+(1000+Math.floor(Math.random()*9000));paint();top();return}
+  sendForm();return}
  if(e.closest('#addk')){read();d.kids.push({n:'',m:'',dob:'',sd:'',sw:'',sp:'',wd:''});err='';paint();return}
  if(b=e.closest('[data-rmk]')){read();d.kids.splice(+b.dataset.rmk,1);err='';paint();return}
  if(b=e.closest('[data-rmp]')){ev.preventDefault();read();PH[+b.dataset.rmp]=null;paint();return}
  if(b=e.closest('[data-go]')){read();save();go(+b.dataset.go);return}
  if(b=e.closest('[data-t]'))toast(b.dataset.t)});
 document.addEventListener('change',function(ev){var e=ev.target;
- if(e.dataset&&e.dataset.ph!=null){var f=e.files&&e.files[0];if(!f)return;read();if(!/^image\/(jpeg|png)$/.test(f.type)||f.size>5*1048576){err=T('e_img');paint();return}PH[+e.dataset.ph]=URL.createObjectURL(f);err='';paint();return}
+ if(e.dataset&&e.dataset.ph!=null){var f=e.files&&e.files[0];if(!f)return;read();if(f.type&&!/^image\//.test(f.type)){err=T('e_img');paint();return}shrinkPh(f,+e.dataset.ph);return}
  if(e.id==='i_hbt'||e.id==='i_wbt'){$('#othw').hidden=e.value!=='Other';return}
  if(e.dataset&&e.dataset.f==='m'){read();paint()}});
 

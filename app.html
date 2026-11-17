@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="16 Nov 2026, 21:55"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="17 Nov 2026, 16:55"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>DJSG Kota Main</title>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#A3123A">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DJSG"><meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 16 Nov 2026, 21:55</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 17 Nov 2026, 16:55</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -411,6 +411,34 @@ var BG=[&#x27;A+&#x27;,&#x27;A-&#x27;,&#x27;B+&#x27;,&#x27;B-&#x27;,&#x27;O+&#x2
 var FEE=&#x27;&#x27;,lang=&#x27;en&#x27;,ex=false,step=0,err=&#x27;&#x27;,sent=null,PH=[null,null,null];
 function blank(){return {hn:&#x27;&#x27;,wn:&#x27;&#x27;,mob:&#x27;&#x27;,wmob:&#x27;&#x27;,em:&#x27;&#x27;,hdob:&#x27;&#x27;,wdob:&#x27;&#x27;,ann:&#x27;&#x27;,hbg:&#x27;&#x27;,wbg:&#x27;&#x27;,mid:&#x27;&#x27;,jy:&#x27;&#x27;,kids:[],addr:&#x27;&#x27;,city:&#x27;Kota&#x27;,hbt:&#x27;&#x27;,hoth:&#x27;&#x27;,hfirm:&#x27;&#x27;,hline:&#x27;&#x27;,wbt:&#x27;&#x27;,woth:&#x27;&#x27;,wfirm:&#x27;&#x27;,wline:&#x27;&#x27;,showdob:false,ok:false}}
 var d=blank(),draft=null;
+/* 17 Nov 2026: forms really send to the group&#x27;s Google Sheet / Drive (Part 1) */
+var API=&#x27;https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec&#x27;;
+EN.snd=&#x27;Sending… please wait&#x27;;HI.snd=&#x27;भेजा जा रहा है… कृपया रुकें&#x27;;
+EN.e_net=&#x27;Could not send. Please check the internet and tap Send again. Your details are kept.&#x27;;HI.e_net=&#x27;भेजा नहीं जा सका। कृपया इंटरनेट देखें और फिर से भेजें। आपकी जानकारी सुरक्षित है।&#x27;;
+EN.e_closed=&#x27;The form is closed right now. Please contact the office.&#x27;;HI.e_closed=&#x27;फ़ॉर्म अभी बंद है। कृपया कार्यालय से संपर्क करें।&#x27;;
+EN.demo_n=&#x27;Saved in the office records. Please keep this reference number.&#x27;;HI.demo_n=&#x27;कार्यालय के रिकॉर्ड में सेव हो गया। कृपया यह संदर्भ संख्या रख लें।&#x27;;
+EN.p_note=&#x27;JPG, PNG or any phone photo, any size. The photo is made smaller by itself.&#x27;;HI.p_note=&#x27;JPG, PNG या फ़ोन की कोई भी फ़ोटो, किसी भी साइज़ की। फ़ोटो अपने-आप छोटी हो जाती है।&#x27;;
+EN.e_img=&#x27;Please choose a photo.&#x27;;HI.e_img=&#x27;कृपया एक फ़ोटो चुनें।&#x27;;
+EN.mk=&#x27;Made smaller: {a} → {b}&#x27;;HI.mk=&#x27;छोटी की गई: {a} → {b}&#x27;;
+function apiOn(){return API.indexOf(&#x27;__API&#x27;)&lt;0}
+function hostN(){try{return top.location.host}catch(_){return location.host}}
+function post(o,cb){o.host=hostN();var fin=false,t=setTimeout(function(){if(!fin){fin=true;cb(null)}},90000);
+ try{fetch(API,{method:&#x27;POST&#x27;,headers:{&#x27;Content-Type&#x27;:&#x27;text/plain;charset=utf-8&#x27;},body:JSON.stringify(o)}).then(function(r){return r.json()}).then(function(j){if(!fin){fin=true;clearTimeout(t);cb(j)}}).catch(function(){if(!fin){fin=true;clearTimeout(t);cb(null)}})}catch(_){fin=true;clearTimeout(t);cb(null)}}
+function sz(n){return n&gt;=1048576?(n/1048576).toFixed(1)+&#x27; MB&#x27;:Math.max(1,Math.round(n/1024))+&#x27; KB&#x27;}
+function say(x){var t=$(&#x27;#toast&#x27;);if(!t)return;t.textContent=x;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},2600)}
+function shrinkPh(f,i){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,1280/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement(&#x27;canvas&#x27;);c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);var g=c.getContext(&#x27;2d&#x27;);g.fillStyle=&#x27;#fff&#x27;;g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);var u=c.toDataURL(&#x27;image/jpeg&#x27;,0.8);PH[i]=u;err=&#x27;&#x27;;paint();say(T(&#x27;mk&#x27;).replace(&#x27;{a}&#x27;,sz(f.size)).replace(&#x27;{b}&#x27;,sz(Math.round((u.length-23)*0.75))))};im.onerror=function(){err=T(&#x27;e_img&#x27;);paint()};im.src=r.result};r.onerror=function(){err=T(&#x27;e_img&#x27;);paint()};r.readAsDataURL(f)}
+function sendForm(){
+ if(!apiOn()){clear();draft=null;sent=(ex?&#x27;DJSG-EX-&#x27;:&#x27;DJSG-REQ-&#x27;)+(1000+Math.floor(Math.random()*9000));paint();top();return}
+ if(sendForm.busy)return;sendForm.busy=1;var b=$(&#x27;#next&#x27;),bk=$(&#x27;#back&#x27;);if(b){b.disabled=true;b.textContent=T(&#x27;snd&#x27;)}if(bk)bk.disabled=true;
+ post({a:&#x27;join&#x27;,ex:ex,f:JSON.parse(JSON.stringify(d)),ph:PH.map(function(u){return u&amp;&amp;u.indexOf(&#x27;data:&#x27;)===0?u:&#x27;&#x27;})},function(j){sendForm.busy=0;
+  if(j&amp;&amp;j.ok){clear();draft=null;sent=j.ref;paint();top();return}
+  err=T(j&amp;&amp;j.err===&#x27;closed&#x27;?&#x27;e_closed&#x27;:&#x27;e_net&#x27;);paint();var x=$(&#x27;#err&#x27;);if(x&amp;&amp;x.scrollIntoView)x.scrollIntoView({block:&#x27;center&#x27;})})}
+function sendIq(n,m){
+ var done=function(){$(&#x27;#iq_n&#x27;).value=&#x27;&#x27;;$(&#x27;#iq_m&#x27;).value=&#x27;&#x27;;toast(&#x27;iq_ok&#x27;)};
+ if(!apiOn()){done();return}
+ var b=$(&#x27;#iq_s&#x27;);if(b){b.disabled=true;b.textContent=T(&#x27;snd&#x27;)}
+ post({a:&#x27;interest&#x27;,n:n,m:m},function(j){var b2=$(&#x27;#iq_s&#x27;);if(b2){b2.disabled=false;b2.textContent=T(&#x27;iq_send&#x27;)}if(j&amp;&amp;j.ok){done();return}var e=$(&#x27;#iq_e&#x27;);if(e)e.textContent=T(j&amp;&amp;j.err===&#x27;closed&#x27;?&#x27;e_closed&#x27;:&#x27;e_net&#x27;)})}
+
 function T(k){return (lang===&#x27;hi&#x27;&amp;&amp;HI[k])||EN[k]}
 function esc(x){return String(x==null?&#x27;&#x27;:x).replace(/[&amp;&lt;&gt;&quot;]/g,function(c){return {&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;}[c]})}
 function tidy(s){return String(s).trim().replace(/\s+/g,&#x27; &#x27;).replace(/[A-Za-z]+/g,function(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()})}
@@ -425,7 +453,7 @@ function bts(){return BT}
 function work(p){var o=d[p+&#x27;bt&#x27;]===&#x27;Other&#x27;;return sel(p+&#x27;bt&#x27;,p===&#x27;h&#x27;?&#x27;f_hbt&#x27;:&#x27;f_wbt&#x27;,true,BT)+&#x27;&lt;div id=&quot;othw&quot;&#x27;+(o?&#x27;&#x27;:&#x27; hidden&#x27;)+&#x27;&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;f_oth&#x27;,false,false)+&#x27;&lt;input type=&quot;text&quot; id=&quot;i_&#x27;+p+&#x27;oth&quot; maxlength=&quot;60&quot; value=&quot;&#x27;+esc(d[p+&#x27;oth&#x27;])+&#x27;&quot;&gt;&lt;/label&gt;&lt;/div&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;f_firm&#x27;,false,true)+&#x27;&lt;input type=&quot;text&quot; id=&quot;i_&#x27;+p+&#x27;firm&quot; maxlength=&quot;80&quot; value=&quot;&#x27;+esc(d[p+&#x27;firm&#x27;])+&#x27;&quot;&gt;&lt;/label&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;f_wl&#x27;,false,true)+&#x27;&lt;input type=&quot;text&quot; id=&quot;i_&#x27;+p+&#x27;line&quot; maxlength=&quot;100&quot; value=&quot;&#x27;+esc(d[p+&#x27;line&#x27;])+&#x27;&quot;&gt;&lt;em&gt;&#x27;+T(&#x27;linen&#x27;)+&#x27;&lt;/em&gt;&lt;/label&gt;&#x27;}
 function kidH(k,i){var o=function(v,t){return &#x27;&lt;option value=&quot;&#x27;+v+&#x27;&quot;&#x27;+(k.m===v?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+T(t)+&#x27;&lt;/option&gt;&#x27;},o2=function(v,t){return &#x27;&lt;option value=&quot;&#x27;+v+&#x27;&quot;&#x27;+(k.sd===v?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+T(t)+&#x27;&lt;/option&gt;&#x27;};
  return &#x27;&lt;div class=&quot;kid&quot; data-kid=&quot;&#x27;+i+&#x27;&quot;&gt;&lt;div class=&quot;kh&quot;&gt;&lt;b&gt;&#x27;+T(&#x27;kid&#x27;).replace(&#x27;{n}&#x27;,i+1)+&#x27;&lt;/b&gt;&lt;button type=&quot;button&quot; class=&quot;lnk&quot; data-rmk=&quot;&#x27;+i+&#x27;&quot;&gt;&#x27;+T(&#x27;rmv&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;two&quot;&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_n&#x27;,true)+&#x27;&lt;input type=&quot;text&quot; data-f=&quot;n&quot; maxlength=&quot;60&quot; value=&quot;&#x27;+esc(k.n)+&#x27;&quot;&gt;&lt;/label&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_m&#x27;,true)+&#x27;&lt;select data-f=&quot;m&quot;&gt;&lt;option value=&quot;&quot;&gt;&#x27;+T(&#x27;pick&#x27;)+&#x27;&lt;/option&gt;&#x27;+o(&#x27;n&#x27;,&#x27;un&#x27;)+o(&#x27;y&#x27;,&#x27;ma&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&lt;div class=&quot;two&quot;&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_dob&#x27;,false,true)+&#x27;&lt;input type=&quot;date&quot; data-f=&quot;dob&quot; value=&quot;&#x27;+esc(k.dob)+&#x27;&quot;&gt;&lt;/label&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_sd&#x27;,false,true)+&#x27;&lt;select data-f=&quot;sd&quot;&gt;&lt;option value=&quot;&quot;&gt;&#x27;+T(&#x27;pick&#x27;)+&#x27;&lt;/option&gt;&#x27;+o2(&#x27;s&#x27;,&#x27;son&#x27;)+o2(&#x27;d&#x27;,&#x27;dau&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_sw&#x27;,false,true)+&#x27;&lt;input type=&quot;text&quot; data-f=&quot;sw&quot; maxlength=&quot;60&quot; value=&quot;&#x27;+esc(k.sw)+&#x27;&quot;&gt;&lt;/label&gt;&#x27;+(k.m===&#x27;y&#x27;?&#x27;&lt;div class=&quot;two&quot;&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_sp&#x27;,false,true)+&#x27;&lt;input type=&quot;text&quot; data-f=&quot;sp&quot; maxlength=&quot;60&quot; value=&quot;&#x27;+esc(k.sp)+&#x27;&quot;&gt;&lt;/label&gt;&lt;label class=&quot;fld&quot;&gt;&#x27;+L(&#x27;k_wd&#x27;,false,true)+&#x27;&lt;input type=&quot;date&quot; data-f=&quot;wd&quot; value=&quot;&#x27;+esc(k.wd)+&#x27;&quot;&gt;&lt;/label&gt;&lt;/div&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
-function pbox(i){var u=PH[i];return &#x27;&lt;label class=&quot;pbox&quot; for=&quot;p_&#x27;+i+&#x27;&quot;&gt;&#x27;+(u?&#x27;&lt;img src=&quot;&#x27;+u+&#x27;&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;cap&quot;&gt;&#x27;+T(&#x27;p&#x27;+(i+1))+&#x27;&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;rm&quot; data-rmp=&quot;&#x27;+i+&#x27;&quot; aria-label=&quot;&#x27;+T(&#x27;rmv&#x27;)+&#x27;&quot;&gt;×&lt;/button&gt;&#x27;:&#x27;&lt;i aria-hidden=&quot;true&quot;&gt;📷&lt;/i&gt;&lt;b&gt;&#x27;+T(&#x27;p&#x27;+(i+1))+(i===0?&#x27; &lt;span class=&quot;rq&quot;&gt;*&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+(i===0?T(&#x27;p_tap&#x27;):T(&#x27;opt&#x27;)+&#x27; · &#x27;+T(&#x27;p_tap&#x27;))+&#x27;&lt;/small&gt;&#x27;)+&#x27;&lt;/label&gt;&lt;input type=&quot;file&quot; class=&quot;vh&quot; id=&quot;p_&#x27;+i+&#x27;&quot; data-ph=&quot;&#x27;+i+&#x27;&quot; accept=&quot;image/jpeg,image/png&quot;&gt;&#x27;}
+function pbox(i){var u=PH[i];return &#x27;&lt;label class=&quot;pbox&quot; for=&quot;p_&#x27;+i+&#x27;&quot;&gt;&#x27;+(u?&#x27;&lt;img src=&quot;&#x27;+u+&#x27;&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;cap&quot;&gt;&#x27;+T(&#x27;p&#x27;+(i+1))+&#x27;&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;rm&quot; data-rmp=&quot;&#x27;+i+&#x27;&quot; aria-label=&quot;&#x27;+T(&#x27;rmv&#x27;)+&#x27;&quot;&gt;×&lt;/button&gt;&#x27;:&#x27;&lt;i aria-hidden=&quot;true&quot;&gt;📷&lt;/i&gt;&lt;b&gt;&#x27;+T(&#x27;p&#x27;+(i+1))+(i===0?&#x27; &lt;span class=&quot;rq&quot;&gt;*&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+(i===0?T(&#x27;p_tap&#x27;):T(&#x27;opt&#x27;)+&#x27; · &#x27;+T(&#x27;p_tap&#x27;))+&#x27;&lt;/small&gt;&#x27;)+&#x27;&lt;/label&gt;&lt;input type=&quot;file&quot; class=&quot;vh&quot; id=&quot;p_&#x27;+i+&#x27;&quot; data-ph=&quot;&#x27;+i+&#x27;&quot; accept=&quot;image/*&quot;&gt;&#x27;}
 function bt(v,oth){if(!v)return &#x27;&#x27;;if(v===&#x27;Other&#x27;&amp;&amp;oth)return oth;for(var i=0;i&lt;BT.length;i++)if(BT[i][0]===v)return BT[i][lang===&#x27;hi&#x27;?1:0];return v}
 function fd(v){var m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(v||&#x27;&#x27;);if(!m)return v;var M=lang===&#x27;hi&#x27;?[&#x27;जन&#x27;,&#x27;फ़र&#x27;,&#x27;मार्च&#x27;,&#x27;अप्रैल&#x27;,&#x27;मई&#x27;,&#x27;जून&#x27;,&#x27;जुलाई&#x27;,&#x27;अग&#x27;,&#x27;सित&#x27;,&#x27;अक्टू&#x27;,&#x27;नव&#x27;,&#x27;दिस&#x27;]:[&#x27;Jan&#x27;,&#x27;Feb&#x27;,&#x27;Mar&#x27;,&#x27;Apr&#x27;,&#x27;May&#x27;,&#x27;Jun&#x27;,&#x27;Jul&#x27;,&#x27;Aug&#x27;,&#x27;Sep&#x27;,&#x27;Oct&#x27;,&#x27;Nov&#x27;,&#x27;Dec&#x27;];return (+m[3])+&#x27; &#x27;+M[+m[2]-1]+&#x27; &#x27;+m[1]}
 function rv(title,st,rows){return &#x27;&lt;div class=&quot;rv&quot;&gt;&lt;div class=&quot;rh&quot;&gt;&lt;b&gt;&#x27;+T(title)+&#x27;&lt;/b&gt;&lt;button type=&quot;button&quot; class=&quot;lnk&quot; data-go=&quot;&#x27;+st+&#x27;&quot;&gt;&#x27;+T(&#x27;edit&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+rows.map(function(r){return &#x27;&lt;div class=&quot;l&quot;&gt;&lt;span&gt;&#x27;+r[0]+&#x27;&lt;/span&gt;&lt;b&gt;&#x27;+(r[1]?esc(r[1]):&#x27;&lt;span style=&quot;font-weight:400&quot;&gt;&#x27;+T(&#x27;none&#x27;)+&#x27;&lt;/span&gt;&#x27;)+&#x27;&lt;/b&gt;&lt;/div&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;}
@@ -472,7 +500,7 @@ $(&#x27;#l_hi&#x27;).addEventListener(&#x27;click&#x27;,function(){if(step&gt;0&
 $(&#x27;#l_en&#x27;).addEventListener(&#x27;click&#x27;,function(){if(step&gt;0&amp;&amp;!sent)read();lang=&#x27;en&#x27;;paint()});
 $(&#x27;#mo_n&#x27;).addEventListener(&#x27;click&#x27;,function(){mode(false)});$(&#x27;#mo_e&#x27;).addEventListener(&#x27;click&#x27;,function(){mode(true)});
 document.addEventListener(&#x27;click&#x27;,function(ev){var e=ev.target,b;
- if(e.closest(&#x27;#iq_s&#x27;)){var n=tidy($(&#x27;#iq_n&#x27;).value),m=$(&#x27;#iq_m&#x27;).value.replace(/\D/g,&#x27;&#x27;);if(!n||m.length!==10){$(&#x27;#iq_e&#x27;).textContent=T(&#x27;iq_err&#x27;);return}$(&#x27;#iq_e&#x27;).textContent=&#x27;&#x27;;$(&#x27;#iq_n&#x27;).value=&#x27;&#x27;;$(&#x27;#iq_m&#x27;).value=&#x27;&#x27;;toast(&#x27;iq_ok&#x27;);setTimeout(function(){toast(&#x27;iq_demo&#x27;)},2700);return}
+ if(e.closest(&#x27;#iq_s&#x27;)){var n=tidy($(&#x27;#iq_n&#x27;).value),m=$(&#x27;#iq_m&#x27;).value.replace(/\D/g,&#x27;&#x27;);if(!n||m.length!==10){$(&#x27;#iq_e&#x27;).textContent=T(&#x27;iq_err&#x27;);return}$(&#x27;#iq_e&#x27;).textContent=&#x27;&#x27;;sendIq(n,m);return}
  if(e.closest(&#x27;#fe_n&#x27;)){FEE=&#x27;&#x27;;paint();return}
  if(e.closest(&#x27;#fe_y&#x27;)){FEE=&#x27;2,100&#x27;;paint();return}
  if(e.closest(&#x27;#start&#x27;)){d=blank();go(1);return}
@@ -483,14 +511,14 @@ document.addEventListener(&#x27;click&#x27;,function(ev){var e=ev.target,b;
  if(e.closest(&#x27;#back&#x27;)){read();save();go(step-1);return}
  if(e.closest(&#x27;#next&#x27;)){read();err=check();if(err){paint();var x=$(&#x27;#err&#x27;);if(x&amp;&amp;x.scrollIntoView)x.scrollIntoView({block:&#x27;center&#x27;});return}
   if(step&lt;6){step++;save();go(step);return}
-  clear();draft=null;sent=(ex?&#x27;DJSG-EX-&#x27;:&#x27;DJSG-REQ-&#x27;)+(1000+Math.floor(Math.random()*9000));paint();top();return}
+  sendForm();return}
  if(e.closest(&#x27;#addk&#x27;)){read();d.kids.push({n:&#x27;&#x27;,m:&#x27;&#x27;,dob:&#x27;&#x27;,sd:&#x27;&#x27;,sw:&#x27;&#x27;,sp:&#x27;&#x27;,wd:&#x27;&#x27;});err=&#x27;&#x27;;paint();return}
  if(b=e.closest(&#x27;[data-rmk]&#x27;)){read();d.kids.splice(+b.dataset.rmk,1);err=&#x27;&#x27;;paint();return}
  if(b=e.closest(&#x27;[data-rmp]&#x27;)){ev.preventDefault();read();PH[+b.dataset.rmp]=null;paint();return}
  if(b=e.closest(&#x27;[data-go]&#x27;)){read();save();go(+b.dataset.go);return}
  if(b=e.closest(&#x27;[data-t]&#x27;))toast(b.dataset.t)});
 document.addEventListener(&#x27;change&#x27;,function(ev){var e=ev.target;
- if(e.dataset&amp;&amp;e.dataset.ph!=null){var f=e.files&amp;&amp;e.files[0];if(!f)return;read();if(!/^image\/(jpeg|png)$/.test(f.type)||f.size&gt;5*1048576){err=T(&#x27;e_img&#x27;);paint();return}PH[+e.dataset.ph]=URL.createObjectURL(f);err=&#x27;&#x27;;paint();return}
+ if(e.dataset&amp;&amp;e.dataset.ph!=null){var f=e.files&amp;&amp;e.files[0];if(!f)return;read();if(f.type&amp;&amp;!/^image\//.test(f.type)){err=T(&#x27;e_img&#x27;);paint();return}shrinkPh(f,+e.dataset.ph);return}
  if(e.id===&#x27;i_hbt&#x27;||e.id===&#x27;i_wbt&#x27;){$(&#x27;#othw&#x27;).hidden=e.value!==&#x27;Other&#x27;;return}
  if(e.dataset&amp;&amp;e.dataset.f===&#x27;m&#x27;){read();paint()}});
 ex=true;
@@ -1116,7 +1144,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 16 Nov 2026, 21:55&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 17 Nov 2026, 16:55&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -2169,7 +2197,7 @@ document.addEventListener(&#x27;click&#x27;,function(e){var b=e.target.closest(&
 @media (prefers-reduced-motion:reduce){.nvbar{transition:none}}
 .nvbar .nx{margin-left:4px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 &lt;/style&gt;
-&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;16 Nov 2026, 21:55&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;17 Nov 2026, 16:55&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
 (function(){var RF=window.__RF||{profile:1,insta:1,home:1};
 function doRefresh(where){try{var s={w:where||&#x27;home&#x27;};if(where===&#x27;insta&#x27;&amp;&amp;window.__igState)s.ig=window.__igState();sessionStorage.setItem(&#x27;djsg_reopen&#x27;,JSON.stringify(s))}catch(e){}function rl(){try{parent.location.reload()}catch(e){location.reload()}}
  /* 14 Nov 19:40: get the newest app into the phone&#x27;s copy first, then reload */
@@ -3006,7 +3034,8 @@ S.mp3prog=function(){var n=monthCount(),h=&#x27;&lt;i data-mp3back=&quot;profile
  ST.progs.slice().reverse().forEach(function(p){h+=&#x27;&lt;div class=&quot;mp3pc&quot;&gt;&lt;h4&gt;&#x27;+esc(p.n)+&#x27;&lt;/h4&gt;&lt;p&gt;&#x27;+esc((p.m&amp;&amp;p.m!==&#x27;?&#x27;?p.m+&#x27; &#x27;:&#x27;&#x27;)+p.y)+(p.pl?&#x27; · &#x27;+esc(p.pl):&#x27;&#x27;)+&#x27;&lt;/p&gt;&#x27;+(p.pd?&#x27;&lt;p&gt;Project Director: &#x27;+esc(p.pd)+&#x27;&lt;/p&gt;&#x27;:&#x27;&#x27;)+(p.cg?&#x27;&lt;p&gt;Chief guest: &#x27;+esc(p.cg)+&#x27;&lt;/p&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;p&gt;&lt;span class=&quot;mp3tag&quot;&gt;✅ Live&lt;/span&gt; · &#x27;+p.ph+&#x27; photos&lt;/p&gt;&lt;div class=&quot;mp3acts&quot;&gt;&lt;button data-mp3=&quot;chg&quot; data-i=&quot;&#x27;+p.id+&#x27;&quot;&gt;✏️ Change&lt;/button&gt;&lt;button data-mp3=&quot;rm&quot; data-i=&quot;&#x27;+p.id+&#x27;&quot;&gt;🗑️ Remove&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&#x27;});
  return h+&#x27;&lt;p class=&quot;mp3note&quot;&gt;They show on your timeline and in Events › Past programmes. Up to &#x27;+LIM+&#x27; programmes a month and &#x27;+PLIM+&#x27; photos each. The office can hide a programme if needed.&lt;/p&gt;&#x27;};
 S.mp3form=function(){var p=EDIT||{n:&#x27;&#x27;,y:&#x27;&#x27;,m:&#x27;&#x27;,pl:&#x27;&#x27;,pd:&#x27;&#x27;,cg:&#x27;&#x27;,ab:&#x27;&#x27;},yr=&#x27;&#x27;;for(var y=2026;y&gt;=1994;y--)yr+=&#x27;&lt;option&#x27;+(p.y==y?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+y+&#x27;&lt;/option&gt;&#x27;;
- return &#x27;&lt;i data-mp3back=&quot;mp3prog&quot; hidden&gt;&lt;/i&gt;&lt;div class=&quot;sh&quot;&gt;&lt;img class=&quot;logo&quot; data-logo alt=&quot;&quot;&gt;&lt;div&gt;&lt;h2&gt;&#x27;+(EDIT?&#x27;Change programme&#x27;:&#x27;Add a programme&#x27;)+&#x27;&lt;/h2&gt;&lt;p&gt;Added by: &#x27;+ME+&#x27;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;mp3f&quot;&gt;&#x27;+
+ return &#x27;&lt;i data-mp3back=&quot;mp3prog&quot; hidden&gt;&lt;/i&gt;&lt;div class=&quot;sh&quot;&gt;&lt;img class=&quot;logo&quot; data-logo alt=&quot;&quot;&gt;&lt;div&gt;&lt;h2&gt;&#x27;+(EDIT?&#x27;Change programme&#x27;:&#x27;Add a programme&#x27;)+&#x27;&lt;/h2&gt;&#x27;+(window.__mpOn&amp;&amp;window.__mpOn()?&#x27;&#x27;:&#x27;&lt;p&gt;Added by: &#x27;+ME+&#x27;&lt;/p&gt;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;mp3f&quot;&gt;&#x27;+
+ &#x27;&lt;div class=&quot;mp3two&quot;&gt;&lt;div&gt;&lt;label&gt;Your name *&lt;/label&gt;&lt;input id=&quot;mp3who&quot; maxlength=&quot;60&quot; autocomplete=&quot;name&quot; value=&quot;&#x27;+esc(window.__mpMe?window.__mpMe(&#x27;n&#x27;):&#x27;&#x27;)+&#x27;&quot; placeholder=&quot;Full name&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;Your mobile *&lt;/label&gt;&lt;input id=&quot;mp3mob&quot; type=&quot;tel&quot; inputmode=&quot;numeric&quot; maxlength=&quot;10&quot; value=&quot;&#x27;+esc(window.__mpMe?window.__mpMe(&#x27;m&#x27;):&#x27;&#x27;)+&#x27;&quot; placeholder=&quot;10 digits&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
  &#x27;&lt;label&gt;Programme name *&lt;/label&gt;&lt;input id=&quot;mp3n&quot; maxlength=&quot;80&quot; value=&quot;&#x27;+esc(p.n)+&#x27;&quot; placeholder=&quot;For example: Blood donation camp&quot;&gt;&#x27;+
  &#x27;&lt;div class=&quot;mp3two&quot;&gt;&lt;div&gt;&lt;label&gt;Year *&lt;/label&gt;&lt;select id=&quot;mp3y&quot;&gt;&lt;option value=&quot;&quot;&gt;Choose&lt;/option&gt;&#x27;+yr+&#x27;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;Month&lt;/label&gt;&lt;select id=&quot;mp3m&quot;&gt;&lt;option value=&quot;&quot;&gt;Choose&lt;/option&gt;&lt;option value=&quot;?&quot;&#x27;+(p.m===&#x27;?&#x27;?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;Not sure&lt;/option&gt;&#x27;+MON.map(function(m){return &#x27;&lt;option&#x27;+(p.m===m?&#x27; selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+m+&#x27;&lt;/option&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/select&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
  &#x27;&lt;label&gt;Place&lt;/label&gt;&lt;input id=&quot;mp3pl&quot; maxlength=&quot;80&quot; value=&quot;&#x27;+esc(p.pl)+&#x27;&quot;&gt;&#x27;+
@@ -3038,8 +3067,17 @@ if(sh){
   if(k===&#x27;psave&#x27;){var g=function(i){var x=document.getElementById(i);return x?x.value.trim():&#x27;&#x27;},er=document.getElementById(&#x27;mp3e&#x27;);
    var o={n:g(&#x27;mp3n&#x27;),y:g(&#x27;mp3y&#x27;),m:g(&#x27;mp3m&#x27;),pl:g(&#x27;mp3pl&#x27;),pd:g(&#x27;mp3pd&#x27;),cg:g(&#x27;mp3cg&#x27;),ab:g(&#x27;mp3ab&#x27;)};
    if(!o.n){er.textContent=&#x27;Please write the programme name.&#x27;;return}if(!o.y){er.textContent=&#x27;Please choose the year.&#x27;;return}if(!document.getElementById(&#x27;mp3ok&#x27;).checked){er.textContent=&#x27;Please tick the box to agree.&#x27;;return}
-   if(EDIT){for(var q in o)EDIT[q]=o[q];if(PH.length)EDIT.ph=Math.min(PLIM,EDIT.ph+PH.length)}else{o.id=Date.now();o.ph=PH.length;o.mon=1;ST.progs.push(o)}
-   var was=!!EDIT;EDIT=null;PH=[];save();show(&#x27;mp3prog&#x27;);setTimeout(function(){toast(was?&#x27;Changes saved · live now&#x27;:&#x27;Programme added · all members can see it&#x27;)},50);return}
+   var finish=function(ref){if(EDIT){for(var q in o)EDIT[q]=o[q];if(PH.length)EDIT.ph=Math.min(PLIM,EDIT.ph+PH.length);if(ref)EDIT.ref=ref}else{o.id=Date.now();o.ph=PH.length;o.mon=1;if(ref)o.ref=ref;ST.progs.push(o)}
+    var was=!!EDIT;EDIT=null;PH=[];save();show(&#x27;mp3prog&#x27;);setTimeout(function(){toast(ref?(was?&#x27;Changes sent to the office ✓ · Ref &#x27;:&#x27;Programme saved ✓ · Ref &#x27;)+ref:(was?&#x27;Changes saved · live now&#x27;:&#x27;Programme added · all members can see it&#x27;))},50)};
+   /* 17 Nov 2026: really saves to the group&#x27;s Google Sheet / Drive */
+   if(window.__mpOn&amp;&amp;window.__mpOn()){var who=g(&#x27;mp3who&#x27;),mob=g(&#x27;mp3mob&#x27;).replace(/\D/g,&#x27;&#x27;);
+    if(!who){er.textContent=&#x27;Please write your name.&#x27;;return}if(mob.length!==10){er.textContent=&#x27;Please write your 10-digit mobile number.&#x27;;return}
+    try{localStorage.setItem(&#x27;djsg_me&#x27;,JSON.stringify({n:who,m:mob}))}catch(_){}
+    if(b.disabled)return;var old=b.textContent;b.disabled=true;b.textContent=&#x27;Sending… please wait&#x27;;er.textContent=&#x27;&#x27;;
+    window.__mpPost({a:&#x27;prog&#x27;,from:&#x27;app&#x27;,p:{k:&#x27;pg&#x27;,t:o.n,yr:o.y,mo:o.m===&#x27;?&#x27;?&#x27;Not sure&#x27;:o.m,pl:o.pl,pd:o.pd,cg:o.cg,ds:(EDIT&amp;&amp;EDIT.ref?&#x27;[Change of &#x27;+EDIT.ref+&#x27;] &#x27;:&#x27;&#x27;)+o.ab,by:who,ph:mob},ph:PH.slice(0,PLIM)},function(j){b.disabled=false;b.textContent=old;
+     if(!(j&amp;&amp;j.ok)){er.textContent=j&amp;&amp;j.err===&#x27;closed&#x27;?&#x27;The form is closed right now. Please contact the office.&#x27;:&#x27;Could not send. Please check the internet and tap Save again.&#x27;;return}
+     finish(j.ref)});return}
+   finish(&#x27;&#x27;);return}
  },true);
 }
 
@@ -3207,6 +3245,20 @@ function fix(){if(!FP)return;var b=sh.querySelector(&#x27;.sbk&#x27;);if(!b||b._
 new MutationObserver(fix).observe(sh,{childList:true});
 new MutationObserver(function(){if(!ov.classList.contains(&#x27;show&#x27;))FP=0}).observe(ov,{attributes:true,attributeFilter:[&#x27;class&#x27;]});
 if(window.__hi1D)window.__hi1D[&#x27;‹ Back to My Profile&#x27;]=&#x27;‹ मेरी प्रोफ़ाइल पर वापस&#x27;;})();&lt;/script&gt;
+&lt;script&gt;
+/* 17 Nov 2026 (Part 1): My past programmes really save to the Sheet / Drive */
+(function(){var API=&#x27;https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec&#x27;;
+window.__mpOn=function(){return API.indexOf(&#x27;__API&#x27;)&lt;0};
+window.__mpMe=function(k){try{var me=JSON.parse(localStorage.getItem(&#x27;djsg_me&#x27;)||&#x27;null&#x27;)||{};if(k===&#x27;m&#x27;&amp;&amp;!me.m){var lg=JSON.parse(localStorage.getItem(&#x27;djsg_login&#x27;)||&#x27;null&#x27;);if(lg&amp;&amp;lg.mob)return lg.mob}return me[k]||&#x27;&#x27;}catch(_){return &#x27;&#x27;}};
+window.__mpPost=function(o,cb){try{o.host=top.location.host}catch(_){o.host=&#x27;&#x27;}var fin=false,t=setTimeout(function(){if(!fin){fin=true;cb(null)}},180000);
+ try{fetch(API,{method:&#x27;POST&#x27;,headers:{&#x27;Content-Type&#x27;:&#x27;text/plain;charset=utf-8&#x27;},body:JSON.stringify(o)}).then(function(r){return r.json()}).then(function(j){if(!fin){fin=true;clearTimeout(t);cb(j)}}).catch(function(){if(!fin){fin=true;clearTimeout(t);cb(null)}})}catch(_){fin=true;clearTimeout(t);cb(null)}};
+var D=window.__hi1D,P=window.__hi1P;
+if(D){var H={&#x27;Your name *&#x27;:&#x27;आपका नाम *&#x27;,&#x27;Your mobile *&#x27;:&#x27;आपका मोबाइल *&#x27;,&#x27;@Full name&#x27;:&#x27;पूरा नाम&#x27;,&#x27;@10 digits&#x27;:&#x27;10 अंक&#x27;,
+&#x27;Please write your name.&#x27;:&#x27;कृपया अपना नाम लिखें।&#x27;,&#x27;Please write your 10-digit mobile number.&#x27;:&#x27;कृपया 10 अंकों का मोबाइल नंबर लिखें।&#x27;,&#x27;Sending… please wait&#x27;:&#x27;भेजा जा रहा है… कृपया रुकें&#x27;,
+&#x27;The form is closed right now. Please contact the office.&#x27;:&#x27;फ़ॉर्म अभी बंद है। कृपया कार्यालय से संपर्क करें।&#x27;,&#x27;Could not send. Please check the internet and tap Save again.&#x27;:&#x27;भेजा नहीं जा सका। कृपया इंटरनेट देखें और फिर से सेव दबाएँ।&#x27;};for(var k in H)D[k]=H[k]}
+if(P){P.push([/^Programme saved ✓ · Ref (.+)$/,&#x27;कार्यक्रम सेव हुआ ✓ · संदर्भ $1&#x27;]);P.push([/^Changes sent to the office ✓ · Ref (.+)$/,&#x27;बदलाव कार्यालय को भेजे गए ✓ · संदर्भ $1&#x27;])}
+})();
+&lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
 
 <!-- 8 Approval message -->
@@ -3360,4 +3412,94 @@ f.addEventListener('load',function(){if($('#pg').hidden)return;var w,d;try{w=f.c
 setS('full');go('9');
 rawPush();
 })();
-</script></body></html>
+</script><!-- 17 Nov 2026 (Part 1): mobile + group-code login. Switch and code live in the Google Sheet (Settings). OFF = the app opens at once. -->
+<div id="djl" hidden role="dialog" aria-modal="true" aria-labelledby="djlh">
+ <div class="djlc">
+  <div class="djll"><button type="button" data-l="hi">हिन्दी</button><button type="button" data-l="en">English</button></div>
+  <img id="djlg" src="icon-192.png" alt="">
+  <div class="djlg1" data-t="g">Digamber Jain Social Group</div>
+  <div class="djlg2" data-t="k">Kota Main</div>
+  <div class="djlg3" data-t="e">Established in 2003 · Session 2026</div>
+  <h2 id="djlh" data-t="h">Member login</h2>
+  <p class="djlp" data-t="p">Enter your mobile number and the group code.</p>
+  <label class="djlf"><span data-t="m">Mobile number</span><input id="djlm" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="9829000000"></label>
+  <label class="djlf"><span data-t="c">Group code</span><input id="djlc" type="tel" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="••••"></label>
+  <p class="djle" id="djle" role="alert"></p>
+  <button type="button" id="djlb" data-t="b">Open the app ›</button>
+  <p class="djln" data-t="n">Ask the office for the group code. This phone stays logged in for 30 days.</p>
+ </div>
+</div>
+<style>
+#djl{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;overflow:auto;
+ background:linear-gradient(160deg,#FFE3EC 0%,#FFE9DC 45%,#EDE4FF 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Devanagari",sans-serif;color:#3A1A24}
+#djl[hidden]{display:none!important}
+#djl .djlc{width:100%;max-width:400px;background:rgba(255,255,255,.88);border-radius:24px;padding:18px 18px 16px;box-shadow:0 18px 40px rgba(122,20,52,.18),inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;box-sizing:border-box}
+#djl .djll{align-self:flex-end;display:flex;border:1px solid #E7C3CF;border-radius:999px;overflow:hidden}
+#djl .djll button{border:0;background:#fff;color:#A3123A;font-weight:700;font-size:12.5px;padding:6px 11px;cursor:pointer}
+#djl .djll button.on{background:#A3123A;color:#fff}
+#djl #djlg{width:76px;height:72px;object-fit:contain;border-radius:50%;background:#fff;margin-top:2px}
+#djl .djlg1{font-weight:800;font-size:19px;line-height:1.2;color:#7A1434}
+#djl .djlg2{font-weight:800;font-size:16px;color:#A3123A}
+#djl .djlg3{font-size:12px;color:#7B6470}
+#djl h2{margin:10px 0 0;font-size:20px;color:#3A1A24}
+#djl .djlp{margin:0 0 6px;font-size:13.5px;color:#6B5560}
+#djl .djlf{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px;font-weight:700;font-size:13.5px;text-align:left}
+#djl .djlf input{width:100%;box-sizing:border-box;font-size:20px;letter-spacing:1px;padding:12px 14px;border-radius:14px;border:1.5px solid #E7C3CF;background:#fff;color:#3A1A24;outline:none}
+#djl .djlf input:focus{border-color:#A3123A;box-shadow:0 0 0 3px rgba(163,18,58,.12)}
+#djl .djle{min-height:18px;margin:6px 0 0;color:#B71C1C;font-size:13px;font-weight:700}
+#djl #djlb{width:100%;margin-top:4px;min-height:52px;border:0;border-radius:16px;background:linear-gradient(180deg,#C2185B,#A3123A);color:#fff;font-weight:800;font-size:16.5px;cursor:pointer;box-shadow:0 6px 0 #7A1434,0 10px 18px rgba(122,20,52,.25)}
+#djl #djlb:active{transform:translateY(3px);box-shadow:0 3px 0 #7A1434}
+#djl #djlb:disabled{opacity:.7}
+#djl .djln{margin:10px 0 0;font-size:12px;color:#7B6470}
+html.djl-hi #djl .djlg1,html.djl-hi #djl h2{letter-spacing:0}
+@media (max-height:640px){#djl #djlg{width:58px;height:55px}#djl h2{margin-top:4px;font-size:18px}#djl .djlf input{padding:10px 12px;font-size:18px}#djl .djlc{padding:12px 14px}}
+</style>
+<script>
+(function(){
+var API='https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec',K='djsg_login',el=document.getElementById('djl');if(!el||API.indexOf('__API')===0)return;
+var W={en:{g:'Digamber Jain Social Group',k:'Kota Main',e:'Established in 2003 · Session 2026',h:'Member login',p:'Enter your mobile number and the group code.',m:'Mobile number',c:'Group code',b:'Open the app ›',n:'Ask the office for the group code. This phone stays logged in for 30 days.',
+ em:'Please enter your 10-digit mobile number.',ec:'Please enter the group code.',bad:'This group code is not right. Please ask the office.',wait:'Too many tries. Please wait {s} seconds.',net:'Could not check. Please check the internet and try again.',chk:'Checking…'},
+ hi:{g:'दिगम्बर जैन सोशल ग्रुप',k:'कोटा मेन',e:'स्थापना 2003 · सत्र 2026',h:'सदस्य लॉगिन',p:'अपना मोबाइल नंबर और ग्रुप कोड लिखें।',m:'मोबाइल नंबर',c:'ग्रुप कोड',b:'ऐप खोलें ›',n:'ग्रुप कोड कार्यालय से पूछें। यह फ़ोन 30 दिन तक लॉगिन रहेगा।',
+ em:'कृपया 10 अंकों का मोबाइल नंबर लिखें।',ec:'कृपया ग्रुप कोड लिखें।',bad:'यह ग्रुप कोड सही नहीं है। कृपया कार्यालय से पूछें।',wait:'बहुत बार गलत हुआ। कृपया {s} सेकंड रुकें।',net:'जाँच नहीं हो सकी। कृपया इंटरनेट देखें और फिर कोशिश करें।',chk:'जाँच हो रही है…'}};
+function lang(){try{return localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){return 'en'}}
+var L=lang(),errK='',tries=0,until=0;
+function T(k){return W[L][k]||W.en[k]}
+function paint(){[].forEach.call(el.querySelectorAll('[data-t]'),function(e){e.textContent=T(e.getAttribute('data-t'))});
+ [].forEach.call(el.querySelectorAll('[data-l]'),function(b){b.classList.toggle('on',b.getAttribute('data-l')===L)});
+ document.documentElement.classList.toggle('djl-hi',L==='hi');setE(errK)}
+function setE(k,x){errK=k;document.getElementById('djle').textContent=k?T(k).replace('{s}',x||''):''}
+function get(){try{return JSON.parse(localStorage.getItem(K)||'null')}catch(_){return null}}
+function valid(s){return s&&s.cv&&s.mob&&(Date.now()-s.t)<(s.days||30)*864e5}
+function show(){if(!el.hidden)return;L=lang();paint(); var s=get();if(s&&s.mob)document.getElementById('djlm').value=s.mob;el.hidden=false;
+ setTimeout(function(){var m=document.getElementById('djlm');try{(m.value?document.getElementById('djlc'):m).focus()}catch(_){}},300)}
+function hide(){el.hidden=true}
+var st=get(),lastOn=false;try{lastOn=localStorage.getItem('djsg_login_on')==='1'}catch(_){}
+if(lastOn&&!valid(st))show();
+function cfg(){var done=false,t=setTimeout(function(){if(!done){done=true;hide()}},8000);   // no answer = open (never lock members out)
+ fetch(API+'?a=cfg&t='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(done)return;done=true;clearTimeout(t);
+  if(!j||!j.ok){hide();return}
+  try{localStorage.setItem('djsg_login_on',j.login?'1':'0')}catch(_){}
+  if(!j.login){hide();return}
+  var s=get();if(valid(s)&&s.cv===j.cv){hide();return}
+  show()}).catch(function(){if(!done){done=true;clearTimeout(t);hide()}})}
+cfg();
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&el.hidden)cfg()});
+el.addEventListener('click',function(e){var b=e.target.closest('[data-l]');if(b){L=b.getAttribute('data-l');try{localStorage.setItem('djsg_lang',L)}catch(_){}paint();return}});
+el.addEventListener('input',function(e){if(e.target.id==='djlm'||e.target.id==='djlc')e.target.value=e.target.value.replace(/\D/g,'')});
+el.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
+document.getElementById('djlb').addEventListener('click',go);
+function go(){var m=document.getElementById('djlm').value.replace(/\D/g,''),c=document.getElementById('djlc').value.trim(),b=document.getElementById('djlb');
+ if(Date.now()<until){setE('wait',Math.ceil((until-Date.now())/1000));return}
+ if(m.length!==10){setE('em');return}if(!c){setE('ec');return}
+ if(b.disabled)return;b.disabled=true;b.textContent=T('chk');setE('');
+ var fin=function(){b.disabled=false;b.textContent=T('b')};
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({a:'login',mob:m,code:c,ua:navigator.userAgent.slice(0,120),host:location.host})})
+ .then(function(r){return r.json()}).then(function(j){fin();
+  if(j&&j.ok){try{localStorage.setItem(K,JSON.stringify({mob:m,cv:j.cv||'',t:Date.now(),days:j.days||30}));var me=JSON.parse(localStorage.getItem('djsg_me')||'null')||{};if(!me.m){me.m=m;localStorage.setItem('djsg_me',JSON.stringify(me))}}catch(_){}
+   document.getElementById('djlc').value='';tries=0;hide();return}
+  tries++;if(tries>=5){tries=0;until=Date.now()+30000;setE('wait',30)}else setE('bad');
+  var cc=document.getElementById('djlc');cc.value='';try{cc.focus()}catch(_){}})
+ .catch(function(){fin();setE('net')})}
+})();
+</script>
+</body></html>
