@@ -514,4 +514,88 @@ html.djside .demobar .wrap{max-width:none}
  set();if(mq.addEventListener)mq.addEventListener('change',set);else mq.addListener(set);
 })();
 </script>
+<script>window.PCXCFG={screens:true}</script>
+<!-- 18 Nov 2026 (owner's yes, computer layout plan B): Demo button in the left menu, title on one line, tighter menu on short screens, "screen by screen" pages. Only when the left menu is on (computer, 1100 px and wider). Phones unchanged. -->
+<style id="pcxcss">
+html.djside .demobar{display:none}
+html.djside.djdemo .demobar{display:block;position:fixed;top:0;left:256px;right:0;z-index:70;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+html.djside #djdemo{align-self:center;flex:none;padding:5px 12px;border-radius:999px;background:#1d1024;color:#ffcf66;font-weight:800;font-size:11.5px;letter-spacing:.5px;cursor:pointer}
+html.djside.djdemo #djdemo{background:#ffcf66;color:#1d1024}
+html.djside .wrap.page>.flag:first-child{display:none}
+html.djside .wrap.page>.title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;column-gap:14px;row-gap:2px;padding-top:12px;padding-bottom:0;margin:0 0 4px;text-align:center}
+html.djside .wrap.page>.title h1{font-size:clamp(24px,2.3vw,32px);line-height:1.15;margin:0}
+html.djside .wrap.page>.title .eyebrow{margin:0}
+html.djside .wrap.page>.title p{flex-basis:100%;margin:2px 0 0;font-size:13.5px}
+@media (max-height:700px){
+ html.djside #djside{gap:5px;padding-top:8px;padding-bottom:10px}
+ html.djside #djside .brand{flex-direction:row;justify-content:center;gap:8px}
+ html.djside #djside .brand .logo{width:46px;height:46px}
+ html.djside #djside .brand .names{align-items:flex-start;text-align:left}
+ html.djside #djside .brand .dj{font-size:20px}html.djside #djside .brand .km{font-size:16px}
+ html.djside #djside .sub b,html.djside #djside .sub [data-i=est]{display:none}
+ html.djside #djside .sub{font-size:0}html.djside #djside .sub .pill{font-size:11px;margin:0}
+ html.djside #djside nav.nav button{padding:6px 12px;font-size:13px}
+ html.djside #djside .login{min-height:40px;padding:8px}
+}
+/* screen by screen */
+#pcxbar{display:none}
+html.djside.pcxscr #pcxbar{display:flex;position:fixed;right:20px;bottom:14px;z-index:65;align-items:center;gap:8px;padding:5px 7px;border-radius:999px;background:rgba(255,255,255,.93);box-shadow:0 6px 18px rgba(60,20,50,.25);font:700 13px Inter,"Noto Sans Devanagari",sans-serif;color:#2A1530}
+#pcxbar button{width:34px;height:34px;border-radius:50%;background:#A3123A;color:#fff;font-size:15px;box-shadow:0 3px 0 #6E0B27}
+#pcxbar button[disabled]{opacity:.35;cursor:default}
+html.djside.pcxscr{scroll-behavior:auto}
+</style>
+<div id="pcxbar" aria-label="Screens"><button type="button" id="pcxup" aria-label="Previous screen">▲</button><span id="pcxn"></span><button type="button" id="pcxdn" aria-label="Next screen">▼</button></div>
+<script>
+(function(){
+ if(/[?&]app=1/.test(location.search))return;
+ var H=document.documentElement,side=document.getElementById('djside');if(!side)return;
+ var CFG=window.PCXCFG||{};
+ function on(){return H.classList.contains('djside')}
+ function hiL(){var b=document.querySelector('.lang button[aria-pressed="true"]');return b?/हिन्दी/.test(b.textContent):(H.lang||'').indexOf('hi')===0}
+ /* Demo button: opens / closes the dark demo bar */
+ if(document.querySelector('.demobar')&&!document.getElementById('djdemo')){var db=document.createElement('button');db.type='button';db.id='djdemo';db.textContent='⚙️ Demo';db.onclick=function(){H.classList.toggle('djdemo')};side.insertBefore(db,side.firstChild);var dl=function(){db.textContent=hiL()?'⚙️ डेमो':'⚙️ Demo'};dl();document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.lang'))setTimeout(dl,80)},true)}
+ /* screen by screen */
+ if(!CFG.screens)return;
+ var page=document.querySelector('.wrap.page'),bar=document.getElementById('pcxbar'),cnt=document.getElementById('pcxn'),N=1,busy=0,lt=0,lastW=0,lastH=0;
+ var pushed=[];
+ function vis(e){if(e.id==='djside'||e.id==='pcxbar')return false;var cs=getComputedStyle(e);if(cs.display==='none'||cs.position==='fixed'||cs.position==='absolute')return false;var r=e.getBoundingClientRect();return r.height>0}
+ function reset(){pushed.forEach(function(p){p[0].style.marginTop=p[1]});pushed=[];if(page)page.style.paddingBottom=''}
+ function push(el,d){var o=el.style.marginTop,cur=parseFloat(getComputedStyle(el).marginTop)||0;pushed.push([el,o]);el.style.marginTop=(cur+d)+'px'}
+ function place(box,VH,depth){var changed=false;
+  for(var guard=0;guard<80;guard++){
+   var kids=[].slice.call(box.children).filter(vis),rows=[],done=true;
+   kids.forEach(function(k){var r=k.getBoundingClientRect(),t=Math.round(r.top+scrollY),b=Math.round(r.bottom+scrollY);var row=null;for(var i=0;i<rows.length;i++){if(Math.abs(rows[i].t-t)<4){row=rows[i];break}}if(!row){row={t:t,b:b,els:[]};rows.push(row)}row.els.push(k);if(b>row.b)row.b=b});
+   rows.sort(function(a,b){return a.t-b.t});
+   for(var i=0;i<rows.length;i++){var r=rows[i],bd=(Math.floor(r.t/VH)+1)*VH,lim=bd-44;
+    if(r.b>lim&&r.t<bd){
+     if(r.b-r.t>VH*0.8){if(r.els.length===1&&r.els[0].children.length&&depth<6&&r.els[0].dataset.pcxin!=='1'){r.els[0].dataset.pcxin='1';if(place(r.els[0],VH,depth+1)){changed=true;done=false;break}}continue}
+     var d=bd-r.t+16;if(r.t%VH<12&&r.b-r.t<VH)continue;r.els.forEach(function(e){push(e,d)});changed=true;done=false;break}
+   }
+   if(done)break}
+  [].forEach.call(box.querySelectorAll('[data-pcxin]'),function(x){delete x.dataset.pcxin});return changed
+ }
+ function layout(){
+  if(!page)return;reset();
+  if(!on()){H.classList.remove('pcxscr');return}
+  H.classList.add('pcxscr');var VH=innerHeight;lastW=innerWidth;lastH=VH;
+  var y=scrollY;place(page,VH,0);
+  var sh=H.scrollHeight;N=Math.max(1,Math.ceil((sh-4)/VH));var need=N*VH-sh;if(need>0)page.style.paddingBottom=(parseFloat(getComputedStyle(page).paddingBottom)+need)+'px';
+  scrollTo(0,Math.round(y/VH)*VH);upd()}
+ function cur(){return Math.min(N-1,Math.max(0,Math.round(scrollY/innerHeight)))}
+ function upd(){var c=cur();cnt.textContent=(hiL()?'स्क्रीन ':'Screen ')+(c+1)+(hiL()?' / ':' of ')+N;document.getElementById('pcxup').disabled=c===0;document.getElementById('pcxdn').disabled=c>=N-1}
+ function goto(k){k=Math.max(0,Math.min(N-1,k));lt=Date.now();window.scrollTo({top:k*innerHeight,behavior:'smooth'});setTimeout(upd,450)}
+ document.getElementById('pcxup').onclick=function(){goto(cur()-1)};document.getElementById('pcxdn').onclick=function(){goto(cur()+1)};
+ function modal(t){if(H.style.overflow==='hidden'||document.body.style.overflow==='hidden')return true;
+  for(var e=t;e&&e!==document.body;e=e.parentElement){if(e.id==='djside')return true;var cs=getComputedStyle(e);if(cs.position==='fixed')return true;if(/(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+2)return true}return false}
+ addEventListener('wheel',function(e){if(!H.classList.contains('pcxscr')||e.ctrlKey||modal(e.target))return;e.preventDefault();if(Date.now()-lt<550||Math.abs(e.deltaY)<4)return;goto(cur()+(e.deltaY>0?1:-1))},{passive:false});
+ addEventListener('keydown',function(e){if(!H.classList.contains('pcxscr'))return;var t=e.target;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;if(modal(t))return;
+  if(e.key==='PageDown'||e.key==='ArrowDown'||(e.key===' '&&!e.shiftKey)){e.preventDefault();goto(cur()+1)}else if(e.key==='PageUp'||e.key==='ArrowUp'||(e.key===' '&&e.shiftKey)){e.preventDefault();goto(cur()-1)}else if(e.key==='Home'){e.preventDefault();goto(0)}else if(e.key==='End'){e.preventDefault();goto(N-1)}});
+ addEventListener('scroll',function(){if(H.classList.contains('pcxscr'))upd()},{passive:true});
+ var tm=0;function later(ms){clearTimeout(tm);tm=setTimeout(layout,ms||250)}window.__pcxLayout=layout;
+ addEventListener('resize',function(){if(innerWidth!==lastW||innerHeight!==lastH)later(200)});
+ document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#pcxbar'))return;later(450)},true);
+ setTimeout(layout,500);setTimeout(layout,1600);try{document.fonts.ready.then(function(){later(100)})}catch(_){}
+ var mq=matchMedia('(min-width:1100px)');(mq.addEventListener?mq.addEventListener('change',function(){later(150)}):mq.addListener(function(){later(150)}));
+})();
+</script>
 </body></html>
