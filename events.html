@@ -598,4 +598,16 @@ html.djside.pcxscr{scroll-behavior:auto}
  var mq=matchMedia('(min-width:1100px)');(mq.addEventListener?mq.addEventListener('change',function(){later(150)}):mq.addListener(function(){later(150)}));
 })();
 </script>
+<!-- 18 Nov 2026 (owner: "may be decided by you", final fix): this page opens in the language chosen on any other page (हिन्दी / English remembered on the phone or computer, key djsg_lang — same as the front page, the app and the Directory). English mode unchanged. -->
+<script>
+(function(){
+ function isHi(t){return /^(हिन्दी|हिंदी)$/.test(t)}
+ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lang button,.lang [role=button]');if(!b)return;var t=(b.textContent||'').trim();try{if(isHi(t))localStorage.setItem('djsg_lang','hi');else if(t==='English')localStorage.setItem('djsg_lang','en')}catch(_){}},true);
+ var L='en';try{L=localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){}
+ if(L!=='hi')return;
+ function go(){var bs=[].slice.call(document.querySelectorAll('.lang button,.lang [role=button]'));for(var i=0;i<bs.length;i++){if(isHi((bs[i].textContent||'').trim())){if(bs[i].getAttribute('aria-pressed')!=='true'&&!bs[i].classList.contains('on'))bs[i].click();return}}}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(go,0)});else setTimeout(go,0);
+})();
+</script>
+
 </body></html>

@@ -617,4 +617,169 @@ var h0=(location.hash||'').replace('#','');setFest(DEF[h0]?h0:'normal');
 logos();
 })();
 </script>
+<!-- 18 Nov 2026 (fix list point 7, owner's yes 18 Nov 19:23; Kshamavani = folded hands emoji with a gold glow): festival pictures layer — add-only; draws matching pictures for each festival on its own canvas #fx2 -->
+<style id="fx2css">
+#fx2{position:fixed;inset:0;width:100%;height:100%;z-index:15;pointer-events:none}
+body.fest-mahavir .toran{background:repeating-linear-gradient(90deg,#e53935 0 14px,#fbc02d 14px 28px,#ffffff 28px 42px,#2e9d4a 42px 56px,#1e3a8a 56px 70px);filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+</style>
+<script>
+(function(){
+if(document.getElementById('fx2'))return;
+var cv=document.createElement('canvas');cv.id='fx2';cv.setAttribute('aria-hidden','true');
+var f1=document.getElementById('fx');if(f1&&f1.parentNode)f1.parentNode.insertBefore(cv,f1.nextSibling);else document.body.appendChild(cv);
+var cx=cv.getContext('2d'),W=0,H=0,DPR=1;
+function rs(){DPR=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0)}rs();addEventListener('resize',rs);
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function svg(s){var i=new Image();i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'+s+'</svg>');return i}
+var IMG={
+ hands:(function(){var c=document.createElement('canvas');c.width=c.height=128;var x=c.getContext('2d');var g=x.createRadialGradient(64,66,6,64,66,62);g.addColorStop(0,'rgba(255,236,170,.95)');g.addColorStop(.55,'rgba(255,214,120,.45)');g.addColorStop(1,'rgba(255,214,120,0)');x.fillStyle=g;x.beginPath();x.arc(64,66,62,0,6.283);x.fill();x.textAlign='center';x.textBaseline='middle';x.font='78px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Android Emoji",sans-serif';x.fillText('\u{1F64F}',64,70);return c})(),
+ ahimsa:svg('<g fill="#f08a1c" stroke="#9a3d00" stroke-width="1.3"><rect x="17" y="13" width="7" height="25" rx="3.5"/><rect x="25" y="6" width="7" height="30" rx="3.5"/><rect x="33" y="7" width="7" height="29" rx="3.5"/><rect x="41" y="14" width="7" height="24" rx="3.5"/><path d="M16.5 31h32v13c0 9-7 16-16 16s-16-7-16-16z"/><path d="M17 39c-4-2-8.5-6-9.5-10.5 2-2 5.2-1.2 7.2 1l3.3 3.2z"/></g><circle cx="32.5" cy="44" r="8.6" fill="#fff" stroke="#9a3d00" stroke-width="1.3"/><g stroke="#c2410c" stroke-width="1.2"><path d="M32.5 36v16M24.5 44h16M26.8 38.3l11.4 11.4M38.2 38.3L26.8 49.7"/></g><circle cx="32.5" cy="44" r="2.4" fill="#c2410c"/>'),
+ emblem:svg('<circle cx="32" cy="32" r="30" fill="#fff7e3" stroke="#e86a00" stroke-width="2.4"/><circle cx="32" cy="9.5" r="2.4" fill="#b4232c"/><path d="M21 14.5q11 9 22 0q-11 4.5-22 0z" fill="#b4232c"/><g fill="#b4232c"><circle cx="24.5" cy="24" r="2.6"/><circle cx="32" cy="24" r="2.6"/><circle cx="39.5" cy="24" r="2.6"/></g><path d="M23 42h18M32 33v18M32 33h8.5M41 42v8.5M32 51h-8.5M23 42v-8.5" fill="none" stroke="#b4232c" stroke-width="3.2" stroke-linecap="round"/><g fill="#b4232c"><circle cx="27" cy="37" r="1.7"/><circle cx="37" cy="37" r="1.7"/><circle cx="27" cy="47" r="1.7"/><circle cx="37" cy="47" r="1.7"/></g>'),
+ kalash:svg('<g fill="#3f9b46" stroke="#256b2c" stroke-width="1"><path d="M30 20C22 12 14 14 10 17c6 4 14 5 20 3z"/><path d="M34 20c8-8 16-6 20-3-6 4-14 5-20 3z"/><path d="M29 18c-6-9-12-10-16-9 3 6 9 9 16 9z"/><path d="M35 18c6-9 12-10 16-9-3 6-9 9-16 9z"/></g><circle cx="32" cy="15" r="8.5" fill="#8d5524" stroke="#5a3214" stroke-width="1.2"/><path d="M29 7l3-5 3 5" fill="#3f9b46"/><rect x="24" y="22" width="16" height="6" rx="2" fill="#e0a526" stroke="#9a6b00" stroke-width="1.2"/><path d="M17 41c0-9 6.5-13.5 15-13.5S47 32 47 41s-6.5 16-15 16-15-7-15-16z" fill="#f2b53a" stroke="#9a6b00" stroke-width="1.4"/><path d="M19 38h26" stroke="#c2410c" stroke-width="2.2"/><path d="M28 42h8M32 38.5v7.5" stroke="#c2410c" stroke-width="1.6"/><rect x="24" y="56" width="16" height="4" rx="1.5" fill="#c98a12"/>'),
+ lotus:svg('<g stroke="#b83d6e" stroke-width="1.1"><path d="M32 12c6 8 7 20 0 32-7-12-6-24 0-32z" fill="#ff8fb8"/><path d="M14 22c10 2 17 10 18 22-12-2-18-10-18-22z" fill="#ffa6c6"/><path d="M50 22c-10 2-17 10-18 22 12-2 18-10 18-22z" fill="#ffa6c6"/><path d="M6 36c10-2 20 2 26 8-10 4-20 2-26-8z" fill="#ffc0d6"/><path d="M58 36c-10-2-20 2-26 8 10 4 20 2 26-8z" fill="#ffc0d6"/></g><path d="M14 48q18 8 36 0" fill="none" stroke="#3f9b46" stroke-width="3" stroke-linecap="round"/>'),
+ jflag:svg('<rect x="6" y="6" width="3" height="56" rx="1.5" fill="#7a4a1d"/><g><rect x="9" y="8" width="48" height="7" fill="#e53935"/><rect x="9" y="15" width="48" height="7" fill="#fbc02d"/><rect x="9" y="22" width="48" height="7" fill="#ffffff"/><rect x="9" y="29" width="48" height="7" fill="#2e9d4a"/><rect x="9" y="36" width="48" height="7" fill="#1e3a8a"/></g><rect x="9" y="8" width="48" height="35" fill="none" stroke="rgba(0,0,0,.25)"/><path d="M28.5 25.5h8M32.5 21.5v8M32.5 21.5h3.5M36.5 25.5v3.5M32.5 29.5H29M28.5 25.5V22" fill="none" stroke="#e86a00" stroke-width="1.5"/>'),
+ rakhi:svg('<path d="M0 30q8-4 16 0t16 0" fill="none" stroke="#d62828" stroke-width="2.4"/><path d="M0 34q8 4 16 0" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M48 30q8-4 16 0M48 34q8 4 16 0" fill="none" stroke="#d62828" stroke-width="2.4"/><g fill="#ff7aa2" stroke="#b5122e" stroke-width="1"><circle cx="32" cy="20" r="6"/><circle cx="42" cy="27" r="6"/><circle cx="38" cy="39" r="6"/><circle cx="26" cy="39" r="6"/><circle cx="22" cy="27" r="6"/></g><circle cx="32" cy="31" r="9" fill="#f4b400" stroke="#9a6b00" stroke-width="1.4"/><circle cx="32" cy="31" r="4.5" fill="#d62828"/><circle cx="32" cy="31" r="1.6" fill="#fff"/><path d="M28 46l-3 12M36 46l3 12" stroke="#f4b400" stroke-width="2"/><circle cx="25" cy="59" r="2.4" fill="#d62828"/><circle cx="39" cy="59" r="2.4" fill="#d62828"/>'),
+ diya:svg('<path d="M32 10c5 7 6 12 0 18-6-6-5-11 0-18z" fill="#ffb400"/><path d="M32 16c2.5 4 3 7 0 10-3-3-2.5-6 0-10z" fill="#fff3b0"/><path d="M10 34h44c-2 12-11 18-22 18S12 46 10 34z" fill="#d9822b" stroke="#8a3b12" stroke-width="1.5"/><path d="M14 38h36" stroke="#ffcf66" stroke-width="2"/>')
+};
+var CFG={
+ mahavir:{fl:['ahimsa','emblem','kalash','jflag','lotus'],n:11,dir:1,min:36,max:52},
+ kshama:{fl:['hands'],n:8,dir:-1,min:48,max:66},
+ paryushan:{fl:['diya','lotus'],n:7,dir:-1,min:28,max:40,a:.8},
+ rakhi:{fl:['rakhi'],n:9,dir:1,min:34,max:48},
+ diwali:{rk:1,anar:1,fl:['diya'],n:3,dir:-1,min:26,max:34,a:.9},
+ newyear:{rk:1,bal:9},
+ independence:{flag:8},republic:{flag:8},
+ foundation:{bal:11},
+ holi:{splat:1}
+};
+var CUR='',P=[],F=[],RK=[],T0=0,lastRk=0,lastSp=0;
+function rn(a,b){return a+Math.random()*(b-a)}
+function pick(a){return a[Math.random()*a.length|0]}
+var COL=['#ff4d4d','#ffd23f','#3ddc84','#4da3ff','#ff6ec7','#ffffff','#ff9f1c','#b388ff'];
+function start(k){CUR=k;P=[];F=[];RK=[];T0=performance.now();lastRk=0;lastSp=0;var c=CFG[k];if(!c)return;
+ if(c.fl)for(var i=0;i<c.n;i++)F.push(mkF(c,true));
+ if(c.bal)for(var j=0;j<c.bal;j++)F.push(mkB(true));
+ if(c.flag)for(var q=0;q<c.flag;q++)F.push(mkFlag(true))}
+function mkF(c,init){var s=rn(c.min,c.max);return {t:'i',im:pick(c.fl),s:s,x:rn(s/2,W-s/2),y:init?rn(-s,H):(c.dir>0?-s:H+s),v:rn(.35,.8)*c.dir,w:rn(0,6.28),r:rn(-.4,.4),a:c.a||.92,g:c.glow,dir:c.dir}}
+function mkB(init){var r=rn(13,19);return {t:'b',r:r,x:rn(r,W-r),y:init?rn(H*.2,H+40):H+r*3,v:-rn(.5,1),w:rn(0,6.28),c:pick(['#ff4d6d','#ffd23f','#4da3ff','#3ddc84','#b388ff','#ff9f1c','#A3123A'])}}
+function mkFlag(init){var s=rn(30,42);return {t:'f',s:s,x:rn(s,W-s),y:init?rn(-s,H):-s,v:rn(.4,.75),w:rn(0,6.28)}}
+function boom(x,y){var col=pick(COL),col2=pick(COL),n=reduce?40:90,sc=Math.min(1.25,Math.max(.8,W/500));
+ for(var i=0;i<n;i++){var a=i/n*6.283+rn(-.05,.05),sp=(i%2?rn(3.2,4.4):rn(1.6,2.6))*sc;P.push({k:'e',x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,l:1,d:rn(.009,.014),c:i%2?col:col2,z:rn(1.8,2.8)})}
+ for(var j=0;j<26;j++){var b=rn(0,6.283),s2=rn(.5,2.2)*sc;P.push({k:'k',x:x,y:y,vx:Math.cos(b)*s2,vy:Math.sin(b)*s2,l:1.2,d:.012,c:'#fff6c8',z:1.4})}
+ P.push({k:'fl',x:x,y:y,l:1,r:10})}
+function launch(){var x=rn(W*.12,W*.88),tgt=rn(H*.12,H*.38);RK.push({x:x,y:H-30,vx:rn(-.6,.6),vy:-Math.sqrt(2*.075*(H-30-tgt)),c:pick(COL)})}
+function anar(x){var by=H-30;for(var i=0;i<4;i++){var a=-Math.PI/2+rn(-.32,.32),sp=rn(3,5.2)*Math.min(1.2,H/850+.2);P.push({k:'a',x:x,y:by,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,l:1,d:rn(.014,.022),c:pick(['#fff3b0','#ffd23f','#ffb000','#ffffff','#ff9f1c']),z:rn(1.2,2.2)})}}
+function drawCone(x){var by=H-30;cx.save();cx.fillStyle='#7a2e12';cx.beginPath();cx.moveTo(x-9,by+12);cx.lineTo(x+9,by+12);cx.lineTo(x+3,by);cx.lineTo(x-3,by);cx.closePath();cx.fill();cx.fillStyle='#ffcf66';cx.fillRect(x-7,by+5,14,2);cx.restore()}
+function splat(){var x=rn(20,W-20),y=rn(H*.15,H*.9),c=pick(['#ff3d9a','#ff9f1c','#2dc6ff','#7b5cff','#2ed573','#ffd23f']),pts=[],n=14,R=rn(16,30);for(var i=0;i<n;i++)pts.push(R*rn(.55,1.25));P.push({k:'sp',x:x,y:y,c:c,p:pts,s:.2,l:1})}
+function drawFlag(o){var s=o.s,w=s,h=s*.66,x0=o.x-w/2,y0=o.y-h/2;cx.save();cx.globalAlpha=.95;cx.fillStyle='#6b4a2b';cx.fillRect(x0-2,y0-2,2,h*1.7);
+ for(var i=0;i<w;i+=2){var dy=Math.sin(o.w+i/w*5)*2.2;cx.fillStyle='#FF9933';cx.fillRect(x0+i,y0+dy,2.3,h/3);cx.fillStyle='#ffffff';cx.fillRect(x0+i,y0+h/3+dy,2.3,h/3);cx.fillStyle='#138808';cx.fillRect(x0+i,y0+2*h/3+dy,2.3,h/3)}
+ var mx=x0+w/2,my=y0+h/2+Math.sin(o.w+2.5)*2.2;cx.strokeStyle='#0b2a8a';cx.lineWidth=1;cx.beginPath();cx.arc(mx,my,h/6.5,0,6.283);cx.stroke();cx.beginPath();for(var k=0;k<12;k++){var a=k/12*3.1416;cx.moveTo(mx-Math.cos(a)*h/6.5,my-Math.sin(a)*h/6.5);cx.lineTo(mx+Math.cos(a)*h/6.5,my+Math.sin(a)*h/6.5)}cx.stroke();
+ cx.strokeStyle='rgba(0,0,0,.18)';cx.strokeRect(x0,y0,w,h);cx.restore()}
+function drawBal(o){cx.save();cx.globalAlpha=.9;cx.strokeStyle='rgba(90,60,40,.6)';cx.lineWidth=1;cx.beginPath();cx.moveTo(o.x,o.y+o.r*1.2);cx.quadraticCurveTo(o.x+Math.sin(o.w)*6,o.y+o.r*2,o.x,o.y+o.r*2.8);cx.stroke();
+ var g=cx.createRadialGradient(o.x-o.r*.35,o.y-o.r*.4,2,o.x,o.y,o.r*1.3);g.addColorStop(0,'#fff');g.addColorStop(.25,o.c);g.addColorStop(1,o.c);cx.fillStyle=g;cx.beginPath();cx.ellipse(o.x,o.y,o.r,o.r*1.2,0,0,6.283);cx.fill();cx.beginPath();cx.moveTo(o.x-3,o.y+o.r*1.25);cx.lineTo(o.x+3,o.y+o.r*1.25);cx.lineTo(o.x,o.y+o.r*1.1);cx.fill();cx.restore()}
+function frame(now){requestAnimationFrame(frame);
+ var k=window.__fest||'normal';if(k!==CUR)start(k);
+ cx.clearRect(0,0,W,H);var c=CFG[CUR];if(!c)return;
+ var paused=!!document.querySelector('.ov.show');if(paused)return;
+ var el=now-T0,busy=el<15000;
+ if(c.rk&&!reduce){var gap=busy?(c.anar?650:900):(c.anar?2600:3400);if(now-lastRk>gap){lastRk=now;launch();if(busy&&Math.random()<.4)setTimeout(launch,180)}}
+ if(c.anar){var on=busy||((el/1000)%12<5);var ax=[Math.max(26,W*.1),W-Math.max(26,W*.1)];ax.forEach(function(x){drawCone(x);if(on&&!reduce)anar(x)})}
+ if(c.splat&&!reduce&&now-lastSp>(busy?500:1500)){lastSp=now;splat()}
+ if(reduce&&c.rk&&!P.length){boom(W*.3,H*.25);boom(W*.7,H*.3)}
+ RK=RK.filter(function(r){if(!reduce){r.x+=r.vx;r.y+=r.vy;r.vy+=.075;P.push({k:'t',x:r.x+rn(-1,1),y:r.y+4,vx:rn(-.3,.3),vy:rn(.5,1.2),l:.8,d:.035,c:'#ffd76a',z:1.6})}
+  cx.save();cx.fillStyle='#fff';cx.shadowColor=r.c;cx.shadowBlur=10;cx.beginPath();cx.arc(r.x,r.y,2.6,0,6.283);cx.fill();cx.restore();
+  if(r.vy>=-.4){boom(r.x,r.y);return false}return true});
+ if(P.length>900)P.splice(0,P.length-900);
+ P=P.filter(function(p){return p.l>0});
+ P.forEach(function(p){cx.save();
+  if(p.k==='fl'){p.r+=6;p.l-=.08;cx.globalAlpha=Math.max(p.l,0)*.5;var g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);g.addColorStop(0,'#fff8d0');g.addColorStop(1,'rgba(255,240,200,0)');cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}
+  else if(p.k==='sp'){p.s=Math.min(1,p.s+.12);p.l-=.006;cx.globalAlpha=Math.min(1,p.l*1.5)*.7;cx.fillStyle=p.c;cx.beginPath();for(var i=0;i<p.p.length;i++){var a=i/p.p.length*6.283,r=p.p[i]*p.s;cx[i?'lineTo':'moveTo'](p.x+Math.cos(a)*r,p.y+Math.sin(a)*r)}cx.closePath();cx.fill();for(var j=0;j<5;j++){var b=j*1.3,rr=p.p[j]*p.s*1.5;cx.beginPath();cx.arc(p.x+Math.cos(b)*rr,p.y+Math.sin(b)*rr,3*p.s,0,6.283);cx.fill()}}
+  else{if(!reduce){p.x+=p.vx;p.y+=p.vy;p.vy+=(p.k==='a'?.07:p.k==='t'?0:.04);p.vx*=.985;p.vy*=.985;p.l-=p.d}
+   var al=Math.max(p.l,0);if(p.k==='k')al*=(Math.random()<.5?1:.2);cx.globalAlpha=Math.min(1,al);cx.fillStyle=p.c;cx.shadowColor=p.c;cx.shadowBlur=8;cx.beginPath();cx.arc(p.x,p.y,p.z,0,6.283);cx.fill()}
+  cx.restore()});
+ F.forEach(function(o,idx){
+  if(o.t==='i'){if(!reduce){o.y+=o.v;o.w+=.015;o.x+=Math.sin(o.w)*.35}
+   if((o.dir>0&&o.y>H+o.s)||(o.dir<0&&o.y<-o.s)){F[idx]=mkF(c,false);return}
+   var im=IMG[o.im];if(im.complete===false)return;cx.save();cx.translate(o.x,o.y);cx.rotate(o.r+Math.sin(o.w)*.12);cx.globalAlpha=o.a;if(o.g){cx.shadowColor=o.g;cx.shadowBlur=16}cx.drawImage(im,-o.s/2,-o.s/2,o.s,o.s);cx.restore()}
+  else if(o.t==='b'){if(!reduce){o.y+=o.v;o.w+=.02;o.x+=Math.sin(o.w)*.4}if(o.y<-o.r*3){F[idx]=mkB(false);return}drawBal(o)}
+  else if(o.t==='f'){if(!reduce){o.y+=o.v;o.w+=.08;o.x+=Math.sin(o.w*.2)*.3}if(o.y>H+o.s){F[idx]=mkFlag(false);return}drawFlag(o)}});
+}
+requestAnimationFrame(frame);
+})();
+</script>
+
+<!-- 18 Nov 2026 (fix list point 8, owner's yes): the हिन्दी / English switch on the front page now works (before it only showed the two words). Add-only word list; English text is kept and comes back. Choice saved in djsg_lang (same key as the app and the Directory). -->
+<style id="fphicss">.lang span{cursor:pointer;user-select:none}html[lang=hi] .dj,html[lang=hi] .km,html[lang=hi] .tick,html[lang=hi] .eyb,html[lang=hi] *{letter-spacing:0!important}</style>
+<script>
+(function(){
+var D={
+"Home":"होम","Birthdays & Anniversaries":"जन्मदिन व वर्षगाँठ","About":"परिचय","Office Bearers":"पदाधिकारी","Events":"कार्यक्रम","Gallery":"गैलरी","Directory":"निर्देशिका","DJSG Business":"डीजेएसजी व्यवसाय","Blood Donation":"रक्तदान","Join":"सदस्य बनें",
+"Member Login":"सदस्य लॉगिन","Digambar Jain Social Group":"दिगम्बर जैन सोशल ग्रुप","· Established in 2003 ·":"· स्थापना 2003 ·","SESSION 2026":"सत्र 2026","Session 2026":"सत्र 2026","DJSG":"डीजेएसजी","Kota Main":"कोटा मेन",
+"Jai Jinendra 🙏":"जय जिनेन्द्र 🙏","Jai Jinendra":"जय जिनेन्द्र","One family, one society":"एक परिवार, एक समाज","Become a member":"सदस्य बनें","Get the app":"ऐप पाएँ",
+"Office Bearers · 2026":"पदाधिकारी · 2026","All ›":"सभी ›","In memory · Founder":"स्मृति में · संस्थापक","Late Shri Pradeep Kumar Singh Kasliwal":"स्वर्गीय श्री प्रदीप कुमार सिंह कासलीवाल",
+"Mr Suresh Chandwad":"श्री सुरेश चांदवाड़","Mr Anurag Sethi":"श्री अनुराग सेठी","Mr Rakesh Patodi":"श्री राकेश पाटोदी","President":"अध्यक्ष","Secretary":"सचिव","Treasurer":"कोषाध्यक्ष",
+"15 Nov":"15 नव","2 today":"आज 2","Deepawali Milan · 15 Nov":"दीपावली मिलन · 15 नव","Birthdays":"जन्मदिन","Photos":"फ़ोटो","Members":"सदस्य","Members only":"केवल सदस्य","Members only · 2026":"केवल सदस्य · 2026","Members' work":"सदस्यों का काम","What our members do":"हमारे सदस्य क्या करते हैं",
+"DJSG Insta":"डीजेएसजी इंस्टा","Stories and posts":"स्टोरी और पोस्ट","Posts":"पोस्ट","Open ›":"खोलें ›","Notices":"सूचनाएँ","Slideshow":"स्लाइड शो","WhatsApp":"व्हाट्सऐप","Kota · djsgkotamain2003@gmail.com":"कोटा · djsgkotamain2003@gmail.com",
+"Notice:":"सूचना:","Deepawali Milan, 15 Nov":"दीपावली मिलन, 15 नव","7 Nov · Vir Nirvan Samvat 2552 · Tithi [sample]":"7 नव · वीर निर्वाण संवत 2552 · तिथि [नमूना]","8 days left":"8 दिन शेष","· Deepawali Milan":"· दीपावली मिलन",
+"2 birthdays / anniversaries today":"आज 2 जन्मदिन / वर्षगाँठ","· login to wish":"· शुभकामना के लिए लॉगिन करें","Thought:":"विचार:","\"Live and let live.\"":"\"जियो और जीने दो।\"","families ·":"परिवार ·","years ·":"वर्ष ·","events":"कार्यक्रम",
+"Festival demo":"त्योहार डेमो","Normal day":"सामान्य दिन","Deepawali":"दीपावली","Mahavir Jayanti":"महावीर जयंती","Paryushan":"पर्युषण","Kshamavani":"क्षमावाणी","Holi":"होली","Raksha Bandhan":"रक्षाबंधन","New Year":"नया वर्ष","Independence Day":"स्वतंत्रता दिवस","Republic Day":"गणतंत्र दिवस","Foundation Day":"स्थापना दिवस","6 Sep Tribute":"6 सित. श्रद्धांजलि","DJSG Kota Main Demo":"डीजेएसजी कोटा मेन डेमो",
+"Happy Deepawali":"दीपावली की शुभकामनाएँ","· from DJSG Kota Main":"· डीजेएसजी कोटा मेन की ओर से","· Jai Jinendra":"· जय जिनेन्द्र","Paryushan Mahaparv":"पर्युषण महापर्व","· Uttam Kshama":"· उत्तम क्षमा","· Micchami Dukkadam":"· मिच्छामि दुक्कडम्","Micchami Dukkadam":"मिच्छामि दुक्कडम्","Happy Holi":"होली की शुभकामनाएँ","Happy Raksha Bandhan":"रक्षाबंधन की शुभकामनाएँ","Happy New Year 2027":"नव वर्ष 2027 की शुभकामनाएँ","Happy Independence Day":"स्वतंत्रता दिवस की शुभकामनाएँ","· Jai Hind":"· जय हिन्द","Happy Republic Day":"गणतंत्र दिवस की शुभकामनाएँ","· DJSG Kota Main since 2003":"· डीजेएसजी कोटा मेन, 2003 से","Foundation Day · since 2003":"स्थापना दिवस · 2003 से","Humble Tribute · 6 Sep":"विनम्र श्रद्धांजलि · 6 सित.",
+"Today is the":"आज","of Late Shri Pradeep Kumar Singh Kasliwal · Humble tribute":"है · स्वर्गीय श्री प्रदीप कुमार सिंह कासलीवाल · विनम्र श्रद्धांजलि",
+"[Phone] · [Short introduction]":"[फ़ोन] · [संक्षिप्त परिचय]","Founder of the Federation":"फ़ेडरेशन के संस्थापक","In memory":"स्मृति में","[Tribute words to be added from the Desk.]":"[श्रद्धांजलि के शब्द डेस्क से जोड़े जाएँगे।]",
+"Deepawali Milan":"दीपावली मिलन","15 November 2026 · 6:00 PM":"15 नवम्बर 2026 · शाम 6:00","All families are warmly invited. [Venue]":"सभी परिवार सादर आमंत्रित हैं। [स्थान]",
+"Today · This week · This month":"आज · इस सप्ताह · इस महीने","Names are shown after member login.":"नाम सदस्य लॉगिन के बाद दिखते हैं।","💬 Send wish on WhatsApp":"💬 व्हाट्सऐप पर शुभकामना भेजें",
+"Event photos · General photos · Business":"कार्यक्रम फ़ोटो · सामान्य फ़ोटो · व्यवसाय","[Photos added after go-live]":"[फ़ोटो वेबसाइट शुरू होने के बाद जोड़ी जाएँगी]","Stories and posts from members":"सदस्यों की स्टोरी और पोस्ट","Opens in the member app.":"सदस्य ऐप में खुलता है।",
+"Member Directory 2026":"सदस्य निर्देशिका 2026","Please log in. It opens after approval.":"कृपया लॉगिन करें। मंज़ूरी के बाद खुलती है।","Existing member?":"पहले से सदस्य?","Complete your details":"अपनी जानकारी पूरी करें","Already a member? Fill your family details and photos. No fee.":"पहले से सदस्य हैं? अपने परिवार की जानकारी और फ़ोटो भरें। कोई शुल्क नहीं।",
+"Choose one":"एक चुनें","New family":"नया परिवार","Join DJSG Kota Main":"डीजेएसजी कोटा मेन से जुड़ें","Already a member":"पहले से सदस्य","Joining form":"सदस्यता फ़ॉर्म","Fill the joining form for the next session.":"अगले सत्र के लिए सदस्यता फ़ॉर्म भरें।",
+"6-digit code on your email":"आपके ईमेल पर 6 अंकों का कोड","(Login is switched off in the demo.)":"(डेमो में लॉगिन बंद है।)","Details not filled yet? Complete them here ›":"जानकारी अभी नहीं भरी? यहाँ पूरी करें ›",
+"About DJSG Kota Main":"डीजेएसजी कोटा मेन का परिचय","Established in 2003":"स्थापना 2003","[Our story] · 60 families · 23 years.":"[हमारी कहानी] · 60 परिवार · 23 वर्ष।",
+"From the office":"कार्यालय से","12 Nov":"12 नव","5 Nov":"5 नव","28 Oct":"28 अक्टू","Deepawali Milan · 15 November, 6 PM":"दीपावली मिलन · 15 नवम्बर, शाम 6 बजे","Membership details: please fill the form":"सदस्यता जानकारी: कृपया फ़ॉर्म भरें","Blood donation camp · thank you":"रक्तदान शिविर · धन्यवाद",
+"Sample notices. Members read the full notice and download the PDF in the member app.":"नमूना सूचनाएँ। सदस्य पूरी सूचना सदस्य ऐप में पढ़ते हैं और PDF डाउनलोड करते हैं।","Open the app ›":"ऐप खोलें ›",
+"Photo slideshow":"फ़ोटो स्लाइड शो","Recent programmes":"हाल के कार्यक्रम","Sample":"नमूना","Paryushan Parv":"पर्युषण पर्व","Blood donation camp":"रक्तदान शिविर","Real photos come from the office after approval.":"असली फ़ोटो मंज़ूरी के बाद कार्यालय से आती हैं।","See all in Gallery ›":"गैलरी में सभी देखें ›",
+"Get the DJSG app":"डीजेएसजी ऐप पाएँ","Scan with your phone camera, or tap the button":"फ़ोन के कैमरे से स्कैन करें, या बटन दबाएँ","On the phone: open the link, then tap":"फ़ोन पर: लिंक खोलें, फिर","(iPhone: Share › Add to Home Screen).":"दबाएँ (iPhone: Share › Add to Home Screen)।",
+"Businesses of our members":"हमारे सदस्यों के व्यवसाय","See what our members do, by type: jewellery, cloth, food, medical and more. Contact details open after member login.":"देखें हमारे सदस्य क्या करते हैं, प्रकार के अनुसार: आभूषण, कपड़ा, भोजन, चिकित्सा और अन्य। संपर्क जानकारी सदस्य लॉगिन के बाद खुलती है।",
+"Our group's own activity":"हमारे ग्रुप की अपनी सेवा","[Separate page. Details to be given by the President.]":"[अलग पेज। जानकारी अध्यक्ष देंगे।]",
+"Stories and posts · in the member app":"स्टोरी और पोस्ट · सदस्य ऐप में","DJSG Insta lives in the member app on your phone. Scan with your phone camera to open it.":"डीजेएसजी इंस्टा आपके फ़ोन के सदस्य ऐप में है। खोलने के लिए फ़ोन के कैमरे से स्कैन करें।","Open the app on this computer anyway ›":"फिर भी इस कंप्यूटर पर ऐप खोलें ›",
+"Group and office":"ग्रुप और कार्यालय","💬 Join our WhatsApp group":"💬 हमारे व्हाट्सऐप ग्रुप से जुड़ें","The WhatsApp group link and the office number will be added here by the office soon.":"व्हाट्सऐप ग्रुप लिंक और कार्यालय नंबर कार्यालय जल्द ही यहाँ जोड़ेगा।",
+"Today":"आज","7 November 2026":"7 नवम्बर 2026","Veer Nirvan Samvat 2552 · Tithi [sample] · Next festival: Deepawali":"वीर निर्वाण संवत 2552 · तिथि [नमूना] · अगला पर्व: दीपावली","Thought of the day":"आज का विचार","Close":"बंद करें",
+"Business":"व्यवसाय","Celebrations":"उत्सव"
+};
+var A={"DJSG logo":"डीजेएसजी लोगो","Language":"भाषा","Main menu":"मुख्य मेनू","Quick links":"त्वरित लिंक","Colours":"रंग","Sound on or off":"आवाज़ चालू या बंद","3D cube. Tap a face to open it.":"3D घन। खोलने के लिए किसी भी तरफ़ दबाएँ।","Office Bearers, open details":"पदाधिकारी, जानकारी खोलें","Festival demo":"त्योहार डेमो","Previous":"पिछला","Next":"अगला","Jain flag stripe":"जैन ध्वज पट्टी"};
+var P=[[/^(\d+)th Punyatithi$/,'$1वीं पुण्यतिथि']];
+var L='en';try{L=localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){}
+var ORIG=new WeakMap(),AORIG=new WeakMap(),busy=false;
+function tr(t){var k=t.trim();if(!k)return null;var h=D[k];if(h==null){for(var i=0;i<P.length;i++)if(P[i][0].test(k)){h=k.replace(P[i][0],P[i][1]);break}}if(h==null)return null;var m=t.match(/^(\s*)[\s\S]*?(\s*)$/);return m[1]+h+m[2]}
+function skip(n){for(var e=n.parentNode;e&&e!==document.body;e=e.parentNode){if(e.nodeType===1&&(/^(SCRIPT|STYLE|TEXTAREA)$/.test(e.tagName)||e.hasAttribute('data-noi18n')||(e.classList&&e.classList.contains('lang'))))return true}return false}
+function walk(root){if(!root)return;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
+ list.forEach(function(n){if(skip(n))return;var cur=n.nodeValue;
+  if(L==='hi'){if(ORIG.has(n)&&ORIG.get(n).hi===cur)return;var h=tr(cur);if(h!=null&&h!==cur){ORIG.set(n,{en:cur,hi:h});n.nodeValue=h}}
+  else{var o=ORIG.get(n);if(o&&o.hi===cur){n.nodeValue=o.en}ORIG.delete(n)}});
+ var els=root.querySelectorAll?root.querySelectorAll('[aria-label],[title],img[alt]'):[];
+ Array.prototype.forEach.call(els,function(e){['aria-label','title','alt'].forEach(function(a){var v=e.getAttribute(a);if(!v)return;var key=a+'|';var store=AORIG.get(e)||{};
+  if(L==='hi'){if(A[v]||D[v]){store[a]=v;AORIG.set(e,store);e.setAttribute(a,A[v]||D[v])}}else if(store[a]){e.setAttribute(a,store[a]);delete store[a]}})})}
+function paintSw(){var sp=document.querySelectorAll('.lang span');if(sp.length>=2){sp[0].classList.toggle('on',L==='hi');sp[1].classList.toggle('on',L==='en');sp[0].setAttribute('role','button');sp[1].setAttribute('role','button');sp[0].setAttribute('aria-pressed',L==='hi');sp[1].setAttribute('aria-pressed',L==='en');sp[0].tabIndex=0;sp[1].tabIndex=0}}
+function apply(){busy=true;document.documentElement.lang=L;walk(document.body);paintSw();busy=false}
+function set(l){L=l==='hi'?'hi':'en';try{localStorage.setItem('djsg_lang',L)}catch(_){}apply()}
+window.__fpLang=set;window.__fpTr=tr;
+document.addEventListener('click',function(e){var s=e.target.closest&&e.target.closest('.lang span');if(!s)return;var sp=document.querySelectorAll('.lang span');set(s===sp[0]?'hi':'en')});
+document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('.lang span')){e.preventDefault();e.target.click()}});
+new MutationObserver(function(ms){if(busy||L!=='hi')return;busy=true;ms.forEach(function(m){if(m.type==='characterData'){walk(m.target.parentNode)}else m.addedNodes.forEach(function(n){if(n.nodeType===1)walk(n);else if(n.nodeType===3&&n.parentNode)walk(n.parentNode)})});busy=false}).observe(document.body,{childList:true,subtree:true,characterData:true});
+apply();
+})();
+</script>
+
+<!-- 18 Nov 2026 (owner: "may be decided by you", final fix): front page on short computer screens (height 700 or less) — Office Bearers card shows photos and name + post side by side, so nothing is cut (also on festival days). Phones and tall screens unchanged. -->
+<style id="fpbearfit">
+@media (min-width:900px) and (max-height:700px){
+ .stage .bearC{container-type:size;flex-direction:row;flex-wrap:wrap;justify-content:center;align-content:center;align-items:center;column-gap:12px;row-gap:0;padding:6px 12px 8px}
+ .stage .bearC .tagrow{flex:0 0 100%}
+ .stage .bearC .trio{gap:8px;flex:none}
+ .stage .bearC .trio .ph.mid{width:clamp(34px,calc(100cqh - 20px),84px);height:clamp(34px,calc(100cqh - 20px),84px)}
+ .stage .bearC .trio .ph{width:clamp(24px,calc((100cqh - 20px)*.58),50px);height:clamp(24px,calc((100cqh - 20px)*.58),50px)}
+ .stage .bearC .who{text-align:left;flex:0 1 auto;min-width:0;max-width:170px}
+ .stage .bearC .who b{font-size:15px}.stage .bearC .who span{font-size:12px}
+ body.fd .app{padding-top:10px}
+}
+</style>
+
 </body></html>

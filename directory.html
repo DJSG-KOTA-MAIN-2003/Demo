@@ -539,8 +539,8 @@ function list(){var r=M.filter(match);
 /* ---------- main ---------- */
 function tools(){var vs=[['book','v_book','v_bookS'],['comp','v_comp','v_compS'],['list','v_list','v_listS']];
  var h='<div class="tools"><div class="seg" role="group">'+vs.map(function(v){return '<button type="button" data-view="'+v[0]+'" aria-pressed="'+(VIEW===v[0])+'">'+t(v[1])+'<small>'+t(v[2])+'</small></button>'}).join('')+'</div>';
- h+='<div class="row2"><div class="srch"><span class="si">🔎</span><input id="q" type="search" autocomplete="off" placeholder="'+t('search')+'" value="'+esc(Q)+'"><div class="res" id="res" hidden></div></div>';
- h+='<a class="chipb" href="https://claude.ai/artifact/EUejteAU8AMHwKBk3MCsKw">🎂 '+t('bdays')+'</a>';
+ h+='<div class="row2"><div class="srch"><span class="si">🔎</span><input id="q" name="djsg-dir-find" type="search" autocomplete="off" autocorrect="off" spellcheck="false" data-lpignore="true" placeholder="'+t('search')+'" value="'+esc(Q)+'"><div class="res" id="res" hidden></div></div>';
+ h+='<a class="chipb" href="birthdays.html">🎂 '+t('bdays')+'</a>';
  if(ROLE==='pres')h+='<button type="button" class="chipb pr" id="exb">🖨 '+t('export')+'</button>';
  return h+'</div>'+chips()+'</div>'}
 function lockV(){return '<section class="lock"><div class="big">🔒</div><h2>'+t('lk_t')+'</h2><p>'+t('lk_p')+'</p><p class="note">'+t('lk_in')+'</p><div class="row2" style="justify-content:center"><button type="button" class="btn" data-t="t_login">'+t('login')+'</button></div></section>'}
@@ -874,4 +874,25 @@ html.djside .wrap.page{gap:8px}
  new MutationObserver(sched).observe(main,{childList:true,subtree:true});addEventListener('resize',sched);setTimeout(fit,300);setTimeout(fit,1200);try{document.fonts.ready.then(sched)}catch(_){}
 })();
 </script>
+<!-- 18 Nov 2026 (fix list point 3, owner's yes): Directory on a computer — tidy tool row (search wide, Birthdays beside it, filter chips on their own line), the browser's own list of old searches switched off (name on the search box), book always fully on screen (fits again when pictures or letters load), Birthdays button opens birthdays.html (source fix above). Phones unchanged. -->
+<style id="pcxdir2">
+html.djside #main .tools{display:grid!important;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center}
+html.djside #main .tools>.row2{flex-wrap:nowrap;align-items:center}
+html.djside #main .tools>.row2 .srch{flex:1;min-width:0}
+html.djside #main .tools>.chips{grid-column:1/-1;justify-content:safe center}
+</style>
+<script>
+(function(){
+ if(/[?&]app=1/.test(location.search))return;
+ var H=document.documentElement,main=document.getElementById('main');if(!main)return;
+ function check(){if(!H.classList.contains('djside'))return;var el=main.querySelector('.spread,.list');if(!el||!el.style.zoom&&el.getBoundingClientRect().bottom<=innerHeight-12)return;
+  var r=el.getBoundingClientRect(),z=parseFloat(el.style.zoom)||1,top=r.top,h=r.height,avail=innerHeight-top-16;
+  if(el.classList.contains('list')){var pgr=el.parentNode.querySelector(':scope > .bnav, :scope > .lpg, :scope > .pgr');if(pgr)avail-=pgr.offsetHeight+10}
+  if(h>avail+1&&avail>160){var nz=Math.max(.45,z*avail/h);el.style.zoom=nz.toFixed(3)}}
+ var T=0;function sched(){clearTimeout(T);T=setTimeout(check,60)}
+ new MutationObserver(sched).observe(main,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+ main.addEventListener('load',sched,true);addEventListener('resize',sched);setTimeout(check,500);setTimeout(check,1500);setTimeout(check,3000);try{document.fonts.ready.then(sched)}catch(_){}
+})();
+</script>
+
 </body></html>
