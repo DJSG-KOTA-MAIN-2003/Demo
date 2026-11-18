@@ -393,4 +393,43 @@ document.addEventListener('click',function(e){
 })();
 </script>
 
+<!-- 18 Nov 2026 (owner's yes): on a computer the menu moves to a left column so the page gets the full screen height. Phones unchanged. -->
+<style id="djsidecss">
+#djside{display:none}
+html.djside body{padding-left:256px}
+html.djside #djside{display:flex;position:fixed;left:0;top:0;bottom:0;width:240px;z-index:60;flex-direction:column;align-items:stretch;gap:10px;padding:14px 12px 16px;overflow-y:auto;
+ background:rgba(255,255,255,.66);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-right:1px solid rgba(255,255,255,.95);box-shadow:6px 0 26px var(--shadow,rgba(60,20,50,.18))}
+html.djside #djside .lang{align-self:center;margin:0}
+html.djside #djside .brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin:2px 0 0}
+html.djside #djside .brand .logo{width:72px;height:72px}
+html.djside #djside .brand .names{align-items:center;text-align:center}
+html.djside #djside .brand .dj{font-size:28px}
+html.djside #djside .brand .km{font-size:22px}
+html.djside #djside .sub{margin:0;font-size:11.5px;text-align:center}
+html.djside #djside .sub .pill{display:inline-block;margin-top:4px}
+html.djside #djside nav.nav{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:3px;overflow:visible;margin:4px 0 0;padding:8px;border-radius:20px;width:auto;max-width:none}
+html.djside #djside nav.nav button{width:100%;text-align:left;white-space:normal;padding:10px 14px;border-radius:13px;font-size:14px;line-height:1.25}
+html.djside #djside .login{align-self:stretch;margin-top:auto;text-align:center;justify-content:center}
+html.djside .wrap.page>header.head{display:none}
+html.djside .wrap.page{max-width:none;width:auto;margin-left:0;margin-right:0;padding-left:clamp(14px,2vw,28px);padding-right:clamp(14px,2vw,28px)}
+html.djside .demobar .wrap{max-width:none}
+@media (max-height:820px){html.djside #djside{gap:6px;padding-top:10px}html.djside #djside .brand .logo{width:54px;height:54px}html.djside #djside .brand .dj{font-size:22px}html.djside #djside .brand .km{font-size:18px}
+ html.djside #djside nav.nav{padding:5px;gap:1px}html.djside #djside nav.nav button{padding:7px 12px;font-size:13px}html.djside #djside .lang button{padding-top:5px;padding-bottom:5px}}
+</style>
+<div id="djside" aria-label="Menu"></div>
+<script>
+(function(){
+ if(/[?&]app=1/.test(location.search))return;
+ var side=document.getElementById('djside'),pg=document.querySelector('.wrap.page');if(!side||!pg)return;
+ var head=pg.querySelector('header.head');if(!head)return;
+ var items=[head.querySelector('.lang'),head.querySelector('.brand'),pg.querySelector('.sub'),pg.querySelector('nav.nav'),head.querySelector('.login')].filter(Boolean);
+ var marks=items.map(function(e){var c=document.createComment('djside');e.parentNode.insertBefore(c,e);return c});
+ var on=false,mq=matchMedia('(min-width:1100px)');
+ function set(){var want=mq.matches;if(want===on)return;on=want;
+  if(on){items.forEach(function(e){side.appendChild(e)});document.documentElement.classList.add('djside')}
+  else{items.forEach(function(e,i){marks[i].parentNode.insertBefore(e,marks[i].nextSibling)});document.documentElement.classList.remove('djside')}
+  try{window.dispatchEvent(new Event('resize'))}catch(_){}}
+ set();if(mq.addEventListener)mq.addEventListener('change',set);else mq.addListener(set);
+})();
+</script>
 </body></html>
