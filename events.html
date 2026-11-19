@@ -1,4 +1,7 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head>
+<!-- 19 Nov 2026 (fix list points 4+6, owner's yes): mark the page when it is opened INSIDE the member app (page window #pgf). Website in a browser is unchanged. -->
+<script>try{if(window.frameElement&&window.frameElement.id==='pgf')document.documentElement.classList.add('djinapp')}catch(e){}</script>
+<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Events Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -610,4 +613,40 @@ html.djside.pcxscr{scroll-behavior:auto}
 })();
 </script>
 
+<!-- 19 Nov 2026 (fix list point 6, owner's yes): Events in tile view in the app. Only inside the member app (html.djinapp); website unchanged. -->
+<style id="djinapp_css">
+html.djinapp .demobar,html.djinapp .wrap>.flag,html.djinapp header.head,html.djinapp .wrap>.sub,html.djinapp nav.nav,html.djinapp #addbox,html.djinapp .cta,html.djinapp footer.foot{display:none!important}
+html.djinapp body{padding-top:0!important}
+html.djinapp .wrap.page{padding-top:8px!important}
+html.djinapp .title{padding:2px 0 6px!important;margin:0!important;text-align:left}
+html.djinapp .title .eyebrow{display:none!important}
+html.djinapp .title h1{font-size:21px!important;line-height:1.15!important;margin:0!important}
+html.djinapp #bx_next{display:grid!important;grid-template-columns:auto 1fr;gap:6px 12px!important;padding:14px!important;margin:0 0 10px!important;align-items:center}
+html.djinapp #bx_next .ei{min-width:0}
+html.djinapp #bx_next .ei .meta{display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px!important;margin-top:2px!important}
+html.djinapp #bx_next h2{font-size:19px!important;margin:2px 0 0!important}
+html.djinapp #bx_next .act{grid-column:1/-1;display:grid!important;grid-template-columns:1.3fr 1fr 1fr;gap:6px!important;margin:6px 0 0!important}
+html.djinapp #bx_next .act .row2{display:contents!important}
+html.djinapp #bx_next .act .btn,html.djinapp #bx_next .act .sbtn{margin:0!important;padding:10px 4px!important;font-size:13px!important;min-height:0!important;width:auto!important}
+html.djinapp #bx_tabs{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important;width:auto!important;padding:0!important;background:none!important;box-shadow:none!important;border:0!important;margin:0 0 10px!important}
+html.djinapp #bx_tabs button{display:flex!important;flex-direction:row;align-items:center;justify-content:center;gap:8px;min-height:56px;border-radius:18px!important;background:rgba(255,255,255,.75)!important;color:#5A2A3C!important;font-size:15px!important;box-shadow:0 1px 0 #fff inset,0 4px 12px rgba(122,20,52,.10)!important;margin:0!important}
+html.djinapp #bx_tabs button.on,html.djinapp #bx_tabs button[aria-selected="true"]{background:linear-gradient(180deg,#C2185B,#A3123A)!important;color:#fff!important;box-shadow:0 4px 0 #6E0B27,0 8px 16px rgba(122,20,52,.25)!important}
+html.djinapp #bx_tabs button#tu::before{content:"\1F5D3\FE0F";font-size:20px}
+html.djinapp #bx_tabs button#tp::before{content:"\1F4F7";font-size:20px}
+html.djinapp #evl{display:grid!important;grid-template-columns:1fr 1fr;gap:9px!important}
+html.djinapp #evl .ev{display:flex!important;flex-direction:column;align-items:flex-start;gap:6px!important;padding:11px!important;margin:0!important;min-width:0}
+html.djinapp #evl .ev .dt{width:58px!important;min-height:0!important;padding:6px 0!important;margin:0!important}
+html.djinapp #evl .ev .dt b{font-size:22px!important}
+html.djinapp #evl .ev .dt.tbd{height:auto!important}
+html.djinapp #evl .ev .ei{width:100%;min-width:0}
+html.djinapp #evl .ev .chips,html.djinapp #evl .ev .pd,html.djinapp #evl .ev .row2{display:none!important}
+html.djinapp #evl .ev h3{font-size:14.5px!important;line-height:1.2!important;margin:0!important}
+html.djinapp #evl .ev .meta{margin-top:3px!important}
+html.djinapp #evl .ev .meta span:first-child{display:none!important}
+html.djinapp #evl .ev .meta span{font-size:11.5px!important;line-height:1.3!important}
+html.djinapp #evl .ev .act{width:100%;margin-top:auto!important}
+html.djinapp #evl .ev .act .btn{width:100%!important;padding:9px 4px!important;font-size:12.5px!important;margin:0!important;min-height:0!important}
+html.djinapp .wrap>p.note{font-size:12px!important}
+html.djinapp #evl .ev .dt.tbd b{font-size:13px!important;line-height:1.1!important;padding:4px 0!important}
+</style>
 </body></html>

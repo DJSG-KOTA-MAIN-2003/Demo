@@ -1,4 +1,7 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head>
+<!-- 19 Nov 2026 (fix list points 4+6, owner's yes): mark the page when it is opened INSIDE the member app (page window #pgf). Website in a browser is unchanged. -->
+<script>try{if(window.frameElement&&window.frameElement.id==='pgf')document.documentElement.classList.add('djinapp')}catch(e){}</script>
+<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Join Form</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -732,4 +735,53 @@ html.djside .jri{cursor:pointer}html.djside .jri:hover{background:rgba(163,18,58
 })();
 </script>
 
+<!-- 19 Nov 2026 (fix list point 4, owner's yes): Join on one screen in the app; floating Start bar removed in the app; "Only interested?" opens as a pop-up. Only inside the member app (html.djinapp); website unchanged. -->
+<style id="djinapp_css">
+html.djinapp .demobar,html.djinapp .wrap>.flag,html.djinapp header.head,html.djinapp .wrap>.sub,html.djinapp nav.nav,html.djinapp #addbox,html.djinapp .cta,html.djinapp footer.foot{display:none!important}
+html.djinapp body{padding-top:0!important}
+html.djinapp .wrap.page{padding-top:8px!important}
+html.djinapp .title{padding:2px 0 6px!important;margin:0!important;text-align:left}
+html.djinapp .title .eyebrow{display:none!important}
+html.djinapp .title h1{font-size:21px!important;line-height:1.15!important;margin:0!important}
+html.djinapp #form>.card:first-child{padding:12px 12px 10px!important;margin:0!important}
+html.djinapp #form>.card:first-child h2{font-size:16px!important;margin:0 0 8px!important}
+html.djinapp .how{display:grid!important;grid-template-columns:1fr 1fr;gap:7px!important;margin:0!important}
+html.djinapp .how>div{display:flex!important;align-items:center;gap:7px!important;padding:8px 8px!important;margin:0!important;border-radius:14px;background:rgba(255,255,255,.7);box-shadow:0 1px 0 #fff inset,0 3px 10px rgba(122,20,52,.08);min-height:52px;box-sizing:border-box}
+html.djinapp .how>div i{flex:none;width:26px!important;height:26px!important;font-size:13px!important;line-height:26px!important}
+html.djinapp .how>div>span>span{display:none!important}
+html.djinapp .how>div b{font-size:13.5px!important;line-height:1.15!important}
+html.djinapp .fee{margin-top:8px!important;padding:7px 10px!important;display:flex;align-items:center;gap:6px}
+html.djinapp .fee .note{display:none!important}
+html.djinapp .fee b{font-size:13.5px!important;line-height:1.2!important}
+html.djinapp #start{margin-top:12px!important}
+html.djinapp #swap{margin:10px auto 0!important;display:block}
+html.djinapp #form>.iq{display:none!important}
+html.djinapp #iqopen{display:flex!important}
+#iqopen{display:none;align-items:center;justify-content:center;gap:6px;width:100%;margin:12px 0 0;padding:11px 12px;border-radius:999px;border:1.5px dashed #C98AA0;background:rgba(255,255,255,.75);color:#7A1434;font:700 14px Inter,"Noto Sans Devanagari",system-ui,sans-serif;cursor:pointer}
+html.djinapp.iqon #form>.iq{display:block!important;position:fixed;left:14px;right:14px;top:50%;transform:translateY(-50%);z-index:1001;margin:0!important;max-height:86vh;overflow:auto;box-shadow:0 20px 50px rgba(60,10,30,.35);background:#fff!important;border:0!important;backdrop-filter:none!important}
+#iqbg{display:none}
+html.djinapp.iqon #iqbg{display:block;position:fixed;inset:0;z-index:1000;background:rgba(40,10,25,.45)}
+#iqx{display:none}
+html.djinapp.iqon #iqx{display:flex;position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:50%;border:0;background:#F3E3EA;color:#7A1434;font:800 18px system-ui;align-items:center;justify-content:center}
+html.djinapp .startbar,html.djinapp #startbar,html.djinapp .sbar,html.djinapp #jsbar{display:none!important}
+</style>
+<script>
+(function(){var H=document.documentElement;if(!H.classList.contains('djinapp'))return;
+ function hi(){try{return localStorage.getItem('djsg_lang')==='hi'}catch(_){return false}}
+ function close(){H.classList.remove('iqon')}
+ function ensure(){var f=document.getElementById('form'),iq=f&&f.querySelector('.iq'),sw=document.getElementById('swap');
+  if(!iq){close();return}
+  var b=document.getElementById('iqopen');
+  if(!b||b.parentNode!==iq.parentNode){b=document.createElement('button');b.type='button';b.id='iqopen';iq.parentNode.insertBefore(b,iq);
+   b.onclick=function(){H.classList.add('iqon');var n=document.getElementById('iq_n');if(n)setTimeout(function(){n.focus()},50)}}
+  var bg=document.getElementById('iqbg');
+  if(!bg||bg.parentNode!==iq.parentNode){bg=document.createElement('div');bg.id='iqbg';iq.parentNode.insertBefore(bg,iq);bg.onclick=close}
+  var x=iq.querySelector('#iqx');
+  if(!x){x=document.createElement('button');x.type='button';x.id='iqx';x.textContent='\u2715';iq.appendChild(x);x.onclick=close}
+  var t=hi()?'\ud83d\ude4b \u0915\u0947\u0935\u0932 \u0930\u0941\u091a\u093f \u0939\u0948? \u0928\u093e\u092e \u0914\u0930 \u092e\u094b\u092c\u093e\u0907\u0932 \u092d\u0947\u091c\u0947\u0902 \u203a':'\ud83d\ude4b Only interested? Send name and mobile \u203a';
+  if(b.textContent!==t)b.textContent=t;x.setAttribute('aria-label',hi()?'\u092c\u0902\u0926 \u0915\u0930\u0947\u0902':'Close')}
+ ensure();setInterval(ensure,700);
+ addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
 </body></html>
