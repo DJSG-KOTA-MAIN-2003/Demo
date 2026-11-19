@@ -356,6 +356,7 @@ var VS={all:true,ev:true,gen:true,biz:true},VN=4;
 var SW={tev:true,tgen:true,tbiz:true,yrs:true,jump:true,top:true,stats:true,heart:true,play:true,th:true,pd:true,by:true,add:true,cta:true},XB=[],xid=0;
 var lang='en',tab='ev',yr=0,mem=true,cur=-1,pid=null,list=[],tt,fxOn=true,playing=null,tapT=null,tapId=null;
 var reduce=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* 18 Nov 2026 (fix list point 2): Business Showcase shows contacts in the member view (demo opens as a member); visitors still see "Log in to see contact" */EN.ph2='📱 [Phone number]';HI.ph2='📱 [फ़ोन नंबर]';EN.call2='<i style="font-style:normal;filter:brightness(0) invert(1)">📞</i> Call';HI.call2='<i style="font-style:normal;filter:brightness(0) invert(1)">📞</i> कॉल';EN.wa2='💬 WhatsApp';HI.wa2='💬 व्हाट्सऐप';EN.t_call='On the real site this opens the phone dialler.';HI.t_call='असली साइट पर यह फ़ोन का डायलर खोलता है।';EN.t_wa='On the real site this opens WhatsApp.';HI.t_wa='असली साइट पर यह व्हाट्सऐप खोलता है।';
 function T(k){return (lang==='hi'&&HI[k])||EN[k]}
 function when(g){return (g.m!=null?MON[lang][g.m]+' ':'')+g.y}
 function vok(t){return mem||(VS.all&&VS[t])}
@@ -398,7 +399,7 @@ function paint(){
  var lk=false;/* 13 Nov: General photos open to visitors, first 4 per album (user) */if(lk&&cur>=0){cur=-1;theme(null)}
  var biz=tab==='biz',view=!biz&&!lk&&cur>=0;
  $('#glock').hidden=!lk;$('#ghome').hidden=biz||view||lk;$('#gview').hidden=!view;$('#gbiz').hidden=!biz;if(lk)return;
- if(biz){var L=lang==='hi'?1:0;if(!vok('biz')){$('#bizl').innerHTML='<div class="card lockc" style="grid-column:1/-1"><span class="lk" aria-hidden="true">🔒</span><h2>'+T('vb_h')+'</h2><p>'+T('vb_p')+'</p><button type="button" class="btn" data-t="t_login">'+T('login2')+'</button></div>';return}$('#bizl').innerHTML=BIZ.map(function(b,i){return '<article class="card bz"><span class="pic">'+art(i*5+3)+'<span class="lab">'+T('smp')+'</span></span><b>'+b.n[L]+'</b><span class="cat">'+b.c[L]+'</span><span class="m">'+b.d[L]+'</span><span class="m">'+T('mem')+'</span><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></article>'}).join('');return}
+ if(biz){var L=lang==='hi'?1:0;if(!vok('biz')){$('#bizl').innerHTML='<div class="card lockc" style="grid-column:1/-1"><span class="lk" aria-hidden="true">🔒</span><h2>'+T('vb_h')+'</h2><p>'+T('vb_p')+'</p><button type="button" class="btn" data-t="t_login">'+T('login2')+'</button></div>';return}$('#bizl').innerHTML=BIZ.map(function(b,i){return '<article class="card bz"><span class="pic">'+art(i*5+3)+'<span class="lab">'+T('smp')+'</span></span><b>'+b.n[L]+'</b><span class="cat">'+b.c[L]+'</span><span class="m">'+b.d[L]+'</span><span class="m">'+T('mem')+'</span>'+(mem?'<span class="bzph">'+T('ph2')+'</span><span class="bzact"><button type="button" class="btn" data-t="t_call">'+T('call2')+'</button><button type="button" class="btn wa" data-t="t_wa">'+T('wa2')+'</button></span>':'<button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button>')+'</article>'}).join('');return}
  var gen=tab==='gen',GL=[];ALB.forEach(function(g,i){if(!!g.gen===gen)GL.push(i)});
  if(view){var g=ALB[cur],t=TH[g.th],all=items.filter(function(i){return i.g===cur}),its=all.filter(vis),L2=lang==='hi'?1:0;
   $('#band').innerHTML='<div class="r1"><button type="button" class="bk" data-back="1">'+T('back')+'</button><span class="em" aria-hidden="true">'+(t?t.em:'📸')+'</span></div><h2>'+g[lang]+'</h2><div class="mt"><span>📅 '+when(g)+' · 📍 '+T('kota')+' · 📷 '+T('nph').replace('{n}',all.length)+'</span>'+(SW.pd&&g.pd?'<span>'+T('pd')+': '+esc(g.pd)+'</span>':'')+(g.by&&SW.by?'<span>'+T('by')+'</span>':'')+'</div><p>'+g.a[L2]+'</p>'+(SW.play?'<button type="button" class="play" data-play="1">'+T('play')+'</button>':'');
@@ -601,8 +602,8 @@ html.djside.pcxscr{scroll-behavior:auto}
    rows.sort(function(a,b){return a.t-b.t});
    for(var i=0;i<rows.length;i++){var r=rows[i],bd=(Math.floor(r.t/VH)+1)*VH,lim=bd-44;
     if(r.b>lim&&r.t<bd){
-     if(r.b-r.t>VH*0.8){if(r.els.length===1&&r.els[0].children.length&&depth<6&&r.els[0].dataset.pcxin!=='1'){r.els[0].dataset.pcxin='1';if(place(r.els[0],VH,depth+1)){changed=true;done=false;break}}continue}
-     var d=bd-r.t+16;if(r.t%VH<12&&r.b-r.t<VH)continue;r.els.forEach(function(e){push(e,d)});changed=true;done=false;break}
+     if(r.b-r.t>VH*0.8||(r.els.length===1&&r.els[0].hasAttribute('data-pcxsplit'))){if(r.els.length===1&&r.els[0].children.length&&depth<6&&r.els[0].dataset.pcxin!=='1'){r.els[0].dataset.pcxin='1';if(place(r.els[0],VH,depth+1)){changed=true;done=false;break}}continue}
+     if(bd-r.t>VH*0.3&&r.els.length===1&&r.els[0].children.length>1&&depth<6){if(r.els[0].dataset.pcxin==='1')continue;r.els[0].dataset.pcxin='1';if(place(r.els[0],VH,depth+1)){changed=true;done=false;break}delete r.els[0].dataset.pcxin}/* 18 Nov 2026 night: split a block instead of leaving 30%+ of a screen empty */var d=bd-r.t+16;if(r.t%VH<12&&r.b-r.t<VH)continue;r.els.forEach(function(e){push(e,d)});changed=true;done=false;break}
    }
    if(done)break}
   [].forEach.call(box.querySelectorAll('[data-pcxin]'),function(x){delete x.dataset.pcxin});return changed
@@ -689,4 +690,47 @@ html.djside .pcxempty{grid-column:1/-1;text-align:center;color:#6C5470;font-weig
  set();new MutationObserver(set).observe(H,{attributes:true,attributeFilter:['class']});
 })();
 </script>
+<!-- 18 Nov 2026 (fix list point 2, owner's yes): (a) Business Showcase contacts in the member view (source patch above); (b) computer: album pictures get shorter on short screens so the albums start on screen 1 -->
+<style id="gfitcss">
+.bz .bzph{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.bz .bzact{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bz .bzact .btn{min-height:42px;border-radius:14px;font-size:13.5px;padding:8px 6px}
+.bz .btn.wa{background:#1FAF55;box-shadow:0 5px 0 #127a3a;color:#fff}
+@media (max-height:640px){html.djside .pcxrail{gap:4px;padding:8px}html.djside .pcxrail #years{gap:4px}html.djside .pcxrail #years button{padding-top:4px!important;padding-bottom:4px!important;min-height:0!important;font-size:14px}html.djside .pcxrail .pcxb{padding:6px 9px;font-size:12.5px}html.djside .pcxrail>b{margin:0 4px}}
+</style>
+<script>
+(function(){
+var H=document.documentElement;
+function fit(){var A=document.getElementById('albs');if(!A)return false;var cards=[].slice.call(A.querySelectorAll('.alb')).filter(function(c){return c.offsetParent!==null});
+ var cvs=A.querySelectorAll('.alb .cv'),ch=false;
+ if(!H.classList.contains('djside')||!cards.length){[].forEach.call(cvs,function(c){if(c.style.height){c.style.height='';ch=true}});return ch}
+ var g=A.closest('.pcxgx')||A,saved=[],e;for(e=g;e&&e!==document.body;e=e.parentElement){saved.push([e,e.style.marginTop]);e.style.marginTop=''}
+ [].forEach.call(cvs,function(c){c.dataset.gh=c.style.height;c.style.height=''});
+ var cs=getComputedStyle(A),cols=cs.gridTemplateColumns.split(' ').length||5,rows=Math.ceil(cards.length/cols),gap=parseFloat(cs.rowGap)||12;
+ var cv=cards[0].querySelector('.cv'),body=cards[0].offsetHeight-(cv?cv.offsetHeight:0),top=A.getBoundingClientRect().top+scrollY;
+ saved.forEach(function(p){p[0].style.marginTop=p[1]});
+ var VH=innerHeight,h='';
+ if(top<VH*.6&&rows>0){var avail=VH-52-top-(rows-1)*gap-rows*body,want=Math.floor(avail/rows),base=cv?cv.offsetHeight:118;if(want<base){h=Math.max(rows>2?54:62,want)+'px'}}
+ [].forEach.call(cvs,function(c){if((c.dataset.gh||'')!==h)ch=true;c.style.height=h;delete c.dataset.gh});return ch}
+function run(){var gh=document.getElementById('ghome');if(gh)gh.setAttribute('data-pcxsplit','1');if(fit()&&window.__pcxLayout)window.__pcxLayout()}
+var t=0;function later(ms){clearTimeout(t);t=setTimeout(run,ms)}
+addEventListener('resize',function(){later(120)});
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#pcxbar'))return;later(300)},true);
+var q=document.querySelector('#pcxgq,.pcxgq input,input[placeholder*="album"]');if(q)q.addEventListener('input',function(){later(200)});
+setTimeout(run,420);setTimeout(run,1450);try{document.fonts.ready.then(function(){later(60)})}catch(_){}
+})();
+</script>
+
+<!-- 18 Nov 2026 (owner: "may be decided by you", final fix): this page opens in the language chosen on any other page (हिन्दी / English remembered on the phone or computer, key djsg_lang — same as the front page, the app and the Directory). English mode unchanged. -->
+<script>
+(function(){
+ function isHi(t){return /^(हिन्दी|हिंदी)$/.test(t)}
+ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lang button,.lang [role=button]');if(!b)return;var t=(b.textContent||'').trim();try{if(isHi(t))localStorage.setItem('djsg_lang','hi');else if(t==='English')localStorage.setItem('djsg_lang','en')}catch(_){}},true);
+ var L='en';try{L=localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){}
+ if(L!=='hi')return;
+ function go(){var bs=[].slice.call(document.querySelectorAll('.lang button,.lang [role=button]'));for(var i=0;i<bs.length;i++){if(isHi((bs[i].textContent||'').trim())){if(bs[i].getAttribute('aria-pressed')!=='true'&&!bs[i].classList.contains('on'))bs[i].click();return}}}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(go,0)});else setTimeout(go,0);
+})();
+</script>
+
 </body></html>

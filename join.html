@@ -667,4 +667,69 @@ html.pcxjf #form{max-width:none;width:100%}
  try{document.fonts.ready.then(function(){window.__pcxJFit()})}catch(_){}
 })();
 </script>
+<!-- 18 Nov 2026 (fix list point 5, owner's yes): Join on a computer — the first page ("Four easy steps", Start the form, "Only interested?") now fits one screen: two columns, steps 2 x 2. Phones unchanged. -->
+<style id="jfirst">
+html.djside #form:has(> #start):has(.how,.iq){display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);grid-auto-rows:auto;gap:12px 18px;max-width:1040px;align-items:start}
+html.djside #form:has(> #start):has(.how,.iq) > *{grid-column:1}
+html.djside #form:has(> #start):has(.how,.iq) > #start{grid-column:2;grid-row:1;margin:0}
+html.djside #form:has(> #start):has(.how,.iq) > #swap{grid-column:2;grid-row:2;justify-self:center}
+html.djside #form:has(> #start):has(.how,.iq) > .card.iq{grid-column:2;grid-row:3;gap:8px;padding:14px 16px}
+html.djside #form:has(> #start):has(.how,.iq) > section.card:not(.iq){grid-row:1/span 3;padding:16px 18px;gap:10px!important}
+html.djside #form:has(> #start):has(.how,.iq) .how{grid-template-columns:1fr 1fr;gap:12px 14px}
+html.djside #form:has(> #start):has(.how,.iq) .how i{width:30px;height:30px}
+html.djside #form:has(> #start):has(.how,.iq) .how span{font-size:13px;line-height:1.35}
+html.djside #form:has(> #start):has(.how,.iq) .fee{padding:10px 12px}
+html.djside #form:has(> #start):has(.how,.iq) .card.iq .fld input{min-height:40px;padding-top:8px;padding-bottom:8px}
+html.djside #form:has(> #start):has(.how,.iq) .card.iq #iq_s{min-height:42px!important}
+html.djside #form:has(> #start):has(.how,.iq) .card.iq .err:empty{display:none}
+html.djside .wrap.page:has(#form > #start):has(.how,.iq){gap:12px}
+html.djside .wrap.page:has(#form > #start):has(.how,.iq) > [id^=anc]:empty{display:none}
+html.djside .wrap.page:has(#form > #start):has(.how,.iq) > #addbox{padding:8px 12px;min-height:0}
+html.djside .wrap.page:has(#form > #start):has(.how,.iq) > #addbox small{display:inline;margin-left:8px}
+</style>
+
+<!-- 18 Nov 2026 (owner: "may be decided by you", final fix): this page opens in the language chosen on any other page (हिन्दी / English remembered on the phone or computer, key djsg_lang — same as the front page, the app and the Directory). English mode unchanged. -->
+<script>
+(function(){
+ function isHi(t){return /^(हिन्दी|हिंदी)$/.test(t)}
+ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lang button,.lang [role=button]');if(!b)return;var t=(b.textContent||'').trim();try{if(isHi(t))localStorage.setItem('djsg_lang','hi');else if(t==='English')localStorage.setItem('djsg_lang','en')}catch(_){}},true);
+ var L='en';try{L=localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){}
+ if(L!=='hi')return;
+ function go(){var bs=[].slice.call(document.querySelectorAll('.lang button,.lang [role=button]'));for(var i=0;i<bs.length;i++){if(isHi((bs[i].textContent||'').trim())){if(bs[i].getAttribute('aria-pressed')!=='true'&&!bs[i].classList.contains('on'))bs[i].click();return}}}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(go,0)});else setTimeout(go,0);
+})();
+</script>
+
+<!-- 18 Nov 2026 night (owner: "not able to select left side column items"): on a computer, tapping a part in "Your form" now also shows it clearly — the part's card glows, comes into view and its first box gets the cursor (before, a part on the same page gave no sign). -->
+<style id="jgoflash">@keyframes jgofl{0%{box-shadow:0 0 0 0 rgba(163,18,58,.55)}40%{box-shadow:0 0 0 6px rgba(163,18,58,.35)}100%{box-shadow:0 0 0 0 rgba(163,18,58,0)}}
+html.djside .jc.jgofl{animation:jgofl 1.3s ease-out;outline:2px solid #A3123A;outline-offset:2px}
+html.djside .jri{cursor:pointer}html.djside .jri:hover{background:rgba(163,18,58,.08)}</style>
+<script>
+(function(){var T=0;document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-jgo]');if(!b||!document.documentElement.classList.contains('djside'))return;var n=b.getAttribute('data-jgo');clearTimeout(T);T=setTimeout(function(){var c=document.getElementById('jsec'+n);if(!c||!c.offsetParent)return;
+ document.querySelectorAll('.jc.jgofl').forEach(function(x){x.classList.remove('jgofl')});void c.offsetWidth;c.classList.add('jgofl');setTimeout(function(){c.classList.remove('jgofl')},1400);
+ try{c.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(_){}
+ var f=c.querySelector('input:not([type=hidden]):not([type=file]):not([type=checkbox]),select,textarea,button');if(f)try{f.focus({preventScroll:true})}catch(_){}},260)},true)})();
+</script>
+
+<!-- 18 Nov 2026 night (owner: "Join page on app missing Start the form button on the first screen"): on phones a "Start the form ›" bar stays at the bottom of the screen until the real button comes into view (hidden once you scroll past it). Same button, same action. Computer unchanged. -->
+<style id="jstartbar">
+#jsbar{display:none}
+@media (max-width:1099px){
+ #jsbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;align-items:center;justify-content:center;gap:8px;min-height:56px;border-radius:18px;background:#A3123A;color:#fff;font:800 18px Sora,Inter,"Noto Sans Devanagari",sans-serif;box-shadow:0 5px 0 #6E0B27,0 12px 28px rgba(110,11,39,.35);border:0}
+ #jsbar.show{display:flex}
+ #jsbar:active{transform:translateY(3px);box-shadow:0 2px 0 #6E0B27}
+}
+</style>
+<button type="button" id="jsbar" aria-hidden="true" tabindex="-1"></button>
+<script>
+(function(){var bar=document.getElementById('jsbar');if(!bar)return;var vis=true,io=null,cur=null;
+ function upd(){var st=document.getElementById('start');if(st&&st.offsetParent){var rr=st.getBoundingClientRect();vis=rr.top<innerHeight-70}var on=!!(st&&st.offsetParent&&!vis&&innerWidth<1100);if(st){var tx=st.textContent.trim();if(bar.textContent!==tx)bar.textContent=tx}if(bar.classList.contains('show')!==on){bar.classList.toggle('show',on);bar.setAttribute('aria-hidden',on?'false':'true');bar.tabIndex=on?0:-1}}
+ function watch(){var st=document.getElementById('start');if(st===cur)return;cur=st;if(io)io.disconnect();vis=true;if(!st){upd();return}
+  if('IntersectionObserver' in window){io=new IntersectionObserver(function(es){var e=es[0];vis=e.isIntersecting||e.boundingClientRect.top<0;upd()});io.observe(st)}else{vis=true}upd()}
+ bar.addEventListener('click',function(){var st=document.getElementById('start');if(st)st.click();setTimeout(upd,50)});
+ new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){if(ms[i].target!==bar&&!bar.contains(ms[i].target)){watch();upd();return}}}).observe(document.body,{childList:true,subtree:true});
+ addEventListener('resize',upd);addEventListener('scroll',upd,{passive:true});setTimeout(watch,300);watch();
+})();
+</script>
+
 </body></html>
