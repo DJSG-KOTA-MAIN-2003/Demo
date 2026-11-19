@@ -1,4 +1,7 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head>
+<!-- 20 Nov 2026 (fix list point 4, owner chose Option A "Tiles"): mark the page when it is opened INSIDE the member app (page window #pgf). Website in a browser is unchanged. -->
+<script>try{if(window.frameElement&&window.frameElement.id==='pgf')document.documentElement.classList.add('djinapp')}catch(e){}</script>
+<meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Birthdays &amp; Anniversaries</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -577,4 +580,47 @@ html.djside section.hero .tx>*+*::before{content:"·";margin-right:12px;opacity:
 })();
 </script>
 
+<!-- 20 Nov 2026 (fix list point 4): Birthdays & Anniversaries inside the app = tiles (only under html.djinapp); website unchanged. -->
+<style id="djinapp_css">
+html.djinapp .demobar,html.djinapp .wrap>.flag,html.djinapp header.head,html.djinapp .wrap>.sub,html.djinapp nav.nav,html.djinapp .notes,html.djinapp .cta,html.djinapp footer.foot,html.djinapp #djside,html.djinapp #pcxbar{display:none!important}
+html.djinapp body{padding-top:0!important}
+html.djinapp .wrap.page{padding-top:8px!important;padding-bottom:12px!important;gap:8px!important}
+html.djinapp .title{padding:0!important;margin:0!important;text-align:left!important;min-height:0!important}
+html.djinapp .title h1{display:none!important}
+html.djinapp .title .eyebrow{margin:0!important;font-size:12px!important;letter-spacing:1.5px}
+html.djinapp .hero{padding:8px 12px!important;border-radius:16px!important;gap:10px!important;min-height:0!important;margin:0!important}
+html.djinapp .hero .big{font-size:22px!important;width:38px!important;height:38px!important;min-width:38px;display:flex;align-items:center;justify-content:center}
+html.djinapp .hero small,html.djinapp .hero #h_s{display:none!important}
+html.djinapp .hero #h_b{font-size:16px!important;line-height:1.2!important}
+html.djinapp #memb .tabs{padding:3px!important;margin:0 0 6px!important}
+html.djinapp #memb .tabs button{padding:6px 4px!important;font-size:13.5px!important;min-height:0!important}
+html.djinapp #memb .chips{margin:0 0 6px!important;gap:6px!important}
+html.djinapp #memb .chips button{padding:5px 10px!important;font-size:13px!important}
+html.djinapp .dh{margin:4px 0 6px!important}
+html.djinapp .dh span{font-size:13px!important}
+html.djinapp .list{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+html.djinapp .pc{display:flex!important;flex-direction:column;align-items:center;text-align:center;gap:4px!important;padding:9px 8px 7px!important;border-radius:18px!important;cursor:pointer;min-width:0;justify-content:flex-start}
+html.djinapp .pc .pics{grid-row:auto!important;margin:0 auto!important;flex:none}
+html.djinapp .pc .pics{display:flex!important;justify-content:center;align-items:center;width:auto!important;height:46px!important}
+html.djinapp .pc .av{position:relative!important;inset:auto!important;transform:none!important;width:44px!important;height:44px!important;border-width:2px!important;flex:none}
+html.djinapp .pc .av+.av{margin-left:-12px!important}
+html.djinapp .pc .who{display:flex!important;flex-direction:column;align-items:center;gap:3px;min-width:0;width:100%}
+html.djinapp .pc .who b{font-size:13.5px!important;line-height:1.2!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+html.djinapp .pc .tag{font-size:11px!important;padding:2px 8px!important}
+html.djinapp .pc .acts{display:flex!important;flex-wrap:wrap;justify-content:center;gap:5px!important;width:100%;margin:2px 0 0!important;grid-column:auto!important}
+html.djinapp .pc .acts .wb{width:100%;padding:7px 6px!important;font-size:12px!important;white-space:normal;line-height:1.15}
+html.djinapp .pc .acts .wa,html.djinapp .pc .acts .cnt{display:none!important}
+html.djinapp .pc.op .acts .wa{display:inline-flex!important}
+html.djinapp .pc.op .acts .cnt{display:inline-block!important;margin:0!important;font-size:12px!important}
+html.djinapp .pc.op{box-shadow:0 0 0 2px var(--a1,#A3123A),0 8px 18px var(--shadow)!important}
+html.djinapp .pc .more{font-size:10.5px;color:var(--muted);line-height:1}
+html.djinapp .pc.op .more{display:none}
+</style>
+<script>/* 20 Nov 2026 (fix list point 4): in the app, tap a tile to show WhatsApp + wishes */
+(function(){if(!document.documentElement.classList.contains('djinapp'))return;
+function hint(){var hi=(function(){try{return localStorage.getItem('djsg_lang')==='hi'}catch(e){return false}})();document.querySelectorAll('.pc').forEach(function(p){if(!p.querySelector('.more')){var m=document.createElement('span');m.className='more';p.appendChild(m)}var mm=p.querySelector('.more'),tt=hi?'व्हाट्सऐप के लिए दबाएँ ›':'Tap for WhatsApp ›';if(mm.textContent!==tt)mm.textContent=tt})}
+document.addEventListener('click',function(e){var p=e.target.closest&&e.target.closest('.pc');if(!p||e.target.closest('button'))return;var was=p.classList.contains('op');document.querySelectorAll('.pc.op').forEach(function(x){x.classList.remove('op')});if(!was)p.classList.add('op')});
+var d=document.getElementById('days');if(d&&window.MutationObserver)new MutationObserver(function(){if(!d.__h){d.__h=1;setTimeout(function(){d.__h=0;hint()},20)}}).observe(d,{childList:true,subtree:true});
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#l_hi,#l_en'))setTimeout(hint,60)});
+hint()})();</script>
 </body></html>
