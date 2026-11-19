@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="18 Nov 2026, 23:10"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="djsg-ver" content="19 Nov 2026, 23:50"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>DJSG Kota Main</title>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#A3123A">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DJSG"><meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -102,7 +102,7 @@ html,body{height:100%;overflow:hidden}
  <div class="pad">
   <div class="brand"><img class="logo" data-lg="1" src="icon-192.png" alt=""><span class="dj">DJSG</span><span class="km">Kota Main</span><span class="sub">Member app · <span class="pill">SESSION 2026</span></span></div>
   <div class="seg" role="group"><button aria-pressed="true" data-os="a">Android</button><button aria-pressed="false" data-os="i">iPhone</button></div>
-  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 18 Nov 2026, 23:10</p>
+  <div class="card" id="osA"><h3>Install in one tap</h3><button class="big" data-act="install">⬇️ Install the app<small>Free · no Play Store needed</small></button><p class="note" style="margin-top:8px">The app icon comes on your home screen.</p></div><button class="lnk" data-act="cont">Continue without installing ›</button><p class="note">App version: 19 Nov 2026, 23:50</p>
   <div class="card" id="osI" hidden><h3>Install on iPhone (Safari)</h3>
    <div class="stp"><i>1</i><span>Tap <b>Share</b> ⬆️ at the bottom.</span></div>
    <div class="stp"><i>2</i><span>Tap <b>Add to Home Screen</b> ➕.</span></div>
@@ -1104,13 +1104,14 @@ function smItems(){var L=[];
  if(SM.posts)L.push({k:&#x27;insta&#x27;,h:&#x27;&lt;span class=&quot;av3&quot;&gt;&lt;i style=&quot;background-image:url(&#x27;+A.AS+&#x27;)&quot;&gt;&lt;/i&gt;&lt;i style=&quot;background-image:url(&#x27;+A.SC+&#x27;)&quot;&gt;&lt;/i&gt;&lt;i style=&quot;background-image:url(&#x27;+A.RP+&#x27;)&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;b&gt;5 new posts&lt;/b&gt;&lt;small&gt;DJSG Insta&lt;/small&gt;&#x27;,n:5});
  if(SM.mypost)L.push({k:&#x27;myposts&#x27;,h:&#x27;&lt;span class=&quot;bi&quot;&gt;✅&lt;/span&gt;&lt;b&gt;Your post is approved&lt;/b&gt;&lt;small&gt;2 likes&lt;/small&gt;&#x27;,n:1});
  if(SM.wish)L.push({k:&#x27;wishes&#x27;,h:&#x27;&lt;span class=&quot;bi&quot;&gt;🎉&lt;/span&gt;&lt;b&gt;12 members wished you&lt;/b&gt;&lt;small&gt;Happy birthday!&lt;/small&gt;&#x27;,n:1});
+ /* 19 Nov 2026 (fix list point 1): not yet approved = only the Join card */ if(!(function(){try{return localStorage.getItem(&#x27;djsg_demo_approved&#x27;)===&#x27;1&#x27;||localStorage.getItem(&#x27;djsg_approved&#x27;)===&#x27;1&#x27;}catch(_){return false}})())L=L.filter(function(x){return x.k===&#x27;join&#x27;});
  if(!L.length)L.push({k:&#x27;insta&#x27;,h:&#x27;&lt;span class=&quot;ph2&quot;&gt;&lt;/span&gt;&lt;b&gt;See what’s new&lt;/b&gt;&lt;small&gt;Latest Insta photo&lt;/small&gt;&#x27;,idle:1});
  return L}
 function smCount(L){var c=0;L.forEach(function(x){if(!x.idle)c+=(x.n||1)});return c}
 function smPaint(){var L=smItems();if(smi&gt;=L.length)smi=0;var it=L[smi],c=smCount(L);
  var dots=L.length&gt;1?&#x27;&lt;span class=&quot;sd&quot;&gt;&#x27;+L.map(function(_,i){return &#x27;&lt;i class=&quot;&#x27;+(i===smi?&#x27;on&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;/i&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;;
  $$(&#x27;[data-smart]&#x27;).forEach(function(b){b.innerHTML=(c?&#x27;&lt;span class=&quot;cnt2&quot;&gt;&#x27;+c+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;)+it.h+dots;b.dataset.k=it.k})}
-var smHold=false;
+var smHold=false;window.__smPaint=function(){smi=0;smPaint()};
 function smNext(){var L=smItems();if(L.length&lt;2||smHold||open)return;var nx=(smi+1)%L.length;
  var fx=SM.effects&amp;&amp;!reduce;if(!fx){smi=nx;smPaint();return}
  $$(&#x27;[data-smart]&#x27;).forEach(function(b){b.classList.add(&#x27;turn&#x27;)});setTimeout(function(){smi=nx;smPaint();$$(&#x27;[data-smart]&#x27;).forEach(function(b){b.classList.remove(&#x27;turn&#x27;)})},320)}
@@ -1145,7 +1146,7 @@ window.__hide=function(){hide()};var PAGES={events:&#x27;events.html&#x27;,galle
 function canNav(){try{var p=parent.location;return p.protocol===&#x27;file:&#x27;||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$/.test(p.hostname)}catch(e){return false}}
 var _show2=show;show=function(k){if(PAGES[k]&amp;&amp;!(WAIT&amp;&amp;LOCK[k])&amp;&amp;canNav()){try{parent.__openPage(PAGES[k]);return}catch(e){}}_show2(k)};
 var _wt=S.waiting;S.waiting=function(){return _wt()+&#x27;&lt;button class=&quot;dbtn&quot; style=&quot;background:#1d1024;color:#ffcf66&quot; onclick=&quot;__hide();parent.__approve()&quot;&gt;Demo: office approves now&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__go(\&#x27;D1\&#x27;)&quot;&gt;Demo: see what the office sees&lt;/button&gt;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Demo: start again (visitor)&lt;/button&gt;&#x27;};
-var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 18 Nov 2026, 23:10&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
+var _pf=S.profile;S.profile=function(){return _pf()+&#x27;&lt;p style=&quot;font-size:12px;color:var(--muted);text-align:center&quot;&gt;App version: 19 Nov 2026, 23:50&lt;/p&gt;&#x27;+&#x27;&lt;button class=&quot;dbtn&quot; onclick=&quot;__hide();parent.__reset()&quot;&gt;Log out (demo: start again)&lt;/button&gt;&#x27;};
 
 LOCK.newpost=1;
 var MODE=&#x27;full&#x27;,VLOCK={insta:1,directory:1,newpost:1,myposts:1,wishes:1};
@@ -2198,7 +2199,7 @@ document.addEventListener(&#x27;click&#x27;,function(e){var b=e.target.closest(&
 @media (prefers-reduced-motion:reduce){.nvbar{transition:none}}
 .nvbar .nx{margin-left:4px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 &lt;/style&gt;
-&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;18 Nov 2026, 23:10&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
+&lt;script&gt;window.__RF={profile:1,insta:1,home:1};window.__APPVER=&quot;19 Nov 2026, 23:50&quot;;/* Refresh button (owner asked 13 Nov 2026 22:54). RF = which places are on. */
 (function(){var RF=window.__RF||{profile:1,insta:1,home:1};
 function doRefresh(where){try{var s={w:where||&#x27;home&#x27;};if(where===&#x27;insta&#x27;&amp;&amp;window.__igState)s.ig=window.__igState();sessionStorage.setItem(&#x27;djsg_reopen&#x27;,JSON.stringify(s))}catch(e){}function rl(){try{parent.location.reload()}catch(e){location.reload()}}
  /* 14 Nov 19:40: get the newest app into the phone&#x27;s copy first, then reload */
@@ -3271,6 +3272,18 @@ if(P){P.push([/^Programme saved ✓ · Ref (.+)$/,&#x27;कार्यक्र
  var D=window.__hi1D;if(D){D[&#x27;Join DJSG · Complete my details&#x27;]=&#x27;DJSG से जुड़ें · मेरी जानकारी पूरी करें&#x27;;D[&#x27;New family or existing member&#x27;]=&#x27;नया परिवार या मौजूदा सदस्य&#x27;}
 })();
 &lt;/script&gt;
+&lt;script&gt;
+/* 19 Nov 2026 (fix list point 1, owner&#x27;s &quot;fix the list&quot;): Smart button. A member who is NOT yet approved sees ONLY the fixed &quot;📝 Join DJSG · Complete my details&quot; card (no flipping). After approval (real login sets djsg_approved=1, Part 2) the other cards flip as before. Demo switch in My Profile: &quot;See as approved member (demo)&quot;. */
+(function(){
+ function ap(){try{return localStorage.getItem(&#x27;djsg_demo_approved&#x27;)===&#x27;1&#x27;||localStorage.getItem(&#x27;djsg_approved&#x27;)===&#x27;1&#x27;}catch(_){return false}}
+ window.__smOnlyJoin=function(){return !ap()};
+ var S=window.__igS;if(!S||!S.profile)return;
+ function hi(){try{return localStorage.getItem(&#x27;djsg_lang&#x27;)===&#x27;hi&#x27;}catch(_){return false}}
+ function lab(){var on=ap();return hi()?(on?&#x27;✅ स्वीकृत सदस्य की तरह देखें (डेमो): चालू&#x27;:&#x27;स्वीकृत सदस्य की तरह देखें (डेमो): बंद&#x27;):(on?&#x27;✅ See as approved member (demo): ON&#x27;:&#x27;See as approved member (demo): OFF&#x27;)}
+ var _p=S.profile;S.profile=function(){return _p()+&#x27;&lt;button class=&quot;dbtn&quot; id=&quot;apdemo&quot; type=&quot;button&quot; style=&quot;width:auto;display:block;margin:6px auto 0;padding:5px 12px;font-size:11.5px;min-height:0;box-shadow:none;border:1px dashed #C98AA0;background:transparent;color:#7A1434&quot; onclick=&quot;__apToggle(this)&quot;&gt;&#x27;+lab()+&#x27;&lt;/button&gt;&#x27;};
+ window.__apToggle=function(b){var on=!ap();try{localStorage.setItem(&#x27;djsg_demo_approved&#x27;,on?&#x27;1&#x27;:&#x27;0&#x27;)}catch(_){}try{window.__smPaint()}catch(_){}if(b)b.textContent=lab()};
+})();
+&lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;"></iframe></section>
 
 <!-- 8 Approval message -->
@@ -3512,6 +3525,33 @@ function go(){var m=document.getElementById('djlm').value.replace(/\D/g,''),c=do
   tries++;if(tries>=5){tries=0;until=Date.now()+30000;setE('wait',30)}else setE('bad');
   var cc=document.getElementById('djlc');cc.value='';try{cc.focus()}catch(_){}})
  .catch(function(){fin();setE('net')})}
+})();
+</script>
+<!-- 19 Nov 2026 (fix list point 5, owner's "fix the list"): the installed app / a phone with Chrome "Desktop site" ON (reports ~980 px) opened the COMPUTER view (small phone frame + "Back to Home"). Now the computer view shows only on a real computer (wide screen + mouse) and never in the installed app. On a phone in "Desktop site" mode the app fills the screen at normal size. -->
+<style id="p5phone">
+html.djph #dhome{display:none!important}
+html.djph .wrap{display:block!important;padding:0!important}
+html.djph .phone{width:100%!important;height:var(--p5h,100dvh)!important;padding:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;margin:0!important}
+html.djph .screen{border-radius:0!important;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+html.djph #dqr{display:none!important}
+</style>
+<script>
+(function(){
+ var mm=window.matchMedia.bind(window);
+ function q(x){try{return mm(x).matches}catch(_){return false}}
+ var inst=q('(display-mode: standalone)')||q('(display-mode: fullscreen)')||q('(display-mode: minimal-ui)')||navigator.standalone===true;
+ var pc=q('(hover:hover) and (pointer:fine)');
+ if(!(inst||!pc))return;               /* real computer: nothing changes */
+ var H=document.documentElement;H.classList.add('djph');
+ /* any "computer view" check for width >=761 px now says "no" on phones / installed app */
+ window.matchMedia=function(x){var s=String(x).replace(/\s/g,'');
+  if(/^\(min-width:7[6-9]\dpx\)$/.test(s)){var m=mm('(min-width:99999px)');return m}
+  return mm(x)};
+ /* Chrome "Desktop site" on a phone: page is ~980 px wide on a ~400 px screen -> zoom back to normal size */
+ function z(){var sw=screen.width||0,iw=window.innerWidth||0;
+  if(sw>0&&sw<760&&iw>sw*1.15){var k=iw/sw;H.style.zoom=k.toFixed(4);H.style.setProperty('--p5h',(window.innerHeight/k).toFixed(1)+'px')}
+  else{H.style.zoom='';H.style.removeProperty('--p5h')}}
+ z();addEventListener('resize',z);
 })();
 </script>
 <!-- 18 Nov 2026 (fix list point 6, owner's yes): on a computer the phone frame is made smaller to fit the screen (nothing cut: Insta, New post, stories), and a clear "‹ Back to Home" to the website stays at the top left. Phones and the installed app unchanged. -->
