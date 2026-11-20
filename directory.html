@@ -714,7 +714,14 @@ DA.addEventListener('click',function(e){var b=e.target.closest('button,a');if(!b
  if(d.dok){var U2=updGet();if(U2){U2.st='ok';updSet(U2)}render();dtoast(t('du_done'));e.stopPropagation();return}
 });
 DA.addEventListener('input',function(e){if(e.target.id==='dq'){DQ=e.target.value;var f=DQ.trim()||DF!=='all'?M.filter(function(m){var o=Q,ob=BIZ;Q=DQ;BIZ=DF;var r=match(m);Q=o;BIZ=ob;return r}):null;document.getElementById('dres').innerHTML=resH(f)}});
-function gap(){var g=0;try{var f=parent.document.getElementById('pgf');if(f){var vv=parent.visualViewport?parent.visualViewport.height:parent.innerHeight;g=Math.round(f.getBoundingClientRect().bottom-Math.min(vv,parent.innerHeight))}/* 20 Nov 2026 (owner 15:18): a gap over 100 px is the on-screen KEYBOARD, not the hidden bottom edge; it made the bottom bar huge and left only the top of the form visible. Keyboard open = no extra gap. */var kb=g>100;DA.style.bottom=kb?g+'px':'';if(kb)g=0;var sa=parent.matchMedia&&parent.matchMedia('(display-mode: standalone)').matches;if(sa&&g<56&&!kb)g=56}catch(e){}DA.style.setProperty('--dgap',Math.max(0,g)+'px');fit()}
+function gap(){var g=0;
+/* 20 Nov 2026 (owner 15:18 + 15:35): while the on-screen keyboard is open over a text box, do NOT lift the bottom bar or shrink the panel (the visual-viewport maths is wrong while the page pans): the form just scrolls above the keyboard. */
+var kbOpen=false;try{kbOpen=!!KBF&&!!parent.visualViewport&&parent.visualViewport.height<parent.innerHeight*0.85}catch(e){}
+if(kbOpen){DA.style.bottom='';DA.style.setProperty('--dgap','0px');try{var db=DA.querySelector('.dab');if(db)db.style.paddingBottom=Math.round(parent.innerHeight-parent.visualViewport.height+20)+'px'}catch(e){}return}try{var db2=DA.querySelector('.dab');if(db2)db2.style.paddingBottom=''}catch(e){}
+try{var f=parent.document.getElementById('pgf');if(f){var vv=parent.visualViewport?parent.visualViewport.height:parent.innerHeight;g=Math.round(f.getBoundingClientRect().bottom-Math.min(vv,parent.innerHeight))}var sa=parent.matchMedia&&parent.matchMedia('(display-mode: standalone)').matches;if(sa&&g<56)g=56}catch(e){}DA.style.bottom='';DA.style.setProperty('--dgap',Math.max(0,g)+'px');fit()}
+var KBF=false;function isTx(el){return !!el&&/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)}
+DA.addEventListener('focusin',function(e){if(isTx(e.target)){KBF=true;gap();var t=e.target;t.style.scrollMarginTop='90px';setTimeout(function(){gap();try{t.scrollIntoView({block:'start',behavior:'smooth'})}catch(_){}},350)}});
+DA.addEventListener('focusout',function(){setTimeout(function(){if(!isTx(document.activeElement)){KBF=false;gap()}},250)});
 addEventListener('resize',gap);try{parent.addEventListener('resize',gap);parent.visualViewport&&parent.visualViewport.addEventListener('resize',gap)}catch(e){}gap();
 render();
 })();
