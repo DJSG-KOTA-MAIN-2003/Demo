@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Change WhatsApp group link · DJSG Kota Main</title>
+<style>
+:root{--maroon:#7B1E2B;--saffron:#E8891D;--cream:#FFF7EA;--ink:#2B1B16;--line:#E7D7B8;--muted:#6F5E55;--green:#1F6B45;--red:#B3261E;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--cream);color:var(--ink);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
+header{background:var(--maroon);color:var(--cream);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+header b{font-size:17px}
+header small{display:block;opacity:.85;font-size:12px}
+#lg{background:transparent;color:var(--cream);border:1px solid var(--cream);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+main{max-width:520px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.cur{word-break:break-all;background:var(--cream);border:1px dashed var(--line);border-radius:10px;padding:8px 10px;font-size:14px}
+.note{color:var(--muted);font-size:14px;margin:8px 0 0}
+button.go{margin-top:16px;width:100%;padding:13px;border:0;border-radius:999px;background:var(--maroon);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+button.go[disabled]{opacity:.6}
+#msg{margin-top:12px;font-weight:700}
+.ok{color:var(--green)}.er{color:var(--red)}
+a.t{display:inline-block;margin-top:12px;color:var(--maroon);font-weight:700}
+</style></head>
+<body>
+<header><div><b id="h1">WhatsApp group link</b><small id="h2">DJSG Kota Main · office only</small></div><button id="lg" type="button">हिन्दी</button></header>
+<main><div class="card">
+ <div id="curl" style="font-weight:700">Link in use now</div>
+ <div class="cur" id="cur">…</div>
+ <label for="nl" id="l1">New group invite link</label>
+ <input id="nl" type="url" inputmode="url" autocomplete="off" placeholder="https://chat.whatsapp.com/...">
+ <label for="dc" id="l2">Desk code</label>
+ <input id="dc" type="password" autocomplete="off" placeholder="">
+ <p class="note" id="n1">Open WhatsApp › your group › Group info › Invite via link › Copy link, and paste it above. The Desk code is given only to the President and Secretary.</p>
+ <button class="go" id="go" type="button">Save new link</button>
+ <div id="msg" role="status"></div>
+ <a class="t" id="tst" href="#" target="_blank" rel="noopener">Test the link now</a>
+</div></main>
+<script>
+(function(){
+var API='https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec';
+var DEF='https://chat.whatsapp.com/DRXmaIzJidv0TP4zInlJP6';
+var EN={h1:'WhatsApp group link',h2:'DJSG Kota Main · office only',curl:'Link in use now',l1:'New group invite link',l2:'Desk code',
+ n1:'Open WhatsApp › your group › Group info › Invite via link › Copy link, and paste it above. The Desk code is given only to the President and Secretary.',
+ go:'Save new link',tst:'Test the link now',lg:'हिन्दी',busy:'Saving… please wait',
+ ok:'✅ Saved. The Birthdays page, front page and app now open the new group.',
+ code:'Wrong Desk code.',wait:'Too many wrong codes. Please wait 10 minutes.',off:'Changing from this page is switched off. Put a Desk code in the Sheet (Settings tab) first.',
+ link:'This is not a WhatsApp group invite link. It must look like https://chat.whatsapp.com/…',net:'Could not reach the office Sheet. Check the internet and try again.',need:'Please fill both boxes.'};
+var HI={h1:'व्हाट्सऐप ग्रुप लिंक',h2:'DJSG कोटा मेन · केवल कार्यालय',curl:'अभी चालू लिंक',l1:'ग्रुप का नया इनवाइट लिंक',l2:'डेस्क कोड',
+ n1:'व्हाट्सऐप खोलें › आपका ग्रुप › ग्रुप जानकारी › लिंक से आमंत्रित करें › लिंक कॉपी करें, और ऊपर पेस्ट करें। डेस्क कोड केवल अध्यक्ष और सचिव को दिया जाता है।',
+ go:'नया लिंक सेव करें',tst:'लिंक अभी जाँचें',lg:'English',busy:'सेव हो रहा है… कृपया रुकें',
+ ok:'✅ सेव हो गया। जन्मदिन पेज, मुख्य पेज और ऐप अब नया ग्रुप खोलेंगे।',
+ code:'डेस्क कोड गलत है।',wait:'बहुत गलत कोड। कृपया 10 मिनट रुकें।',off:'इस पेज से बदलना बंद है। पहले शीट (Settings) में डेस्क कोड डालें।',
+ link:'यह व्हाट्सऐप ग्रुप इनवाइट लिंक नहीं है। यह https://chat.whatsapp.com/… जैसा होना चाहिए।',net:'कार्यालय शीट से संपर्क नहीं हो सका। इंटरनेट देखकर फिर कोशिश करें।',need:'कृपया दोनों खाने भरें।'};
+var L='en';try{L=localStorage.getItem('djsg_lang')==='hi'?'hi':'en'}catch(_){}
+var $=function(i){return document.getElementById(i)},cur=DEF;
+function T(k){return (L==='hi'?HI:EN)[k]}
+function paint(){document.documentElement.lang=L;['h1','h2','curl','l1','l2','n1','go','tst'].forEach(function(k){var e=$(k==='curl'?'curl':k==='go'?'go':k==='tst'?'tst':k);if(e)e.textContent=T(k)});$('lg').textContent=T('lg');$('cur').textContent=cur;$('tst').href=cur}
+function msg(k,c){var m=$('msg');m.textContent=T(k);m.className=c}
+$('lg').onclick=function(){L=L==='hi'?'en':'hi';try{localStorage.setItem('djsg_lang',L)}catch(_){}paint()};
+fetch(API+'?a=cfg&t='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j&&j.wa)cur=j.wa;paint()}).catch(function(){paint()});
+$('tst').onclick=function(){var v=$('nl').value.trim();if(/^https:\/\/chat\.whatsapp\.com\//.test(v))this.href=v};
+$('go').onclick=function(){
+ var link=$('nl').value.trim(),code=$('dc').value.trim();
+ if(!link||!code){msg('need','er');return}
+ var b=$('go');b.disabled=true;msg('busy','');
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({a:'setwa',link:link,code:code,ua:navigator.userAgent.slice(0,100),host:location.host})})
+ .then(function(r){return r.json()}).then(function(j){b.disabled=false;
+  if(j&&j.ok){cur=j.wa;try{localStorage.setItem('djsg_wa',j.wa)}catch(_){}$('nl').value='';$('dc').value='';paint();msg('ok','ok')}
+  else msg((j&&HI[j.err]&&j.err!=='ok')?j.err:'net','er')})
+ .catch(function(){b.disabled=false;msg('net','er')})};
+paint();
+})();
+</script>
+</body></html>

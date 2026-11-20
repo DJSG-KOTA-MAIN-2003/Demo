@@ -263,10 +263,10 @@ on:'चालू',off:'बंद',tab0:'आज',tab1:'इस सप्ताह'
 hb:'जन्मदिन: {b} · वर्षगाँठ: {a}',hs_v:'शुभकामना भेजने के लिए लॉगिन करें',hs_m:'नीचे शुभकामना भेजें',
 bd:'🎂 जन्मदिन',an:'💍 {n}वीं वर्षगाँठ',wish:'🙏 शुभकामना भेजें',wished:'✓ आपने शुभकामना दी',wa:'💬 व्हाट्सऐप',wn:'❤️ {n} शुभकामनाएँ',w0:'अभी कोई शुभकामना नहीं',
 mem:'श्री [सदस्य {n}]',sp:'श्रीमती [पत्नी {n}]',cpl:'श्री [सदस्य {n}] व श्रीमती [पत्नी {n}]',empty:'इस समय कोई नहीं।',
-wa_t:'व्हाट्सऐप पर शुभकामना',wa_p:'संदेश तैयार है। चाहें तो बदलें, फिर व्हाट्सऐप खोलें और भेजें दबाएँ।',
+wa_t:'व्हाट्सऐप पर शुभकामना',wa_p:'संदेश तैयार है। चाहें तो बदलें। बटन दबाते ही संदेश कॉपी होगा और हमारा व्हाट्सऐप ग्रुप खुलेगा — वहाँ पेस्ट करके भेजें दबाएँ।',
 msg_b:'जय जिनेन्द्र! {n} को जन्मदिन की हार्दिक शुभकामनाएँ। आपका जीवन सुख, स्वास्थ्य और धर्म से भरा रहे। — [आपका नाम], डीजेएसजी कोटा मेन',
 msg_a:'जय जिनेन्द्र! {n} को विवाह की {y}वीं वर्षगाँठ की हार्दिक शुभकामनाएँ। आपका साथ सदा सुखमय रहे। — [आपका नाम], डीजेएसजी कोटा मेन',
-open_wa:'💬 व्हाट्सऐप खोलें',copy:'संदेश कॉपी करें',copied:'संदेश कॉपी हो गया।',close:'बंद करें',
+open_wa:'💬 व्हाट्सऐप ग्रुप खोलें',copy:'संदेश कॉपी करें',copied:'संदेश कॉपी हो गया।',close:'बंद करें',
 wl_t:'किसने शुभकामना दी',you:'आप',justnow:'अभी',my_s:'आज {n} सदस्यों ने आपको शुभकामना दी।',
 t_wa:'डेमो: व्हाट्सऐप बंद है। असली साइट में व्हाट्सऐप इनके नंबर पर संदेश के साथ खुलेगा।',t_wish:'शुभकामना भेज दी गई। उन्हें ऐप में सूचना मिलेगी।',
 t_nav:'यह नमूना केवल जन्मदिन व वर्षगाँठ पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है। ऊपर "सदस्य" दबाकर सदस्य का दृश्य देखें।'};
@@ -274,10 +274,10 @@ var EN={yest:'Yesterday · belated',wishb:'🙏 Send belated wishes',msg_bb:'Jai
 hb:'Birthdays: {b} · Anniversaries: {a}',hs_v:'Log in to send your wishes',hs_m:'Send your wishes below',
 bd:'🎂 Birthday',an:'💍 {n} anniversary',wish:'🙏 Send wishes',wished:'✓ You wished',wa:'💬 WhatsApp',wn:'❤️ {n} wishes',w0:'No wishes yet',
 mem:'Mr [Member {n}]',sp:'Mrs [Spouse {n}]',cpl:'Mr [Member {n}] & Mrs [Spouse {n}]',empty:'Nobody in this period.',
-wa_t:'Wish on WhatsApp',wa_p:'The message is ready. Change it if you like, then open WhatsApp and press Send.',
+wa_t:'Wish on WhatsApp',wa_p:'The message is ready. Change it if you like. Tap the button: the message is copied and our WhatsApp group opens — paste it there and press Send.',
 msg_b:'Jai Jinendra! Many happy returns of the day, {n}. Wishing you health, happiness and peace. From [your name], DJSG Kota Main',
 msg_a:'Jai Jinendra! Warm wishes on your {y} wedding anniversary, {n}. May you always be happy together. From [your name], DJSG Kota Main',
-open_wa:'💬 Open WhatsApp',copy:'Copy message',copied:'Message copied.',close:'Close',
+open_wa:'💬 Open WhatsApp group',copy:'Copy message',copied:'Message copied.',close:'Close',
 wl_t:'Who wished',you:'You',justnow:'just now',my_s:'{n} members wished you today.',
 t_wa:'Demo: WhatsApp is off. On the real site WhatsApp opens to their number with the message.',t_wish:'Wishes sent. They get a notification in the app.',
 login:'Member Login',loggedin:'✓ Logged in',t_nav:'This sample shows only the Birthdays & Anniversaries page.',t_login:'Login is off in the demo. Tap "Member" at the top to see the member view.'};
@@ -339,7 +339,7 @@ document.addEventListener('click',function(e){
   sheet('<h2>'+T('wa_t')+'</h2><p class="note">'+T('wa_p')+'</p><label for="wamsg" class="note" style="font-weight:700">'+name(p)+'</label><textarea id="wamsg">'+m+'</textarea><button type="button" class="close wa" id="openwa">'+T('open_wa')+'</button><button type="button" class="close" id="copymsg">'+T('copy')+'</button>');return}
  if((t=e.target.closest('[data-list]'))){last=t;var p=D[+t.dataset.list];sheet('<h2>'+T('wl_t')+'</h2><p class="note">'+name(p)+' · '+F('wn',{n:p.w})+'</p>'+wishList(p.w,p.mine));return}
  if(e.target.closest('#mywish')){last=e.target;sheet('<h2>'+T('wl_t')+'</h2><p class="note">'+F('my_s',{n:12})+'</p>'+wishList(12,false));return}
- if(e.target.closest('#openwa')){toast(T('t_wa'));return}
+ if(e.target.closest('#openwa')){var ta0=$('#wamsg'),gl=window.__djWA;try{navigator.clipboard.writeText(ta0.value).catch(function(){})}catch(_){}toast(T('copied'));try{window.open(gl,'_blank','noopener')}catch(_){location.href=gl}return}
  if(e.target.closest('#copymsg')){var ta=$('#wamsg');var done=function(){toast(T('copied'))};try{navigator.clipboard.writeText(ta.value).then(done,function(){ta.select();done()})}catch(_){ta.select();done()}return}
  if(e.target.closest('#shx')||e.target===ov)return hide();
  if((t=e.target.closest('[data-tab]'))){tab=+t.dataset.tab;render();return}
@@ -717,4 +717,8 @@ document.addEventListener('click',function(e){if(e.target.closest&&e.target.clos
 setTimeout(lay,250);setTimeout(lay,900);setTimeout(lay,1800);try{document.fonts.ready.then(function(){later(60)})}catch(_){}
 })();
 </script>
+<script>/* WhatsApp group link: default here, the office can change it (Sheet / wa-link.html); read from the Google Sheet */
+(function(){var D='https://chat.whatsapp.com/DRXmaIzJidv0TP4zInlJP6',ok=function(v){return /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{10,40}$/.test(v||'')};
+window.__djWA=D;try{var c=localStorage.getItem('djsg_wa');if(ok(c))window.__djWA=c}catch(_){}
+try{fetch('https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec?a=cfg&t='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j&&ok(j.wa)){window.__djWA=j.wa;try{localStorage.setItem('djsg_wa',j.wa)}catch(_){}}}).catch(function(){})}catch(_){}})();</script>
 </body></html>

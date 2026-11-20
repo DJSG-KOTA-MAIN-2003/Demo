@@ -525,7 +525,7 @@ app:function(){return head('Get the DJSG app','Scan with your phone camera, or t
 biz:function(){return head('DJSG Business','Businesses of our members')+'<p>See what our members do, by type: jewellery, cloth, food, medical and more. Contact details open after member login.</p>'},
 blood:function(){return head('Blood Donation','Our group\'s own activity')+'<div style="height:140px;border-radius:16px;background:linear-gradient(135deg,#C62828,#7f0f1e);display:flex;align-items:center;justify-content:center;font-size:56px">🩸</div><p>[Separate page. Details to be given by the President.]</p>'},
 instapc:function(){var q=S.app().match(/<img class="qrimg"[^>]*>/);return head('DJSG Insta','Stories and posts · in the member app')+'<p class="nnote" style="font-size:14px">DJSG Insta lives in the member app on your phone. Scan with your phone camera to open it.</p>'+(q?q[0]:'')+'<a href="app.html" style="'+BTNS+'">Open the app on this computer anyway ›</a>'},
-wa:function(){return head('WhatsApp','Group and office')+'<span class="wab" style="opacity:.55;pointer-events:none">💬 Join our WhatsApp group</span><p class="nnote">The WhatsApp group link and the office number will be added here by the office soon.</p>'},
+wa:function(){return head('WhatsApp','Group and office')+'<a class="wab djwa" href="https://chat.whatsapp.com/DRXmaIzJidv0TP4zInlJP6" target="_blank" rel="noopener" style="text-decoration:none">💬 Join our WhatsApp group</a><p class="nnote">The office number will be added here by the office soon.</p>'},
 date:function(){return head('Today','7 November 2026')+'<p>Veer Nirvan Samvat 2552 · Tithi [sample] · Next festival: Deepawali</p>'},
 thought:function(){return head('Thought of the day','')+'<p>"Live and let live."</p>'}
 };
@@ -749,7 +749,7 @@ var D={
 "Businesses of our members":"हमारे सदस्यों के व्यवसाय","See what our members do, by type: jewellery, cloth, food, medical and more. Contact details open after member login.":"देखें हमारे सदस्य क्या करते हैं, प्रकार के अनुसार: आभूषण, कपड़ा, भोजन, चिकित्सा और अन्य। संपर्क जानकारी सदस्य लॉगिन के बाद खुलती है।",
 "Our group's own activity":"हमारे ग्रुप की अपनी सेवा","[Separate page. Details to be given by the President.]":"[अलग पेज। जानकारी अध्यक्ष देंगे।]",
 "Stories and posts · in the member app":"स्टोरी और पोस्ट · सदस्य ऐप में","DJSG Insta lives in the member app on your phone. Scan with your phone camera to open it.":"डीजेएसजी इंस्टा आपके फ़ोन के सदस्य ऐप में है। खोलने के लिए फ़ोन के कैमरे से स्कैन करें।","Open the app on this computer anyway ›":"फिर भी इस कंप्यूटर पर ऐप खोलें ›",
-"Group and office":"ग्रुप और कार्यालय","💬 Join our WhatsApp group":"💬 हमारे व्हाट्सऐप ग्रुप से जुड़ें","The WhatsApp group link and the office number will be added here by the office soon.":"व्हाट्सऐप ग्रुप लिंक और कार्यालय नंबर कार्यालय जल्द ही यहाँ जोड़ेगा।",
+"Group and office":"ग्रुप और कार्यालय","💬 Join our WhatsApp group":"💬 हमारे व्हाट्सऐप ग्रुप से जुड़ें","The office number will be added here by the office soon.":"कार्यालय नंबर कार्यालय जल्द ही यहाँ जोड़ेगा।",
 "Today":"आज","7 November 2026":"7 नवम्बर 2026","Veer Nirvan Samvat 2552 · Tithi [sample] · Next festival: Deepawali":"वीर निर्वाण संवत 2552 · तिथि [नमूना] · अगला पर्व: दीपावली","Thought of the day":"आज का विचार","Close":"बंद करें",
 "Business":"व्यवसाय","Celebrations":"उत्सव"
 };
@@ -791,4 +791,10 @@ apply();
 }
 </style>
 
+<script>/* WhatsApp group link from the Google Sheet (office changes it in wa-link.html) */
+(function(){var ok=function(v){return /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{10,40}$/.test(v||'')},W='';
+function ap(){if(!ok(W))return;var a=document.querySelectorAll('a.djwa');for(var k=0;k<a.length;k++)a[k].href=W}
+try{W=localStorage.getItem('djsg_wa')||''}catch(_){}
+try{fetch('https://script.google.com/macros/s/AKfycbw4KZzRxf3kRcmIQFYOec_o9VMa9iZ-HGEgWEBKmF-w4z3nGQ5XcHgObIBHMBA5LedcUQ/exec?a=cfg&t='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j&&ok(j.wa)){W=j.wa;try{localStorage.setItem('djsg_wa',W)}catch(_){}ap()}}).catch(function(){})}catch(_){}
+new MutationObserver(ap).observe(document.documentElement,{childList:true,subtree:true});ap()})();</script>
 </body></html>
