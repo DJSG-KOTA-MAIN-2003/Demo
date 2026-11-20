@@ -680,4 +680,54 @@ html.djinapp header.head .dj{font-size:15px!important}html.djinapp header.head .
 (function(){if(!document.documentElement.classList.contains('djinapp'))return;
 function sync(){var n=document.querySelector('nav.nav [aria-current]'),b=document.querySelector('header.head .brand');if(n&&b){var t=(n.textContent||'').trim();if(b.getAttribute('data-pn')!==t)b.setAttribute('data-pn',t)}}
 sync();setInterval(sync,500)})();</script>
+<!-- 20 Nov 2026 (fix list point H, owner's "fix the list"): Events front view inside the app = ONE screen, no cut cards. Title hidden (the strip already names the page), next-programme tile more compact, programme cards come in pages with ‹ › arrows (page size follows the visible height). Only under html.djinapp; the website and computer Events are unchanged. -->
+<style id="djinapp_e1">
+html.djinapp .wrap.page{display:flex!important;flex-direction:column;gap:7px!important;padding-top:6px!important;padding-bottom:0!important}
+html.djinapp .wrap.page>*{margin-top:0!important;margin-bottom:0!important}
+html.djinapp .wrap.page>.title,html.djinapp .wrap.page>p.note{display:none!important}
+html.djinapp #bx_next{padding:9px 12px!important;gap:3px 10px!important}
+html.djinapp #bx_next[hidden]{display:none!important}
+html.djinapp #bx_next .dt{width:58px!important}
+html.djinapp #bx_next .dt b{font-size:22px!important}
+html.djinapp #bx_next h2{font-size:17px!important;margin:1px 0 0!important}
+html.djinapp #bx_next .ei .meta{-webkit-line-clamp:1!important;font-size:12.5px!important}
+html.djinapp #bx_next .act .btn,html.djinapp #bx_next .act .sbtn{padding:8px 4px!important}
+html.djinapp #bx_tabs button{min-height:46px!important}
+html.djinapp #evl>.gpx{display:none!important}
+html.djinapp #evl .ev{padding:9px 10px!important;gap:4px!important}
+html.djinapp .gpn2{display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;color:#5A2A3C;min-height:38px}
+html.djinapp .gpn2[hidden]{display:none!important}
+html.djinapp .gpn2 b{min-width:40px;text-align:center;font-weight:800}
+html.djinapp .gpn2 button{width:52px;height:34px;border:0;border-radius:12px;background:linear-gradient(180deg,#C2185B,#A3123A);color:#fff;font:800 20px/1 system-ui;box-shadow:0 3px 0 #6E0B27;padding:0}
+html.djinapp .gpn2 button:active{transform:translateY(2px);box-shadow:0 1px 0 #6E0B27}
+@media(max-height:600px){html.djinapp #bx_tabs button{min-height:38px!important}html.djinapp #bx_next .k{display:none!important}html.djinapp #bx_next .dt{width:50px!important}html.djinapp #bx_next .dt b{font-size:18px!important}html.djinapp #bx_next{padding:7px 10px!important}html.djinapp #evl .ev{padding:7px 9px!important}html.djinapp #evl .ev .dt{width:48px!important}html.djinapp #evl .ev .dt b{font-size:18px!important}html.djinapp #evl .ev h3{font-size:13.5px!important}html.djinapp .gpn2{min-height:34px}html.djinapp #evl .addp,html.djinapp #evl .ev{font-size:12px}html.djinapp #evl .addp p,html.djinapp #evl .ev .by{font-size:11px!important;line-height:1.25!important}html.djinapp #bx_next .ei .meta{display:none!important}}
+</style>
+<script>
+(function(){var H=document.documentElement;if(!H.classList.contains('djinapp'))return;
+var L=document.getElementById('evl');if(!L)return;
+var nav=document.createElement('div');nav.className='gpn2';nav.hidden=true;nav.innerHTML='<button type="button" aria-label="Previous">&#8249;</button><b></b><button type="button" aria-label="Next">&#8250;</button>';L.parentNode.insertBefore(nav,L.nextSibling);
+var bs=nav.querySelectorAll('button'),pb=nav.querySelector('b'),pg=0,pages=1,sig='';
+function lay(){var cards=[].slice.call(L.children).filter(function(c){return !c.hidden});
+ var s=cards.length+'|'+cards.map(function(c){return (c.textContent||'').slice(0,24)}).join(',');if(s!==sig){sig=s;pg=0}
+ if(!cards.length||!L.offsetParent){nav.hidden=true;return}
+ cards.forEach(function(c){c.classList.remove('gpx')});nav.hidden=true;
+ var top=L.getBoundingClientRect().top+(window.pageYOffset||0),gap=parseFloat(getComputedStyle(L).rowGap)||9,lim=innerHeight-62;
+ var rowsH=[];for(var i=0;i<cards.length;i+=2){var h=cards[i].offsetHeight;if(cards[i+1])h=Math.max(h,cards[i+1].offsetHeight);rowsH.push(h)}
+ var tot=0;rowsH.forEach(function(h,k){tot+=h+(k?gap:0)});
+ if(top+tot<=lim){pages=1;pg=0;pb.textContent='1/1';return}
+ var avail=lim-top-40-7,per=[],cur=0,used=0;
+ rowsH.forEach(function(h,k){var add=h+(cur?gap:0);if(cur&&used+add>avail){per.push(cur);cur=0;used=0;add=h}used+=add;cur++});if(cur)per.push(cur);
+ pages=per.length;if(pg>pages-1)pg=pages-1;if(pg<0)pg=0;
+ var start=0,from=0,to=0;per.forEach(function(n,k){if(k===pg){from=start;to=start+n*2}start+=n*2});
+ cards.forEach(function(c,i){c.classList.toggle('gpx',i<from||i>=to)});
+ nav.hidden=pages<2;pb.textContent=(pg+1)+'/'+pages}
+bs[0].addEventListener('click',function(){pg=(pg+pages-1)%pages;lay()});
+bs[1].addEventListener('click',function(){pg=(pg+1)%pages;lay()});
+var t=0;function later(ms){clearTimeout(t);t=setTimeout(lay,ms)}
+new MutationObserver(function(){later(30)}).observe(L,{childList:true});
+addEventListener('resize',function(){later(100)});
+document.addEventListener('click',function(){later(150)},true);
+setTimeout(lay,250);setTimeout(lay,900);setTimeout(lay,1800);try{document.fonts.ready.then(function(){later(60)})}catch(_){}
+})();
+</script>
 </body></html>
