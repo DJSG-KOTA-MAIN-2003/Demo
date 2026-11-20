@@ -671,6 +671,7 @@ var bt=document.createElement('button');bt.type='button';bt.className='bzadd';bt
 bt.addEventListener('click',function(){
  var P=null,f=null;try{P=window.parent;f=P.document.getElementById('pgf')}catch(e){}
  if(!P||!P.__openPage||!f){location.href='directory.html';return}
+ try{sessionStorage.setItem('djsg_from_biz','1')}catch(e){}
  P.__openPage('directory.html');
  /* the poll runs in the APP window (this page is replaced by the Directory, its own timers would stop) */
  P.eval("(function(){var n=0,f=document.getElementById('pgf'),iv=setInterval(function(){n++;try{var d=f.contentDocument,b=d&&d.querySelector('button[data-dgo=\"upd\"]');if(b&&d.readyState==='complete'&&/directory/.test(f.contentWindow.location.pathname)){clearInterval(iv);setTimeout(function(){try{var b2=f.contentDocument.querySelector('button[data-dgo=\"upd\"]');if(b2)b2.click()}catch(e){}},500);return}}catch(e){}if(n>60)clearInterval(iv)},150)})()")});
