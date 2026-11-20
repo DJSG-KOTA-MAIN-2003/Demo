@@ -811,9 +811,9 @@ html.djside.pcxcmp2 .wrap.page>.notes{padding:3px 12px}
 })();
 </script>
 <style id="bzw1">
-/* 20 Nov 2026 (owner's request 16:56): website, DJSG Business: a logged-in member can add or edit his business here, same as in the app (sent to the office, changes show after approval). Hidden inside the app (the app has its own button). */
+/* 20 Nov 2026 (owner's request 16:56, widened 17:57): website, DJSG Business: a logged-in member sees ALL his business details and can add or edit them, same as in the app (sent to the office, changes show after approval). Hidden inside the app (the app has its own button). */
 html.djinapp #bzwov{display:none!important}
-#bzwov .sheet{max-height:88dvh}
+#bzwov .sheet{max-height:92dvh}
 #bzwov .bzwst{margin:6px 0 10px;padding:10px 12px;border-radius:14px;background:#FFF4D6;border:1px solid #F1D48A;font-weight:800;font-size:14px}
 #bzwov .bzwst.ok{background:#E3F6E8;border-color:#9ED6AD;color:#145A2B}
 #bzwov .bzwch{display:flex;flex-direction:column;gap:2px;margin:8px 0;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:13.5px}
@@ -822,39 +822,61 @@ html.djinapp #bzwov{display:none!important}
 #bzwov .bzwr button{flex:1;min-height:44px;border-radius:999px;font-weight:800;cursor:pointer;border:0;background:var(--btn);color:#fff;box-shadow:0 4px 0 var(--btn-edge);font-family:inherit;font-size:14px}
 #bzwov .bzwr button.g{background:var(--glass);color:var(--ink);border:1px solid var(--line);box-shadow:none}
 #bzwov .bzwn{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+#bzwov .bzwnow{margin:4px 0 8px;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:13.5px;display:grid;grid-template-columns:auto 1fr;gap:3px 10px}
+#bzwov .bzwnow b{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;align-self:center}
+#bzwov .bzwg{display:grid;grid-template-columns:1fr;gap:0 14px}
+#bzwov .bzwg .full{grid-column:1/-1}
+@media(min-width:760px){#bzwov .sheet{width:min(820px,calc(100% - 32px))}#bzwov .bzwg{grid-template-columns:1fr 1fr}}
 </style>
 <div class="ov" id="bzwov" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="bzwh"><h2 id="bzwh"></h2><div id="bzwb" class="pg2f"></div><button type="button" class="close" id="bzwcl"></button></div></div>
 <script id="bzwjs">
 (function(){var H=document.documentElement;if(H.classList.contains('djinapp'))return;
 var KEY='djsg_biz_upd',MINE='djsg_biz_mine';
 var TYP=[['🏪','Trade / shop','व्यापार / दुकान'],['🏭','Manufacturing / factory','निर्माण / फ़ैक्ट्री'],['📦','Wholesale','थोक व्यापार'],['💍','Jewellery','आभूषण'],['👗','Cloth / garments','कपड़ा / गारमेंट'],['🛒','Grocery / FMCG','किराना / FMCG'],['🍛','Food / restaurant','भोजन / रेस्टोरेंट'],['💊','Medical / pharma','चिकित्सा / फार्मा'],['🎓','Education / coaching','शिक्षा / कोचिंग'],['💻','IT / software','IT / सॉफ़्टवेयर'],['⚖️','Professional (CA / lawyer / architect)','प्रोफ़ेशनल (CA / वकील / आर्किटेक्ट)'],['🏗️','Real estate / construction','रियल एस्टेट / निर्माण कार्य'],['🌾','Farming','कृषि'],['✨','Other','अन्य']];
-var W={en:{vp:'Members can add or edit their business here after Member Login, the same as in the app. The type you choose puts it in the right group.',mp:'Add your business or change its details. The office checks it first, then it shows here and in the Directory.',vb:'Member Login',mb:'➕ Add / Edit my business',h:'➕ Add / Edit my business',nm:'Business name',ty:'Business type',pick:'Choose the type',nt:'A note for the office (optional)',ntp:'e.g. New shop opened',send:'Send to the office',sn:'The President or Secretary checks it. Your business shows on this page after approval.',wait:'⏳ Waiting for office check',sent:'Sent on',wn:'The President or Secretary checks your changes. Your business shows after approval. You get a note in the app.',can:'Cancel request',cand:'Request cancelled',ok:'✔ Office approves (demo)',done:'✅ Your business details are updated',need:'Please write the business name and choose the type.',cl:'Close',old:'Not added yet'},
-hi:{vp:'सदस्य लॉगिन के बाद यहाँ अपना व्यवसाय जोड़ या बदल सकते हैं, जैसे ऐप में। चुना गया प्रकार इसे सही समूह में रखता है।',mp:'अपना व्यवसाय जोड़ें या उसकी जानकारी बदलें। पहले कार्यालय जाँचता है, फिर यह यहाँ और निर्देशिका में दिखता है।',vb:'सदस्य लॉगिन',mb:'➕ मेरा व्यवसाय जोड़ें / बदलें',h:'➕ मेरा व्यवसाय जोड़ें / बदलें',nm:'व्यवसाय का नाम',ty:'व्यवसाय का प्रकार',pick:'प्रकार चुनें',nt:'कार्यालय के लिए संदेश (वैकल्पिक)',ntp:'जैसे: नई दुकान खुली',send:'कार्यालय को भेजें',sn:'अध्यक्ष या सचिव जाँचेंगे। मंज़ूरी के बाद आपका व्यवसाय इस पृष्ठ पर दिखेगा।',wait:'⏳ कार्यालय की जाँच की प्रतीक्षा',sent:'भेजा',wn:'अध्यक्ष या सचिव आपके बदलाव जाँचेंगे। मंज़ूरी के बाद आपका व्यवसाय दिखेगा। ऐप में सूचना मिलेगी।',can:'अनुरोध रद्द करें',cand:'अनुरोध रद्द किया',ok:'✔ कार्यालय की मंज़ूरी (डेमो)',done:'✅ आपके व्यवसाय की जानकारी बदल दी गई',need:'कृपया व्यवसाय का नाम लिखें और प्रकार चुनें।',cl:'बंद करें',old:'अभी जोड़ा नहीं'}};
+/* sample values shown until the member's own approved details exist (the same sample the Directory demo uses) */
+var DEF={n:'[Business name]',t:0,d:'[What you sell or do]',a:'[Shop address], Kota',p:'[98xxx xxxxx]',w:'[98xxx xxxxx]'};
+var W={en:{vp:'Members can add or edit their business here after Member Login, the same as in the app. The type you choose puts it in the right group.',mp:'See your business details, add or change them. The office checks first, then it shows here and in the Directory.',vb:'Member Login',mb:'➕ Add / Edit my business',h:'➕ Add / Edit my business',now:'Your business now',nm:'Business name',ty:'Business type',dsc:'What your business does',adr:'Shop / office address',ph:'Phone for members',wa:'WhatsApp',pic:'Business photo (optional)',pick:'Choose the type',nt:'A note for the office (optional)',ntp:'e.g. New shop opened',send:'Send to the office',sn:'The President or Secretary checks it. Your business shows on this page after approval.',wait:'⏳ Waiting for office check',sent:'Sent on',wn:'The President or Secretary checks your changes. Your business shows after approval. You get a note in the app.',can:'Cancel request',ok:'✔ Office approves (demo)',done:'✅ Your business details are updated',need:'Please write the business name and choose the type.',none:'Nothing is changed yet.',cl:'Close',newph:'New photo'},
+hi:{vp:'सदस्य लॉगिन के बाद यहाँ अपना व्यवसाय जोड़ या बदल सकते हैं, जैसे ऐप में। चुना गया प्रकार इसे सही समूह में रखता है।',mp:'अपने व्यवसाय की जानकारी देखें, जोड़ें या बदलें। पहले कार्यालय जाँचता है, फिर यह यहाँ और निर्देशिका में दिखता है।',vb:'सदस्य लॉगिन',mb:'➕ मेरा व्यवसाय जोड़ें / बदलें',h:'➕ मेरा व्यवसाय जोड़ें / बदलें',now:'आपका व्यवसाय अभी',nm:'व्यवसाय का नाम',ty:'व्यवसाय का प्रकार',dsc:'आपका व्यवसाय क्या करता है',adr:'दुकान / कार्यालय का पता',ph:'सदस्यों के लिए फ़ोन',wa:'व्हाट्सऐप',pic:'व्यवसाय की फ़ोटो (वैकल्पिक)',pick:'प्रकार चुनें',nt:'कार्यालय के लिए संदेश (वैकल्पिक)',ntp:'जैसे: नई दुकान खुली',send:'कार्यालय को भेजें',sn:'अध्यक्ष या सचिव जाँचेंगे। मंज़ूरी के बाद आपका व्यवसाय इस पृष्ठ पर दिखेगा।',wait:'⏳ कार्यालय की जाँच की प्रतीक्षा',sent:'भेजा',wn:'अध्यक्ष या सचिव आपके बदलाव जाँचेंगे। मंज़ूरी के बाद आपका व्यवसाय दिखेगा। ऐप में सूचना मिलेगी।',can:'अनुरोध रद्द करें',ok:'✔ कार्यालय की मंज़ूरी (डेमो)',done:'✅ आपके व्यवसाय की जानकारी बदल दी गई',need:'कृपया व्यवसाय का नाम लिखें और प्रकार चुनें।',none:'अभी कुछ नहीं बदला।',cl:'बंद करें',newph:'नई फ़ोटो'}};
 function lg(){return H.lang==='hi'?'hi':'en'}function T(k){return W[lg()][k]}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}}
 function set(k,v){try{if(v)localStorage.setItem(k,JSON.stringify(v));else localStorage.removeItem(k)}catch(e){}}
 function isMem(){var m=document.getElementById('w_m');return !m||m.getAttribute('aria-pressed')==='true'}
 function tyName(i){var t=TYP[i];return t?t[0]+' '+t[1+(lg()==='hi'?1:0)]:''}
+var FL=[['n','nm'],['t','ty'],['d','dsc'],['a','adr'],['p','ph'],['w','wa']];
+function cur(){var M=get(MINE);var o={};FL.forEach(function(f){o[f[0]]=(M&&M[f[0]]!=null)?M[f[0]]:DEF[f[0]]});return o}
+function show(k,v){return k==='t'?tyName(v):v}
 var ov=document.getElementById('bzwov'),bd=document.getElementById('bzwb'),hh=document.getElementById('bzwh'),cl=document.getElementById('bzwcl');
 function sync(){var c=document.querySelector('.addc');if(!c)return;var p=c.querySelector('p'),b=c.querySelector('.btn'),m=isMem();
  if(p){p.removeAttribute('data-i');p.textContent=m?T('mp'):T('vp')}
  if(b){b.removeAttribute('data-i');b.textContent=m?T('mb'):T('vb');if(m){b.removeAttribute('data-t');b.id='bzwopen'}else{b.setAttribute('data-t','t_login');b.removeAttribute('id')}}
  if(!ov.hidden)draw()}
-function draw(){var U=get(KEY),M=get(MINE),h='';hh.textContent=T('h');cl.textContent=T('cl');
- if(U&&U.st==='wait'){var o=M?M.n+' · '+tyName(M.t):T('old');
-  h='<div class="bzwst">'+T('wait')+'</div><small>'+T('sent')+' '+esc(U.d)+'</small><div class="bzwch"><b>'+esc(T('nm'))+' / '+esc(T('ty'))+'</b><span class="o">'+esc(o)+'</span><span>'+esc(U.n)+' · '+esc(tyName(U.t))+'</span></div>'+(U.o?'<small>💬 '+esc(U.o)+'</small>':'')+'<p class="bzwn">'+T('wn')+'</p><div class="bzwr"><button type="button" class="g" data-bzw="can">'+T('can')+'</button><button type="button" data-bzw="ok">'+T('ok')+'</button></div>'}
- else{var n=M?M.n:'',t=M?M.t:-1;
+function draw(){var U=get(KEY),C=cur(),h='';hh.textContent=T('h');cl.textContent=T('cl');
+ if(U&&U.st==='wait'){
+  h='<div class="bzwst">'+T('wait')+'</div><small>'+T('sent')+' '+esc(U.d)+'</small><div class="bzwch">'+U.ch.map(function(c){return '<div><b>'+esc(T(c[0]))+'</b></div><span class="o">'+esc(show(c[0]==='ty'?'t':'x',c[1]))+'</span><span>'+esc(show(c[0]==='ty'?'t':'x',c[2]))+'</span>'}).join('<hr style="border:0;border-top:1px solid var(--line);width:100%;margin:5px 0">')+'</div>'+(U.o?'<small>💬 '+esc(U.o)+'</small>':'')+'<p class="bzwn">'+T('wn')+'</p><div class="bzwr"><button type="button" class="g" data-bzw="can">'+T('can')+'</button><button type="button" data-bzw="ok">'+T('ok')+'</button></div>';
+ } else {
   if(U&&U.st==='ok')h+='<div class="bzwst ok">'+T('done')+'</div>';
-  h+='<label for="bzw_n">'+T('nm')+'</label><input id="bzw_n" maxlength="80" value="'+esc(n)+'"><label for="bzw_t">'+T('ty')+'</label><select id="bzw_t"><option value="-1">'+T('pick')+'</option>'+TYP.map(function(x,i){return '<option value="'+i+'"'+(i===t?' selected':'')+'>'+x[0]+' '+x[1+(lg()==='hi'?1:0)]+'</option>'}).join('')+'</select><label for="bzw_o">'+T('nt')+'</label><input id="bzw_o" maxlength="200" placeholder="'+esc(T('ntp'))+'"><p class="bzwn" id="bzw_e" style="color:#B71C1C;display:none">'+T('need')+'</p><button type="button" class="pg2go" data-bzw="send">'+T('send')+'</button><p class="bzwn">'+T('sn')+'</p>'}
+  h+='<div class="bzwnow"><b>'+T('now')+'</b><span></span>'+FL.map(function(f){return '<b>'+esc(T(f[1]))+'</b><span>'+esc(show(f[0],C[f[0]]))+'</span>'}).join('')+'</div>';
+  h+='<div class="bzwg"><div><label for="bzw_n">'+T('nm')+'</label><input id="bzw_n" maxlength="80" value="'+esc(C.n)+'"></div><div><label for="bzw_t">'+T('ty')+'</label><select id="bzw_t"><option value="-1">'+T('pick')+'</option>'+TYP.map(function(x,i){return '<option value="'+i+'"'+(i===C.t?' selected':'')+'>'+x[0]+' '+x[1+(lg()==='hi'?1:0)]+'</option>'}).join('')+'</select></div>'
+   +'<div class="full"><label for="bzw_d">'+T('dsc')+'</label><input id="bzw_d" maxlength="120" value="'+esc(C.d)+'"></div>'
+   +'<div class="full"><label for="bzw_a">'+T('adr')+'</label><input id="bzw_a" maxlength="140" value="'+esc(C.a)+'"></div>'
+   +'<div><label for="bzw_p">'+T('ph')+'</label><input id="bzw_p" inputmode="tel" maxlength="20" value="'+esc(C.p)+'"></div><div><label for="bzw_w">'+T('wa')+'</label><input id="bzw_w" inputmode="tel" maxlength="20" value="'+esc(C.w)+'"></div>'
+   +'<div><label for="bzw_f">'+T('pic')+'</label><input id="bzw_f" type="file" accept="image/*"></div><div><label for="bzw_o">'+T('nt')+'</label><input id="bzw_o" maxlength="200" placeholder="'+esc(T('ntp'))+'"></div></div>'
+   +'<p class="bzwn" id="bzw_e" style="color:#B71C1C;display:none"></p><button type="button" class="pg2go" data-bzw="send">'+T('send')+'</button><p class="bzwn">'+T('sn')+'</p>'}
  bd.innerHTML=h}
 function open(){draw();ov.hidden=false}function close(){ov.hidden=true}
+function v(id){var e=document.getElementById(id);return e?e.value.trim():''}
 document.addEventListener('click',function(e){var g=e.target.closest('#bzwopen');if(g){e.stopPropagation();open();return}
  g=e.target.closest('[data-bzw]');if(g&&ov.contains(g)){var a=g.getAttribute('data-bzw'),U=get(KEY);
-  if(a==='send'){var n=document.getElementById('bzw_n').value.trim(),t=parseInt(document.getElementById('bzw_t').value,10);if(!n||!(t>=0)){document.getElementById('bzw_e').style.display='';return}
-   var d=new Date();set(KEY,{st:'wait',n:n,t:t,o:document.getElementById('bzw_o').value.trim(),d:d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+', '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})});draw()}
+  if(a==='send'){var C=cur(),n=v('bzw_n'),t=parseInt(v('bzw_t'),10),er=document.getElementById('bzw_e');
+   if(!n||!(t>=0)){er.textContent=T('need');er.style.display='';e.stopPropagation();return}
+   var NW={n:n,t:t,d:v('bzw_d'),a:v('bzw_a'),p:v('bzw_p'),w:v('bzw_w')},ch=[];
+   FL.forEach(function(f){if(String(NW[f[0]])!==String(C[f[0]]))ch.push([f[1],C[f[0]],NW[f[0]]])});
+   var pf=document.getElementById('bzw_f');if(pf&&pf.files&&pf.files.length)ch.push(['pic','',T('newph')]);
+   if(!ch.length){er.textContent=T('none');er.style.display='';e.stopPropagation();return}
+   var d=new Date();set(KEY,{st:'wait',nw:NW,ch:ch,o:v('bzw_o'),d:d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+', '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})});draw()}
   else if(a==='can'){set(KEY,null);draw()}
-  else if(a==='ok'&&U){set(MINE,{n:U.n,t:U.t});set(KEY,{st:'ok'});draw()}
+  else if(a==='ok'&&U&&U.nw){set(MINE,U.nw);set(KEY,{st:'ok'});draw()}
   e.stopPropagation();return}
  if(e.target===ov)close();if(e.target===cl)close()},true);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close()});

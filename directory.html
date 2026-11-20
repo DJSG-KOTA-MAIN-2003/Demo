@@ -892,7 +892,7 @@ html.djside .wrap.page{gap:8px}
  function fit(){var bk=main.querySelector('.book.pcxc[data-pcxl]');if(bk&&bk.dataset.pcxl){var L=bk.dataset.pcxl;[].forEach.call(bk.querySelectorAll('.toc .lt button'),function(b){if(b.textContent===L&&!b.classList.contains('on')&&!b.disabled)b.click()})}var el=main.querySelector('.spread,.list');if(!el)return;el.style.zoom='';if(!H.classList.contains('djside'))return;
   var top=el.getBoundingClientRect().top+scrollY,extra=0;
   /* 20 Nov 2026 (M2 + M5): the pager (Back / Page n / N / Next) and Back to Menu sit in one bar fixed at the bottom of the screen; the book / list keeps 66 px free above it */
-  var avail=innerHeight-top-14-66,h=el.offsetHeight;if(h>avail&&avail>200)el.style.zoom=Math.max(.5,avail/h).toFixed(3)}
+  var avail=innerHeight-top-14-84,h=el.offsetHeight;if(h>avail&&avail>200)el.style.zoom=Math.max(.5,avail/h).toFixed(3)}
  function sched(){cancelAnimationFrame(T);T=requestAnimationFrame(fit)}
  new MutationObserver(sched).observe(main,{childList:true,subtree:true});addEventListener('resize',sched);setTimeout(fit,300);setTimeout(fit,1200);try{document.fonts.ready.then(sched)}catch(_){}
 })();
@@ -908,8 +908,8 @@ html.djside #main .tools>.chips{grid-column:1/-1;justify-content:safe center}
 (function(){
  if(/[?&]app=1/.test(location.search))return;
  var H=document.documentElement,main=document.getElementById('main');if(!main)return;
- function check(){if(!H.classList.contains('djside'))return;var el=main.querySelector('.spread,.list');if(!el||!el.style.zoom&&el.getBoundingClientRect().bottom<=innerHeight-12-66)return;
-  var r=el.getBoundingClientRect(),z=parseFloat(el.style.zoom)||1,top=r.top,h=r.height,avail=innerHeight-top-16-66;
+ function check(){if(!H.classList.contains('djside'))return;var el=main.querySelector('.spread,.list');if(!el||!el.style.zoom&&el.getBoundingClientRect().bottom<=innerHeight-12-84)return;
+  var r=el.getBoundingClientRect(),z=parseFloat(el.style.zoom)||1,top=r.top,h=r.height,avail=innerHeight-top-16-84;
   if(h>avail+1&&avail>160){var nz=Math.max(.45,z*avail/h);el.style.zoom=nz.toFixed(3)}}
  var T=0;function sched(){clearTimeout(T);T=setTimeout(check,60)}
  new MutationObserver(sched).observe(main,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
@@ -922,13 +922,16 @@ html.djside #main .tools>.chips{grid-column:1/-1;justify-content:safe center}
 html.djside #main .tools .chipb[href="birthdays.html"]{display:none}
 html.djside #main .tools>.chips{flex-wrap:wrap!important;overflow:visible!important;justify-content:center!important;gap:6px 5px}
 html.djside #main .tools>.chips button{padding:6px 9px;font-size:12.5px;flex:none}
-html.djside .wrap.page{min-height:calc(100vh + 70px)}
-html.djside .wrap.page>.foot{margin-top:auto}
-html.djside #main{margin-bottom:84px}
-html.djside body{padding-bottom:72px}
-html.djside .wrap.page>.cta{position:fixed!important;right:clamp(14px,2vw,28px);bottom:12px;width:250px!important;max-width:250px!important;margin:0!important;z-index:40}
+html.djside .wrap.page{min-height:0}
+html.djside .wrap.page>.foot{position:fixed;left:calc(256px + clamp(14px,2vw,28px));right:clamp(14px,2vw,28px);bottom:5px;margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:center;align-items:baseline;gap:0 12px;z-index:39;pointer-events:none;line-height:1.2}
+html.djside .wrap.page>.foot b{font-size:12px}
+html.djside .wrap.page>.foot span{font-size:11px}
+html.djside .wrap.page>.flag:last-child{display:none}
+html.djside #main{margin-bottom:0}
+html.djside body{padding-bottom:0}
+html.djside .wrap.page>.cta{position:fixed!important;right:clamp(14px,2vw,28px);bottom:28px;width:250px!important;max-width:250px!important;margin:0!important;z-index:40}
 html.djside .wrap.page>.cta .btn{min-height:44px;height:44px;padding:0 14px;font-size:14.5px}
-html.djside #main .bnav,html.djside #main .book .bnav{position:fixed!important;inset:auto!important;left:calc(256px + clamp(14px,2vw,28px))!important;right:calc(clamp(14px,2vw,28px) + 264px)!important;bottom:12px!important;top:auto!important;height:44px;margin:0!important;display:flex!important;align-items:center;justify-content:space-between;gap:10px;z-index:40;pointer-events:auto}
+html.djside #main .bnav,html.djside #main .book .bnav{position:fixed!important;inset:auto!important;left:calc(256px + clamp(14px,2vw,28px))!important;right:calc(clamp(14px,2vw,28px) + 264px)!important;bottom:28px!important;top:auto!important;height:44px;margin:0!important;display:flex!important;align-items:center;justify-content:space-between;gap:10px;z-index:40;pointer-events:auto}
 html.djside #main .bnav .pn,html.djside #main .book .bnav .pn{display:block!important;text-align:center;font-weight:700;font-size:14px;color:var(--muted,#6b5568);flex:1;min-width:0;white-space:nowrap}
 html.djside #main .bnav .cb,html.djside #main .book .bnav .cb{position:static!important;transform:none!important;width:auto!important;height:44px!important;min-height:0!important;padding:0 22px!important;border-radius:999px!important;font-size:14.5px!important;flex:none}
 html.djside #main .book .bnav .cb::before,html.djside #main .book .bnav #bk::before,html.djside #main .book .bnav #nx::before{content:none!important}
@@ -965,4 +968,14 @@ new MutationObserver(later).observe(H,{subtree:true,childList:true,attributes:tr
 window.addEventListener('scroll',later,{passive:true});window.addEventListener('resize',later);
 setTimeout(sync,400);setTimeout(sync,1500)})();
 </script>
+<style id="dir3">
+/* 20 Nov 2026 (owner's list 17:57): the member window (Member / Spouse / Family) fits the screen on a computer without scrolling: photo on the left, details on the right. Only under html.djside. */
+html.djside .sheet:has(>.ptabs){width:min(780px,calc(100% - 32px));display:grid;grid-template-columns:230px minmax(0,1fr);grid-template-rows:auto auto auto auto;gap:8px 18px;align-items:start;padding:14px 18px 14px;max-height:94dvh}
+html.djside .sheet:has(>.ptabs)>.ptabs{grid-column:1/-1;grid-row:1}
+html.djside .sheet:has(>.ptabs)>.bigph,html.djside .sheet:has(>.ptabs)>.bigfam{grid-column:1;grid-row:2/4;width:230px;height:230px;align-self:start;justify-self:center}
+html.djside .sheet:has(>.ptabs)>div:not(.ptabs):not(.famph){grid-column:2;grid-row:2/4;min-width:0}
+html.djside .sheet:has(>.ptabs)>.membernote{grid-column:1/-1;grid-row:4;margin:0}
+html.djside .sheet:has(>.ptabs)>.close{grid-column:1/-1;grid-row:5;padding:10px}
+html.djside .sheet:has(>.ptabs) h2{font-size:20px;margin:0}
+</style>
 </body></html>
