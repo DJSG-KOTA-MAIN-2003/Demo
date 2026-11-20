@@ -294,7 +294,7 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
  <div id="anc_cta" hidden></div>
  <button class="addbox" type="button" id="addbox"><span data-i="ab_t">＋ Add a box</span><small data-i="ab_s">Demo only · in the real site the President adds boxes from the Desk</small></button>
  <div class="cta" id="bx_cta">
-  <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Home</span></button>
+  <button class="btn ghost" type="button" data-t="t_nav"><span aria-hidden="true">⌂</span><span data-i="b_home">Back to Menu</span></button>
  </div>
 
  <footer class="foot"><b data-i="f_name">Digambar Jain Social Group, Kota Main</b><span data-i="f_line">Kota · djsgkotamain2003@gmail.com</span></footer>
@@ -317,9 +317,9 @@ h2{font-size:clamp(19px,5vw,24px);color:var(--a1)}
 <script>/* 13 Nov (user): the demo opens in the member view so everything can be seen; the real site keeps the member-only rules */</script><script>
 (function(){
 var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
-var HI={vb_p:'सदस्यों के व्यवसाय देखने के लिए कृपया लॉगिन करें।',vb_h:'व्यवसाय दर्शन केवल सदस्यों के लिए है',sw_vis:'आगंतुक (बिना लॉगिन)',sw_vall:'आगंतुकों को फ़ोटो दिखाएँ (मुख्य स्विच)',sw_vev:'आगंतुकों को कार्यक्रमों की फ़ोटो',sw_vgen:'आगंतुकों को सामान्य फ़ोटो',sw_vbiz:'आगंतुकों को व्यवसाय दर्शन',sw_vn:'हर एल्बम में आगंतुक कितनी फ़ोटो देखें',sw_vno:'बंद होने पर आगंतुक केवल एल्बम कवर देखते हैं और लॉगिन करना होता है।',sw_all:'सभी',d_btn:'⚙️ अध्यक्ष स्विच',sw_h:'अध्यक्ष स्विच',sw_p:'बंद करने से केवल छिपता है, कुछ भी मिटता नहीं।',sw_boxes:'पेज के बॉक्स',sw_tev:'कार्यक्रमों की फ़ोटो टैब',sw_tgen:'सामान्य फ़ोटो टैब',sw_tbiz:'व्यवसाय दर्शन टैब',sw_yrs:'"वर्ष दर वर्ष" बटन',sw_jump:'"सीधे एल्बम पर जाएँ" बटन',sw_top:'"सबसे ज़्यादा पसंद" पट्टी',sw_stats:'फ़ोटो पर पसंद और देखे जाने की गिनती',sw_heart:'पसंद बटन (♡) और दो बार टैप',sw_play:'स्लाइड शो बटन',sw_th:'त्योहार के रंग (एल्बम के अनुसार)',sw_fx:'चलते इफ़ेक्ट (चमक, पंखुड़ियाँ)',sw_pd:'प्रोजेक्ट डायरेक्टर पंक्ति',sw_by:'"साझा किया" नाम',sw_add:'"अपनी फ़ोटो या व्यवसाय जोड़ें" बॉक्स',sw_cta:'"होम पर वापस" बटन',sw_x:'जोड़े गए बॉक्स',sw_view:'डेमो: पेज ऐसे देखें',ab_t:'＋ बॉक्स जोड़ें',ab_s:'केवल डेमो · असली साइट में अध्यक्ष डेस्क से बॉक्स जोड़ते हैं',ad_h:'नया बॉक्स जोड़ें',ad_p:'शीर्षक और जानकारी भरें। बटन ज़रूरी नहीं।',ad_tt:'शीर्षक',ad_tx:'जानकारी',ad_bt:'बटन का नाम (ज़रूरी नहीं)',ad_pl:'कहाँ दिखाएँ',pl1:'टैब के ऊपर',pl2:'फ़ोटो के ऊपर',pl3:'फ़ोटो के नीचे',pl4:'नीचे के बटन से पहले',ad_ok:'बॉक्स जोड़ें',ad_need:'कृपया शीर्षक और जानकारी भरें।',ad_done:'बॉक्स जोड़ा गया (डेमो)।',x_demo:'नया',sm_tt:'सूचना',sm_tx:'कार्यक्रम की अपनी फ़ोटो अपलोड लिंक से या ऐप से भेजें।',sm_bt:'कार्यालय से संपर्क करें',all_off:'गैलरी अध्यक्ष ने बंद की है।',w_m:'सदस्य (लॉगिन)',dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
+var HI={vb_p:'सदस्यों के व्यवसाय देखने के लिए कृपया लॉगिन करें।',vb_h:'व्यवसाय दर्शन केवल सदस्यों के लिए है',sw_vis:'आगंतुक (बिना लॉगिन)',sw_vall:'आगंतुकों को फ़ोटो दिखाएँ (मुख्य स्विच)',sw_vev:'आगंतुकों को कार्यक्रमों की फ़ोटो',sw_vgen:'आगंतुकों को सामान्य फ़ोटो',sw_vbiz:'आगंतुकों को व्यवसाय दर्शन',sw_vn:'हर एल्बम में आगंतुक कितनी फ़ोटो देखें',sw_vno:'बंद होने पर आगंतुक केवल एल्बम कवर देखते हैं और लॉगिन करना होता है।',sw_all:'सभी',d_btn:'⚙️ अध्यक्ष स्विच',sw_h:'अध्यक्ष स्विच',sw_p:'बंद करने से केवल छिपता है, कुछ भी मिटता नहीं।',sw_boxes:'पेज के बॉक्स',sw_tev:'कार्यक्रमों की फ़ोटो टैब',sw_tgen:'सामान्य फ़ोटो टैब',sw_tbiz:'व्यवसाय दर्शन टैब',sw_yrs:'"वर्ष दर वर्ष" बटन',sw_jump:'"सीधे एल्बम पर जाएँ" बटन',sw_top:'"सबसे ज़्यादा पसंद" पट्टी',sw_stats:'फ़ोटो पर पसंद और देखे जाने की गिनती',sw_heart:'पसंद बटन (♡) और दो बार टैप',sw_play:'स्लाइड शो बटन',sw_th:'त्योहार के रंग (एल्बम के अनुसार)',sw_fx:'चलते इफ़ेक्ट (चमक, पंखुड़ियाँ)',sw_pd:'प्रोजेक्ट डायरेक्टर पंक्ति',sw_by:'"साझा किया" नाम',sw_add:'"अपनी फ़ोटो या व्यवसाय जोड़ें" बॉक्स',sw_cta:'"मेनू पर वापस" बटन',sw_x:'जोड़े गए बॉक्स',sw_view:'डेमो: पेज ऐसे देखें',ab_t:'＋ बॉक्स जोड़ें',ab_s:'केवल डेमो · असली साइट में अध्यक्ष डेस्क से बॉक्स जोड़ते हैं',ad_h:'नया बॉक्स जोड़ें',ad_p:'शीर्षक और जानकारी भरें। बटन ज़रूरी नहीं।',ad_tt:'शीर्षक',ad_tx:'जानकारी',ad_bt:'बटन का नाम (ज़रूरी नहीं)',ad_pl:'कहाँ दिखाएँ',pl1:'टैब के ऊपर',pl2:'फ़ोटो के ऊपर',pl3:'फ़ोटो के नीचे',pl4:'नीचे के बटन से पहले',ad_ok:'बॉक्स जोड़ें',ad_need:'कृपया शीर्षक और जानकारी भरें।',ad_done:'बॉक्स जोड़ा गया (डेमो)।',x_demo:'नया',sm_tt:'सूचना',sm_tx:'कार्यक्रम की अपनी फ़ोटो अपलोड लिंक से या ऐप से भेजें।',sm_bt:'कार्यालय से संपर्क करें',all_off:'गैलरी अध्यक्ष ने बंद की है।',w_m:'सदस्य (लॉगिन)',dj:'डीजेएसजी',km:'कोटा मेन',login:'सदस्य लॉगिन',gname:'दिगम्बर जैन सोशल ग्रुप',est:'स्थापना 2003',ses:'सत्र 2026',
 m_home:'होम',m_cel:'जन्मदिन व वर्षगाँठ',m_about:'परिचय',m_bear:'पदाधिकारी',m_ev:'कार्यक्रम',m_gal:'गैलरी',m_dir:'निर्देशिका',m_biz:'डीजेएसजी व्यवसाय',m_blood:'रक्तदान',m_join:'सदस्य बनें',
-b_join:'सदस्य बनें',b_home:'होम पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
+b_join:'सदस्य बनें',b_home:'मेनू पर वापस',f_name:'दिगम्बर जैन सोशल ग्रुप, कोटा मेन',f_line:'कोटा · djsgkotamain2003@gmail.com',
 d_who:'पेज ऐसे देखें:',w_v:'आगंतुक',w_m:'सदस्य (लॉगिन)',lk_h:'सामान्य फ़ोटो केवल सदस्यों के लिए हैं',lk_p:'ये फ़ोटो देखने के लिए कृपया लॉगिन करें।',more:'सभी {n} फ़ोटो देखने के लिए लॉगिन करें',t_like:'पसंद करने के लिए सदस्य लॉगिन करें।',eyebrow:'गैलरी',h1:'हमारे ग्रुप की यादें',t_ev:'कार्यक्रमों की फ़ोटो',t_gen:'सामान्य फ़ोटो',t_biz:'व्यवसाय दर्शन',
 l_year:'हमारी यात्रा, वर्ष दर वर्ष',l_alb:'सीधे एल्बम पर जाएँ',h_albs:'एल्बम',d_fx:'इफ़ेक्ट स्विच (अध्यक्ष डेस्क)',
 n_like:'पसंद करने के लिए ♡ दबाएँ। फ़ोटो पर दो बार टैप करने से भी पसंद होती है। बड़ा देखने के लिए एक बार टैप करें।',
@@ -329,7 +329,7 @@ n_g:'नमूना चित्र और नमूना कार्यक�
 t_nav:'यह नमूना केवल गैलरी पेज दिखाता है।',t_login:'डेमो में लॉगिन बंद है।',
 all:'सभी',top:'⭐ सबसे ज़्यादा पसंद',nph:'{n} फ़ोटो',nal:'{n} एल्बम',appr:'स्वीकृत (नमूना फ़ोटो)',views:'👁 {n} बार देखा गया',of:'{a} / {b}',bl:'संपर्क देखने के लिए लॉगिन',smp:'नमूना',mem:'सदस्य का नाम यहाँ दिखेगा',
 back:'‹ सभी एल्बम',play:'▶ स्लाइड शो चलाएँ',lplay:'▶ चलाएँ',lpause:'⏸ रोकें',pd:'प्रोजेक्ट डायरेक्टर',tba:'शीघ्र घोषित होगा',by:'साझा किया: श्री [पूर्व अध्यक्ष]',on:'चालू',off:'बंद',like:'पसंद करें',kota:'कोटा'};
-var EN={w_v:'Visitor',w_m:'Member (logged in)',vb_p:'Please log in to see the members\' businesses.',vb_h:'Business Showcase is for members',sw_vis:'Visitors (not logged in)',sw_vall:'Show photos to visitors (main switch)',sw_vev:'Event photos for visitors',sw_vgen:'General photos for visitors',sw_vbiz:'Business Showcase for visitors',sw_vn:'Photos a visitor sees in each album',sw_vno:'When off, visitors see album covers only and must log in.',sw_all:'All',sw_h:'President switches',sw_p:'Switching off only hides. Nothing is deleted.',sw_boxes:'Boxes on this page',sw_tev:'Event photos tab',sw_tgen:'General photos tab',sw_tbiz:'Business Showcase tab',sw_yrs:'"Year by year" buttons',sw_jump:'"Jump to an album" buttons',sw_top:'"Most liked" strip',sw_stats:'Likes and views count on photos',sw_heart:'Like button (♡) and double-tap',sw_play:'Slideshow button',sw_th:'Festival colours (by album)',sw_fx:'Moving effects (sparkles, petals)',sw_pd:'Project Director line',sw_by:'"Shared by" name',sw_add:'"Add your photo or business" box',sw_cta:'"Back to Home" button',sw_x:'Added boxes',sw_view:'Demo: see the page as',ad_h:'Add a new box',ad_p:'Fill the title and text. The button is optional.',ad_tt:'Title',ad_tx:'Text',ad_bt:'Button name (optional)',ad_pl:'Where to show',pl1:'Above the tabs',pl2:'Above the photos',pl3:'Below the photos',pl4:'Before the bottom buttons',ad_ok:'Add the box',ad_need:'Please fill the title and text.',ad_done:'Box added (demo).',x_demo:'New',sm_tt:'Notice',sm_tx:'Send your programme photos with the upload link or from the app.',sm_bt:'Contact the office',t_nav:'This sample shows only the Gallery page.',t_login:'Login is switched off in the demo.',
+var EN={w_v:'Visitor',w_m:'Member (logged in)',vb_p:'Please log in to see the members\' businesses.',vb_h:'Business Showcase is for members',sw_vis:'Visitors (not logged in)',sw_vall:'Show photos to visitors (main switch)',sw_vev:'Event photos for visitors',sw_vgen:'General photos for visitors',sw_vbiz:'Business Showcase for visitors',sw_vn:'Photos a visitor sees in each album',sw_vno:'When off, visitors see album covers only and must log in.',sw_all:'All',sw_h:'President switches',sw_p:'Switching off only hides. Nothing is deleted.',sw_boxes:'Boxes on this page',sw_tev:'Event photos tab',sw_tgen:'General photos tab',sw_tbiz:'Business Showcase tab',sw_yrs:'"Year by year" buttons',sw_jump:'"Jump to an album" buttons',sw_top:'"Most liked" strip',sw_stats:'Likes and views count on photos',sw_heart:'Like button (♡) and double-tap',sw_play:'Slideshow button',sw_th:'Festival colours (by album)',sw_fx:'Moving effects (sparkles, petals)',sw_pd:'Project Director line',sw_by:'"Shared by" name',sw_add:'"Add your photo or business" box',sw_cta:'"Back to Menu" button',sw_x:'Added boxes',sw_view:'Demo: see the page as',ad_h:'Add a new box',ad_p:'Fill the title and text. The button is optional.',ad_tt:'Title',ad_tx:'Text',ad_bt:'Button name (optional)',ad_pl:'Where to show',pl1:'Above the tabs',pl2:'Above the photos',pl3:'Below the photos',pl4:'Before the bottom buttons',ad_ok:'Add the box',ad_need:'Please fill the title and text.',ad_done:'Box added (demo).',x_demo:'New',sm_tt:'Notice',sm_tx:'Send your programme photos with the upload link or from the app.',sm_bt:'Contact the office',t_nav:'This sample shows only the Gallery page.',t_login:'Login is switched off in the demo.',
 more:'Log in to see all {n} photos',t_like:'Members log in to like a photo.',all:'All',top:'⭐ Most liked',nph:'{n} photos',nal:'{n} albums',appr:'Approved (sample photo)',views:'👁 Seen {n} times',of:'{a} of {b}',bl:'Log in to see contact',smp:'Sample',mem:'Member name shows here',
 back:'‹ All albums',play:'▶ Play slideshow',lplay:'▶ Play',lpause:'⏸ Pause',pd:'Project Director',tba:'To be announced',by:'Shared by Mr [Past president]',on:'ON',off:'OFF',like:'Like',kota:'Kota'};
 $$('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -622,13 +622,13 @@ html.djside.pcxscr{scroll-behavior:auto}
  }
  function layout(){
   if(!page)return;reset();
-  if(!on()){H.classList.remove('pcxscr');return}
-  H.classList.add('pcxscr');var VH=innerHeight;lastW=innerWidth;lastH=VH;
+  if(!on()){H.classList.remove('pcxscr');if(window.__pcxFitOff)window.__pcxFitOff();return}
+  H.classList.add('pcxscr');var VH=innerHeight;lastW=innerWidth;lastH=VH;if(window.__pcxFit)window.__pcxFit(VH);
   var y=scrollY;place(page,VH,0);
   var sh=H.scrollHeight;N=Math.max(1,Math.ceil((sh-4)/VH));var need=N*VH-sh;if(need>0)page.style.paddingBottom=(parseFloat(getComputedStyle(page).paddingBottom)+need)+'px';
   scrollTo(0,Math.round(y/VH)*VH);upd()}
  function cur(){return Math.min(N-1,Math.max(0,Math.round(scrollY/innerHeight)))}
- function upd(){var c=cur();cnt.textContent=(hiL()?'स्क्रीन ':'Screen ')+(c+1)+(hiL()?' / ':' of ')+N;document.getElementById('pcxup').disabled=c===0;document.getElementById('pcxdn').disabled=c>=N-1}
+ function upd(){var c=cur();bar.style.display=N<2?'none':'';cnt.textContent=(hiL()?'स्क्रीन ':'Screen ')+(c+1)+(hiL()?' / ':' of ')+N;document.getElementById('pcxup').disabled=c===0;document.getElementById('pcxdn').disabled=c>=N-1}
  function goto(k){k=Math.max(0,Math.min(N-1,k));lt=Date.now();window.scrollTo({top:k*innerHeight,behavior:'smooth'});setTimeout(upd,450)}
  document.getElementById('pcxup').onclick=function(){goto(cur()-1)};document.getElementById('pcxdn').onclick=function(){goto(cur()+1)};
  function modal(t){if(H.style.overflow==='hidden'||document.body.style.overflow==='hidden')return true;
@@ -907,6 +907,125 @@ new MutationObserver(function(){later(30)}).observe(B,{childList:true});
 addEventListener('resize',function(){later(100)});
 document.addEventListener('click',function(){later(150)},true);
 setTimeout(lay,250);setTimeout(lay,900);setTimeout(lay,1800);try{document.fonts.ready.then(function(){later(60)})}catch(_){}
+})();
+</script>
+
+<style id="pcxm1">
+/* 20 Nov 2026 (owner's list M1 + M6, website on a computer): the whole page fits the first screen (Back to Menu, Add a box, notes and footer included). Only under html.djside (left menu = computer). Phones, the app and the other pages are not touched. */
+html.djside.pcxfit body{min-height:100vh}
+html.djside.pcxfit .wrap.page{flex-direction:row;flex-wrap:wrap;align-content:flex-start;column-gap:12px;row-gap:10px}
+html.djside.pcxfit .wrap.page>*{flex:0 0 100%;min-width:0;box-sizing:border-box}
+html.djside.pcxfit .wrap.page>.note{margin-top:0;margin-bottom:0;font-size:12.5px;line-height:1.3;padding:0}
+html.djside.pcxfit .wrap.page>.notes{flex-direction:row;flex-wrap:wrap;gap:2px 18px;padding:6px 14px;margin:0}
+html.djside.pcxfit .wrap.page>.notes .note{flex:1 1 30%;margin:0;font-size:11.5px;line-height:1.3;padding:0}
+html.djside.pcxfit .wrap.page>.cta{order:50;flex:0 0 250px;width:250px;max-width:250px;margin:0}
+html.djside.pcxfit .wrap.page>.cta .btn{min-height:44px;height:44px;padding:0 14px;font-size:14.5px}
+html.djside.pcxfit:not(.pcxab) .wrap.page>.cta{flex:0 0 100%;width:100%;max-width:300px;margin:0 auto}
+html.djside.pcxfit.pcxab .wrap.page>#addbox{order:51;flex:1 1 380px;display:flex;align-items:center;justify-content:center;gap:10px;height:44px;min-height:0;padding:4px 14px}
+html.djside.pcxfit.pcxab .wrap.page>#addbox small{display:inline;margin:0}
+html.djside.pcxfit .wrap.page>.foot{order:60;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:0 12px;padding:0;margin:0}
+html.djside.pcxfit .wrap.page>.foot b{font-size:13.5px}
+html.djside.pcxfit .wrap.page>.foot span{font-size:12px}
+html.djside.pcxfit .wrap.page>.flag:last-child{order:61;flex-basis:100%;margin:0}
+/* tighter cards only when the screen is too short (classes pcxcmp, then pcxcmp2) */
+html.djside.pcxcmp .wrap.page>.note.pcxdn{order:58;flex:0 1 auto;margin-left:auto;text-align:right}
+html.djside.pcxcmp .wrap.page>.note.pcxdn+.foot{margin-right:auto}
+html.djside.pcxcmp .wrap.page>.note.pcxdn~.foot{order:59;flex:0 1 auto;margin-right:auto}
+
+html.djside.pcxcmp #bx_next{padding:9px 18px;gap:12px}
+html.djside.pcxcmp #bx_next .dt{width:64px;padding:6px 2px}
+html.djside.pcxcmp #bx_next .dt b{font-size:24px}
+html.djside.pcxcmp #bx_next h2{font-size:22px;margin:0}
+html.djside.pcxcmp #bx_next .k{font-size:10px}
+html.djside.pcxcmp #bx_next .act .btn,html.djside.pcxcmp #evl .ev .act .btn{min-height:34px;height:34px;font-size:13.5px}
+html.djside.pcxcmp .sbtn{min-height:30px;padding:3px 8px}
+html.djside.pcxcmp #bx_next .act,html.djside.pcxcmp #evl .ev .act{gap:6px}
+html.djside.pcxcmp #bx_tabs{margin:0}
+html.djside.pcxcmp #bx_tabs button{min-height:34px;height:34px;padding-top:0;padding-bottom:0}
+html.djside.pcxcmp #evl{gap:10px}
+html.djside.pcxcmp #evl .ev{padding:8px 16px;gap:4px 12px}
+html.djside.pcxcmp #evl .ev .dt{width:58px;padding:5px 2px}
+html.djside.pcxcmp #evl .ev .dt b{font-size:20px}
+html.djside.pcxcmp #evl .ev .ei{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;row-gap:1px;align-items:center}
+html.djside.pcxcmp #evl .ev .ei .chips{grid-column:1;grid-row:1}
+html.djside.pcxcmp #evl .ev .ei h3{grid-column:2;grid-row:1;font-size:17px}
+html.djside.pcxcmp #evl .ev .ei .meta{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;gap:0 14px;font-size:13px}
+html.djside.pcxcmp #evl .ev .ei .pd{grid-column:1/-1;padding:2px 10px;font-size:12.5px}
+html.djside.pcxcmp .wrap.page>.note{font-size:12px}
+html.djside.pcxcmp #days{gap:6px}
+html.djside.pcxcmp #days .day{gap:4px}
+html.djside.pcxcmp #days .list{gap:8px}
+html.djside.pcxcmp #days .pc{padding:7px 12px;gap:2px 10px}
+html.djside.pcxcmp #days .pc .av{width:44px;height:44px}
+html.djside.pcxcmp #days .pc .acts .wb{min-height:32px;padding:5px 12px;font-size:13px}
+html.djside.pcxcmp2 .wrap.page{row-gap:7px}
+html.djside.pcxcmp2 .wrap.page>.title{padding-top:6px}
+html.djside.pcxcmp2 .wrap.page>.title h1{font-size:25px}
+html.djside.pcxcmp2 #albs{gap:9px}
+html.djside.pcxcmp2 #albs .alb .cv{height:62px}
+html.djside.pcxcmp2 #albs .alb .bd{padding-top:5px;padding-bottom:6px}
+html.djside.pcxcmp2 .pcxrail{padding:7px;gap:3px}
+html.djside.pcxcmp2 .pcxrail #years{gap:3px}
+html.djside.pcxcmp2 .pcxrail #years button{padding-top:4px!important;padding-bottom:4px!important;min-height:0!important;font-size:12.5px}
+html.djside.pcxcmp2 .pcxrail .pcxb{padding:6px 10px}
+html.djside.pcxcmp2 #bx_add{padding:10px 18px}
+html.djside.pcxcmp2 #bx_add h2{font-size:20px}
+html.djside.pcxcmp2 #bx_add .btn{min-height:40px;height:40px}
+html.djside.pcxcmp2 #types.bz3t .ty{padding:4px 5px}
+html.djside.pcxcmp2 #types.bz3t .ty i{font-size:17px;line-height:1.1}
+html.djside.pcxcmp2 .srch{min-height:0}
+html.djside.pcxcmp2 .srch input{min-height:0;height:34px}
+html.djside.pcxcmp2 .addc{padding:10px 18px;gap:8px}
+html.djside.pcxcmp2 .addc .btn{min-height:40px;height:40px}
+html.djside.pcxcmp2 .addc h2{font-size:20px}
+html.djside.pcxcmp2 #bx_next{padding:6px 16px}
+html.djside.pcxcmp2 #bx_next .dt{width:56px}
+html.djside.pcxcmp2 #bx_next .dt b{font-size:21px}
+html.djside.pcxcmp2 #bx_next h2{font-size:20px}
+html.djside.pcxcmp2 #evl{gap:7px}
+html.djside.pcxcmp2 #evl .ev{padding:6px 14px}
+html.djside.pcxcmp2 #evl .ev .ei{grid-template-columns:auto minmax(0,1fr) auto}
+html.djside.pcxcmp2 #evl .ev .ei .pd{grid-column:3;grid-row:1}
+html.djside.pcxcmp2 #evl .ev .dt{width:52px}
+html.djside.pcxcmp2 #days .pc{padding:5px 10px}
+html.djside.pcxcmp2 #days .pc .av{width:38px;height:38px}
+html.djside.pcxcmp2 #days .pc .acts .wb{min-height:28px;padding:3px 10px;font-size:12.5px}
+html.djside.pcxcmp2 #days .pc{grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto;gap:0 10px}
+html.djside.pcxcmp2 #days .pc .pics{grid-column:1;grid-row:1}
+html.djside.pcxcmp2 #days .pc .who{grid-column:2;grid-row:1;min-width:0}
+html.djside.pcxcmp2 #days .pc .acts{grid-column:3;grid-row:1;flex-wrap:nowrap;gap:6px}
+html.djside.pcxcmp2 #days .pc .acts .cnt{margin-left:4px;white-space:nowrap}
+html.djside.pcxcmp2 .hero{padding:4px 12px}
+html.djside.pcxcmp2 .wrap.page>.notes{padding:3px 12px}
+</style>
+
+<script id="pcxm1js">
+(function(){
+ if(/[?&]app=1/.test(location.search))return;
+ var H=document.documentElement,FLOOR=.8,done=[];
+ function vis(e){return getComputedStyle(e).display!=='none'&&e.getBoundingClientRect().height>0}
+ function bottom(pg){var b=0;[].forEach.call(pg.children,function(e){if(!vis(e))return;var r=e.getBoundingClientRect();if(r.bottom+scrollY>b)b=r.bottom+scrollY});return b}
+ window.__pcxFitOff=function(){done.forEach(function(e){e.style.zoom=''});done=[];H.classList.remove('pcxfit','pcxab','pcxcmp','pcxcmp2');[].forEach.call(document.querySelectorAll('.pcxdn'),function(e){e.classList.remove('pcxdn')})};
+ window.__pcxFit=function(VH){
+  var pg=document.querySelector('.wrap.page');if(!pg)return;
+  done.forEach(function(e){e.style.zoom=''});done=[];H.classList.remove('pcxcmp','pcxcmp2');[].forEach.call(pg.querySelectorAll(':scope>.pcxdn'),function(e){e.classList.remove('pcxdn')});
+  var ab=document.getElementById('addbox');
+  H.classList.add('pcxfit');H.classList.toggle('pcxab',!!(ab&&getComputedStyle(ab).display!=='none'));
+  var lim=VH-44,main=[].filter.call(pg.children,function(e){return !/(^|\s)(title|flag|foot|cta|note|notes)(\s|$)/.test(e.className)&&e.id!=='addbox'&&vis(e)});
+  if(!main.length||bottom(pg)<=lim)return;
+  var li=pg.children.length-1;for(;li>=0&&main.indexOf(pg.children[li])<0;li--);
+  for(var ni=li+1;ni<pg.children.length;ni++){if(/(^|\s)note(\s|$)/.test(pg.children[ni].className))pg.children[ni].classList.add('pcxdn')}
+  function ap(z){main.forEach(function(e){e.style.zoom=z>=1?'':z.toFixed(3)});return bottom(pg)-lim}
+  /* level 0: as is; level 1: tighter cards; level 2: tightest cards. At each level a small zoom may still be used before going to the next level. */
+  var FL=[.94,.9,FLOOR];
+  for(var L=0;L<3;L++){
+   H.classList.toggle('pcxcmp',L>=1);H.classList.toggle('pcxcmp2',L>=2);
+   if(ap(1)<=0)return;
+   if(ap(FL[L])<=0||L===2){
+    if(ap(FL[L])>0){done=main.slice();return}/* still too tall: the screen paging below splits it */
+    var lo=FL[L],hi=1;for(var k=0;k<7;k++){var mid=(lo+hi)/2;if(ap(mid)<=0)lo=mid;else hi=mid}
+    ap(lo);done=main.slice();return}
+  }};
 })();
 </script>
 </body></html>
