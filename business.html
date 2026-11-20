@@ -1,4 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><script>/* 20 Nov 2026 (fix list point B, owner: "desktop site on mobile should look as on a PC"): a phone with Chrome "Desktop site" ON (desktop browser name, ~980 px) got a stretched in-between layout. The check needs the desktop browser name, so a normal phone view is never redirected. That case now opens pcstage.html = the normal computer page (a 1366 x 800 screen) scaled to fit the phone width. Real computers, the normal phone view, the app window and tablets are not touched. */
+(function(){try{
+if(window.self!==window.top)return;
+var sw=screen.width,iw=window.innerWidth;
+if(!(sw<=700&&iw>=900&&iw>=sw*1.5&&matchMedia('(pointer:coarse)').matches&&!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)))return;
+var u=location.pathname.split('/').pop()||'index.html';
+if(!/^[a-z0-9_\-]+\.html$/i.test(u))return;
+location.replace('pcstage.html?p='+encodeURIComponent(u+location.search+location.hash));
+}catch(e){}})();
+</script><script>try{if(window.frameElement&&window.frameElement.id==='pgf')document.documentElement.classList.add('djinapp')}catch(e){}</script><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>DJSG Business Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
@@ -529,7 +538,7 @@ function tiles(){mine=true;tw.classList.add('bz3t');var x=li();
 new MutationObserver(function(){if(!mine)tiles()}).observe(tw,{childList:true});
 var pg=document.createElement('section');pg.id='bz3p';pg.hidden=true;tw.parentNode.insertBefore(pg,tw.nextSibling);
 var cur=null,page=0,pushed=false;
-function per(){return innerWidth>=1100?4:3}
+function per(){return window.__bzPer?window.__bzPer():(innerWidth>=1100?4:3)}
 function items(){if(!cur)return [];var x=li();if(cur.q!=null){var q=cur.q.toLowerCase();return BZ.filter(function(b){return (b[1]+' '+b[2]+' '+b[3]+' '+b[4]+' '+TY[b[0]][1]+' '+TY[b[0]][2]).toLowerCase().indexOf(q)>=0})}return cur.t===-1?BZ:BZ.filter(function(b){return b[0]===cur.t})}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function card(b){var t=TY[b[0]],x=li(),m=mem();return '<article class="card bz"><span class="cv" style="background:var('+t[3]+')" aria-hidden="true">'+t[0]+'</span><span class="tx"><b>'+b[1+x]+'</b><span class="cat">'+t[1+x]+'</span><span class="m">'+b[3+x]+'</span><span class="who">👤 '+T('mem')+'</span></span>'+(m?'<span class="ph">'+T('ph')+'</span><span class="act"><button type="button" class="btn" data-t="t_call">'+T('call')+'</button><button type="button" class="btn wa" data-t="t_wa">'+T('wa')+'</button></span>':'<span class="act one"><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></span>')+'</article>'}
@@ -567,4 +576,72 @@ tiles();
 })();
 </script>
 
+
+<!-- 20 Nov 2026 (fix list point D, owner's "fix the list"): inside the app window every inner page shows a slim strip with the DJSG logo, "DJSG Kota Main" and the page name. Only under html.djinapp; the website is unchanged. -->
+<style id="djinapp_strip">
+html.djinapp header.head{display:flex!important;align-items:center;justify-content:flex-start;padding:0!important;margin:0!important;min-height:0!important;gap:0!important}
+html.djinapp header.head .lang,html.djinapp header.head .login{display:none!important}
+html.djinapp header.head .brand{display:flex!important;align-items:center;gap:8px;width:100%;min-width:0}
+html.djinapp header.head .logo{width:32px!important;height:32px!important;border-width:1px!important;box-shadow:0 2px 6px var(--shadow)!important}
+html.djinapp header.head .names{flex-direction:row!important;gap:5px;align-items:baseline;line-height:1;min-width:0}
+html.djinapp header.head .dj{font-size:17px!important;letter-spacing:-.4px!important}
+html.djinapp header.head .km{font-size:15px!important;letter-spacing:-.3px!important}
+html.djinapp header.head .brand:not([data-pn])::after{display:none}
+html.djinapp header.head .brand::after{content:attr(data-pn);margin-left:auto;flex:none;max-width:46%;padding:4px 10px;border-radius:999px;background:var(--glass,rgba(255,255,255,.7));border:1px solid var(--line,#fff);color:var(--a1,#A3123A);font:800 11px/1.15 var(--body,system-ui);letter-spacing:.4px;text-align:center;box-shadow:0 2px 6px var(--shadow,rgba(60,20,50,.18))}
+
+@media(max-height:560px){
+html.djinapp header.head .logo{width:26px!important;height:26px!important}
+html.djinapp header.head .dj{font-size:15px!important}html.djinapp header.head .km{font-size:13.5px!important}
+html.djinapp .wrap.page{gap:4px!important;padding-top:4px!important}
+}
+@media(max-height:560px){
+html.djinapp .title{display:none!important}
+html.djinapp .srch input{min-height:34px!important}
+html.djinapp #types.bz3t{gap:5px!important}
+html.djinapp #types.bz3t .ty{padding:4px 2px 4px!important;border-radius:14px!important}
+html.djinapp #types.bz3t .ty i{font-size:17px!important}
+html.djinapp #types.bz3t .ty b{font-size:10.5px!important;line-height:1.08!important}
+html.djinapp #types.bz3t .ty small{font-size:10px!important}
+html.djinapp #types.bz3t .ty{gap:0!important}
+html.djinapp .wrap.page{padding-bottom:0!important;gap:3px!important}
+html.djinapp .srch{margin-bottom:2px}
+}
+</style>
+<script>/* 20 Nov 2026 (fix list point D): page name for the strip, taken from the active menu tab (so it follows हिन्दी / English) */
+(function(){if(!document.documentElement.classList.contains('djinapp'))return;
+function sync(){var n=document.querySelector('nav.nav [aria-current]'),b=document.querySelector('header.head .brand');if(n&&b){var t=(n.textContent||'').trim();if(b.getAttribute('data-pn')!==t)b.setAttribute('data-pn',t)}}
+sync();setInterval(sync,500)})();</script>
+
+<!-- 20 Nov 2026 (fix list point A, owner's "fix the list"): DJSG Business inside the app = one screen, no scrolling (type tiles; a type opens its businesses 2-3 at a time with arrows). Only under html.djinapp; website unchanged. -->
+<style id="djinapp_css">
+html.djinapp .demobar,html.djinapp .wrap>.flag,html.djinapp .wrap>.sub,html.djinapp nav.nav,html.djinapp .addc,html.djinapp .cta,html.djinapp footer.foot,html.djinapp .page>p.note,html.djinapp .bz3hint,html.djinapp .title .eyebrow{display:none!important}
+html.djinapp body{padding-top:0!important}
+html.djinapp .wrap.page{padding-top:8px!important;padding-bottom:6px!important;gap:8px!important}
+html.djinapp .title{padding:0!important;margin:0!important;text-align:left!important}
+html.djinapp .title h1{font-size:20px!important;line-height:1.15!important;margin:0!important;letter-spacing:-.4px}
+html.djinapp .srch{padding:0 12px!important;box-shadow:0 3px 8px var(--shadow)!important}
+html.djinapp .srch input{min-height:38px!important;font-size:15px}
+html.djinapp #types.bz3t{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+html.djinapp #types.bz3t .ty{padding:7px 3px 6px!important;border-radius:16px!important;gap:1px;box-shadow:0 3px 0 rgba(163,18,58,.12),0 5px 10px var(--shadow)!important}
+html.djinapp #types.bz3t .ty i{font-size:21px}
+html.djinapp #types.bz3t .ty b{font-size:11.5px!important;line-height:1.12}
+html.djinapp #types.bz3t .ty small{font-size:11px}
+html.djinapp .bz3h{gap:8px!important}
+html.djinapp .bz3back{padding:8px 13px!important;font-size:13px!important}
+html.djinapp .bz3ti i{width:38px!important;height:38px!important;font-size:21px!important}
+html.djinapp .bz3ti h2{font-size:17px!important}
+html.djinapp #bz3p{gap:8px!important}
+html.djinapp .bz3g{gap:8px!important}
+html.djinapp body.bz3open .title{display:none!important}
+html.djinapp .bz3g .bz{display:grid!important;grid-template-columns:46px 1fr auto;grid-template-areas:"cv tx tx" "ph ph act";gap:6px 10px!important;padding:9px 12px!important;align-items:center}
+html.djinapp .bz3g .bz .cv{grid-area:cv;width:46px!important;height:46px!important;min-width:0!important;font-size:24px!important;align-self:start}
+html.djinapp .bz3g .bz .tx{grid-area:tx;min-width:0}
+html.djinapp .bz3g .bz .ph{grid-area:ph;margin:0!important;font-size:13px!important}
+html.djinapp .bz3g .bz .act{grid-area:act;display:flex!important;gap:6px!important;margin:0!important}
+html.djinapp .bz3g .bz .act .btn{padding:8px 11px!important;font-size:13px!important;min-height:0!important;width:auto!important;white-space:nowrap}
+html.djinapp .bz3g .bz .act.one{grid-column:1/-1;grid-area:act}
+html.djinapp .bz3nav button{width:42px!important;height:42px!important}
+</style>
+<script>/* 20 Nov 2026 (fix list point A): in the app the number of businesses per page follows the visible height, so a page never needs scrolling */
+(function(){if(!document.documentElement.classList.contains('djinapp'))return;window.__bzPer=function(){return Math.max(1,Math.min(3,Math.floor((innerHeight-185)/140)))}})();</script>
 </body></html>

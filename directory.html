@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en"><head><script>/* 20 Nov 2026 (fix list point B, owner: "desktop site on mobile should look as on a PC"): a phone with Chrome "Desktop site" ON (desktop browser name, ~980 px) got a stretched in-between layout. The check needs the desktop browser name, so a normal phone view is never redirected. That case now opens pcstage.html = the normal computer page (a 1366 x 800 screen) scaled to fit the phone width. Real computers, the normal phone view, the app window and tablets are not touched. */
+(function(){try{
+if(window.self!==window.top)return;
+var sw=screen.width,iw=window.innerWidth;
+if(!(sw<=700&&iw>=900&&iw>=sw*1.5&&matchMedia('(pointer:coarse)').matches&&!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)))return;
+var u=location.pathname.split('/').pop()||'index.html';
+if(!/^[a-z0-9_\-]+\.html$/i.test(u))return;
+location.replace('pcstage.html?p='+encodeURIComponent(u+location.search+location.hash));
+}catch(e){}})();
+</script><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DJSG Directory</title>
 <meta name="robots" content="noindex">
@@ -145,6 +154,7 @@ h1{font-size:clamp(24px,6.6vw,38px);letter-spacing:-.8px;margin-top:2px}
 .bper b{font-family:var(--disp);font-size:15px;line-height:1.2}
 .bper.pres b{font-size:18px}
 .btwo{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.btwo.cmg{gap:12px 10px;margin-top:6px}.btwo.cmg .bper .ph{width:66px;height:66px}.btwo.cmg .bper b{font-size:14px}
 
 /* contents */
 .toc .lt button.on{background:var(--a1);color:#fff}
@@ -406,7 +416,7 @@ b_home:'Back to Home',lk_t:'Members only',lk_p:'The Directory opens after Member
 wt_t:'Opens after approval',wt_p:'Your membership is waiting for approval. The Directory opens as soon as the office approves.',wt_c:'Complete my details',wt_pc:'Your details: 60% done',wt_ap:'Office approves (demo)',
 cv_g:'Digambar Jain Social Group',cv_t:'Member Directory',cv_w:'For members only - not for public sharing',
 bp_t:'Office Bearers',President:'President',Secretary:'Secretary',Treasurer:'Treasurer',
-toc:'Contents',toc_tap:'Tap a letter to see names',pps:'Past Presidents',ex_lay:'Print layout',ex_l1:'Book (one family a page)',ex_l2:'Compact (two a page)','Vice President':'Vice President',cvr:'Cover',toc_bp:'Office Bearers',page:'Page',of:'of',next:'Next',back:'Back',
+toc:'Contents',toc_tap:'Tap a letter to see names',pps:'Past Presidents',ex_lay:'Print layout',ex_l1:'Book (one family a page)',ex_l2:'Compact (two a page)','Vice President':'Vice President','Joint Secretary':'Joint Secretary','Joint Treasurer':'Joint Treasurer','Publicity Secretary':'Publicity Secretary','Cultural Secretary':'Cultural Secretary','Executive Member':'Executive Member',cm_t:'Committee',cvr:'Cover',toc_bp:'Office Bearers',page:'Page',of:'of',next:'Next',back:'Back',
 mr:'Mr',mrs:'Mrs',biz:'Business',kids:'Children',son:'Son',dau:'Daughter',mar:'Married',unm:'Unmarried',ann:'Anniversary',bd:'Birthday',phone:'Mobile',call:'Call',wa:'WhatsApp',
 ver:'✔ Verified by member',off:'Added by office',since:'Member since',fd:'⭐ Founder member',pp:'Past President',
 husband:'Husband',wife:'Wife',family:'Family photo',ph_m:'Member',ph_s:'Spouse',ph_f:'Family',close:'Close',tapmore:'Tap for full details',
@@ -428,7 +438,7 @@ b_home:'होम पर वापस',lk_t:'केवल सदस्यों 
 wt_t:'स्वीकृति के बाद खुलेगी',wt_p:'आपकी सदस्यता स्वीकृति की प्रतीक्षा में है। कार्यालय की स्वीकृति मिलते ही निर्देशिका खुल जाएगी।',wt_c:'मेरा विवरण पूरा करें',wt_pc:'आपका विवरण: 60% पूरा',wt_ap:'कार्यालय स्वीकृति (डेमो)',
 cv_g:'दिगम्बर जैन सोशल ग्रुप',cv_t:'सदस्य निर्देशिका',cv_w:'केवल सदस्यों के लिए - सार्वजनिक रूप से साझा न करें',
 bp_t:'पदाधिकारी',President:'अध्यक्ष',Secretary:'सचिव',Treasurer:'कोषाध्यक्ष',
-toc:'विषय-सूची',toc_tap:'नाम देखने के लिए अक्षर दबाएँ',pps:'पूर्व अध्यक्ष',ex_lay:'छपाई का रूप',ex_l1:'पुस्तक (हर पृष्ठ पर एक परिवार)',ex_l2:'छोटी (हर पृष्ठ पर दो)','Vice President':'उपाध्यक्ष',cvr:'मुखपृष्ठ',toc_bp:'पदाधिकारी',page:'पृष्ठ',of:'में से',next:'आगे',back:'पीछे',
+toc:'विषय-सूची',toc_tap:'नाम देखने के लिए अक्षर दबाएँ',pps:'पूर्व अध्यक्ष',ex_lay:'छपाई का रूप',ex_l1:'पुस्तक (हर पृष्ठ पर एक परिवार)',ex_l2:'छोटी (हर पृष्ठ पर दो)','Vice President':'उपाध्यक्ष','Joint Secretary':'सह-सचिव','Joint Treasurer':'सह-कोषाध्यक्ष','Publicity Secretary':'प्रचार मंत्री','Cultural Secretary':'सांस्कृतिक मंत्री','Executive Member':'कार्यकारिणी सदस्य',cm_t:'कार्यकारिणी',cvr:'मुखपृष्ठ',toc_bp:'पदाधिकारी',page:'पृष्ठ',of:'में से',next:'आगे',back:'पीछे',
 mr:'श्री',mrs:'श्रीमती',biz:'व्यवसाय',kids:'बच्चे',son:'पुत्र',dau:'पुत्री',mar:'विवाहित',unm:'अविवाहित',ann:'विवाह वर्षगांठ',bd:'जन्मदिन',phone:'मोबाइल',call:'कॉल',wa:'व्हाट्सऐप',
 ver:'✔ सदस्य द्वारा जाँचा गया',off:'कार्यालय द्वारा जोड़ा गया',since:'सदस्य वर्ष',fd:'⭐ संस्थापक सदस्य',pp:'पूर्व अध्यक्ष',
 husband:'पति',wife:'पत्नी',family:'परिवार की फ़ोटो',ph_m:'सदस्य',ph_s:'जीवनसाथी',ph_f:'परिवार',close:'बंद करें',tapmore:'पूरा विवरण देखने के लिए छुएँ',
@@ -481,7 +491,7 @@ function details(m,full){var h='<div class="dl">';
  return h+'</div>'}
 
 /* ---------- book pages ---------- */
-function pages(){var a=[{t:'cover'},{t:'bear'},{t:'toc'}];
+function pages(){var a=[{t:'cover'},{t:'bear'}];if(!wide.matches)a.push({t:'comm'});a.push({t:'toc'});
  if(VIEW==='comp'){for(var i=0;i<M.length;i+=2)a.push({t:'two',m:M.slice(i,i+2)})}else M.forEach(function(m){a.push({t:'fam',m:[m]})});
  a.push({t:'end'});return a}
 function pageOf(id,a){for(var i=0;i<a.length;i++){if(a[i].m&&a[i].m.some(function(m){return m.id===id}))return i}return 0}
@@ -493,8 +503,11 @@ function renderPage(p,i,a){
  if(p.t==='bear'){var pr=BEAR[0];return '<div class="pg bp">'+CN+'<img class="blogo" src="'+IMG.LOGO+'" alt=""><div class="bk">'+t('km')+'</div><div class="bs">'+t('bp_t')+' · '+t('ses')+'</div>'+
   '<div class="bper pres">'+ph(pr,'h')+'<b>'+nmH(pr)+'</b><span class="tg post">'+t('President')+'</span></div>'+
   '<div class="btwo">'+BEAR.slice(1).map(function(b){return '<div class="bper">'+ph(b,'h')+'<b>'+nmH(b)+'</b><span class="tg post">'+t(b.role)+'</span></div>'}).join('')+'</div>'+pgF(i)+'</div>'}
+ if(p.t==='comm'){var CM=['Vice President','Joint Secretary','Joint Treasurer','Publicity Secretary','Cultural Secretary','Executive Member'];return '<div class="pg bp">'+CN+'<img class="blogo" src="'+IMG.LOGO+'" alt=""><div class="bk">'+t('km')+'</div><div class="bs">'+t('cm_t')+' · '+t('ses')+'</div>'+
+  '<div class="btwo cmg">'+CM.map(function(r){return '<div class="bper">'+ph({},'h')+'<b>'+t('mr')+' '+esc(L(P('[Name]','[नाम]')))+'</b><span class="tg post">'+t(r)+'</span></div>'}).join('')+'</div>'+pgF(i)+'</div>'}
  if(p.t==='toc'){var letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),has={},G={},order=[];M.forEach(function(m){has[m.l]=1;if(!G[m.l]){G[m.l]=[];order.push(m.l)}G[m.l].push(m)});function en(m){return '<button type="button" class="en" data-jp="'+pageOf(m.id,a)+'"><span>'+nmH(m)+'</span><i></i><b>'+pageOf(m.id,a)+'</b></button>'}
  var h='<div class="pg">'+CN+pgH()+'<div class="toc"><h3>'+t('toc')+'</h3>';var bp='<button type="button" class="en" data-jp="1"><span>'+t('toc_bp')+'</span><i></i><b>1</b></button>';
+if(a.some(function(x){return x.t==='comm'}))bp+='<button type="button" class="en" data-jp="2"><span>'+t('cm_t')+'</span><i></i><b>2</b></button>';
 h+='<div class="lt">'+letters.map(function(c){return '<button type="button" '+(has[c]?'onclick="var r=this.closest(\'.toc\');r.querySelectorAll(\'.lt button\').forEach(function(b){b.classList.remove(\'on\')});this.classList.add(\'on\');r.querySelectorAll(\'.tg\').forEach(function(g){g.hidden=g.dataset.g!==\''+c+'\'})"'+(c===order[0]?' class="on"':''):'disabled')+'>'+c+'</button>'}).join('')+'</div>'+bp+'<div class="tsel">'+t('toc_tap')+'</div>';
  order.forEach(function(L,k){h+='<div class="tg" data-g="'+L+'"'+(k?' hidden':'')+'><div class="gL">'+L+' · '+G[L].length+'</div>'+G[L].map(en).join('')+'</div>'});return h+'</div>'+pgF(i)+'</div>'}
  if(p.t==='fam'){var m=p.m[0];return '<div class="pg">'+CN+pgH()+
@@ -614,7 +627,7 @@ wide.addEventListener&&wide.addEventListener('change',function(){draw()});
    Every screen has a Directory menu button at the bottom. The website view is not changed. */
 (function(){if(!document.documentElement.classList.contains('inapp'))return;
 var DA=document.createElement('div');DA.id='da';document.body.appendChild(DA);
-var SCR='menu',DV='book',DPI=0,LP=0,LET=null,DQ='',DF='all',BG=null,BDT='today',PS=innerHeight<700?3:5;
+var SCR='menu',DV='book',DPI=0,BPI=1,LP=0,LET=null,DQ='',DF='all',BG=null,BDT='today',PS=innerHeight<700?3:5;
 function rec(){try{return JSON.parse(localStorage.getItem('djsg_dir_recent')||'[]')}catch(_){return []}}
 function addRec(id){try{var r=rec().filter(function(x){return x!==id});r.unshift(id);localStorage.setItem('djsg_dir_recent',JSON.stringify(r.slice(0,4)))}catch(_){}}
 function updGet(){try{return JSON.parse(localStorage.getItem('djsg_dir_upd')||'null')}catch(_){return null}}
@@ -655,7 +668,7 @@ function body(){var h='';
  if(SCR==='az'){var has={};M.forEach(function(m){has[m.l]=1});if(!LET)LET=M[0].l;
   h=hd('🔤',t('da_az'),M.length+' '+t('da_fam'))+'<div class="dlt">'+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function(c){return '<button type="button" '+(has[c]?'data-dlet="'+c+'"':'disabled')+(c===LET?' class="on"':'')+'>'+c+'</button>'}).join('')+'</div>'+M.filter(function(m){return m.l===LET}).map(function(m){return rowH(m)}).join('')+foot();return {b:h,bar:menuBar()}}
  if(SCR==='page'){var a=pagesFor(DV);return {b:'<div class="dpg">'+pageH(DV,DPI)+'</div>',bar:nav(DPI>0,DPI<a.length-1),pg:1}}
- if(SCR==='bear'){return {b:'<div class="dpg">'+pageH('book',1)+'</div>',bar:menuBar(),pg:1}}
+ if(SCR==='bear'){var bmax=wide.matches?1:2;if(BPI>bmax)BPI=bmax;if(BPI<1)BPI=1;return {b:'<div class="dpg">'+pageH('book',BPI)+'</div>',bar:bmax>1?nav(BPI>1,BPI<bmax):menuBar(),pg:1}}/* 20 Nov 2026 (fix list point E): Office Bearers in the app = bearers page, then the Committee page (Next / Previous) */
  if(SCR==='list'){var np=Math.ceil(M.length/PS);h=hd('📋',t('v_list'),t('page')+' '+(LP+1)+' '+t('of')+' '+np)+'<div class="dlist">'+M.slice(LP*PS,LP*PS+PS).map(card).join('')+'</div>';return {b:h,bar:nav(LP>0,LP<np-1),lv:1}}
  if(SCR==='fpp'){h=hd('⭐',t('da_fpp'))+'<div class="dlh">'+t('da_fdh')+'</div>'+M.filter(function(m){return m.since===2003}).map(function(m){return rowH(m,t('da_fdS'))}).join('')+'<div class="dlh">🏅 '+t('pps')+'</div>'+M.filter(function(m){return m.pp}).sort(function(p,q){return q.pp-p.pp}).map(function(m){return rowH(m,m.pp)}).join('')+foot();return {b:h,bar:menuBar()}}
  if(SCR==='bd'){var L2=bdList(),soonL=soon().filter(function(x){return x.diff>0}).sort(function(p,q){return p.diff-q.diff}).slice(0,3),yest=soon().filter(function(x){return x.diff===-1});
@@ -678,9 +691,9 @@ function render(keep){var r=body();DA.innerHTML='<div class="dab'+(r.fr?' frm':'
 window.__daRender=render;
 function openFam(id){addRec(id);DV='book';DPI=pageOf(id,pagesFor('book'));SCR='page';render()}
 DA.addEventListener('click',function(e){var b=e.target.closest('button,a');if(!b||!DA.contains(b))return;var d=b.dataset;
- if(d.dgo){var g=d.dgo;if(g==='book'||g==='comp'){DV=g;DPI=0;SCR='page'}else{SCR=g;if(g==='list')LP=0;if(g==='find'){DQ='';DF='all'}}render();if(g==='find')setTimeout(function(){var i=document.getElementById('dq');if(i)i.focus()},60);e.stopPropagation();return}
+ if(d.dgo){var g=d.dgo;if(g==='book'||g==='comp'){DV=g;DPI=0;SCR='page'}else{SCR=g;if(g==='bear')BPI=1;if(g==='list')LP=0;if(g==='find'){DQ='';DF='all'}}render();if(g==='find')setTimeout(function(){var i=document.getElementById('dq');if(i)i.focus()},60);e.stopPropagation();return}
  if(d.dopen){openFam(d.dopen);e.stopPropagation();return}
- if(d.dnav){var n=+d.dnav;if(SCR==='list'){LP+=n}else{DPI+=n}render();e.stopPropagation();return}
+ if(d.dnav){var n=+d.dnav;if(SCR==='list'){LP+=n}else if(SCR==='bear'){BPI+=n}else{DPI+=n}render();e.stopPropagation();return}
  if(d.jp!=null&&SCR==='page'){DPI=+d.jp;DV=DV;render();e.stopPropagation();return}
  if(d.dlet){LET=d.dlet;render(1);e.stopPropagation();return}
  if(d.df){DF=d.df;render(1);e.stopPropagation();return}

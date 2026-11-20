@@ -1,4 +1,13 @@
-<!doctype html><html><head>
+<!doctype html><html><head><script>/* 20 Nov 2026 (fix list point B, owner: "desktop site on mobile should look as on a PC"): a phone with Chrome "Desktop site" ON (desktop browser name, ~980 px) got a stretched in-between layout. The check needs the desktop browser name, so a normal phone view is never redirected. That case now opens pcstage.html = the normal computer page (a 1366 x 800 screen) scaled to fit the phone width. Real computers, the normal phone view, the app window and tablets are not touched. */
+(function(){try{
+if(window.self!==window.top)return;
+var sw=screen.width,iw=window.innerWidth;
+if(!(sw<=700&&iw>=900&&iw>=sw*1.5&&matchMedia('(pointer:coarse)').matches&&!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)))return;
+var u=location.pathname.split('/').pop()||'index.html';
+if(!/^[a-z0-9_\-]+\.html$/i.test(u))return;
+location.replace('pcstage.html?p='+encodeURIComponent(u+location.search+location.hash));
+}catch(e){}})();
+</script>
 <!-- 19 Nov 2026 (fix list points 4+6, owner's yes): mark the page when it is opened INSIDE the member app (page window #pgf). Website in a browser is unchanged. -->
 <script>try{if(window.frameElement&&window.frameElement.id==='pgf')document.documentElement.classList.add('djinapp')}catch(e){}</script>
 <meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
@@ -649,4 +658,26 @@ html.djinapp #evl .ev .act .btn{width:100%!important;padding:9px 4px!important;f
 html.djinapp .wrap>p.note{font-size:12px!important}
 html.djinapp #evl .ev .dt.tbd b{font-size:13px!important;line-height:1.1!important;padding:4px 0!important}
 </style>
+
+<!-- 20 Nov 2026 (fix list point D, owner's "fix the list"): inside the app window every inner page shows a slim strip with the DJSG logo, "DJSG Kota Main" and the page name. Only under html.djinapp; the website is unchanged. -->
+<style id="djinapp_strip">
+html.djinapp header.head{display:flex!important;align-items:center;justify-content:flex-start;padding:0!important;margin:0!important;min-height:0!important;gap:0!important}
+html.djinapp header.head .lang,html.djinapp header.head .login{display:none!important}
+html.djinapp header.head .brand{display:flex!important;align-items:center;gap:8px;width:100%;min-width:0}
+html.djinapp header.head .logo{width:32px!important;height:32px!important;border-width:1px!important;box-shadow:0 2px 6px var(--shadow)!important}
+html.djinapp header.head .names{flex-direction:row!important;gap:5px;align-items:baseline;line-height:1;min-width:0}
+html.djinapp header.head .dj{font-size:17px!important;letter-spacing:-.4px!important}
+html.djinapp header.head .km{font-size:15px!important;letter-spacing:-.3px!important}
+html.djinapp header.head .brand:not([data-pn])::after{display:none}
+html.djinapp header.head .brand::after{content:attr(data-pn);margin-left:auto;flex:none;max-width:46%;padding:4px 10px;border-radius:999px;background:var(--glass,rgba(255,255,255,.7));border:1px solid var(--line,#fff);color:var(--a1,#A3123A);font:800 11px/1.15 var(--body,system-ui);letter-spacing:.4px;text-align:center;box-shadow:0 2px 6px var(--shadow,rgba(60,20,50,.18))}
+
+@media(max-height:560px){
+html.djinapp header.head .logo{width:26px!important;height:26px!important}
+html.djinapp header.head .dj{font-size:15px!important}html.djinapp header.head .km{font-size:13.5px!important}
+}
+</style>
+<script>/* 20 Nov 2026 (fix list point D): page name for the strip, taken from the active menu tab (so it follows हिन्दी / English) */
+(function(){if(!document.documentElement.classList.contains('djinapp'))return;
+function sync(){var n=document.querySelector('nav.nav [aria-current]'),b=document.querySelector('header.head .brand');if(n&&b){var t=(n.textContent||'').trim();if(b.getAttribute('data-pn')!==t)b.setAttribute('data-pn',t)}}
+sync();setInterval(sync,500)})();</script>
 </body></html>

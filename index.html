@@ -1,4 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+<!doctype html><html><head><script>/* 20 Nov 2026 (fix list point B, owner: "desktop site on mobile should look as on a PC"): a phone with Chrome "Desktop site" ON (desktop browser name, ~980 px) got a stretched in-between layout. The check needs the desktop browser name, so a normal phone view is never redirected. That case now opens pcstage.html = the normal computer page (a 1366 x 800 screen) scaled to fit the phone width. Real computers, the normal phone view, the app window and tablets are not touched. */
+(function(){try{
+if(window.self!==window.top)return;
+var sw=screen.width,iw=window.innerWidth;
+if(!(sw<=700&&iw>=900&&iw>=sw*1.5&&matchMedia('(pointer:coarse)').matches&&!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)))return;
+var u=location.pathname.split('/').pop()||'index.html';
+if(!/^[a-z0-9_\-]+\.html$/i.test(u))return;
+location.replace('pcstage.html?p='+encodeURIComponent(u+location.search+location.hash));
+}catch(e){}})();
+</script><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 /* 17 Nov 2026: windows open real pages; notices, slideshow, QR; short computer screens */
 .nrow{display:flex;align-items:center;gap:10px}.nrow .nd{flex:none;min-width:50px;padding:4px 6px;border-radius:10px;background:var(--glass);border:1px solid var(--line);font-size:11.5px;font-weight:800;color:var(--a1);text-align:center}.nrow .nt{flex:1;font-weight:700;font-size:14px}
 .nnote{font-size:12.5px;color:var(--muted);margin:10px 0 0}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DJSG Kota Main</title>
+<meta name="robots" content="noindex">
+<!-- 20 Nov 2026 (fix list point B): "Desktop site" on a phone. Shows the normal computer page (1366 x 800 screen) scaled to fit the phone width. Used only by the small script at the top of each website page. -->
+<style>
+html,body{margin:0;padding:0;min-height:100%;background:linear-gradient(165deg,#FFF4E8,#FDE6EF 55%,#EFE6FF) fixed}
+#w{width:100vw;overflow:hidden;position:relative}
+#s{width:1366px;height:800px;border:0;display:block;transform-origin:0 0;position:absolute;left:0;top:0}
+</style></head>
+<body><div id="w"><iframe id="s" title="DJSG Kota Main"></iframe></div>
+<script>
+(function(){
+var p='index.html';try{var m=/[?&]p=([^&]*)/.exec(location.search);if(m)p=decodeURIComponent(m[1])}catch(e){}
+if(!/^[a-z0-9_\-]+\.html([?#].*)?$/i.test(p))p='index.html';
+var s=document.getElementById('s');s.src=p;
+function f(){var k=innerWidth/1366;s.style.transform='scale('+k+')';document.getElementById('w').style.height=(800*k)+'px'}
+f();addEventListener('resize',f);
+})();
+</script></body></html>
