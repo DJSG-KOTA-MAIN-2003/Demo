@@ -695,27 +695,27 @@ html.djinapp #bx_next .act .btn,html.djinapp #bx_next .act .sbtn{padding:8px 4px
 html.djinapp #bx_tabs button{min-height:46px!important}
 html.djinapp #evl>.gpx{display:none!important}
 html.djinapp #evl .ev{padding:9px 10px!important;gap:4px!important}
-html.djinapp .gpn2{display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;color:#5A2A3C;min-height:38px}
+html.djinapp .gpn2{position:fixed;left:50%;transform:translateX(-50%);bottom:30px;z-index:30;display:flex;align-items:center;gap:14px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 6px 18px rgba(122,20,52,.25);font-size:15px;color:#5A2A3C}
 html.djinapp .gpn2[hidden]{display:none!important}
-html.djinapp .gpn2 b{min-width:40px;text-align:center;font-weight:800}
-html.djinapp .gpn2 button{width:52px;height:34px;border:0;border-radius:12px;background:linear-gradient(180deg,#C2185B,#A3123A);color:#fff;font:800 20px/1 system-ui;box-shadow:0 3px 0 #6E0B27;padding:0}
+html.djinapp .gpn2 b{min-width:44px;text-align:center;font-weight:800}
+html.djinapp .gpn2 button{width:62px;height:40px;border:0;border-radius:14px;background:linear-gradient(180deg,#C2185B,#A3123A);color:#fff;font:800 24px/1 system-ui;box-shadow:0 3px 0 #6E0B27;padding:0}
 html.djinapp .gpn2 button:active{transform:translateY(2px);box-shadow:0 1px 0 #6E0B27}
-@media(max-height:600px){html.djinapp #bx_tabs button{min-height:38px!important}html.djinapp #bx_next .k{display:none!important}html.djinapp #bx_next .dt{width:50px!important}html.djinapp #bx_next .dt b{font-size:18px!important}html.djinapp #bx_next{padding:7px 10px!important}html.djinapp #evl .ev{padding:7px 9px!important}html.djinapp #evl .ev .dt{width:48px!important}html.djinapp #evl .ev .dt b{font-size:18px!important}html.djinapp #evl .ev h3{font-size:13.5px!important}html.djinapp .gpn2{min-height:34px}html.djinapp #evl .addp,html.djinapp #evl .ev{font-size:12px}html.djinapp #evl .addp p,html.djinapp #evl .ev .by{font-size:11px!important;line-height:1.25!important}html.djinapp #bx_next .ei .meta{display:none!important}}
+@media(max-height:600px){html.djinapp #bx_tabs button{min-height:38px!important}html.djinapp #bx_next .k{display:none!important}html.djinapp #bx_next .dt{width:50px!important}html.djinapp #bx_next .dt b{font-size:18px!important}html.djinapp #bx_next{padding:7px 10px!important}html.djinapp #evl .ev{padding:7px 9px!important}html.djinapp #evl .ev .dt{width:48px!important}html.djinapp #evl .ev .dt b{font-size:18px!important}html.djinapp #evl .ev h3{font-size:13.5px!important}html.djinapp #evl .addp,html.djinapp #evl .ev{font-size:12px}html.djinapp #evl .addp p,html.djinapp #evl .ev .by{font-size:11px!important;line-height:1.25!important}html.djinapp #bx_next .ei .meta{display:none!important}}
 </style>
 <script>
 (function(){var H=document.documentElement;if(!H.classList.contains('djinapp'))return;
 var L=document.getElementById('evl');if(!L)return;
-var nav=document.createElement('div');nav.className='gpn2';nav.hidden=true;nav.innerHTML='<button type="button" aria-label="Previous">&#8249;</button><b></b><button type="button" aria-label="Next">&#8250;</button>';L.parentNode.insertBefore(nav,L.nextSibling);
+var nav=document.createElement('div');nav.className='gpn2';nav.hidden=true;nav.innerHTML='<button type="button" aria-label="Previous">&#8249;</button><b></b><button type="button" aria-label="Next">&#8250;</button>';document.body.appendChild(nav);
 var bs=nav.querySelectorAll('button'),pb=nav.querySelector('b'),pg=0,pages=1,sig='';
 function lay(){var cards=[].slice.call(L.children).filter(function(c){return !c.hidden});
  var s=cards.length+'|'+cards.map(function(c){return (c.textContent||'').slice(0,24)}).join(',');if(s!==sig){sig=s;pg=0}
  if(!cards.length||!L.offsetParent){nav.hidden=true;return}
  cards.forEach(function(c){c.classList.remove('gpx')});nav.hidden=true;
- var top=L.getBoundingClientRect().top+(window.pageYOffset||0),gap=parseFloat(getComputedStyle(L).rowGap)||9,lim=innerHeight-62;
+ var top=L.getBoundingClientRect().top+(window.pageYOffset||0),gap=parseFloat(getComputedStyle(L).rowGap)||9,lim=innerHeight-30;
  var rowsH=[];for(var i=0;i<cards.length;i+=2){var h=cards[i].offsetHeight;if(cards[i+1])h=Math.max(h,cards[i+1].offsetHeight);rowsH.push(h)}
  var tot=0;rowsH.forEach(function(h,k){tot+=h+(k?gap:0)});
  if(top+tot<=lim){pages=1;pg=0;pb.textContent='1/1';return}
- var avail=lim-top-40-7,per=[],cur=0,used=0;
+ var avail=lim-top-56,per=[],cur=0,used=0;
  rowsH.forEach(function(h,k){var add=h+(cur?gap:0);if(cur&&used+add>avail){per.push(cur);cur=0;used=0;add=h}used+=add;cur++});if(cur)per.push(cur);
  pages=per.length;if(pg>pages-1)pg=pages-1;if(pg<0)pg=0;
  var start=0,from=0,to=0;per.forEach(function(n,k){if(k===pg){from=start;to=start+n*2}start+=n*2});

@@ -541,7 +541,7 @@ var cur=null,page=0,pushed=false;
 function per(){return window.__bzPer?window.__bzPer():(innerWidth>=1100?4:3)}
 function items(){if(!cur)return [];var x=li();if(cur.q!=null){var q=cur.q.toLowerCase();return BZ.filter(function(b){return (b[1]+' '+b[2]+' '+b[3]+' '+b[4]+' '+TY[b[0]][1]+' '+TY[b[0]][2]).toLowerCase().indexOf(q)>=0})}return cur.t===-1?BZ:BZ.filter(function(b){return b[0]===cur.t})}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function card(b){var t=TY[b[0]],x=li(),m=mem();return '<article class="card bz"><span class="cv" style="background:var('+t[3]+')" aria-hidden="true">'+t[0]+'</span><span class="tx"><b>'+b[1+x]+'</b><span class="cat">'+t[1+x]+'</span><span class="m">'+b[3+x]+'</span><span class="who">👤 '+T('mem')+'</span></span>'+(m?'<span class="ph">'+T('ph')+'</span><span class="act"><button type="button" class="btn" data-t="t_call">'+T('call')+'</button><button type="button" class="btn wa" data-t="t_wa">'+T('wa')+'</button></span>':'<span class="act one"><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></span>')+'</article>'}
+function card(b){var t=TY[b[0]],x=li(),m=mem();return '<article class="card bz"><span class="cv" style="background:var('+t[3]+')" aria-hidden="true">'+t[0]+'</span><span class="tx"><b>'+b[1+x]+'</b><span class="cat">'+t[1+x]+'</span><span class="m">'+b[3+x]+'</span><span class="who">'+(document.documentElement.classList.contains('djinapp')?'<i class="mph" aria-hidden="true"></i>':'👤 ')+T('mem')+'</span></span>'+(m?'<span class="ph">'+T('ph')+'</span><span class="act"><button type="button" class="btn" data-t="t_call">'+T('call')+'</button><button type="button" class="btn wa" data-t="t_wa">'+T('wa')+'</button></span>':'<span class="act one"><button type="button" class="btn ghost" data-t="t_login">'+T('bl')+'</button></span>')+'</article>'}
 function nav(n,c){return '<div class="'+c+'"><button type="button" data-bz3pg="-1" aria-label="'+T('prev')+'"'+(page?'':' disabled')+'>‹</button><span>'+T('pg').replace('{a}',page+1).replace('{b}',n)+'</span><button type="button" data-bz3pg="1" aria-label="'+T('next')+'"'+(page<n-1?'':' disabled')+'>›</button></div>'}
 function draw(){if(!cur){pg.hidden=true;document.body.classList.remove('bz3open','bz3s');return}
  var all=items(),P=per(),n=Math.max(1,Math.ceil(all.length/P));if(page>=n)page=n-1;if(page<0)page=0;var x=li();
@@ -643,5 +643,10 @@ html.djinapp .bz3g .bz .act.one{grid-column:1/-1;grid-area:act}
 html.djinapp .bz3nav button{width:42px!important;height:42px!important}
 </style>
 <script>/* 20 Nov 2026 (fix list point A): in the app the number of businesses per page follows the visible height, so a page never needs scrolling */
-(function(){if(!document.documentElement.classList.contains('djinapp'))return;window.__bzPer=function(){return Math.max(1,Math.min(3,Math.floor((innerHeight-185)/140)))}})();</script>
+(function(){if(!document.documentElement.classList.contains('djinapp'))return;window.__bzPer=function(){return Math.max(1,Math.min(3,Math.floor((innerHeight-185)/165)))}})();</script>
+<!-- 20 Nov 2026 (fix list point J, owner's "fix the list"): DJSG Business inside the app shows the member's round photo on each business card (a sample picture until real photos come; a real photo is set as the background-image of the .mph circle). Only under html.djinapp; website unchanged. -->
+<style id="djinapp_j1">
+html.djinapp .bz3g .bz .who{display:flex!important;align-items:center;gap:8px;min-width:0}
+html.djinapp .bz3g .bz .who .mph{flex:none;width:36px;height:36px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(122,20,52,.25);background:#F6D5E0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F6D5E0'/%3E%3Ccircle cx='20' cy='15' r='7' fill='%23C98BA3'/%3E%3Cpath d='M6 40c0-9 6-14 14-14s14 5 14 14z' fill='%23C98BA3'/%3E%3C/svg%3E") center/cover no-repeat}
+</style>
 </body></html>
