@@ -523,4 +523,34 @@ html.djside.pcxscr{scroll-behavior:auto}
 })();
 </script>
 
+<script id="bkm1">
+/* 20 Nov 2026 (owner's request 17:06): the bottom button follows the page. When you are NOT on the page's first page it says "Back to Menu" and goes to that first page (Directory: cover page, no search, All; Birthdays: Today + All, first screen; Events: Upcoming, first screen; Gallery: Event photos album list; Business: the type tiles). When you are already on the first page, or the page has only one page, it says "Back to Home" and opens the front page. Website only (not in the app). */
+(function(){var H=document.documentElement;if(H.classList.contains('djinapp')||H.classList.contains('inapp'))return;
+var PAGE='bearers',HOSTED=location.protocol==='file:'||/github\.io$|netlify\.app$|djsgkotamain\.in$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+function $(s){return document.querySelector(s)}
+function on(s,a){var e=$(s);return !!e&&e.getAttribute(a)==='true'}
+function clk(s){var e=$(s);if(e&&e.offsetParent!==null||e&&e.getClientRects().length)e.click()}
+function top0(){window.scrollTo(0,0)}
+function scr0(){return !H.classList.contains('pcxscr')||window.scrollY<window.innerHeight*.5}
+var C={
+ birthdays:{first:function(){return on('[role=tab][data-tab="0"]','aria-selected')&&on('[data-f="all"]','aria-pressed')&&scr0()},go:function(){clk('[role=tab][data-tab="0"]');clk('[data-f="all"]');top0()}},
+ events:{first:function(){return on('#tu','aria-selected')&&scr0()},go:function(){clk('#tu');top0()}},
+ gallery:{first:function(){var g=$('#gview');return (!g||g.hidden)&&on('[role=tab][data-tab="ev"]','aria-selected')&&scr0()},go:function(){var g=$('#gview');if(g&&!g.hidden)clk('#bk');if(!on('[role=tab][data-tab="ev"]','aria-selected'))clk('[role=tab][data-tab="ev"]');top0()}},
+ business:{first:function(){var q=$('#q');return !document.body.classList.contains('bz3open')&&!(q&&q.value)&&scr0()},go:function(){clk('#bz3back');var q=$('#q');if(q&&q.value){q.value='';q.dispatchEvent(new Event('input',{bubbles:true}))}top0()}},
+ directory:{first:function(){var q=$('#q'),a=$('[data-bz][aria-pressed="true"]'),p=$('.bnav .cb');return !(q&&q.value)&&(!a||a.getAttribute('data-bz')==='all')&&(!p||p.disabled)},
+  go:function(){var q=$('#q');if(q&&q.value){q.value='';q.dispatchEvent(new Event('input',{bubbles:true}))}var a=$('[data-bz="all"]');if(a&&a.getAttribute('aria-pressed')!=='true')a.click();for(var i=0;i<120;i++){var p=$('.bnav .cb');if(!p||p.disabled)break;p.click()}top0()}}
+},K=C[PAGE]||{first:function(){return true},go:function(){}};
+var B=[];
+function init(){document.querySelectorAll('[data-i="b_home"]').forEach(function(sp){var b=sp.closest('button');if(!b)return;sp.removeAttribute('data-i');b.setAttribute('data-bkm','1');B.push(sp)})}
+function hi(){if(H.lang==='hi')return true;var l=$('#l_hi');return !!l&&(l.getAttribute('aria-pressed')==='true'||l.classList.contains('on'))}
+function sync(){var f=K.first(),h=hi(),t=f?(h?'होम पर वापस':'Back to Home'):(h?'मेनू पर वापस':'Back to Menu');B.forEach(function(s){if(s.textContent!==t)s.textContent=t})}
+var tm;function later(){clearTimeout(tm);tm=setTimeout(sync,60)}
+window.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-bkm]');if(!b)return;
+ if(!K.first()){e.stopPropagation();e.preventDefault();K.go();setTimeout(sync,150);setTimeout(sync,500);return}
+ if(HOSTED){e.stopPropagation();e.preventDefault();location.href='index.html'}},true);
+init();sync();
+new MutationObserver(later).observe(H,{subtree:true,childList:true,attributes:true,attributeFilter:['class','aria-selected','aria-pressed','hidden','lang','disabled']});
+window.addEventListener('scroll',later,{passive:true});window.addEventListener('resize',later);
+setTimeout(sync,400);setTimeout(sync,1500)})();
+</script>
 </body></html>
